@@ -1,26 +1,158 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand-primary: #0f766e;
+  --brand-primary-hover: #0d9488;
+  --brand-secondary: #134e4a;
+  --brand-accent: #f59e0b;
+  --brand-bg: #f8fafc;
+  --brand-surface: #ffffff;
+  --brand-text: #0f172a;
+  --brand-muted: #64748b;
+  --radius: 12px;
+  --font-display: var(--font-dm-sans), system-ui, sans-serif;
+  --font-body: var(--font-source-sans), system-ui, sans-serif;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: var(--brand-bg);
+  --color-foreground: var(--brand-text);
+  --font-sans: var(--font-body);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--brand-bg);
+  color: var(--brand-text);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+}
+
+/* Quill editor (admin) */
+.rich-text-editor .ql-toolbar {
+  border: none;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.rich-text-editor .ql-container {
+  border: none;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.rich-text-editor .ql-editor {
+  min-height: var(--editor-height, 360px);
+}
+
+.rich-text-editor .ql-editor.ql-blank::before {
+  color: var(--brand-muted);
+  font-style: normal;
+}
+
+/* Rich HTML content (product descriptions, health articles) */
+.rich-content {
+  line-height: 1.75;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.rich-content h1,
+.rich-content h2,
+.rich-content h3 {
+  font-family: var(--font-display);
+}
+
+.rich-content h2 {
+  margin-top: 1.75em;
+  margin-bottom: 0.75em;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.rich-content h3 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.rich-content p {
+  margin-bottom: 1em;
+}
+
+.rich-content ul,
+.rich-content ol {
+  margin-bottom: 1em;
+  padding-left: 1.5em;
+}
+
+.rich-content li {
+  margin-bottom: 0.35em;
+}
+
+.rich-content blockquote {
+  margin: 1.25em 0;
+  padding: 0.75em 1em;
+  border-left: 4px solid var(--brand-primary);
+  background: #f0fdfa;
+  color: var(--brand-text);
+}
+
+.rich-content code {
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  background: #f1f5f9;
+  font-size: 0.9em;
+}
+
+.rich-content pre {
+  margin: 1.25em 0;
+  padding: 1em;
+  overflow-x: auto;
+  border-radius: var(--radius);
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+.rich-content pre code {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.rich-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.rich-content a {
+  color: var(--brand-primary);
+  text-decoration: underline;
+}
+
+.rich-content table {
+  width: 100%;
+  margin: 1.25em 0;
+  border-collapse: collapse;
+}
+
+.rich-content th,
+.rich-content td {
+  border: 1px solid #e2e8f0;
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+
+.rich-content th {
+  background: #f8fafc;
+  font-weight: 600;
 }

@@ -1,0 +1,59 @@
+# Giữ Supabase Free tier không bị pause do không hoạt động.
+# Tham khảo: https://dev.to/jps27cse/how-to-prevent-your-supabase-project-database-from-being-paused-using-github-actions-3hel
+#
+# Cần thêm GitHub Secrets (Settings → Secrets → Actions):
+#   NEXT_PUBLIC_SUPABASE_URL  — URL project Supabase
+#   SUPABASE_SERVICE_ROLE_KEY — service role key
+#   NEXT_PUBLIC_SITE_URL      — (tuỳ chọn) ping /api/health production
+#
+# Lưu ý: Một số user báo Supabase free tier vẫn pause dù có cron ping.
+# Nếu bị pause, unpause trong Supabase Dashboard hoặc nâng plan.
+
+name: Supabase keep-alive
+
+on:
+  schedule:
+    # 08:00 + 20:00 giờ VN (UTC+7) mỗi ngày
+    - cron: "0 1 * * *"
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ping Supabase PostgREST + tables
+        env:
+          SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL || secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${SUPABASE_URL:-}" ] || [ -z "${SUPABASE_SERVICE_ROLE_KEY:-}" ]; then
+            echo "Skip: chưa cấu hình NEXT_PUBLIC_SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY trong GitHub Secrets."
+            exit 0
+          fi
+
+          auth=(-H "apikey: ${SUPABASE_SERVICE_ROLE_KEY}" -H "Authorization: Bearer ${SUPABASE_SERVICE_ROLE_KEY}")
+
+          echo "→ PostgREST root"
+          curl -sf "${auth[@]}" "${SUPABASE_URL}/rest/v1/"
+
+          echo "→ Query products (limit 1)"
+          curl -sf "${auth[@]}" "${SUPABASE_URL}/rest/v1/products?select=id&limit=1"
+
+          echo "→ Query site_settings (limit 1)"
+          curl -sf "${auth[@]}" "${SUPABASE_URL}/rest/v1/site_settings?select=id&limit=1"
+
+          echo "→ Query health_articles (limit 1)"
+          curl -sf "${auth[@]}" "${SUPABASE_URL}/rest/v1/health_articles?select=id&limit=1" || \
+            echo "(health_articles chưa migrate — bỏ qua)"
+
+          if [ -n "${SITE_URL:-}" ]; then
+            echo "→ Production /api/health"
+            curl -sf "${SITE_URL%/}/api/health"
+          fi
+
+          echo "Keep-alive OK at $(date -u +%Y-%m-%dT%H:%M:%SZ)"
