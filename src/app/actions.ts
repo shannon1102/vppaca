@@ -80,7 +80,14 @@ export async function placeOrderAction(formData: FormData) {
   try {
     const settings = await repo.getSettings();
     const { notifyAdminNewOrder } = await import("@/lib/email/send");
-    await notifyAdminNewOrder({ order, settings });
+    const result = await notifyAdminNewOrder({ order, settings });
+    if (!result.sent) {
+      console.error("[email] notify not sent", {
+        code: order.code,
+        provider: result.provider,
+        reason: result.reason,
+      });
+    }
   } catch (e) {
     console.error("[email] notify failed", e);
   }

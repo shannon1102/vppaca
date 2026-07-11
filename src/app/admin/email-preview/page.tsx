@@ -48,7 +48,10 @@ export default async function EmailPreviewPage() {
       <h1 className="text-2xl font-bold">Preview email đơn hàng</h1>
       <p className="mt-2 text-sm text-[var(--brand-muted)]">Subject: {subject}</p>
       <p className="mt-1 text-xs text-[var(--brand-muted)]">
-        Cần <code>RESEND_API_KEY</code> trên Vercel để gửi thật khi khách đặt hàng.
+        Gửi thật khi khách đặt hàng: ưu tiên{" "}
+        <code>GMAIL_USER</code> + <code>GMAIL_APP_PASSWORD</code>, không có thì dùng{" "}
+        <code>RESEND_API_KEY</code>. Người nhận:{" "}
+        <code>ADMIN_NOTIFY_EMAIL</code> hoặc <code>ADMIN_EMAIL</code>.
       </p>
       <iframe
         title="email-preview"

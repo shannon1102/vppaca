@@ -8,15 +8,26 @@ type SendMailInput = {
   text: string;
 };
 
+function cleanEnv(value: string | undefined): string {
+  return (value ?? "").trim().replace(/^["']|["']$/g, "");
+}
+
+export function gmailCredentials() {
+  const user = cleanEnv(process.env.GMAIL_USER);
+  // App password may be pasted with spaces: "xxxx xxxx xxxx xxxx"
+  const pass = cleanEnv(process.env.GMAIL_APP_PASSWORD).replace(/\s+/g, "");
+  return { user, pass };
+}
+
 export function isGmailConfigured(): boolean {
-  return Boolean(process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD);
+  const { user, pass } = gmailCredentials();
+  return Boolean(user && pass);
 }
 
 export async function sendViaGmail(
   input: SendMailInput,
 ): Promise<{ sent: boolean; reason?: string }> {
-  const user = process.env.GMAIL_USER;
-  const pass = process.env.GMAIL_APP_PASSWORD;
+  const { user, pass } = gmailCredentials();
   if (!user || !pass) {
     return { sent: false, reason: "missing_gmail_credentials" };
   }
@@ -29,8 +40,11 @@ export async function sendViaGmail(
       auth: { user, pass },
     });
 
+    // Gmail only allows sending as the authenticated account (or verified alias)
+    const from = `${extractDisplayName(input.from, "Shop")} <${user}>`;
+
     await transport.sendMail({
-      from: input.from.includes("<") ? input.from : `${input.from} <${user}>`,
+      from,
       to: input.to,
       subject: input.subject,
       html: input.html,
@@ -45,4 +59,11 @@ export async function sendViaGmail(
       reason: e instanceof Error ? e.message : "gmail_send_failed",
     };
   }
+}
+
+function extractDisplayName(from: string, fallback: string): string {
+  const m = from.match(/^(.+?)\s*<[^>]+>$/);
+  if (m) return m[1].trim().replace(/^["']|["']$/g, "") || fallback;
+  if (!from.includes("@")) return from.trim() || fallback;
+  return fallback;
 }
