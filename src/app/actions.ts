@@ -135,6 +135,8 @@ export async function saveSettingsAction(formData: FormData) {
 export async function saveProductAction(formData: FormData) {
   await requireAdmin();
   const id = String(formData.get("id") || `p-${Date.now()}`);
+  const isNew = !formData.get("id");
+  const backPath = isNew ? "/admin/products/new" : `/admin/products/${id}`;
   const imagesRaw = String(formData.get("images") ?? "");
   const images = imagesRaw
     .split("\n")
@@ -152,14 +154,18 @@ export async function saveProductAction(formData: FormData) {
   const sale = String(formData.get("sale_price") ?? "");
   const name = String(formData.get("name") ?? "");
   const description = String(formData.get("description") ?? "");
-  const detailDescription = await persistRichHtmlImages(
-    String(formData.get("detail_description") ?? ""),
-  );
+  let detailDescription = String(formData.get("detail_description") ?? "");
+  try {
+    detailDescription = await persistRichHtmlImages(detailDescription);
+  } catch (e) {
+    console.error("[product] persistRichHtmlImages failed", e);
+    redirect(`${backPath}?error=save`);
+  }
   const product: Product = {
     id,
     name,
     slug: resolveSlug(String(formData.get("slug") ?? ""), name, id),
-    sku: String(formData.get("sku") ?? ""),
+    sku: String(formData.get("sku") ?? "").trim(),
     price: Number(formData.get("price") ?? 0),
     sale_price: sale ? Number(sale) : null,
     description,
@@ -173,7 +179,21 @@ export async function saveProductAction(formData: FormData) {
     seo_title: String(formData.get("seo_title") ?? ""),
     seo_description: String(formData.get("seo_description") ?? ""),
   };
-  await repo.upsertProduct(product);
+
+  const existing = await repo.listProducts();
+  if (existing.some((p) => p.sku === product.sku && p.id !== product.id)) {
+    redirect(`${backPath}?error=sku`);
+  }
+  if (existing.some((p) => p.slug === product.slug && p.id !== product.id)) {
+    redirect(`${backPath}?error=slug`);
+  }
+
+  try {
+    await repo.upsertProduct(product);
+  } catch (e) {
+    console.error("[product] upsert failed", e);
+    redirect(`${backPath}?error=save`);
+  }
   revalidatePath("/san-pham");
   revalidatePath(`/san-pham/${product.slug}`);
   revalidatePath("/admin/products");

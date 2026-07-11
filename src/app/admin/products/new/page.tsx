@@ -1,10 +1,16 @@
 import { ProductForm } from "@/components/admin/product-form";
+import { FormErrorBanner } from "@/components/admin/form-error-banner";
 import { requireAdminPage } from "@/lib/require-admin";
 import { repo } from "@/lib/data/repository";
 import type { Product } from "@/lib/types";
 
-export default async function NewProductPage() {
+export default async function NewProductPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
   await requireAdminPage();
+  const { error } = await searchParams;
   const categories = await repo.listCategories();
   const blank: Partial<Product> = {
     name: "",
@@ -26,6 +32,7 @@ export default async function NewProductPage() {
   return (
     <div>
       <h1 className="text-3xl font-bold">Thêm sản phẩm</h1>
+      <FormErrorBanner code={error} />
       <ProductForm categories={categories} product={blank} />
     </div>
   );

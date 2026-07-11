@@ -125,6 +125,12 @@ export async function localGetProductById(id: string): Promise<Product | null> {
 
 export async function localUpsertProduct(product: Product): Promise<Product> {
   const db = await ensureDb();
+  if (db.products.some((p) => p.sku === product.sku && p.id !== product.id)) {
+    throw new Error("duplicate_sku");
+  }
+  if (db.products.some((p) => p.slug === product.slug && p.id !== product.id)) {
+    throw new Error("duplicate_slug");
+  }
   const i = db.products.findIndex((p) => p.id === product.id);
   if (i >= 0) db.products[i] = product;
   else db.products.push(product);
