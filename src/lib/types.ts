@@ -27,6 +27,7 @@ export type Product = {
   category_id: string;
   images: string[];
   stock: number;
+  sold_count: number;
   is_published: boolean;
   is_featured: boolean;
   seo_title: string;

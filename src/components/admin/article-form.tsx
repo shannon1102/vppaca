@@ -1,4 +1,5 @@
 import { saveArticleAction } from "@/app/actions";
+import { ArticleCoverField } from "@/components/admin/article-cover-field";
 import { NameSlugFields } from "@/components/admin/name-slug-fields";
 import { RichTextEditor } from "@/components/ui/rich-text-editor";
 import { Button } from "@/components/ui/button";
@@ -40,12 +41,7 @@ export function ArticleForm({
         defaultValue={article.content}
         height={480}
       />
-      <Input
-        name="cover_image_url"
-        label="Ảnh bìa (URL)"
-        defaultValue={article.cover_image_url ?? ""}
-        placeholder="/products/p-01.jpg hoặc URL Supabase upload"
-      />
+      <ArticleCoverField defaultValue={article.cover_image_url} />
       <Input
         name="tags"
         label="Tags (phân cách bằng dấu phẩy, tối đa 5)"

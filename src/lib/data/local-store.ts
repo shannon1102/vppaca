@@ -23,6 +23,7 @@ async function ensureDb(): Promise<LocalDb> {
     db.products = db.products.map((p) => ({
       ...p,
       detail_description: p.detail_description ?? "",
+      sold_count: p.sold_count ?? 0,
     }));
     return db;
   } catch {
@@ -147,6 +148,15 @@ export async function localDeleteProduct(id: string): Promise<void> {
 export async function localCreateOrder(order: Order): Promise<Order> {
   const db = await ensureDb();
   db.orders.unshift(order);
+  const totals = new Map<string, number>();
+  for (const item of order.items) {
+    if (!item.product_id) continue;
+    totals.set(item.product_id, (totals.get(item.product_id) ?? 0) + item.qty);
+  }
+  for (const [productId, qty] of totals) {
+    const product = db.products.find((p) => p.id === productId);
+    if (product) product.sold_count = (product.sold_count ?? 0) + qty;
+  }
   await saveDb(db);
   return order;
 }

@@ -97,7 +97,12 @@ export default async function ProductDetailPage({ params }: Props) {
         <div className="min-w-0">
           {onSale ? <Badge>Giảm giá</Badge> : null}
           <h1 className="mt-3 text-3xl font-bold">{product.name}</h1>
-          <p className="mt-2 text-sm text-[var(--brand-muted)]">SKU: {product.sku}</p>
+          <p className="mt-2 text-sm text-[var(--brand-muted)]">
+            SKU: {product.sku}
+            <span className="before:mx-2 before:content-['·']">
+              Đã bán {product.sold_count}
+            </span>
+          </p>
           <div className="mt-4 flex items-baseline gap-3">
             <span className="text-3xl font-bold text-[var(--brand-primary)]">
               {formatVnd(price)}

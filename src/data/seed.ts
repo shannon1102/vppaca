@@ -66,10 +66,11 @@ export const seedCategories: Category[] = [
   },
 ];
 
-type SeedProduct = Omit<Product, "images" | "detail_description"> & {
+type SeedProduct = Omit<Product, "images" | "detail_description" | "sold_count"> & {
   imageIndex: number;
   extraImages?: number[];
   detail_description?: string;
+  sold_count?: number;
 };
 
 const raw: SeedProduct[] = [
@@ -432,7 +433,12 @@ export const seedProducts: Product[] = raw.map((p) => {
     const next = imageIndex === 20 ? 1 : imageIndex + 1;
     images.push(img(next));
   }
-  return { ...rest, images, detail_description: rest.detail_description ?? "" };
+  return {
+    ...rest,
+    sold_count: rest.sold_count ?? 0,
+    images,
+    detail_description: rest.detail_description ?? "",
+  };
 });
 
 export const seedArticles: HealthArticle[] = [

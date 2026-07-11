@@ -46,6 +46,7 @@ function mapProduct(row: Record<string, unknown>): Product {
     category_id: String(row.category_id ?? ""),
     images: (row.images as string[]) ?? [],
     stock: Number(row.stock ?? 0),
+    sold_count: Number(row.sold_count ?? 0),
     is_published: Boolean(row.is_published),
     is_featured: Boolean(row.is_featured),
     seo_title: String(row.seo_title ?? ""),
@@ -273,7 +274,36 @@ export async function sbCreateOrder(order: Order): Promise<Order> {
     })),
   );
   if (e2) throw e2;
+  await sbIncrementProductsSoldCount(
+    items.map((i) => ({ productId: i.product_id, qty: i.qty })),
+  );
   return order;
+}
+
+export async function sbIncrementProductsSoldCount(
+  lines: { productId: string; qty: number }[],
+): Promise<void> {
+  if (!lines.length) return;
+  const sb = adminClient();
+  const totals = new Map<string, number>();
+  for (const line of lines) {
+    if (!line.productId) continue;
+    totals.set(line.productId, (totals.get(line.productId) ?? 0) + line.qty);
+  }
+  for (const [productId, qty] of totals) {
+    const { data, error: selErr } = await sb
+      .from("products")
+      .select("sold_count")
+      .eq("id", productId)
+      .maybeSingle();
+    if (selErr) throw selErr;
+    if (!data) continue;
+    const { error } = await sb
+      .from("products")
+      .update({ sold_count: Number(data.sold_count ?? 0) + qty })
+      .eq("id", productId);
+    if (error) throw error;
+  }
 }
 
 export async function sbListOrders(): Promise<Order[]> {

@@ -23,6 +23,7 @@ export default async function NewProductPage({
     category_id: categories[0]?.id ?? "",
     images: ["/seed/product-01.svg"],
     stock: 0,
+    sold_count: 0,
     is_published: true,
     is_featured: false,
     seo_title: "",

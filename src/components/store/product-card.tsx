@@ -31,6 +31,7 @@ export function ProductCard({ product }: { product: Product }) {
           {product.name}
         </p>
         <p className="text-xs text-[var(--brand-muted)]">{product.sku}</p>
+        <p className="text-xs text-[var(--brand-muted)]">Đã bán {product.sold_count}</p>
         <div className="mt-auto flex items-baseline gap-2">
           <span className="text-base font-bold text-[var(--brand-primary)]">
             {formatVnd(price)}

@@ -74,6 +74,8 @@ export async function placeOrderAction(formData: FormData) {
   };
   await repo.createOrder(order);
 
+  revalidateTag(CACHE_TAGS.products, "max");
+
   // Notify admin by email (non-blocking for checkout success)
   try {
     const settings = await repo.getSettings();
@@ -139,6 +141,7 @@ export async function saveProductAction(formData: FormData) {
   const id = String(formData.get("id") || `p-${Date.now()}`);
   const isNew = !formData.get("id");
   const backPath = isNew ? "/admin/products/new" : `/admin/products/${id}`;
+  const existingProduct = isNew ? null : await repo.getProductById(id);
   const imagesRaw = String(formData.get("images") ?? "");
   const images = imagesRaw
     .split("\n")
@@ -168,6 +171,7 @@ export async function saveProductAction(formData: FormData) {
     category_id: String(formData.get("category_id") ?? ""),
     images: images.length ? images : ["/seed/product-01.svg"],
     stock: Number(formData.get("stock") ?? 0),
+    sold_count: existingProduct?.sold_count ?? 0,
     is_published: formData.get("is_published") === "on",
     is_featured: formData.get("is_featured") === "on",
     seo_title: String(formData.get("seo_title") ?? ""),
