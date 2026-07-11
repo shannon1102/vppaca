@@ -577,7 +577,7 @@ const settings = {
   bank_holder: "CONG TY TNHH DICH VU Y KHOA CO TRUYEN TAM DUC",
   transfer_content_template: "DH {code}",
   qr_image_url: "/seed/qr-demo.svg",
-  facebook_url: "",
+  facebook_url: "https://www.facebook.com/profile.php?id=61561988987352",
   zalo_url: "https://zalo.me/0962732786",
 };
 

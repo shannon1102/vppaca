@@ -1,5 +1,6 @@
 import { TAM_DUC_BRAND } from "@/lib/brand-content";
 import { repo } from "@/lib/data/repository";
+import { socialLinks } from "@/lib/social";
 import { pageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
@@ -15,6 +16,7 @@ function telHref(phone: string) {
 
 export default async function ContactPage() {
   const s = await repo.getSettings();
+  const links = socialLinks(s);
   const branchWithMap = TAM_DUC_BRAND.branches.find((b) => b.embedUrl);
 
   return (
@@ -57,12 +59,34 @@ export default async function ContactPage() {
           <h2 className="mt-6 font-semibold">Giờ làm việc</h2>
           <p className="mt-2">{TAM_DUC_BRAND.hours}</p>
 
-          <h2 className="mt-6 font-semibold">Zalo</h2>
-          <p className="mt-2">
-            <a className="text-[var(--brand-primary)] underline" href={s.zalo_url}>
-              Chat Zalo — {s.phone}
-            </a>
-          </p>
+          <h2 className="mt-6 font-semibold">Kết nối nhanh</h2>
+          <ul className="mt-3 space-y-2">
+            <li>
+              <a className="text-[var(--brand-primary)] underline" href={links.zalo} target="_blank" rel="noopener noreferrer">
+                Zalo — 0962 732 786
+              </a>
+            </li>
+            <li>
+              <a
+                className="text-[var(--brand-primary)] underline"
+                href={links.zaloSecondary}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Zalo — 0935 312 733
+              </a>
+            </li>
+            <li>
+              <a className="text-[var(--brand-primary)] underline" href={links.facebook} target="_blank" rel="noopener noreferrer">
+                Facebook — Viện Trị Liệu Cổ Truyền Tâm Đức
+              </a>
+            </li>
+            <li>
+              <a className="text-[var(--brand-primary)] underline" href={links.messenger} target="_blank" rel="noopener noreferrer">
+                Messenger — nhắn tin tư vấn
+              </a>
+            </li>
+          </ul>
         </div>
 
         <div className="space-y-4">

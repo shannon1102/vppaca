@@ -40,4 +40,10 @@ export const TAM_DUC_BRAND = {
   ],
   aboutCommitment:
     "Cam kết: hàng chính hãng, bảo hành rõ ràng, giao hàng toàn quốc.",
+  social: {
+    zalo: "https://zalo.me/0962732786",
+    zaloSecondary: "https://zalo.me/0935312733",
+    facebook: "https://www.facebook.com/profile.php?id=61561988987352",
+    messenger: "https://m.me/61561988987352",
+  },
 } as const;
