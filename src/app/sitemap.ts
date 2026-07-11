@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { repo } from "@/lib/data/repository";
+import { siteUrl } from "@/lib/seo/metadata";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const base = siteUrl();
   const [products, categories, articles] = await Promise.all([
     repo.listProducts({ publishedOnly: true }),
     repo.listCategories(),

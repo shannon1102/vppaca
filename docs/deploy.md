@@ -12,7 +12,7 @@
 - [x] Health: `/api/health`
 - [x] GitHub Actions keep-alive: `.github/workflows/supabase-keepalive.yml`
 - [ ] UptimeRobot (optional)
-- [ ] Custom domain
+- [x] Custom domain (`thietbiytetamduc.vn` primary, `thietbiytetamduc.com` redirect)
 
 ## Commands
 
@@ -42,7 +42,7 @@ Workflow `supabase-keepalive.yml` ping DB **2 lần/ngày** (8h & 20h VN) để 
 |--------|---------|
 | `NEXT_PUBLIC_SUPABASE_URL` | `https://xxx.supabase.co` |
 | `SUPABASE_SERVICE_ROLE_KEY` | service role key |
-| `NEXT_PUBLIC_SITE_URL` | `https://medical-store-web.vercel.app` (tuỳ chọn) |
+| `NEXT_PUBLIC_SITE_URL` | `https://thietbiytetamduc.vn` |
 
 Chạy thử tay: **Actions → Supabase keep-alive → Run workflow**.
 

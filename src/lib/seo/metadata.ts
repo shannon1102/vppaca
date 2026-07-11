@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import type { SiteSettings } from "@/lib/types";
 
+export const CANONICAL_SITE_URL = "https://thietbiytetamduc.vn";
+
 export function siteUrl(): string {
-  return process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const env = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (env) return env.replace(/\/$/, "");
+  if (process.env.NODE_ENV === "production") return CANONICAL_SITE_URL;
+  return "http://localhost:3000";
 }
 
 export function defaultOgImage(settings: SiteSettings): string {

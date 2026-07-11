@@ -1,6 +1,30 @@
 import type { NextConfig } from "next";
 
+const CANONICAL_HOST = "thietbiytetamduc.vn";
+
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "thietbiytetamduc.com" }],
+        destination: `https://${CANONICAL_HOST}/:path*`,
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.thietbiytetamduc.com" }],
+        destination: `https://${CANONICAL_HOST}/:path*`,
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: `www.${CANONICAL_HOST}` }],
+        destination: `https://${CANONICAL_HOST}/:path*`,
+        permanent: true,
+      },
+    ];
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 86400,
