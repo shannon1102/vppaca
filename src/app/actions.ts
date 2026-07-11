@@ -259,6 +259,7 @@ export async function updateOrderStatusAction(formData: FormData) {
   const status = String(formData.get("status")) as OrderStatus;
   await repo.updateOrderStatus(id, status);
   revalidatePath("/admin/orders");
+  redirect("/admin/orders");
 }
 
 export async function saveArticleAction(formData: FormData) {

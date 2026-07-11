@@ -3,6 +3,18 @@ import { buildAdminOrderEmailHtml } from "@/lib/email/order-admin-template";
 import { repo } from "@/lib/data/repository";
 import type { Order } from "@/lib/types";
 
+/** Neutralize links so the preview iframe cannot navigate into /admin (causes nested shells). */
+function previewSafeHtml(html: string): string {
+  return html
+    .replace(/<a\b([^>]*)>/gi, (_m, attrs: string) => {
+      const cleaned = String(attrs)
+        .replace(/\s*href\s*=\s*(["'])[\s\S]*?\1/gi, ' href="#"')
+        .replace(/\s*target\s*=\s*(["'])[\s\S]*?\1/gi, "");
+      return `<a${cleaned} onclick="return false;">`;
+    })
+    .replace(/<base\b[^>]*>/gi, "");
+}
+
 export default async function EmailPreviewPage() {
   await requireAdminPage();
   const settings = await repo.getSettings();
@@ -40,7 +52,7 @@ export default async function EmailPreviewPage() {
   const { html, subject } = buildAdminOrderEmailHtml({
     order: sample,
     settings,
-    adminUrl: `${site}/admin/orders`,
+    adminUrl: `${site.replace(/\/$/, "")}/admin/orders`,
   });
 
   return (
@@ -55,7 +67,9 @@ export default async function EmailPreviewPage() {
       </p>
       <iframe
         title="email-preview"
-        srcDoc={html}
+        srcDoc={previewSafeHtml(html)}
+        sandbox="allow-same-origin"
+        referrerPolicy="no-referrer"
         className="mt-6 h-[900px] w-full rounded-[var(--radius)] border border-slate-200 bg-white"
       />
     </div>

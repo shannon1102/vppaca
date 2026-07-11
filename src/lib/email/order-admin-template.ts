@@ -74,7 +74,7 @@ export function buildAdminOrderEmailHtml(opts: {
                   <td style="padding:16px 20px;">
                     <p style="margin:0;font-size:12px;color:${primary};font-weight:600;text-transform:uppercase;letter-spacing:0.04em;">Mã đơn</p>
                     <p style="margin:6px 0 0;font-size:22px;font-weight:700;color:${secondary};letter-spacing:0.02em;">${escapeHtml(order.code)}</p>
-                    <p style="margin:8px 0 0;font-size:13px;color:#64748b;">${escapeHtml(when)} · Trạng thái: <strong style="color:#b45309;">Chờ xác nhận</strong></p>
+                    <p style="margin:8px 0 0;font-size:13px;color:#64748b;">${escapeHtml(when)} · Status: <strong style="color:#b45309;">Pending</strong></p>
                   </td>
                   <td style="padding:16px 20px;text-align:right;vertical-align:middle;">
                     <p style="margin:0;font-size:12px;color:#64748b;">Tổng thanh toán</p>

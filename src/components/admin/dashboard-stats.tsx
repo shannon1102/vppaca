@@ -3,11 +3,11 @@ import { formatVnd } from "@/lib/format";
 import type { HealthArticle, Order, OrderStatus, Product } from "@/lib/types";
 
 const STATUS_LABELS: Record<OrderStatus, string> = {
-  pending: "Chờ xử lý",
-  confirmed: "Đã xác nhận",
-  paid: "Đã thanh toán",
-  shipped: "Đã giao",
-  cancelled: "Đã hủy",
+  pending: "Pending",
+  confirmed: "Confirmed",
+  paid: "Paid",
+  shipped: "Shipped",
+  cancelled: "Cancelled",
 };
 
 const STATUS_COLORS: Record<OrderStatus, string> = {

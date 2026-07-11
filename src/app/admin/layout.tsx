@@ -1,5 +1,6 @@
 import { AdminShell } from "@/components/admin/admin-shell";
 import { isAdminAuthenticated } from "@/lib/auth-admin";
+import { repo } from "@/lib/data/repository";
 
 export default async function AdminLayout({
   children,
@@ -16,5 +17,14 @@ export default async function AdminLayout({
     );
   }
 
-  return <AdminShell>{children}</AdminShell>;
+  // Soft-fail settings so a slow DB never blocks the whole admin shell
+  let shopName = "Tâm Đức";
+  try {
+    const settings = await repo.getSettings();
+    if (settings.shop_name?.trim()) shopName = settings.shop_name;
+  } catch {
+    /* keep fallback */
+  }
+
+  return <AdminShell shopName={shopName}>{children}</AdminShell>;
 }

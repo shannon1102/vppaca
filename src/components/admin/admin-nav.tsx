@@ -4,12 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const nav = [
-  { href: "/admin", label: "Tổng quan", exact: true },
-  { href: "/admin/products", label: "Sản phẩm" },
-  { href: "/admin/articles", label: "Bài viết SK" },
-  { href: "/admin/categories", label: "Danh mục" },
-  { href: "/admin/orders", label: "Đơn hàng" },
-  { href: "/admin/branding", label: "Branding + CK/QR" },
+  { href: "/admin", label: "Overview", exact: true },
+  { href: "/admin/products", label: "Products" },
+  { href: "/admin/articles", label: "Health articles" },
+  { href: "/admin/categories", label: "Categories" },
+  { href: "/admin/orders", label: "Orders" },
+  { href: "/admin/branding", label: "Branding + Bank/QR" },
   { href: "/admin/email-preview", label: "Email preview" },
 ];
 
@@ -29,6 +29,7 @@ export function AdminNav() {
           <Link
             key={item.href}
             href={item.href}
+            prefetch
             className={`rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
               active
                 ? "bg-white/15 text-white"
