@@ -8,6 +8,7 @@
 - [x] Migration `supabase/migrations/002_health_articles.sql` applied (bài viết sức khỏe)
 - [x] Migration `supabase/migrations/003_media_files.sql` applied (upload ảnh rich text)
 - [x] Migration `supabase/migrations/004_product_detail_description.sql` applied (mô tả chi tiết sản phẩm)
+- [x] Migration `supabase/migrations/005_brand_colors.sql` applied (màu primary #2E7D32)
 - [x] Env: Supabase keys (auto), `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `NEXT_PUBLIC_SITE_URL`
 - [x] Health: `/api/health`
 - [x] GitHub Actions keep-alive: `.github/workflows/supabase-keepalive.yml`
