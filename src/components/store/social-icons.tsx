@@ -43,14 +43,14 @@ export function SocialIcons({
     {
       key: "zalo",
       label: "Zalo",
-      href: settings.zalo_url || "https://zalo.me",
+      href: settings.zalo_url,
       bg: "#0068FF",
       path: SI.zalo,
     },
     {
       key: "facebook",
       label: "Facebook",
-      href: settings.facebook_url || "https://facebook.com",
+      href: settings.facebook_url,
       bg: "#1877F2",
       path: SI.facebook,
     },
@@ -61,7 +61,7 @@ export function SocialIcons({
       bg: "#0084FF",
       path: SI.messenger,
     },
-  ];
+  ].filter((item) => Boolean(item.href));
 
   if (variant === "float") {
     return (

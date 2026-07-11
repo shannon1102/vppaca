@@ -113,9 +113,9 @@ const products = [
       "Bảo hành": "24 tháng",
       "Xuất xứ": "Chính hãng phân phối VN",
     },
-    seo_title: "Máy đo huyết áp bắp tay tự động chính hãng | MediStore",
+    seo_title: "Máy đo huyết áp bắp tay tự động chính hãng | Thiết bị Y tế Tâm Đức",
     seo_description:
-      "Mua máy đo huyết áp bắp tay tự động giá tốt tại Thanh Hóa. Chính xác ±3mmHg, bảo hành 24 tháng, giao toàn quốc.",
+      "Mua máy đo huyết áp bắp tay tự động giá tốt tại Hà Nội. Chính xác ±3mmHg, bảo hành 24 tháng, giao toàn quốc.",
   },
   {
     id: "p-02",
@@ -136,7 +136,7 @@ const products = [
       "Độ lệch": "±0.2°C",
       "Bảo hành": "12 tháng",
     },
-    seo_title: "Nhiệt kế hồng ngoại không tiếp xúc cho trẻ em | MediStore",
+    seo_title: "Nhiệt kế hồng ngoại không tiếp xúc cho trẻ em | Thiết bị Y tế Tâm Đức",
     seo_description:
       "Nhiệt kế hồng ngoại đo nhanh 1 giây, cảnh báo sốt, an toàn trẻ em. Giá tốt, giao hàng toàn quốc.",
   },
@@ -159,9 +159,9 @@ const products = [
       "Pin": "2×AAA",
       "Bảo hành": "12 tháng",
     },
-    seo_title: "Máy đo SpO2 đầu ngón tay OLED chính xác | MediStore",
+    seo_title: "Máy đo SpO2 đầu ngón tay OLED chính xác | Thiết bị Y tế Tâm Đức",
     seo_description:
-      "Máy đo SpO2 và nhịp tim cầm tay, màn OLED, dễ dùng tại nhà. Bảo hành 12 tháng tại MediStore.",
+      "Máy đo SpO2 và nhịp tim cầm tay, màn OLED, dễ dùng tại nhà. Bảo hành 12 tháng tại Thiết bị Y tế Tâm Đức.",
   },
   {
     id: "p-16",
@@ -182,7 +182,7 @@ const products = [
       "Đơn vị": "mg/dL hoặc mmol/L",
       "Bảo hành": "36 tháng máy",
     },
-    seo_title: "Máy đo đường huyết kèm 50 que thử | MediStore",
+    seo_title: "Máy đo đường huyết kèm 50 que thử | Thiết bị Y tế Tâm Đức",
     seo_description:
       "Máy đo đường huyết chính xác, kèm 50 que thử. Theo dõi tiểu đường tại nhà — giao hàng toàn quốc.",
   },
@@ -206,7 +206,7 @@ const products = [
       "Đối tượng": "Gia đình / văn phòng",
       "Xuất xứ": "Việt Nam",
     },
-    seo_title: "Bộ sơ cứu gia đình 50 món giá tốt | MediStore",
+    seo_title: "Bộ sơ cứu gia đình 50 món giá tốt | Thiết bị Y tế Tâm Đức",
     seo_description:
       "Bộ sơ cứu 50 món đầy đủ cho gia đình và văn phòng. Túi chống nước, giao nhanh toàn quốc.",
   },
@@ -229,7 +229,7 @@ const products = [
       "Vô trùng": "Có",
       "Thấm hút": "Cao",
     },
-    seo_title: "Băng dán vô trùng 6x10cm hộp 50 miếng | MediStore",
+    seo_title: "Băng dán vô trùng 6x10cm hộp 50 miếng | Thiết bị Y tế Tâm Đức",
     seo_description:
       "Băng dán vô trùng thấm hút tốt, hộp 50 miếng. Chăm sóc vết thương tại nhà — giá sỉ/lẻ.",
   },
@@ -252,7 +252,7 @@ const products = [
       "Dạng": "Lỏng",
       "Công dụng": "Sát khuẩn",
     },
-    seo_title: "Cồn sát trùng 70 độ 500ml chính hãng | MediStore",
+    seo_title: "Cồn sát trùng 70 độ 500ml chính hãng | Thiết bị Y tế Tâm Đức",
     seo_description:
       "Cồn sát trùng 70 độ chai 500ml giá tốt. Sát khuẩn dụng cụ và bề mặt — giao hàng nhanh.",
   },
@@ -275,9 +275,9 @@ const products = [
       "Mùi": "Dễ chịu",
       "Đóng gói": "Chai bơm",
     },
-    seo_title: "Gel rửa tay khô kháng khuẩn 500ml | MediStore",
+    seo_title: "Gel rửa tay khô kháng khuẩn 500ml | Thiết bị Y tế Tâm Đức",
     seo_description:
-      "Gel rửa tay khô kháng khuẩn 500ml, khô nhanh. Bảo vệ sức khỏe gia đình — mua tại MediStore.",
+      "Gel rửa tay khô kháng khuẩn 500ml, khô nhanh. Bảo vệ sức khỏe gia đình — mua tại Thiết bị Y tế Tâm Đức.",
   },
   // cat-3
   {
@@ -299,7 +299,7 @@ const products = [
       "Màu": "Navy",
       "Bảo hành": "6 tháng",
     },
-    seo_title: "Ống nghe y tế 2 mặt cho bác sĩ & SVY | MediStore",
+    seo_title: "Ống nghe y tế 2 mặt cho bác sĩ & SVY | Thiết bị Y tế Tâm Đức",
     seo_description:
       "Ống nghe y tế 2 mặt chống ồn, bền đẹp. Phù hợp phòng khám và sinh viên y — giao toàn quốc.",
   },
@@ -322,9 +322,9 @@ const products = [
       "Thời lượng": "3–4 giờ",
       "Bảo hành": "6 tháng",
     },
-    seo_title: "Đèn pin khám bệnh LED sạc USB-C | MediStore",
+    seo_title: "Đèn pin khám bệnh LED sạc USB-C | Thiết bị Y tế Tâm Đức",
     seo_description:
-      "Đèn khám LED sáng trắng, sạc USB-C tiện lợi. Dụng cụ phòng khám giá tốt tại MediStore.",
+      "Đèn khám LED sáng trắng, sạc USB-C tiện lợi. Dụng cụ phòng khám giá tốt tại Thiết bị Y tế Tâm Đức.",
   },
   {
     id: "p-13",
@@ -345,7 +345,7 @@ const products = [
       "Đối tượng": "Trẻ sơ sinh – trẻ nhỏ",
       "Bảo hành": "12 tháng",
     },
-    seo_title: "Máy hút dịch mũi điện an toàn cho bé | MediStore",
+    seo_title: "Máy hút dịch mũi điện an toàn cho bé | Thiết bị Y tế Tâm Đức",
     seo_description:
       "Máy hút mũi điện 3 mức hút, đầu mềm an toàn trẻ em. Giảm nghẹt mũi hiệu quả — giao nhanh.",
   },
@@ -368,9 +368,9 @@ const products = [
       "Đối tượng": "Phòng khám / SVY",
       "Chất liệu": "Inox + ABS",
     },
-    seo_title: "Bộ dụng cụ khám đa năng 5 món | MediStore",
+    seo_title: "Bộ dụng cụ khám đa năng 5 món | Thiết bị Y tế Tâm Đức",
     seo_description:
-      "Bộ dụng cụ khám 5 món cho phòng khám và sinh viên y. Đầy đủ, gọn nhẹ — mua tại MediStore.",
+      "Bộ dụng cụ khám 5 món cho phòng khám và sinh viên y. Đầy đủ, gọn nhẹ — mua tại Thiết bị Y tế Tâm Đức.",
   },
   // cat-4
   {
@@ -392,7 +392,7 @@ const products = [
       "Size": "M / L",
       "Bột": "Không",
     },
-    seo_title: "Găng tay y tế nitrile hộp 100 không bột | MediStore",
+    seo_title: "Găng tay y tế nitrile hộp 100 không bột | Thiết bị Y tế Tâm Đức",
     seo_description:
       "Găng nitrile không bột hộp 100, size M/L. Bảo hộ y tế giá tốt — giao sỉ/lẻ toàn quốc.",
   },
@@ -415,9 +415,9 @@ const products = [
       "Chuẩn": "Khẩu trang y tế",
       "Màu": "Xanh / trắng",
     },
-    seo_title: "Khẩu trang y tế 4 lớp hộp 50 chiếc | MediStore",
+    seo_title: "Khẩu trang y tế 4 lớp hộp 50 chiếc | Thiết bị Y tế Tâm Đức",
     seo_description:
-      "Khẩu trang y tế 4 lớp hộp 50, giá sỉ. Bảo vệ hô hấp hàng ngày — mua tại MediStore Thanh Hóa.",
+      "Khẩu trang y tế 4 lớp hộp 50, giá sỉ. Bảo vệ hô hấp hàng ngày — mua tại Thiết bị Y tế Tâm Đức.",
   },
   {
     id: "p-10",
@@ -438,7 +438,7 @@ const products = [
       "Chuẩn": "N95",
       "Van thở": "Không / tùy lô",
     },
-    seo_title: "Khẩu trang N95 hộp 20 chiếc đạt chuẩn | MediStore",
+    seo_title: "Khẩu trang N95 hộp 20 chiếc đạt chuẩn | Thiết bị Y tế Tâm Đức",
     seo_description:
       "Khẩu trang N95 lọc ≥95%, hộp 20 chiếc. Bảo hộ y tế chuyên nghiệp — giao hàng toàn quốc.",
   },
@@ -461,7 +461,7 @@ const products = [
       "Size": "Free size",
       "Màu": "Xanh / trắng",
     },
-    seo_title: "Áo choàng bảo hộ y tế dùng một lần | MediStore",
+    seo_title: "Áo choàng bảo hộ y tế dùng một lần | Thiết bị Y tế Tâm Đức",
     seo_description:
       "Áo choàng bảo hộ y tế 1 lần, giá sỉ. Phù hợp phòng khám và cơ sở chăm sóc sức khỏe.",
   },
@@ -485,7 +485,7 @@ const products = [
       "Khung": "Nhôm",
       "Bảo hành": "24 tháng",
     },
-    seo_title: "Xe lăn nhôm cao cấp gấp gọn | MediStore",
+    seo_title: "Xe lăn nhôm cao cấp gấp gọn | Thiết bị Y tế Tâm Đức",
     seo_description:
       "Xe lăn nhôm nhẹ, gấp gọn, tải 120kg. Hỗ trợ người cao tuổi — giao lắp toàn quốc.",
   },
@@ -508,7 +508,7 @@ const products = [
       "Gấp gọn": "Có",
       "Bảo hành": "24 tháng",
     },
-    seo_title: "Giường y tế gấp khung thép tải 150kg | MediStore",
+    seo_title: "Giường y tế gấp khung thép tải 150kg | Thiết bị Y tế Tâm Đức",
     seo_description:
       "Giường y tế gấp chắc chắn, tải 150kg. Chăm sóc bệnh nhân tại nhà — báo giá & giao hàng.",
   },
@@ -531,9 +531,9 @@ const products = [
       "Pin": "Sạc USB",
       "Bảo hành": "12 tháng",
     },
-    seo_title: "Máy massage xung điện TENS 2 kênh | MediStore",
+    seo_title: "Máy massage xung điện TENS 2 kênh | Thiết bị Y tế Tâm Đức",
     seo_description:
-      "Máy TENS giảm đau cơ xương khớp tại nhà. 2 kênh, 8 chế độ — mua chính hãng tại MediStore.",
+      "Máy TENS giảm đau cơ xương khớp tại nhà. 2 kênh, 8 chế độ — mua chính hãng tại Thiết bị Y tế Tâm Đức.",
   },
   {
     id: "p-18",
@@ -554,30 +554,31 @@ const products = [
       "Mặt cân": "Kính cường lực",
       "Bảo hành": "12 tháng",
     },
-    seo_title: "Cân sức khỏe điện tử Bluetooth đo BMI | MediStore",
+    seo_title: "Cân sức khỏe điện tử Bluetooth đo BMI | Thiết bị Y tế Tâm Đức",
     seo_description:
-      "Cân thông minh đo BMI, kết nối điện thoại. Theo dõi sức khỏe gia đình — giá tốt MediStore.",
+      "Cân thông minh đo BMI, kết nối điện thoại. Theo dõi sức khỏe gia đình — giá tốt Thiết bị Y tế Tâm Đức.",
   },
 ];
 
 const settings = {
-  shop_name: "MediStore Thanh Hóa",
-  tagline: "Thiết bị y tế chính hãng — tư vấn tận tâm, giao hàng toàn quốc",
-  phone: "0901 234 567",
-  email: "lienhe@medistore.vn",
-  address: "123 Nguyễn Trãi, phường Ba Đình, TP Thanh Hóa",
-  logo_url: "/seed/logo.svg",
-  favicon_url: "/seed/logo.svg",
-  primary_color: "#0F766E",
-  secondary_color: "#134E4A",
-  accent_color: "#F59E0B",
-  bank_name: "Vietcombank — CN Thanh Hóa",
+  shop_name: "Thiết bị Y tế Tâm Đức",
+  tagline: "Tận tâm vì sức khỏe từng gia đình",
+  phone: "0962 732 786",
+  email: "lienhe@thietbiytetamduc.vn",
+  address:
+    "CS1: 200 Nguyễn Viết Xuân, Hà Cầu, Hà Đông | CS2: 18 LK06A, Làng Việt Kiều, Mỗ Lao, Hà Đông",
+  logo_url: "/brand/tam-duc-logo.png",
+  favicon_url: "/brand/tam-duc-favicon.png",
+  primary_color: "#2E7D32",
+  secondary_color: "#1B4332",
+  accent_color: "#8BC34A",
+  bank_name: "Vietcombank",
   bank_account: "0123456789",
-  bank_holder: "CONG TY TNHH MEDISTORE THANH HOA",
+  bank_holder: "CONG TY TNHH DICH VU Y KHOA CO TRUYEN TAM DUC",
   transfer_content_template: "DH {code}",
   qr_image_url: "/seed/qr-demo.svg",
-  facebook_url: "https://facebook.com",
-  zalo_url: "https://zalo.me/0901234567",
+  facebook_url: "",
+  zalo_url: "https://zalo.me/0962732786",
 };
 
 async function main() {

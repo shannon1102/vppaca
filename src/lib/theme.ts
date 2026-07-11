@@ -7,7 +7,7 @@ export function themeStyleFromSettings(s: SiteSettings): CSSProperties {
     ["--brand-primary-hover" as string]: s.primary_color,
     ["--brand-secondary" as string]: s.secondary_color,
     ["--brand-accent" as string]: s.accent_color,
-    ["--brand-bg" as string]: "#F8FAFC",
+    ["--brand-bg" as string]: "#F9FAF5",
     ["--brand-surface" as string]: "#FFFFFF",
     ["--brand-text" as string]: "#0F172A",
     ["--brand-muted" as string]: "#64748B",

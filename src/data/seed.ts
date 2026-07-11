@@ -2,23 +2,24 @@ import type { Category, HealthArticle, Product, SiteSettings } from "@/lib/types
 
 export const defaultSettings: SiteSettings = {
   id: "default",
-  shop_name: "MediStore",
-  tagline: "Thiết bị y tế chính hãng — giao hàng toàn quốc",
-  phone: "0901 234 567",
-  email: "lienhe@medistore.vn",
-  address: "123 Nguyễn Trãi, Thanh Hóa",
-  logo_url: "/seed/logo.svg",
-  favicon_url: "/seed/logo.svg",
-  primary_color: "#0F766E",
-  secondary_color: "#134E4A",
-  accent_color: "#F59E0B",
+  shop_name: "Thiết bị Y tế Tâm Đức",
+  tagline: "Tận tâm vì sức khỏe từng gia đình",
+  phone: "0962 732 786",
+  email: "lienhe@thietbiytetamduc.vn",
+  address:
+    "CS1: 200 Nguyễn Viết Xuân, Hà Cầu, Hà Đông | CS2: 18 LK06A, Làng Việt Kiều, Mỗ Lao, Hà Đông",
+  logo_url: "/brand/tam-duc-logo.png",
+  favicon_url: "/brand/tam-duc-favicon.png",
+  primary_color: "#2E7D32",
+  secondary_color: "#1B4332",
+  accent_color: "#8BC34A",
   bank_name: "Vietcombank",
   bank_account: "0123456789",
-  bank_holder: "CONG TY MEDISTORE",
+  bank_holder: "CONG TY TNHH DICH VU Y KHOA CO TRUYEN TAM DUC",
   transfer_content_template: "DH {code}",
   qr_image_url: "/seed/qr-demo.svg",
-  facebook_url: "https://facebook.com",
-  zalo_url: "https://zalo.me",
+  facebook_url: "",
+  zalo_url: "https://zalo.me/0962732786",
 };
 
 export const seedCategories: Category[] = [
@@ -88,7 +89,7 @@ const raw: SeedProduct[] = [
     stock: 50,
     is_published: true,
     is_featured: true,
-    seo_title: "Máy đo huyết áp bắp tay tự động | MediStore",
+    seo_title: "Máy đo huyết áp bắp tay tự động | Thiết bị Y tế Tâm Đức",
     seo_description: "Máy đo huyết áp chính xác, dễ dùng, bảo hành 24 tháng.",
   },
   {

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { SiteSettings } from "@/lib/types";
+import { TAM_DUC_BRAND } from "@/lib/brand-content";
 import { SocialIcons } from "@/components/store/social-icons";
 
 export function SiteFooter({ settings }: { settings: SiteSettings }) {
@@ -23,8 +24,7 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
             </div>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-white/75">
-            Đồng hành cùng gia đình Việt chăm sóc sức khỏe với thiết bị y tế chính hãng,
-            tư vấn tận tâm và giao hàng toàn quốc.
+            {TAM_DUC_BRAND.footerDescription}
           </p>
           <div className="mt-5">
             <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-white/60">
@@ -101,6 +101,13 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
               >
                 {settings.phone}
               </a>
+              {" · "}
+              <a
+                className="font-semibold text-white hover:underline"
+                href={`tel:${TAM_DUC_BRAND.phoneSecondary.replace(/\s/g, "")}`}
+              >
+                {TAM_DUC_BRAND.phoneSecondary}
+              </a>
             </p>
             <p>
               Email:{" "}
@@ -115,9 +122,9 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-4 text-xs text-white/55 sm:flex-row">
           <p>
-            © {new Date().getFullYear()} {settings.shop_name}. All rights reserved.
+            © {new Date().getFullYear()} {settings.shop_name}. MST: {TAM_DUC_BRAND.taxCode}
           </p>
-          <p>Thiết bị y tế chính hãng — white-label ready</p>
+          <p>{TAM_DUC_BRAND.legalName}</p>
         </div>
       </div>
     </footer>

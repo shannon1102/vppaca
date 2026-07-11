@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ProductCard } from "@/components/store/product-card";
+import { TAM_DUC_BRAND } from "@/lib/brand-content";
 import { repo } from "@/lib/data/repository";
 import { pageMetadata } from "@/lib/seo/metadata";
 
@@ -28,23 +29,20 @@ export default async function HomePage() {
   return (
     <div>
       <section className="relative overflow-hidden border-b border-slate-200 bg-[var(--brand-secondary)] text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(15,118,110,0.45),transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(46,125,50,0.4),transparent_55%)]" />
         <div className="relative mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-2 md:items-center md:py-24">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wider text-teal-200">
+            <p className="text-sm font-semibold uppercase tracking-wider text-[var(--brand-accent)]">
               {settings.shop_name}
             </p>
             <h1 className="mt-3 text-4xl font-bold leading-tight md:text-5xl">
               {settings.tagline}
             </h1>
-            <p className="mt-4 max-w-lg text-white/80">
-              Catalog thiết bị y tế rõ ràng, đặt hàng nhanh, thanh toán chuyển khoản
-              kèm QR — vận hành gọn cho 1 admin.
-            </p>
+            <p className="mt-4 max-w-lg text-white/80">{TAM_DUC_BRAND.heroDescription}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/san-pham"
-                className="inline-flex min-h-11 items-center justify-center rounded-[var(--radius)] bg-white px-5 text-sm font-bold text-[#134E4A] shadow-sm transition hover:bg-teal-50"
+                className="inline-flex min-h-11 items-center justify-center rounded-[var(--radius)] bg-white px-5 text-sm font-bold text-[var(--brand-secondary)] shadow-sm transition hover:bg-green-50"
               >
                 Xem sản phẩm
               </Link>
