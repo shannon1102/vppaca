@@ -1,6 +1,7 @@
 import { saveProductAction } from "@/app/actions";
 import { NameSlugFields } from "@/components/admin/name-slug-fields";
 import { ProductImageFields } from "@/components/admin/product-image-fields";
+import { ProductSpecsFields } from "@/components/admin/product-specs-fields";
 import { RichTextEditor } from "@/components/ui/rich-text-editor";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -75,15 +76,7 @@ export function ProductForm({
         height={360}
       />
       <ProductImageFields defaultImages={product.images} />
-      <label className="block space-y-1.5 text-sm">
-        <span className="font-medium">Specs JSON</span>
-        <textarea
-          name="specs"
-          rows={3}
-          defaultValue={JSON.stringify(product.specs ?? {}, null, 2)}
-          className="w-full rounded-[var(--radius)] border border-slate-200 px-3 py-2 font-mono text-xs"
-        />
-      </label>
+      <ProductSpecsFields specs={product.specs} />
       <Input name="seo_title" label="SEO title" defaultValue={product.seo_title} />
       <Input
         name="seo_description"

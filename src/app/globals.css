@@ -134,6 +134,25 @@ h4 {
   border-radius: var(--radius);
 }
 
+.rich-content .rich-youtube {
+  position: relative;
+  width: 80%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 1.5rem auto;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #000;
+}
+
+.rich-content .rich-youtube iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 .rich-content a {
   color: var(--brand-primary);
   text-decoration: underline;

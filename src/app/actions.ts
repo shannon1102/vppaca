@@ -13,6 +13,7 @@ import { repo } from "@/lib/data/repository";
 import { CACHE_TAGS } from "@/lib/data/cached-repo";
 import { orderCode, resolveSlug } from "@/lib/format";
 import { normalizeImageSrc } from "@/lib/media/helpers";
+import { parseSpecsFromForm } from "@/lib/product-specs";
 import { persistRichHtmlImages } from "@/lib/media/process-html-images";
 import type { Category, HealthArticle, Order, OrderStatus, Product } from "@/lib/types";
 
@@ -142,15 +143,7 @@ export async function saveProductAction(formData: FormData) {
     .split("\n")
     .map((s) => s.trim())
     .filter(Boolean);
-  let specs: Record<string, string> = {};
-  try {
-    specs = JSON.parse(String(formData.get("specs") || "{}")) as Record<
-      string,
-      string
-    >;
-  } catch {
-    specs = {};
-  }
+  let specs: Record<string, string> = parseSpecsFromForm(formData);
   const sale = String(formData.get("sale_price") ?? "");
   const name = String(formData.get("name") ?? "");
   const description = String(formData.get("description") ?? "");
