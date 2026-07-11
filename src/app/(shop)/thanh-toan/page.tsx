@@ -9,6 +9,7 @@ import { EmptyState } from "@/components/ui/empty";
 import { Input } from "@/components/ui/input";
 import { formatVnd } from "@/lib/format";
 import { useCart } from "@/store/cart";
+import { toast } from "@/store/toast";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -57,13 +58,21 @@ export default function CheckoutPage() {
             e.preventDefault();
             const fd = new FormData(e.currentTarget);
             startTransition(async () => {
-              const res = await placeOrderAction(fd);
-              if (res && "error" in res && res.error) {
-                setError(res.error);
-                return;
-              }
-              if (res && "code" in res && res.code) {
-                router.push(`/dat-hang-thanh-cong/${res.code}`);
+              try {
+                const res = await placeOrderAction(fd);
+                if (res && "error" in res && res.error) {
+                  setError(res.error);
+                  toast.error(res.error);
+                  return;
+                }
+                if (res && "code" in res && res.code) {
+                  toast.success("Đặt hàng thành công");
+                  router.push(`/dat-hang-thanh-cong/${res.code}`);
+                  return;
+                }
+                toast.error("Không tạo được đơn hàng. Vui lòng thử lại.");
+              } catch {
+                toast.error("Đặt hàng thất bại. Vui lòng thử lại.");
               }
             });
           }}

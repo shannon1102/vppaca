@@ -1,17 +1,8 @@
-import { updateOrderStatusAction } from "@/app/actions";
-import { Button } from "@/components/ui/button";
+import { OrderStatusForm } from "@/components/admin/order-status-form";
 import { formatVnd } from "@/lib/format";
+import { ORDER_STATUS_LABELS } from "@/lib/order-status";
 import { requireAdminPage } from "@/lib/require-admin";
 import { repo } from "@/lib/data/repository";
-import type { OrderStatus } from "@/lib/types";
-
-const statuses: { value: OrderStatus; label: string }[] = [
-  { value: "pending", label: "Pending" },
-  { value: "confirmed", label: "Confirmed" },
-  { value: "paid", label: "Paid" },
-  { value: "shipped", label: "Shipped" },
-  { value: "cancelled", label: "Cancelled" },
-];
 
 export default async function AdminOrdersPage() {
   await requireAdminPage();
@@ -19,10 +10,10 @@ export default async function AdminOrdersPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold">Orders</h1>
+      <h1 className="text-3xl font-bold">Đơn hàng</h1>
       <div className="mt-6 space-y-4">
         {orders.length === 0 ? (
-          <p className="text-sm text-[var(--brand-muted)]">No orders yet.</p>
+          <p className="text-sm text-[var(--brand-muted)]">Chưa có đơn.</p>
         ) : (
           orders.map((o) => (
             <article
@@ -39,30 +30,14 @@ export default async function AdminOrdersPage() {
                   <p className="mt-2 font-semibold text-[var(--brand-primary)]">
                     {formatVnd(o.total)}
                   </p>
-                  <p className="mt-1 text-xs uppercase tracking-wide text-[var(--brand-muted)]">
-                    Status: <span className="font-semibold text-[var(--brand-text)]">{o.status}</span>
+                  <p className="mt-1 text-xs text-[var(--brand-muted)]">
+                    Trạng thái:{" "}
+                    <span className="font-semibold text-[var(--brand-text)]">
+                      {ORDER_STATUS_LABELS[o.status]}
+                    </span>
                   </p>
                 </div>
-                <form
-                  action={updateOrderStatusAction}
-                  className="relative z-10 flex items-center gap-2"
-                >
-                  <input type="hidden" name="id" value={o.id} />
-                  <select
-                    name="status"
-                    defaultValue={o.status}
-                    className="min-h-11 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm"
-                  >
-                    {statuses.map((s) => (
-                      <option key={s.value} value={s.value}>
-                        {s.label}
-                      </option>
-                    ))}
-                  </select>
-                  <Button type="submit" className="min-h-11 px-4">
-                    Update
-                  </Button>
-                </form>
+                <OrderStatusForm orderId={o.id} status={o.status} />
               </div>
               <ul className="mt-3 text-sm text-[var(--brand-muted)]">
                 {o.items.map((i) => (

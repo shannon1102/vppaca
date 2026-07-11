@@ -4,15 +4,15 @@ import type { Order } from "@/lib/types";
 function statusLabel(status: Order["status"]) {
   switch (status) {
     case "pending":
-      return "Pending";
+      return "Chờ xác nhận";
     case "confirmed":
-      return "Confirmed";
+      return "Đã xác nhận";
     case "paid":
-      return "Paid";
+      return "Đã thanh toán";
     case "shipped":
-      return "Shipped";
+      return "Đã giao";
     case "cancelled":
-      return "Cancelled";
+      return "Đã hủy";
     default:
       return status;
   }

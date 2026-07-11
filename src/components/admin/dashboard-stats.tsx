@@ -1,14 +1,7 @@
 import Link from "next/link";
 import { formatVnd } from "@/lib/format";
+import { ORDER_STATUS_LABELS } from "@/lib/order-status";
 import type { HealthArticle, Order, OrderStatus, Product } from "@/lib/types";
-
-const STATUS_LABELS: Record<OrderStatus, string> = {
-  pending: "Pending",
-  confirmed: "Confirmed",
-  paid: "Paid",
-  shipped: "Shipped",
-  cancelled: "Cancelled",
-};
 
 const STATUS_COLORS: Record<OrderStatus, string> = {
   pending: "bg-amber-500",
@@ -144,7 +137,7 @@ export function DashboardStats({ products, orders, articles, shopName }: Props) 
             {statusCounts.map(({ status, count }) => (
               <li key={status}>
                 <div className="mb-1 flex justify-between text-sm">
-                  <span>{STATUS_LABELS[status]}</span>
+                  <span>{ORDER_STATUS_LABELS[status]}</span>
                   <span className="font-medium">{count}</span>
                 </div>
                 <div className="h-2 overflow-hidden rounded-full bg-slate-100">

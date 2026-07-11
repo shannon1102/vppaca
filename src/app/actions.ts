@@ -253,13 +253,23 @@ export async function deleteCategoryAction(formData: FormData) {
   revalidateTag(CACHE_TAGS.categories, "max");
 }
 
-export async function updateOrderStatusAction(formData: FormData) {
-  await requireAdmin();
-  const id = String(formData.get("id"));
-  const status = String(formData.get("status")) as OrderStatus;
-  await repo.updateOrderStatus(id, status);
-  revalidatePath("/admin/orders");
-  redirect("/admin/orders");
+export async function updateOrderStatusAction(
+  formData: FormData,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  try {
+    await requireAdmin();
+    const id = String(formData.get("id"));
+    const status = String(formData.get("status")) as OrderStatus;
+    const updated = await repo.updateOrderStatus(id, status);
+    if (!updated) {
+      return { ok: false, error: "Không tìm thấy đơn hàng" };
+    }
+    revalidatePath("/admin/orders");
+    return { ok: true };
+  } catch (e) {
+    console.error("[order] update status failed", e);
+    return { ok: false, error: "Cập nhật đơn hàng thất bại" };
+  }
 }
 
 export async function saveArticleAction(formData: FormData) {

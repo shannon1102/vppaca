@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, Source_Sans_3 } from "next/font/google";
 import { repo } from "@/lib/data/repository";
 import { rootMetadata, siteUrl } from "@/lib/seo/metadata";
+import { ToastHost } from "@/components/ui/toast-host";
 import { themeStyleFromSettings } from "@/lib/theme";
 import "./globals.css";
 
@@ -65,6 +66,7 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <ToastHost />
       </body>
     </html>
   );
