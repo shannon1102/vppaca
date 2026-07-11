@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ProductCard } from "@/components/store/product-card";
 import { EmptyState } from "@/components/ui/empty";
 import { repo } from "@/lib/data/repository";
-import { pageMetadata } from "@/lib/seo/metadata";
+import { pageMetadata, SEO_KEYWORDS } from "@/lib/seo/metadata";
 
 export const revalidate = 60;
 
@@ -15,9 +15,11 @@ export async function generateMetadata({
   const { sort, q } = await searchParams;
   const hasFilters = Boolean(q?.trim() || sort);
   const base = pageMetadata({
-    title: "Sản phẩm",
-    description: "Danh mục thiết bị y tế đầy đủ — máy đo huyết áp, máy xông khí dung, nhiệt kế và vật tư y tế.",
+    title: "Sản phẩm thiết bị y tế | Thiết bị Y tế Tâm Đức Hà Nội",
+    description:
+      "Danh mục thiết bị y tế tại Hà Nội — máy đo huyết áp, máy xông khí dung, nhiệt kế, vật tư y tế chính hãng tại Thiết bị Y tế Tâm Đức.",
     path: "/san-pham",
+    keywords: [...SEO_KEYWORDS],
   });
   if (hasFilters) {
     return { ...base, robots: { index: false, follow: true } };

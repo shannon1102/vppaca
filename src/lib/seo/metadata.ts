@@ -37,6 +37,7 @@ export function pageMetadata(opts: {
   image?: string;
   noindex?: boolean;
   openGraphType?: "website" | "article";
+  keywords?: string[];
 }): Metadata {
   const image = opts.image ?? "/products/p-01.jpg";
   const robots = opts.noindex
@@ -46,6 +47,7 @@ export function pageMetadata(opts: {
   return {
     title: opts.title,
     description: opts.description,
+    keywords: opts.keywords,
     alternates: canonicalPath(opts.path),
     robots,
     openGraph: {
@@ -65,8 +67,25 @@ export function pageMetadata(opts: {
   };
 }
 
+/** Primary SEO phrases for Thiết bị Y tế Tâm Đức */
+export const SEO_KEYWORDS = [
+  "Thiết bị Y tế Tâm Đức",
+  "Thiết bị Y tế",
+  "Thiết bị Y tế Hà Nội",
+  "Thiết bị y tế Hà Đông",
+  "cửa hàng thiết bị y tế",
+  "máy đo huyết áp",
+  "máy xông khí dung",
+  "nhiệt kế y tế",
+  "vật tư y tế",
+  "thiết bị phòng khám",
+] as const;
+
 export function rootMetadata(settings: SiteSettings): Metadata {
-  const title = `${settings.shop_name} — Thiết bị y tế`;
+  const title = `${settings.shop_name} — Thiết bị Y tế Hà Nội`;
+  const description =
+    settings.tagline ||
+    "Thiết bị Y tế Tâm Đức — cung cấp thiết bị y tế chính hãng tại Hà Nội, Hà Đông. Tư vấn tận tâm, giao hàng toàn quốc.";
   const image = defaultOgImage(settings);
   return {
     metadataBase: new URL(siteUrl()),
@@ -74,12 +93,13 @@ export function rootMetadata(settings: SiteSettings): Metadata {
       default: title,
       template: `%s | ${settings.shop_name}`,
     },
-    description: settings.tagline,
+    description,
+    keywords: [...SEO_KEYWORDS],
     icons: { icon: settings.favicon_url },
     robots: { index: true, follow: true },
     openGraph: {
       title: settings.shop_name,
-      description: settings.tagline,
+      description,
       url: "/",
       siteName: settings.shop_name,
       locale: "vi_VN",
@@ -89,7 +109,7 @@ export function rootMetadata(settings: SiteSettings): Metadata {
     twitter: {
       card: "summary_large_image",
       title: settings.shop_name,
-      description: settings.tagline,
+      description,
       images: [image],
     },
   };

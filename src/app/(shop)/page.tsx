@@ -3,17 +3,19 @@ import Link from "next/link";
 import { ProductCard } from "@/components/store/product-card";
 import { TAM_DUC_BRAND } from "@/lib/brand-content";
 import { repo } from "@/lib/data/repository";
-import { pageMetadata } from "@/lib/seo/metadata";
+import { pageMetadata, SEO_KEYWORDS } from "@/lib/seo/metadata";
 
 export const revalidate = 60;
 
 export async function generateMetadata() {
   const settings = await repo.getSettings();
   return pageMetadata({
-    title: `${settings.shop_name} — Thiết bị y tế chính hãng`,
-    description: settings.tagline,
+    title: `${settings.shop_name} — Thiết bị Y tế Hà Nội chính hãng`,
+    description:
+      `${settings.tagline} Mua thiết bị y tế tại Hà Nội, Hà Đông — máy đo huyết áp, nhiệt kế, máy xông, vật tư y tế chính hãng tại Thiết bị Y tế Tâm Đức.`,
     path: "/",
-    image: "/products/p-01.jpg",
+    image: settings.logo_url || "/brand/tam-duc-logo.png",
+    keywords: [...SEO_KEYWORDS],
   });
 }
 
@@ -36,8 +38,9 @@ export default async function HomePage() {
               {settings.shop_name}
             </p>
             <h1 className="mt-3 text-4xl font-bold leading-tight md:text-5xl">
-              {settings.tagline}
+              Thiết bị Y tế chính hãng tại Hà Nội
             </h1>
+            <p className="mt-3 text-lg text-white/90">{settings.tagline}</p>
             <p className="mt-4 max-w-lg text-white/80">{TAM_DUC_BRAND.heroDescription}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -56,10 +59,10 @@ export default async function HomePage() {
           </div>
           <div className="relative mx-auto aspect-[4/3] w-full max-w-lg overflow-hidden rounded-2xl border border-white/20 bg-white/10 shadow-xl">
             <Image
-              src="/products/p-01.jpg"
-              alt={`Thiết bị y tế chính hãng — ${settings.shop_name}`}
+              src={settings.logo_url || "/brand/tam-duc-logo.png"}
+              alt={`Thiết bị Y tế Tâm Đức — thiết bị y tế Hà Nội`}
               fill
-              className="object-cover"
+              className="object-contain p-8"
               sizes="(max-width:768px) 100vw, 520px"
               priority
             />
@@ -104,11 +107,18 @@ export default async function HomePage() {
           <p className="mt-1 text-sm text-[var(--brand-muted)]">
             Lựa chọn bán chạy / khuyến nghị
           </p>
-          <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
-            {featured.map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
+          {featured.length > 0 ? (
+            <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+              {featured.map((p) => (
+                <ProductCard key={p.id} product={p} />
+              ))}
+            </div>
+          ) : (
+            <p className="mt-8 rounded-[var(--radius)] border border-dashed border-slate-200 bg-slate-50 px-4 py-10 text-center text-sm text-[var(--brand-muted)]">
+              Đang cập nhật danh mục thiết bị y tế. Vui lòng liên hệ hotline để được tư vấn,
+              hoặc quay lại sau khi shop đăng sản phẩm mới.
+            </p>
+          )}
         </div>
       </section>
 
@@ -127,11 +137,17 @@ export default async function HomePage() {
             Xem tất cả
           </Link>
         </div>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {latest.map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
+        {latest.length > 0 ? (
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+            {latest.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        ) : (
+          <p className="rounded-[var(--radius)] border border-dashed border-slate-200 bg-slate-50 px-4 py-10 text-center text-sm text-[var(--brand-muted)]">
+            Chưa có sản phẩm thiết bị y tế trên website. Admin hãy thêm sản phẩm mới trong trang quản trị.
+          </p>
+        )}
       </section>
     </div>
   );

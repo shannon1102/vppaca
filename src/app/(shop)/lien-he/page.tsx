@@ -1,13 +1,14 @@
 import { TAM_DUC_BRAND } from "@/lib/brand-content";
 import { repo } from "@/lib/data/repository";
 import { socialLinks } from "@/lib/social";
-import { pageMetadata } from "@/lib/seo/metadata";
+import { pageMetadata, SEO_KEYWORDS } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
-  title: "Liên hệ",
+  title: "Liên hệ Thiết bị Y tế Tâm Đức | Hotline Hà Nội",
   description:
-    "Liên hệ Thiết bị Y tế Tâm Đức — hotline, email, hệ thống 2 cơ sở tại Hà Đông, Hà Nội.",
+    "Liên hệ Thiết bị Y tế Tâm Đức — hotline tư vấn thiết bị y tế Hà Nội, 2 cơ sở tại Hà Đông. Email và bản đồ cửa hàng thiết bị y tế.",
   path: "/lien-he",
+  keywords: [...SEO_KEYWORDS, "liên hệ thiết bị y tế Hà Nội"],
 });
 
 function telHref(phone: string) {
@@ -21,9 +22,9 @@ export default async function ContactPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
-      <h1 className="text-3xl font-bold">Liên hệ</h1>
+      <h1 className="text-3xl font-bold">Liên hệ Thiết bị Y tế Tâm Đức</h1>
       <p className="mt-2 text-[var(--brand-muted)]">
-        Tư vấn miễn phí — hỗ trợ chọn thiết bị y tế phù hợp nhu cầu gia đình và phòng khám.
+        Tư vấn miễn phí thiết bị y tế tại Hà Nội — hỗ trợ chọn sản phẩm phù hợp nhu cầu gia đình và phòng khám.
       </p>
 
       <div className="mt-8 grid gap-6 md:grid-cols-2">

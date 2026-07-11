@@ -1,9 +1,11 @@
-import { pageMetadata } from "@/lib/seo/metadata";
+import { pageMetadata, SEO_KEYWORDS } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
-  title: "Chính sách bán hàng",
-  description: "Chính sách đặt hàng, thanh toán, giao hàng và đổi trả sản phẩm y tế.",
+  title: "Chính sách bán hàng thiết bị y tế | Tâm Đức",
+  description:
+    "Chính sách đặt hàng, thanh toán, giao hàng và đổi trả thiết bị y tế tại Thiết bị Y tế Tâm Đức — Hà Nội.",
   path: "/chinh-sach",
+  keywords: [...SEO_KEYWORDS],
 });
 
 export default function PolicyPage() {

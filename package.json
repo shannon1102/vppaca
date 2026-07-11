@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "seed:reset": "node -e \"require('fs').rmSync('.data',{recursive:true,force:true}); console.log('Cleared .data — restart dev to reseed');\"",
-    "seed:catalog": "node scripts/seed-catalog.cjs"
+    "seed:catalog": "node scripts/seed-catalog.cjs",
+    "reset:catalog": "node scripts/reset-catalog.cjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.0",

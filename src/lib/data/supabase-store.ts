@@ -420,13 +420,18 @@ export async function sbDeleteArticle(id: string): Promise<void> {
   if (error) throw error;
 }
 
-/** Seed demo catalog if empty (idempotent). */
+/** Bootstrap empty DB once. Skip if categories already exist (client may have 0 products). */
 export async function sbEnsureSeed(): Promise<void> {
   const sb = adminClient();
-  const { count } = await sb
+  const { count: categoryCount } = await sb
+    .from("categories")
+    .select("*", { count: "exact", head: true });
+  if ((categoryCount ?? 0) > 0) return;
+
+  const { count: productCount } = await sb
     .from("products")
     .select("*", { count: "exact", head: true });
-  if ((count ?? 0) > 0) return;
+  if ((productCount ?? 0) > 0) return;
 
   const { data: settings } = await sb.from("site_settings").select("id").limit(1);
   if (!settings?.length) {
@@ -448,7 +453,6 @@ export async function sbEnsureSeed(): Promise<void> {
   await sb.from("products").upsert(
     seedProducts.map((p) => ({
       ...p,
-      // keep string ids from seed for demo stability
     })),
   );
 

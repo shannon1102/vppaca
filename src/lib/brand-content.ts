@@ -27,19 +27,26 @@ export const TAM_DUC_BRAND = {
     },
   ] satisfies Branch[],
   footerDescription:
-    "Đồng hành cùng gia đình Việt chăm sóc sức khỏe với thiết bị y tế chính hãng, tư vấn tận tâm và giao hàng toàn quốc.",
+    "Thiết bị Y tế Tâm Đức — cửa hàng thiết bị y tế Hà Nội (Hà Đông). Đồng hành cùng gia đình Việt với thiết bị y tế chính hãng, tư vấn tận tâm và giao hàng toàn quốc.",
   heroDescription:
-    "Cung cấp thiết bị y tế chính hãng cho gia đình, phòng khám và cơ sở chăm sóc sức khỏe. Đặt hàng online, thanh toán chuyển khoản kèm QR — tư vấn miễn phí qua hotline.",
+    "Thiết bị Y tế Tâm Đức cung cấp thiết bị y tế chính hãng tại Hà Nội cho gia đình, phòng khám và cơ sở chăm sóc sức khỏe. Đặt hàng online, thanh toán chuyển khoản kèm QR — tư vấn miễn phí qua hotline.",
   aboutIntro:
-    "Thiết bị Y tế Tâm Đức là đơn vị cung cấp thiết bị và dụng cụ y tế tại Hà Nội, thuộc hệ sinh thái Tâm Đức với kinh nghiệm lâu năm trong lĩnh vực chăm sóc sức khỏe cộng đồng.",
+    "Thiết bị Y tế Tâm Đức là đơn vị cung cấp thiết bị y tế và dụng cụ y tế tại Hà Nội, Hà Đông. Thuộc hệ sinh thái Tâm Đức với kinh nghiệm lâu năm trong chăm sóc sức khỏe cộng đồng — nơi khách hàng tìm kiếm thiết bị y tế uy tín, chính hãng.",
   aboutServices: [
-    "Máy đo sức khỏe (huyết áp, đường huyết, SpO2, nhiệt kế)",
-    "Thiết bị phòng khám & phục hồi chức năng",
+    "Máy đo sức khỏe (huyết áp, đường huyết, SpO2, nhiệt kế) — thiết bị y tế gia đình",
+    "Thiết bị phòng khám & phục hồi chức năng tại Hà Nội",
     "Dụng cụ chăm sóc vết thương, bảo hộ y tế",
-    "Tư vấn chọn sản phẩm phù hợp nhu cầu gia đình",
+    "Tư vấn chọn thiết bị y tế phù hợp nhu cầu gia đình và phòng khám",
   ],
   aboutCommitment:
-    "Cam kết: hàng chính hãng, bảo hành rõ ràng, giao hàng toàn quốc.",
+    "Cam kết của Thiết bị Y tế Tâm Đức: hàng chính hãng, bảo hành rõ ràng, giao hàng toàn quốc từ cơ sở Hà Đông, Hà Nội.",
+  seoKeywords: [
+    "Thiết bị Y tế Tâm Đức",
+    "Thiết bị Y tế",
+    "Thiết bị Y tế Hà Nội",
+    "Thiết bị y tế Hà Đông",
+    "cửa hàng thiết bị y tế Hà Nội",
+  ],
   social: {
     zalo: "https://zalo.me/0962732786",
     zaloSecondary: "https://zalo.me/0935312733",

@@ -10,6 +10,7 @@
 - [x] Migration `supabase/migrations/004_product_detail_description.sql` applied (mô tả chi tiết sản phẩm)
 - [x] Migration `supabase/migrations/005_brand_colors.sql` applied (màu primary #2E7D32)
 - [x] Migration `supabase/migrations/006_product_sold_count.sql` applied (đã bán)
+- [x] Catalog reset for client handoff (products/orders/articles cleared; categories + settings kept)
 - [x] Env: Supabase keys (auto), `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `NEXT_PUBLIC_SITE_URL`
 - [x] Health: `/api/health`
 - [x] GitHub Actions keep-alive: `.github/workflows/supabase-keepalive.yml`
