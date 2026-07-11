@@ -27,7 +27,7 @@ export default async function ThankYouPage({ params }: Props) {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
       <ClearCartOnMount />
-      <div className="rounded-[var(--radius)] border border-teal-200 bg-teal-50 px-6 py-5">
+      <div className="rounded-[var(--radius)] border border-green-200 bg-green-50 px-6 py-5">
         <h1 className="text-2xl font-bold text-[var(--brand-secondary)]">
           Đặt hàng thành công
         </h1>

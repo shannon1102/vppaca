@@ -20,7 +20,7 @@ export default async function BrandingPage({
         Đổi logo, màu, thông tin shop và QR chuyển khoản — dùng để nhân bản white-label.
       </p>
       {saved ? (
-        <p className="mt-4 rounded-lg bg-teal-50 px-3 py-2 text-sm text-teal-800">
+        <p className="mt-4 rounded-lg bg-green-50 px-3 py-2 text-sm text-green-800">
           Đã lưu. Reload storefront để xem màu/logo mới.
         </p>
       ) : null}

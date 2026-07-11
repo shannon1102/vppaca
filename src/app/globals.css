@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --brand-primary: #0f766e;
-  --brand-primary-hover: #0d9488;
-  --brand-secondary: #134e4a;
-  --brand-accent: #f59e0b;
+  --brand-primary: #2e7d32;
+  --brand-primary-hover: #1b5e20;
+  --brand-secondary: #1b4332;
+  --brand-accent: #8bc34a;
   --brand-bg: #f8fafc;
   --brand-surface: #ffffff;
   --brand-text: #0f172a;

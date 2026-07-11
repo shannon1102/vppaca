@@ -12,6 +12,7 @@ import {
 import { repo } from "@/lib/data/repository";
 import { CACHE_TAGS } from "@/lib/data/cached-repo";
 import { orderCode, resolveSlug } from "@/lib/format";
+import { BRAND_COLORS } from "@/lib/brand-colors";
 import { normalizeImageSrc } from "@/lib/media/helpers";
 import { parseSpecsFromForm } from "@/lib/product-specs";
 import { persistRichHtmlImages } from "@/lib/media/process-html-images";
@@ -114,9 +115,9 @@ export async function saveSettingsAction(formData: FormData) {
     address: String(formData.get("address") ?? ""),
     logo_url: String(formData.get("logo_url") ?? ""),
     favicon_url: String(formData.get("favicon_url") ?? ""),
-    primary_color: String(formData.get("primary_color") ?? "#0F766E"),
-    secondary_color: String(formData.get("secondary_color") ?? "#134E4A"),
-    accent_color: String(formData.get("accent_color") ?? "#F59E0B"),
+    primary_color: String(formData.get("primary_color") ?? BRAND_COLORS.primary),
+    secondary_color: String(formData.get("secondary_color") ?? BRAND_COLORS.secondary),
+    accent_color: String(formData.get("accent_color") ?? BRAND_COLORS.accent),
     bank_name: String(formData.get("bank_name") ?? ""),
     bank_account: String(formData.get("bank_account") ?? ""),
     bank_holder: String(formData.get("bank_holder") ?? ""),

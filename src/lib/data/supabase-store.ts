@@ -9,6 +9,7 @@ import type {
   SiteSettings,
 } from "@/lib/types";
 import { defaultSettings, seedArticles, seedCategories, seedProducts } from "@/data/seed";
+import { BRAND_COLORS } from "@/lib/brand-colors";
 
 function adminClient() {
   const url =
@@ -73,9 +74,9 @@ function mapSettings(row: Record<string, unknown>): SiteSettings {
     address: String(row.address ?? ""),
     logo_url: String(row.logo_url ?? ""),
     favicon_url: String(row.favicon_url ?? ""),
-    primary_color: String(row.primary_color ?? "#0F766E"),
-    secondary_color: String(row.secondary_color ?? "#134E4A"),
-    accent_color: String(row.accent_color ?? "#F59E0B"),
+    primary_color: String(row.primary_color ?? BRAND_COLORS.primary),
+    secondary_color: String(row.secondary_color ?? BRAND_COLORS.secondary),
+    accent_color: String(row.accent_color ?? BRAND_COLORS.accent),
     bank_name: String(row.bank_name ?? ""),
     bank_account: String(row.bank_account ?? ""),
     bank_holder: String(row.bank_holder ?? ""),

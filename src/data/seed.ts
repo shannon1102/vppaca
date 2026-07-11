@@ -1,4 +1,5 @@
 import type { Category, HealthArticle, Product, SiteSettings } from "@/lib/types";
+import { BRAND_COLORS } from "@/lib/brand-colors";
 
 export const defaultSettings: SiteSettings = {
   id: "default",
@@ -10,9 +11,9 @@ export const defaultSettings: SiteSettings = {
     "CS1: 200 Nguyễn Viết Xuân, Hà Cầu, Hà Đông | CS2: 18 LK06A, Làng Việt Kiều, Mỗ Lao, Hà Đông",
   logo_url: "/brand/tam-duc-logo.png",
   favicon_url: "/brand/tam-duc-favicon.png",
-  primary_color: "#2E7D32",
-  secondary_color: "#1B4332",
-  accent_color: "#8BC34A",
+  primary_color: BRAND_COLORS.primary,
+  secondary_color: BRAND_COLORS.secondary,
+  accent_color: BRAND_COLORS.accent,
   bank_name: "Vietcombank",
   bank_account: "0123456789",
   bank_holder: "CONG TY TNHH DICH VU Y KHOA CO TRUYEN TAM DUC",

@@ -1,4 +1,5 @@
 import { formatVnd } from "@/lib/format";
+import { BRAND_COLORS } from "@/lib/brand-colors";
 import type { Order, SiteSettings } from "@/lib/types";
 
 function escapeHtml(s: string) {
@@ -15,8 +16,8 @@ export function buildAdminOrderEmailHtml(opts: {
   adminUrl: string;
 }): { subject: string; html: string; text: string } {
   const { order, settings, adminUrl } = opts;
-  const primary = settings.primary_color || "#0F766E";
-  const secondary = settings.secondary_color || "#134E4A";
+  const primary = settings.primary_color || BRAND_COLORS.primary;
+  const secondary = settings.secondary_color || BRAND_COLORS.secondary;
   const shop = escapeHtml(settings.shop_name);
   const when = new Date(order.created_at).toLocaleString("vi-VN", {
     timeZone: "Asia/Ho_Chi_Minh",
@@ -68,11 +69,11 @@ export function buildAdminOrderEmailHtml(opts: {
           <!-- Order code badge -->
           <tr>
             <td style="padding:24px 32px 8px;">
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f0fdfa;border:1px solid #99f6e4;border-radius:12px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f1f8e9;border:1px solid #c8e6c9;border-radius:12px;">
                 <tr>
                   <td style="padding:16px 20px;">
-                    <p style="margin:0;font-size:12px;color:#0f766e;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;">Mã đơn</p>
-                    <p style="margin:6px 0 0;font-size:22px;font-weight:700;color:#134e4a;letter-spacing:0.02em;">${escapeHtml(order.code)}</p>
+                    <p style="margin:0;font-size:12px;color:${primary};font-weight:600;text-transform:uppercase;letter-spacing:0.04em;">Mã đơn</p>
+                    <p style="margin:6px 0 0;font-size:22px;font-weight:700;color:${secondary};letter-spacing:0.02em;">${escapeHtml(order.code)}</p>
                     <p style="margin:8px 0 0;font-size:13px;color:#64748b;">${escapeHtml(when)} · Trạng thái: <strong style="color:#b45309;">Chờ xác nhận</strong></p>
                   </td>
                   <td style="padding:16px 20px;text-align:right;vertical-align:middle;">
@@ -146,7 +147,7 @@ export function buildAdminOrderEmailHtml(opts: {
           <tr>
             <td style="padding:24px 32px 32px;" align="center">
               <a href="${escapeHtml(adminUrl)}"
-                 style="display:inline-block;background:${primary};color:#ffffff;text-decoration:none;font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;box-shadow:0 8px 20px rgba(15,118,110,0.25);">
+                 style="display:inline-block;background:${primary};color:#ffffff;text-decoration:none;font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;box-shadow:0 8px 20px rgba(46,125,50,0.25);">
                 Mở quản lý đơn hàng
               </a>
               <p style="margin:16px 0 0;font-size:12px;color:#94a3b8;">Email tự động từ hệ thống ${shop}</p>

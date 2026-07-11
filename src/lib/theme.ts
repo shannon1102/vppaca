@@ -1,10 +1,11 @@
 import type { CSSProperties } from "react";
 import type { SiteSettings } from "@/lib/types";
+import { BRAND_COLORS } from "@/lib/brand-colors";
 
 export function themeStyleFromSettings(s: SiteSettings): CSSProperties {
   return {
     ["--brand-primary" as string]: s.primary_color,
-    ["--brand-primary-hover" as string]: s.primary_color,
+    ["--brand-primary-hover" as string]: BRAND_COLORS.primaryHover,
     ["--brand-secondary" as string]: s.secondary_color,
     ["--brand-accent" as string]: s.accent_color,
     ["--brand-bg" as string]: "#F9FAF5",

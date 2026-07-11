@@ -4,10 +4,10 @@
 
 | Token | Default | Nguồn |
 |-------|---------|--------|
-| `--brand-primary` | `#0F766E` | site_settings.primary_color |
-| `--brand-primary-hover` | `#0D9488` | derived / settings |
-| `--brand-secondary` | `#134E4A` | site_settings.secondary_color |
-| `--brand-accent` | `#F59E0B` | site_settings.accent_color |
+| `--brand-primary` | `#2E7D32` | site_settings.primary_color |
+| `--brand-primary-hover` | `#1B5E20` | darker primary (hover) |
+| `--brand-secondary` | `#1B4332` | site_settings.secondary_color |
+| `--brand-accent` | `#8BC34A` | site_settings.accent_color |
 | `--brand-bg` | `#F8FAFC` | fixed / settings |
 | `--brand-surface` | `#FFFFFF` | fixed |
 | `--brand-text` | `#0F172A` | fixed |

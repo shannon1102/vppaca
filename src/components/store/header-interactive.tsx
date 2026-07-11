@@ -76,7 +76,7 @@ export function HeaderInteractive({
           <div className="ml-auto flex items-center gap-2">
             <a
               href={`tel:${phone.replace(/\s/g, "")}`}
-              className="hidden h-11 min-w-11 items-center justify-center rounded-full border border-slate-200 text-[var(--brand-primary)] transition hover:border-[var(--brand-primary)] hover:bg-teal-50 lg:inline-flex"
+              className="hidden h-11 min-w-11 items-center justify-center rounded-full border border-slate-200 text-[var(--brand-primary)] transition hover:border-[var(--brand-primary)] hover:bg-green-50 lg:inline-flex"
               aria-label="Gọi hotline"
               title={phone}
             >
@@ -121,7 +121,7 @@ export function HeaderInteractive({
               type="button"
               onClick={() => setCatOpen((v) => !v)}
               onBlur={() => setTimeout(() => setCatOpen(false), 150)}
-              className="inline-flex h-11 items-center gap-2 rounded-[var(--radius)] bg-[var(--brand-primary)] px-4 text-sm font-semibold text-white shadow-sm transition hover:brightness-110"
+              className="inline-flex h-11 items-center gap-2 rounded-[var(--radius)] bg-[var(--brand-primary)] px-4 text-sm font-semibold text-white shadow-sm transition hover:bg-[var(--brand-primary-hover)]"
             >
               <MenuIcon />
               Danh mục sản phẩm
