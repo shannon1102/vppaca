@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { isAdminAuthenticated } from "@/lib/auth-admin";
 import { repo } from "@/lib/data/repository";
-import { resolveSlug } from "@/lib/format";
+import { ensureUniqueSlug } from "@/lib/format";
 import type { HealthArticle } from "@/lib/types";
 
 /** GET /api/articles — list health articles (published only by default) */
@@ -33,10 +33,15 @@ export async function POST(req: Request) {
   }
   const now = new Date().toISOString();
   const id = body.id ?? `art-${Date.now()}`;
+  const articles = await repo.listArticles();
   const article: HealthArticle = {
     id,
     title: body.title,
-    slug: resolveSlug(body.slug ?? "", body.title, id),
+    slug: ensureUniqueSlug({
+      title: body.title,
+      id,
+      taken: articles.filter((a) => a.id !== id).map((a) => a.slug),
+    }),
     excerpt: body.excerpt ?? "",
     content: body.content ?? "",
     cover_image_url: body.cover_image_url ?? null,

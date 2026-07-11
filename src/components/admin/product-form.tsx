@@ -20,12 +20,9 @@ export function ProductForm({
       <NameSlugFields
         nameField="name"
         nameLabel="Tên"
-        slugLabel="Slug (URL)"
         pathPreview="/san-pham"
         defaultName={product.name}
-        defaultSlug={product.slug}
       />
-      <Input name="sku" label="SKU" required defaultValue={product.sku} />
       <Input
         name="price"
         type="number"

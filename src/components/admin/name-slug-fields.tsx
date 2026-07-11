@@ -7,28 +7,21 @@ import { slugify } from "@/lib/format";
 type Props = {
   nameField: string;
   nameLabel: string;
-  slugLabel?: string;
   pathPreview?: string;
   defaultName?: string;
-  defaultSlug?: string;
   nameRequired?: boolean;
 };
 
+/** Chỉ nhập tên — slug được BE tự sinh từ tên. */
 export function NameSlugFields({
   nameField,
   nameLabel,
-  slugLabel = "Slug (URL)",
   pathPreview,
   defaultName = "",
-  defaultSlug = "",
   nameRequired = true,
 }: Props) {
-  const safeDefaultSlug = defaultSlug ? slugify(defaultSlug) : slugify(defaultName);
   const [name, setName] = useState(defaultName);
-  const [slug, setSlug] = useState(safeDefaultSlug);
-  const [slugManual, setSlugManual] = useState(
-    Boolean(defaultSlug && slugify(defaultSlug) !== slugify(defaultName)),
-  );
+  const previewSlug = slugify(name);
 
   return (
     <>
@@ -37,25 +30,12 @@ export function NameSlugFields({
         label={nameLabel}
         required={nameRequired}
         value={name}
-        onChange={(e) => {
-          const next = e.target.value;
-          setName(next);
-          if (!slugManual) setSlug(slugify(next));
-        }}
+        onChange={(e) => setName(e.target.value)}
       />
-      <Input
-        name="slug"
-        label={slugLabel}
-        required
-        value={slug}
-        onChange={(e) => {
-          setSlugManual(true);
-          setSlug(slugify(e.target.value));
-        }}
-      />
-      {pathPreview && slug ? (
+      {pathPreview && previewSlug ? (
         <p className="text-xs text-[var(--brand-muted)]">
-          URL: {pathPreview}/{slug}
+          URL sẽ lưu: {pathPreview}/{previewSlug}
+          <span className="text-[var(--brand-muted)]"> (tự tạo)</span>
         </p>
       ) : null}
     </>

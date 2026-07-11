@@ -1,7 +1,7 @@
 const MESSAGES: Record<string, string> = {
-  sku: "SKU đã được dùng cho sản phẩm khác. Vui lòng đổi mã SKU (ví dụ: MED-SLP-001).",
-  slug: "Slug URL đã tồn tại. Vui lòng đổi slug hoặc tên sản phẩm.",
-  save: "Không lưu được sản phẩm. Kiểm tra SKU/slug trùng hoặc thử lại sau.",
+  save: "Không lưu được sản phẩm. Vui lòng thử lại sau.",
+  sku: "Mã SKU bị trùng — hệ thống sẽ tự tạo lại. Thử lưu lần nữa.",
+  slug: "Slug URL bị trùng — hệ thống sẽ tự tạo lại. Thử lưu lần nữa.",
 };
 
 export function FormErrorBanner({ code }: { code?: string }) {

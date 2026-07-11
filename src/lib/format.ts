@@ -47,6 +47,67 @@ export function resolveSlug(
   );
 }
 
+/**
+ * Auto slug từ tên. Khi sửa: giữ slug cũ (ổn định SEO).
+ * Khi tạo / trùng: thêm -2, -3, ...
+ */
+export function ensureUniqueSlug(opts: {
+  title: string;
+  id?: string;
+  current?: string | null;
+  taken: Iterable<string>;
+}): string {
+  if (opts.current?.trim()) return slugify(opts.current);
+
+  const base = resolveSlug("", opts.title, opts.id);
+  const taken = new Set(
+    [...opts.taken].map((s) => slugify(s)).filter(Boolean),
+  );
+  if (!taken.has(base)) return base;
+
+  let n = 2;
+  while (taken.has(`${base}-${n}`)) n += 1;
+  return `${base}-${n}`;
+}
+
+/** Sinh SKU từ tên + id, ví dụ MED-MAYDO-P01A2B */
+export function generateSku(name: string, id: string): string {
+  const parts = slugify(name).split("-").filter(Boolean);
+  const code =
+    parts
+      .slice(0, 2)
+      .map((p) => p.slice(0, 3).toUpperCase())
+      .join("")
+      .slice(0, 6) || "PRD";
+  const tail =
+    id.replace(/[^a-zA-Z0-9]/g, "").slice(-6).toUpperCase() ||
+    Date.now().toString(36).toUpperCase();
+  return `MED-${code}-${tail}`;
+}
+
+/**
+ * Auto SKU. Khi sửa: giữ SKU cũ.
+ * Khi tạo / trùng: thêm hậu tố -2, -3, ...
+ */
+export function ensureUniqueSku(opts: {
+  name: string;
+  id: string;
+  current?: string | null;
+  taken: Iterable<string>;
+}): string {
+  if (opts.current?.trim()) return opts.current.trim();
+
+  const base = generateSku(opts.name, opts.id);
+  const taken = new Set(
+    [...opts.taken].map((s) => s.trim()).filter(Boolean),
+  );
+  if (!taken.has(base)) return base;
+
+  let n = 2;
+  while (taken.has(`${base}-${n}`)) n += 1;
+  return `${base}-${n}`;
+}
+
 export function orderCode(): string {
   const t = Date.now().toString(36).toUpperCase();
   const r = Math.random().toString(36).slice(2, 6).toUpperCase();

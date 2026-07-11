@@ -20,10 +20,8 @@ export function ArticleForm({
       <NameSlugFields
         nameField="title"
         nameLabel="Tiêu đề"
-        slugLabel="Slug (URL)"
         pathPreview="/bai-viet-suc-khoe"
         defaultName={article.title}
-        defaultSlug={article.slug}
       />
       <label className="block space-y-1.5 text-sm">
         <span className="font-medium">Tóm tắt</span>

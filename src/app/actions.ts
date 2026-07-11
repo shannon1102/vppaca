@@ -11,7 +11,7 @@ import {
 } from "@/lib/auth-admin";
 import { repo } from "@/lib/data/repository";
 import { CACHE_TAGS } from "@/lib/data/cached-repo";
-import { orderCode, resolveSlug } from "@/lib/format";
+import { ensureUniqueSku, ensureUniqueSlug, orderCode } from "@/lib/format";
 import { BRAND_COLORS } from "@/lib/brand-colors";
 import { normalizeImageSrc } from "@/lib/media/helpers";
 import { parseSpecsFromForm } from "@/lib/product-specs";
@@ -165,11 +165,25 @@ export async function saveProductAction(formData: FormData) {
     console.error("[product] persistRichHtmlImages failed", e);
     redirect(`${backPath}?error=save`);
   }
+  const existing = await repo.listProducts();
+  const slug = ensureUniqueSlug({
+    title: name,
+    id,
+    current: existingProduct?.slug,
+    taken: existing.filter((p) => p.id !== id).map((p) => p.slug),
+  });
+  const sku = ensureUniqueSku({
+    name,
+    id,
+    current: existingProduct?.sku,
+    taken: existing.filter((p) => p.id !== id).map((p) => p.sku),
+  });
+
   const product: Product = {
     id,
     name,
-    slug: resolveSlug(String(formData.get("slug") ?? ""), name, id),
-    sku: String(formData.get("sku") ?? "").trim(),
+    slug,
+    sku,
     price: Number(formData.get("price") ?? 0),
     sale_price: sale ? Number(sale) : null,
     description,
@@ -184,14 +198,6 @@ export async function saveProductAction(formData: FormData) {
     seo_title: String(formData.get("seo_title") ?? ""),
     seo_description: String(formData.get("seo_description") ?? ""),
   };
-
-  const existing = await repo.listProducts();
-  if (existing.some((p) => p.sku === product.sku && p.id !== product.id)) {
-    redirect(`${backPath}?error=sku`);
-  }
-  if (existing.some((p) => p.slug === product.slug && p.id !== product.id)) {
-    redirect(`${backPath}?error=slug`);
-  }
 
   try {
     await repo.upsertProduct(product);
@@ -218,10 +224,17 @@ export async function saveCategoryAction(formData: FormData) {
   await requireAdmin();
   const catName = String(formData.get("name") ?? "");
   const catId = String(formData.get("id") || `cat-${Date.now()}`);
+  const categories = await repo.listCategories();
+  const existingCat = categories.find((c) => c.id === catId);
   const cat: Category = {
     id: catId,
     name: catName,
-    slug: resolveSlug(String(formData.get("slug") ?? ""), catName, catId),
+    slug: ensureUniqueSlug({
+      title: catName,
+      id: catId,
+      current: existingCat?.slug,
+      taken: categories.filter((c) => c.id !== catId).map((c) => c.slug),
+    }),
     description: String(formData.get("description") ?? ""),
     sort: Number(formData.get("sort") ?? 0),
     image_url: String(formData.get("image_url") ?? "") || null,
@@ -261,10 +274,17 @@ export async function saveArticleAction(formData: FormData) {
   const title = String(formData.get("title") ?? "");
   const coverRaw = String(formData.get("cover_image_url") ?? "").trim();
   const content = await persistRichHtmlImages(String(formData.get("content") ?? ""));
+  const articles = await repo.listArticles();
+  const existingArticle = articles.find((a) => a.id === id);
   const article: HealthArticle = {
     id,
     title,
-    slug: resolveSlug(String(formData.get("slug") ?? ""), title, id),
+    slug: ensureUniqueSlug({
+      title,
+      id,
+      current: existingArticle?.slug,
+      taken: articles.filter((a) => a.id !== id).map((a) => a.slug),
+    }),
     excerpt: String(formData.get("excerpt") ?? ""),
     content,
     cover_image_url: coverRaw ? normalizeImageSrc(coverRaw) : null,
