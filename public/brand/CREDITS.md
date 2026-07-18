@@ -1,6 +1,7 @@
-# Brand image credits
+# Brand image credits (royalty-free)
 
 | File | Source | License |
 |------|--------|---------|
-| hero-oxygen.svg | Original illustration (in-house) | Project asset — Tam Đức brand colors |
-| hero-medical.jpg | [Unsplash](https://unsplash.com/photos/1631815588090-d4bfec5b1ccb) | Unsplash License (archived, replaced by SVG) |
+| hero-medical.jpg | [Unsplash — medical breathing device](https://unsplash.com/photos/Sjg5IX_F71k) | [Unsplash License](https://unsplash.com/license) — free commercial use |
+
+No attribution required by license; credits kept for transparency.
