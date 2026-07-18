@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 import path from "path";
 import { isSupabaseConfigured } from "@/lib/data/repository";
 
-const MAX_ATTEMPTS = 5;
+const MAX_ATTEMPTS = 50;
 const WINDOW_MS = 15 * 60 * 1000;
 const LOCAL_FILE = path.join(process.cwd(), ".data", "login-attempts.json");
 
