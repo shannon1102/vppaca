@@ -1,6 +1,7 @@
 "use client";
 
 import { saveCategoryAction } from "@/app/actions";
+import { CategoryImageField } from "@/components/admin/category-image-field";
 import { NameSlugFields } from "@/components/admin/name-slug-fields";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,7 +17,7 @@ export function CategoryForm() {
       />
       <Input name="description" label="Mô tả" />
       <Input name="sort" type="number" label="Sort" defaultValue={0} />
-      <Input name="image_url" label="Ảnh URL" />
+      <CategoryImageField />
       <Button type="submit">Lưu</Button>
     </form>
   );

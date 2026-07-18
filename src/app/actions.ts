@@ -9,6 +9,13 @@ import {
   verifyAdminCredentials,
   isAdminAuthenticated,
 } from "@/lib/auth-admin";
+import {
+  clearLoginAttempts,
+  getClientIp,
+  isLoginRateLimited,
+  recordFailedLogin,
+} from "@/lib/auth/login-rate-limit";
+import { buildCategoryFromInput } from "@/lib/categories/build-category";
 import { repo } from "@/lib/data/repository";
 import { CACHE_TAGS } from "@/lib/data/cached-repo";
 import { ensureUniqueSku, ensureUniqueSlug, orderCode } from "@/lib/format";
@@ -16,7 +23,7 @@ import { BRAND_COLORS } from "@/lib/brand-colors";
 import { normalizeImageSrc } from "@/lib/media/helpers";
 import { parseSpecsFromForm } from "@/lib/product-specs";
 import { persistRichHtmlImages } from "@/lib/media/process-html-images";
-import type { Category, HealthArticle, Order, OrderStatus, Product } from "@/lib/types";
+import type { HealthArticle, Order, OrderStatus, Product } from "@/lib/types";
 
 const checkoutSchema = z.object({
   customer_name: z.string().min(2),
@@ -96,11 +103,19 @@ export async function placeOrderAction(formData: FormData) {
 }
 
 export async function adminLoginAction(formData: FormData) {
+  const ip = await getClientIp();
+  const rate = await isLoginRateLimited(ip);
+  if (rate.limited) {
+    redirect(`/admin/login?error=locked&retry=${rate.retryAfterSec ?? 900}`);
+  }
+
   const email = String(formData.get("email") ?? "");
   const password = String(formData.get("password") ?? "");
   if (!verifyAdminCredentials(email, password)) {
+    await recordFailedLogin(ip);
     redirect("/admin/login?error=1");
   }
+  await clearLoginAttempts(ip);
   await setAdminSession();
   redirect("/admin");
 }
@@ -225,20 +240,17 @@ export async function saveCategoryAction(formData: FormData) {
   const catName = String(formData.get("name") ?? "");
   const catId = String(formData.get("id") || `cat-${Date.now()}`);
   const categories = await repo.listCategories();
-  const existingCat = categories.find((c) => c.id === catId);
-  const cat: Category = {
-    id: catId,
-    name: catName,
-    slug: ensureUniqueSlug({
-      title: catName,
+  const imageRaw = String(formData.get("image_url") ?? "");
+  const cat = buildCategoryFromInput(
+    {
       id: catId,
-      current: existingCat?.slug,
-      taken: categories.filter((c) => c.id !== catId).map((c) => c.slug),
-    }),
-    description: String(formData.get("description") ?? ""),
-    sort: Number(formData.get("sort") ?? 0),
-    image_url: String(formData.get("image_url") ?? "") || null,
-  };
+      name: catName,
+      description: String(formData.get("description") ?? ""),
+      sort: Number(formData.get("sort") ?? 0),
+      image_url: imageRaw || null,
+    },
+    categories,
+  );
   await repo.upsertCategory(cat);
   revalidatePath("/");
   revalidatePath("/admin/categories");

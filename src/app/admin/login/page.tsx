@@ -1,16 +1,22 @@
 import { adminLoginAction } from "@/app/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { LOGIN_RATE_LIMIT } from "@/lib/auth/login-rate-limit";
 import { isAdminAuthenticated } from "@/lib/auth-admin";
 import { redirect } from "next/navigation";
+
+function formatRetryMinutes(retrySec: number): number {
+  return Math.max(1, Math.ceil(retrySec / 60));
+}
 
 export default async function AdminLoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string }>;
+  searchParams: Promise<{ error?: string; retry?: string }>;
 }) {
   if (await isAdminAuthenticated()) redirect("/admin");
-  const { error } = await searchParams;
+  const { error, retry } = await searchParams;
+  const retryMin = retry ? formatRetryMinutes(Number(retry)) : null;
 
   return (
     <div className="mx-auto max-w-md rounded-[var(--radius)] border border-slate-200 bg-white p-8 shadow-sm">
@@ -18,7 +24,13 @@ export default async function AdminLoginPage({
       <p className="mt-2 text-sm text-[var(--brand-muted)]">
         Mặc định: admin@medistore.vn / admin123 (đổi qua env)
       </p>
-      {error ? (
+      {error === "locked" ? (
+        <p className="mt-3 text-sm text-red-600">
+          Đăng nhập sai quá {LOGIN_RATE_LIMIT.maxAttempts} lần trong{" "}
+          {LOGIN_RATE_LIMIT.windowMinutes} phút. Vui lòng thử lại sau{" "}
+          {retryMin ?? LOGIN_RATE_LIMIT.windowMinutes} phút.
+        </p>
+      ) : error ? (
         <p className="mt-3 text-sm text-red-600">Email hoặc mật khẩu không đúng.</p>
       ) : null}
       <form action={adminLoginAction} className="mt-6 space-y-4">
@@ -28,9 +40,16 @@ export default async function AdminLoginPage({
           label="Email"
           required
           defaultValue="admin@medistore.vn"
+          disabled={error === "locked"}
         />
-        <Input name="password" type="password" label="Mật khẩu" required />
-        <Button type="submit" className="w-full">
+        <Input
+          name="password"
+          type="password"
+          label="Mật khẩu"
+          required
+          disabled={error === "locked"}
+        />
+        <Button type="submit" className="w-full" disabled={error === "locked"}>
           Đăng nhập
         </Button>
       </form>
