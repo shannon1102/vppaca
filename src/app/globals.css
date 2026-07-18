@@ -10,8 +10,8 @@
   --brand-text: #0f172a;
   --brand-muted: #64748b;
   --radius: 12px;
-  --font-display: var(--font-dm-sans), system-ui, sans-serif;
-  --font-body: var(--font-source-sans), system-ui, sans-serif;
+  --font-display: var(--font-display-sans), "Segoe UI", sans-serif;
+  --font-body: var(--font-source-sans), "Segoe UI", sans-serif;
 }
 
 @theme inline {
