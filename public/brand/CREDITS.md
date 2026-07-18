@@ -2,6 +2,12 @@
 
 | File | Source | License |
 |------|--------|---------|
-| hero-medical.jpg | [Unsplash — medical breathing device](https://unsplash.com/photos/Sjg5IX_F71k) | [Unsplash License](https://unsplash.com/license) — free commercial use |
+| hero-medical.jpg | [Unsplash — modern operating room](https://unsplash.com/photos/1516549655169-df83a0774514) | [Unsplash License](https://unsplash.com/license) — free commercial use |
 
-No attribution required by license; credits kept for transparency.
+## Lưu ý bản quyền (hero)
+
+**Không dùng ảnh tải từ web/blog** (ví dụ có EXIF `"trang thiết bị y tế là gì"`) hoặc ảnh quảng bá hãng (logo **PHILIPS**, **GE**, v.v.) nếu chưa có giấy phép bằng văn bản từ chủ sở hữu ảnh / hãng.
+
+Ảnh hero hiện tại lấy từ Unsplash — được phép dùng thương mại, không cần ghi công bắt buộc (vẫn ghi credit để minh bạch).
+
+No attribution required by Unsplash License; credits kept for transparency.
