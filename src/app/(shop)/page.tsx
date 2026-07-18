@@ -57,16 +57,17 @@ export default async function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="relative mx-auto aspect-[4/3] w-full max-w-lg overflow-hidden rounded-2xl border border-white/20 bg-white/10 shadow-xl">
+          <div className="relative mx-auto aspect-[4/3] w-full max-w-lg overflow-hidden rounded-2xl border border-white/25 shadow-2xl ring-1 ring-white/10">
             <Image
-              src={settings.logo_url || "/brand/tam-duc-logo.png"}
-              alt={`Thiết bị Y tế Tâm Đức — thiết bị y tế Hà Nội`}
+              src={TAM_DUC_BRAND.heroImage}
+              alt={TAM_DUC_BRAND.heroImageAlt}
               fill
-              className="object-contain p-8"
+              className="object-cover object-center"
               sizes="(max-width:768px) 100vw, 520px"
+              quality={90}
               priority
             />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--brand-secondary)]/40 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--brand-secondary)]/50 via-transparent to-transparent" />
           </div>
         </div>
       </section>
