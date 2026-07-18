@@ -30,10 +30,9 @@ export const TAM_DUC_BRAND = {
     "Thiết bị Y tế Tâm Đức — cửa hàng thiết bị y tế Hà Nội (Hà Đông). Đồng hành cùng gia đình Việt với thiết bị y tế chính hãng, tư vấn tận tâm và giao hàng toàn quốc.",
   heroDescription:
     "Thiết bị Y tế Tâm Đức cung cấp thiết bị y tế chính hãng tại Hà Nội cho gia đình, phòng khám và cơ sở chăm sóc sức khỏe. Đặt hàng online, thanh toán chuyển khoản kèm QR — tư vấn miễn phí qua hotline.",
-  /** Homepage hero banner — Unsplash License, see public/brand/CREDITS.md */
-  heroImage: "/brand/hero-medical.jpg",
-  heroImageAlt:
-    "Bác sĩ tư vấn và hướng dẫn sử dụng thiết bị đo huyết áp cho khách hàng",
+  /** Homepage hero — brand illustration (matches category card style) */
+  heroImage: "/brand/hero-oxygen.svg",
+  heroImageAlt: "Máy tạo oxy di động — thiết bị y tế gia đình",
   aboutIntro:
     "Thiết bị Y tế Tâm Đức là đơn vị cung cấp thiết bị y tế và dụng cụ y tế tại Hà Nội, Hà Đông. Thuộc hệ sinh thái Tâm Đức với kinh nghiệm lâu năm trong chăm sóc sức khỏe cộng đồng — nơi khách hàng tìm kiếm thiết bị y tế uy tín, chính hãng.",
   aboutServices: [

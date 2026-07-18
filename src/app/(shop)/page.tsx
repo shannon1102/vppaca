@@ -57,17 +57,15 @@ export default async function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="relative mx-auto aspect-[4/3] w-full max-w-lg overflow-hidden rounded-2xl border border-white/30 bg-white/5 shadow-2xl">
-            <Image
+          <div className="relative mx-auto aspect-[4/3] w-full max-w-lg overflow-hidden rounded-2xl border border-white/20 shadow-2xl">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={TAM_DUC_BRAND.heroImage}
               alt={TAM_DUC_BRAND.heroImageAlt}
-              fill
-              className="object-cover object-[center_35%] brightness-105"
-              sizes="(max-width:768px) 100vw, 520px"
-              quality={90}
-              priority
+              className="h-full w-full object-cover"
+              loading="eager"
+              decoding="async"
             />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[var(--brand-secondary)]/15 via-transparent to-white/10" />
           </div>
         </div>
       </section>
