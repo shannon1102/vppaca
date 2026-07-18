@@ -4,13 +4,8 @@ import { Input } from "@/components/ui/input";
 import { requireAdminPage } from "@/lib/require-admin";
 import { repo } from "@/lib/data/repository";
 
-export default async function BrandingPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ saved?: string }>;
-}) {
+export default async function BrandingPage() {
   await requireAdminPage();
-  const { saved } = await searchParams;
   const s = await repo.getSettings();
 
   return (
@@ -19,11 +14,6 @@ export default async function BrandingPage({
       <p className="mt-2 text-sm text-[var(--brand-muted)]">
         Đổi logo, màu, thông tin shop và QR chuyển khoản — dùng để nhân bản white-label.
       </p>
-      {saved ? (
-        <p className="mt-4 rounded-lg bg-green-50 px-3 py-2 text-sm text-green-800">
-          Đã lưu. Reload storefront để xem màu/logo mới.
-        </p>
-      ) : null}
 
       <div className="mt-6 grid gap-8 lg:grid-cols-2">
         <form action={saveSettingsAction} className="space-y-3 rounded-[var(--radius)] border border-slate-200 bg-white p-6">

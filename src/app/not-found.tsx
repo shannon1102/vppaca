@@ -4,8 +4,9 @@ import { pageMetadata } from "@/lib/seo/metadata";
 export const metadata = pageMetadata({
   title: "Không tìm thấy trang",
   description: "Trang bạn tìm không tồn tại.",
-  path: "/404",
+  path: "/",
   noindex: true,
+  skipCanonical: true,
 });
 
 export default function NotFound() {

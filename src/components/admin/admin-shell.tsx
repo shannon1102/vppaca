@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { adminLogoutAction } from "@/app/actions";
 import { AdminNav } from "@/components/admin/admin-nav";
+import { AdminToastListener } from "@/components/admin/admin-toast-listener";
+import { IconLogout, IconStore } from "@/components/admin/admin-icons";
 import { Button } from "@/components/ui/button";
 
 export function AdminShell({
@@ -12,6 +15,9 @@ export function AdminShell({
 }) {
   return (
     <div className="flex min-h-screen flex-col bg-slate-100 md:flex-row">
+      <Suspense fallback={null}>
+        <AdminToastListener />
+      </Suspense>
       <aside className="flex w-full shrink-0 flex-col bg-[var(--brand-secondary)] text-white md:w-60 md:min-h-screen">
         <div className="border-b border-white/10 px-5 py-5">
           <Link href="/admin" prefetch className="block cursor-pointer">
@@ -28,30 +34,38 @@ export function AdminShell({
           <Link
             href="/"
             prefetch
-            className="block cursor-pointer rounded-lg px-3 py-2 text-sm text-white/70 hover:bg-white/10 hover:text-white"
+            className="flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-sm text-white/70 hover:bg-white/10 hover:text-white"
           >
-            ← Về cửa hàng
+            <IconStore />
+            Về cửa hàng
           </Link>
           <form action={adminLogoutAction}>
             <Button
               type="submit"
               variant="ghost"
-              className="w-full justify-start text-white/70 hover:bg-white/10 hover:text-white"
+              className="w-full justify-start gap-3 text-white/70 hover:bg-white/10 hover:text-white"
             >
+              <IconLogout />
               Đăng xuất
             </Button>
           </form>
         </div>
         <div className="flex items-center justify-between gap-2 border-t border-white/10 px-3 py-3 md:hidden">
-          <Link href="/" prefetch className="cursor-pointer text-sm text-white/70">
-            ← Cửa hàng
+          <Link
+            href="/"
+            prefetch
+            className="flex cursor-pointer items-center gap-2 text-sm text-white/70"
+          >
+            <IconStore className="h-4 w-4" />
+            Cửa hàng
           </Link>
           <form action={adminLogoutAction}>
             <Button
               type="submit"
               variant="ghost"
-              className="text-sm text-white/70 hover:bg-white/10 hover:text-white"
+              className="gap-2 text-sm text-white/70 hover:bg-white/10 hover:text-white"
             >
+              <IconLogout className="h-4 w-4" />
               Đăng xuất
             </Button>
           </form>

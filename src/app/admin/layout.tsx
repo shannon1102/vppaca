@@ -1,6 +1,11 @@
 import { AdminShell } from "@/components/admin/admin-shell";
+import { AdminToastListener } from "@/components/admin/admin-toast-listener";
 import { isAdminAuthenticated } from "@/lib/auth-admin";
+import { noindexMetadata } from "@/lib/seo/metadata";
 import { repo } from "@/lib/data/repository";
+import { Suspense } from "react";
+
+export const metadata = noindexMetadata("Admin", "Khu vực quản trị");
 
 export default async function AdminLayout({
   children,
@@ -12,6 +17,9 @@ export default async function AdminLayout({
   if (!ok) {
     return (
       <div className="min-h-screen bg-slate-100">
+        <Suspense fallback={null}>
+          <AdminToastListener />
+        </Suspense>
         <div className="mx-auto max-w-lg px-4 py-16">{children}</div>
       </div>
     );

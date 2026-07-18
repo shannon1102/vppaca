@@ -38,6 +38,10 @@ export function pageMetadata(opts: {
   noindex?: boolean;
   openGraphType?: "website" | "article";
   keywords?: string[];
+  publishedTime?: string;
+  modifiedTime?: string;
+  /** Skip canonical on pages like 404 where URL is dynamic */
+  skipCanonical?: boolean;
 }): Metadata {
   const image = opts.image ?? "/products/p-01.jpg";
   const robots = opts.noindex
@@ -48,7 +52,7 @@ export function pageMetadata(opts: {
     title: opts.title,
     description: opts.description,
     keywords: opts.keywords,
-    alternates: canonicalPath(opts.path),
+    ...(opts.skipCanonical ? {} : { alternates: canonicalPath(opts.path) }),
     robots,
     openGraph: {
       title: opts.title,
@@ -57,6 +61,8 @@ export function pageMetadata(opts: {
       type: opts.openGraphType ?? "website",
       locale: "vi_VN",
       images: [{ url: image }],
+      ...(opts.publishedTime && { publishedTime: opts.publishedTime }),
+      ...(opts.modifiedTime && { modifiedTime: opts.modifiedTime }),
     },
     twitter: {
       card: "summary_large_image",

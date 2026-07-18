@@ -8,7 +8,8 @@ import { RichContent } from "@/components/ui/rich-content";
 import { repo } from "@/lib/data/repository";
 import { stripHtml } from "@/lib/format";
 import { normalizeImageSrc } from "@/lib/media/helpers";
-import { pageMetadata, siteUrl } from "@/lib/seo/metadata";
+import { absoluteUrl } from "@/lib/seo/jsonld";
+import { noindexMetadata, pageMetadata } from "@/lib/seo/metadata";
 
 export const revalidate = 300;
 
@@ -17,7 +18,7 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const article = await repo.getArticleBySlug(slug);
-  if (!article) return { title: "Bài viết sức khỏe" };
+  if (!article) return noindexMetadata("Bài viết sức khỏe", "Bài viết không tồn tại.");
   const cover = article.cover_image_url
     ? normalizeImageSrc(article.cover_image_url)
     : undefined;
@@ -27,6 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: `/bai-viet-suc-khoe/${slug}`,
     image: cover,
     openGraphType: "article",
+    publishedTime: article.created_at,
+    modifiedTime: article.updated_at,
   });
 }
 
@@ -39,18 +42,24 @@ export default async function HealthArticleDetailPage({ params }: Props) {
   const coverUrl = article.cover_image_url
     ? normalizeImageSrc(article.cover_image_url)
     : null;
-  const articleUrl = `${siteUrl()}/bai-viet-suc-khoe/${article.slug}`;
+  const articleUrl = absoluteUrl(`/bai-viet-suc-khoe/${article.slug}`);
+  const logoUrl = absoluteUrl(settings.logo_url || "/brand/tam-duc-logo.png");
+  const coverAbs = coverUrl ? absoluteUrl(coverUrl) : undefined;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: article.title,
     description: article.excerpt || stripHtml(article.content).slice(0, 160),
-    image: coverUrl ? [coverUrl] : undefined,
+    image: coverAbs ? [coverAbs] : undefined,
     datePublished: article.created_at,
     dateModified: article.updated_at,
     author: { "@type": "Organization", name: settings.shop_name },
-    publisher: { "@type": "Organization", name: settings.shop_name },
+    publisher: {
+      "@type": "Organization",
+      name: settings.shop_name,
+      logo: { "@type": "ImageObject", url: logoUrl },
+    },
     mainEntityOfPage: articleUrl,
   };
 

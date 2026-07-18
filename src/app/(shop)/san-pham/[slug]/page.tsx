@@ -8,7 +8,8 @@ import { ProductCard } from "@/components/store/product-card";
 import { Badge } from "@/components/ui/badge";
 import { effectivePrice, formatVnd, stripHtml } from "@/lib/format";
 import { repo } from "@/lib/data/repository";
-import { pageMetadata, siteUrl } from "@/lib/seo/metadata";
+import { absoluteImageUrls, absoluteUrl } from "@/lib/seo/jsonld";
+import { noindexMetadata, pageMetadata } from "@/lib/seo/metadata";
 
 export const revalidate = 60;
 
@@ -17,7 +18,7 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const product = await repo.getProductBySlug(slug);
-  if (!product) return { title: "Sản phẩm" };
+  if (!product) return noindexMetadata("Sản phẩm", "Sản phẩm không tồn tại.");
   const desc = product.seo_description || stripHtml(product.description);
   return {
     ...pageMetadata({
@@ -35,10 +36,11 @@ export default async function ProductDetailPage({ params }: Props) {
   if (!product) notFound();
 
   const related = await repo.listRelatedProducts(product.category_id, product.id, 4);
+  const settings = await repo.getSettings();
 
   const price = effectivePrice(product.price, product.sale_price);
   const onSale = product.sale_price != null && product.sale_price < product.price;
-  const productUrl = `${siteUrl()}/san-pham/${product.slug}`;
+  const productUrl = absoluteUrl(`/san-pham/${product.slug}`);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -46,8 +48,12 @@ export default async function ProductDetailPage({ params }: Props) {
     name: product.name,
     sku: product.sku,
     description: stripHtml(product.description),
-    image: product.images,
+    image: absoluteImageUrls(product.images),
     url: productUrl,
+    brand: {
+      "@type": "Brand",
+      name: settings.shop_name,
+    },
     offers: {
       "@type": "Offer",
       priceCurrency: "VND",

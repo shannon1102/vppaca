@@ -4,7 +4,8 @@ import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
 import { ProductCard } from "@/components/store/product-card";
 import { EmptyState } from "@/components/ui/empty";
 import { repo } from "@/lib/data/repository";
-import { pageMetadata } from "@/lib/seo/metadata";
+import { absoluteUrl } from "@/lib/seo/jsonld";
+import { noindexMetadata, pageMetadata, SEO_KEYWORDS } from "@/lib/seo/metadata";
 
 export const revalidate = 60;
 
@@ -14,12 +15,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const cats = await repo.listCategories();
   const cat = cats.find((c) => c.slug === slug);
-  if (!cat) return { title: "Danh mục" };
+  if (!cat) return noindexMetadata("Danh mục", "Danh mục không tồn tại.");
   return pageMetadata({
-    title: cat.name,
-    description: cat.description,
+    title: `${cat.name} — Thiết bị Y tế`,
+    description: cat.description || `Mua ${cat.name} chính hãng tại Thiết bị Y tế Tâm Đức, Hà Nội.`,
     path: `/danh-muc/${slug}`,
     image: cat.image_url ?? undefined,
+    keywords: [...SEO_KEYWORDS, cat.name],
   });
 }
 
@@ -33,8 +35,29 @@ export default async function CategoryPage({ params }: Props) {
     categorySlug: slug,
   });
 
+  const collectionJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: cat.name,
+    description: cat.description,
+    url: absoluteUrl(`/danh-muc/${cat.slug}`),
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: products.map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: absoluteUrl(`/san-pham/${p.slug}`),
+        name: p.name,
+      })),
+    },
+  };
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
+      />
       <BreadcrumbJsonLd
         items={[
           { name: "Trang chủ", path: "/" },

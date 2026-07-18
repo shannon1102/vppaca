@@ -31,11 +31,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${base}/danh-muc/${c.slug}`,
       changeFrequency: "weekly" as const,
       priority: 0.7,
+      lastModified: new Date(),
     })),
     ...products.map((p) => ({
       url: `${base}/san-pham/${p.slug}`,
       changeFrequency: "weekly" as const,
       priority: 0.8,
+      lastModified: new Date(),
     })),
     ...articles.map((a) => ({
       url: `${base}/bai-viet-suc-khoe/${a.slug}`,
