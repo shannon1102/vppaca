@@ -23,6 +23,16 @@ function SocialIconImage({ src, size }: { src: string; size: number }) {
   );
 }
 
+function iconLinkClass(key: keyof typeof ICONS, variant: Variant) {
+  const isZalo = key === "zalo";
+  const base =
+    variant === "float"
+      ? "pointer-events-auto flex h-11 w-11 items-center justify-center overflow-hidden shadow-lg transition hover:-translate-y-0.5 hover:scale-105 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      : "inline-flex h-9 w-9 items-center justify-center overflow-hidden transition hover:scale-105 hover:brightness-110";
+
+  return isZalo ? `${base} rounded-xl bg-white p-0.5` : `${base} rounded-full`;
+}
+
 export function SocialIcons({
   settings,
   variant = "footer",
@@ -49,7 +59,7 @@ export function SocialIcons({
     },
   ];
 
-  const size = variant === "float" ? 56 : 44;
+  const size = variant === "float" ? 44 : 36;
 
   if (variant === "float") {
     return (
@@ -62,7 +72,7 @@ export function SocialIcons({
             rel="noopener noreferrer"
             aria-label={item.label}
             title={item.label}
-            className="pointer-events-auto flex h-14 w-14 items-center justify-center overflow-hidden rounded-full shadow-lg transition hover:-translate-y-0.5 hover:scale-105 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className={iconLinkClass(item.key, "float")}
           >
             <SocialIconImage src={ICONS[item.key]} size={size} />
           </a>
@@ -81,7 +91,7 @@ export function SocialIcons({
           rel="noopener noreferrer"
           aria-label={item.label}
           title={item.label}
-          className="inline-flex h-11 w-11 items-center justify-center overflow-hidden rounded-full transition hover:scale-105 hover:brightness-110"
+          className={iconLinkClass(item.key, "footer")}
         >
           <SocialIconImage src={ICONS[item.key]} size={size} />
         </a>
