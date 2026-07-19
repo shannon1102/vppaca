@@ -8,7 +8,7 @@ function hash(value: string) {
 }
 
 export function expectedAdminToken(): string {
-  const email = process.env.ADMIN_EMAIL ?? "admin@medistore.vn";
+  const email = process.env.ADMIN_EMAIL ?? "admintamduc";
   const password = process.env.ADMIN_PASSWORD ?? "admin123";
   return hash(`${email}:${password}:medistore`);
 }
@@ -42,7 +42,7 @@ export async function clearAdminSession() {
 }
 
 export function verifyAdminCredentials(email: string, password: string) {
-  const expectedEmail = process.env.ADMIN_EMAIL ?? "admin@medistore.vn";
+  const expectedEmail = process.env.ADMIN_EMAIL ?? "admintamduc";
   const expectedPassword = process.env.ADMIN_PASSWORD ?? "admin123";
   return email === expectedEmail && password === expectedPassword;
 }

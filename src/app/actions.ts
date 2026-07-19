@@ -174,13 +174,15 @@ export async function saveProductAction(formData: FormData) {
   const name = String(formData.get("name") ?? "");
   const description = String(formData.get("description") ?? "");
   let detailDescription = String(formData.get("detail_description") ?? "");
+  // Overlap image persist with catalog fetch to shorten submit wait
+  const existingPromise = repo.listProducts();
   try {
     detailDescription = await persistRichHtmlImages(detailDescription);
   } catch (e) {
     console.error("[product] persistRichHtmlImages failed", e);
     redirect(`${backPath}?error=save`);
   }
-  const existing = await repo.listProducts();
+  const existing = await existingPromise;
   const slug = ensureUniqueSlug({
     title: name,
     id,
@@ -298,8 +300,9 @@ export async function saveArticleAction(formData: FormData) {
   const now = new Date().toISOString();
   const title = String(formData.get("title") ?? "");
   const coverRaw = String(formData.get("cover_image_url") ?? "").trim();
+  const articlesPromise = repo.listArticles();
   const content = await persistRichHtmlImages(String(formData.get("content") ?? ""));
-  const articles = await repo.listArticles();
+  const articles = await articlesPromise;
   const existingArticle = articles.find((a) => a.id === id);
   const article: HealthArticle = {
     id,

@@ -1,8 +1,6 @@
-import {
-  deleteCategoryAction,
-} from "@/app/actions";
+import { deleteCategoryAction } from "@/app/actions";
 import { CategoryForm } from "@/components/admin/category-form";
-import { Button } from "@/components/ui/button";
+import { PendingTextSubmit } from "@/components/admin/form-pending";
 import { requireAdminPage } from "@/lib/require-admin";
 import { repo } from "@/lib/data/repository";
 
@@ -26,9 +24,7 @@ export default async function AdminCategoriesPage() {
               </div>
               <form action={deleteCategoryAction}>
                 <input type="hidden" name="id" value={c.id} />
-                <button type="submit" className="text-sm text-red-600 underline">
-                  Xóa
-                </button>
+                <PendingTextSubmit>Xóa</PendingTextSubmit>
               </form>
             </li>
           ))}

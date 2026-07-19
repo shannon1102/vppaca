@@ -185,3 +185,12 @@ h4 {
   background: #f8fafc;
   font-weight: 600;
 }
+
+@keyframes admin-indeterminate {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
+}

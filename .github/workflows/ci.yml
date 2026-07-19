@@ -22,6 +22,6 @@ jobs:
       - run: npm run build
         env:
           USE_SUPABASE: "false"
-          ADMIN_EMAIL: admin@medistore.vn
+          ADMIN_EMAIL: admintamduc
           ADMIN_PASSWORD: admin123
           NEXT_PUBLIC_SITE_URL: http://localhost:3000

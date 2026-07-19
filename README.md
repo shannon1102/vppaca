@@ -15,7 +15,7 @@ npm run dev
 
 - Storefront: http://localhost:3000  
 - Admin: http://localhost:3000/admin/login  
-  - Email: `admin@medistore.vn`  
+  - Tài khoản: `admintamduc`  
   - Password: `admin123`
 
 ## Production (đã deploy)

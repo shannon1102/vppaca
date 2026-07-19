@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { deleteArticleAction } from "@/app/actions";
+import { PendingTextSubmit } from "@/components/admin/form-pending";
 import { Button } from "@/components/ui/button";
 import { requireAdminPage } from "@/lib/require-admin";
 import { repo } from "@/lib/data/repository";
@@ -44,9 +45,7 @@ export default async function AdminArticlesPage() {
                     </Link>
                     <form action={deleteArticleAction}>
                       <input type="hidden" name="id" value={a.id} />
-                      <button type="submit" className="text-red-600 underline">
-                        Xóa
-                      </button>
+                      <PendingTextSubmit>Xóa</PendingTextSubmit>
                     </form>
                   </div>
                 </td>

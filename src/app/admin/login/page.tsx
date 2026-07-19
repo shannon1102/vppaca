@@ -1,5 +1,5 @@
 import { adminLoginAction } from "@/app/actions";
-import { Button } from "@/components/ui/button";
+import { PendingSubmitButton } from "@/components/admin/form-pending";
 import { Input } from "@/components/ui/input";
 import { LOGIN_RATE_LIMIT } from "@/lib/auth/login-rate-limit";
 import { isAdminAuthenticated } from "@/lib/auth-admin";
@@ -22,7 +22,7 @@ export default async function AdminLoginPage({
     <div className="mx-auto max-w-md rounded-[var(--radius)] border border-slate-200 bg-white p-8 shadow-sm">
       <h1 className="text-2xl font-bold">Đăng nhập Admin</h1>
       <p className="mt-2 text-sm text-[var(--brand-muted)]">
-        Mặc định: admin@medistore.vn / admin123 (đổi qua env)
+        Mặc định: admintamduc / admin123 (đổi qua env)
       </p>
       {error === "locked" ? (
         <p className="mt-3 text-sm text-red-600">
@@ -31,15 +31,16 @@ export default async function AdminLoginPage({
           {retryMin ?? LOGIN_RATE_LIMIT.windowMinutes} phút.
         </p>
       ) : error ? (
-        <p className="mt-3 text-sm text-red-600">Email hoặc mật khẩu không đúng.</p>
+        <p className="mt-3 text-sm text-red-600">Tài khoản hoặc mật khẩu không đúng.</p>
       ) : null}
       <form action={adminLoginAction} className="mt-6 space-y-4">
         <Input
           name="email"
-          type="email"
-          label="Email"
+          type="text"
+          autoComplete="username"
+          label="Tài khoản"
           required
-          defaultValue="admin@medistore.vn"
+          defaultValue="admintamduc"
           disabled={error === "locked"}
         />
         <Input
@@ -49,9 +50,13 @@ export default async function AdminLoginPage({
           required
           disabled={error === "locked"}
         />
-        <Button type="submit" className="w-full" disabled={error === "locked"}>
+        <PendingSubmitButton
+          className="w-full"
+          disabled={error === "locked"}
+          pendingLabel="Đang đăng nhập…"
+        >
           Đăng nhập
-        </Button>
+        </PendingSubmitButton>
       </form>
     </div>
   );

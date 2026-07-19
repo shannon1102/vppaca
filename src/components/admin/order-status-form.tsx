@@ -45,8 +45,18 @@ export function OrderStatusForm({
           </option>
         ))}
       </select>
-      <Button type="submit" className="min-h-11 px-4" disabled={pending}>
-        {pending ? "Đang lưu..." : "Cập nhật"}
+      <Button type="submit" className="min-h-11 px-4" disabled={pending} aria-busy={pending}>
+        {pending ? (
+          <>
+            <span
+              className="inline-block h-4 w-4 shrink-0 animate-spin rounded-full border-2 border-current border-r-transparent"
+              aria-hidden
+            />
+            Đang lưu…
+          </>
+        ) : (
+          "Cập nhật"
+        )}
       </Button>
     </form>
   );
