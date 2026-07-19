@@ -1,14 +1,16 @@
+import { cn } from "@/lib/cn";
+
 type IconProps = { className?: string };
 
 const defaults = "h-[18px] w-[18px] shrink-0";
 
 function Svg({
-  className = defaults,
+  className,
   children,
 }: IconProps & { children: React.ReactNode }) {
   return (
     <svg
-      className={className}
+      className={cn(defaults, className)}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
