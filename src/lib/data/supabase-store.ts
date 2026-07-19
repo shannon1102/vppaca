@@ -8,7 +8,7 @@ import type {
   Product,
   SiteSettings,
 } from "@/lib/types";
-import { defaultSettings, seedArticles, seedCategories, seedProducts } from "@/data/seed";
+import { defaultSettings } from "@/data/seed";
 import { BRAND_COLORS } from "@/lib/brand-colors";
 
 function adminClient() {
@@ -420,49 +420,16 @@ export async function sbDeleteArticle(id: string): Promise<void> {
   if (error) throw error;
 }
 
-/** Bootstrap empty DB once. Skip if categories already exist (client may have 0 products). */
+/**
+ * Ensure site_settings exists. Does NOT auto-seed catalog —
+ * empty products/categories/articles is intentional after admin reset.
+ * Use `scripts/seed-catalog.cjs` when you want demo/catalog data.
+ */
 export async function sbEnsureSeed(): Promise<void> {
   const sb = adminClient();
-  const { count: categoryCount } = await sb
-    .from("categories")
-    .select("*", { count: "exact", head: true });
-  if ((categoryCount ?? 0) > 0) return;
-
-  const { count: productCount } = await sb
-    .from("products")
-    .select("*", { count: "exact", head: true });
-  if ((productCount ?? 0) > 0) return;
-
   const { data: settings } = await sb.from("site_settings").select("id").limit(1);
-  if (!settings?.length) {
-    const { id: _id, ...rest } = defaultSettings;
-    await sb.from("site_settings").insert(rest);
-  }
+  if (settings?.length) return;
 
-  await sb.from("categories").upsert(
-    seedCategories.map((c) => ({
-      id: c.id,
-      name: c.name,
-      slug: c.slug,
-      description: c.description,
-      sort: c.sort,
-      image_url: c.image_url,
-    })),
-  );
-
-  await sb.from("products").upsert(
-    seedProducts.map((p) => ({
-      ...p,
-    })),
-  );
-
-  const { count: articleCount } = await sb
-    .from("health_articles")
-    .select("*", { count: "exact", head: true });
-  if ((articleCount ?? 0) === 0) {
-    const { error: seedErr } = await sb.from("health_articles").upsert(seedArticles);
-    if (seedErr) {
-      console.warn("[seed] health_articles skipped:", seedErr.message);
-    }
-  }
+  const { id: _id, ...rest } = defaultSettings;
+  await sb.from("site_settings").insert(rest);
 }

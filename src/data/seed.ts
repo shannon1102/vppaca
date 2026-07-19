@@ -6,7 +6,7 @@ export const defaultSettings: SiteSettings = {
   shop_name: "Thiết bị Y tế Tâm Đức",
   tagline: "Tận tâm vì sức khỏe từng gia đình",
   phone: "0962 732 786",
-  email: "lienhe@thietbiytetamduc.vn",
+  email: "cotruyentamduc268@gmail.com",
   address:
     "CS1: 200 Nguyễn Viết Xuân, Hà Cầu, Hà Đông | CS2: 18 LK06A, Làng Việt Kiều, Mỗ Lao, Hà Đông",
   logo_url: "/brand/tam-duc-logo.png",
