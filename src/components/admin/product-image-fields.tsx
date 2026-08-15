@@ -76,6 +76,10 @@ export function ProductImageFields({ defaultImages = [] }: Props) {
   return (
     <div className="space-y-4">
       <input type="hidden" name="images" value={hiddenValue} />
+      <p className="text-xs text-[var(--brand-muted)]">
+        Ảnh mỗi file ≤ 5MB (JPG/PNG/GIF/WEBP, tự nén khi tải lên). URL ảnh sau
+        upload — không nhúng base64 vào form.
+      </p>
 
       <div className="space-y-2">
         <span className="text-sm font-medium">Ảnh chính</span>

@@ -19,6 +19,7 @@ type Props = {
   label?: string;
   defaultValue?: string;
   height?: number;
+  maxLength?: number;
 };
 
 export function RichTextEditor(props: Props) {

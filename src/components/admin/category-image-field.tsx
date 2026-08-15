@@ -74,7 +74,8 @@ export function CategoryImageField({ defaultValue = "" }: Props) {
         </div>
       </div>
       <p className="text-xs text-[var(--brand-muted)]">
-        Ảnh hiển thị trên trang chủ và trang danh mục sản phẩm.
+        Ảnh hiển thị trên trang chủ và trang danh mục sản phẩm. Ảnh mỗi file ≤ 5MB
+        (JPG/PNG/GIF/WEBP, tự nén khi tải lên).
       </p>
       {error ? <p className="text-sm text-red-600">{error}</p> : null}
     </div>

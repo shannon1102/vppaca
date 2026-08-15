@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
+import { FORM_LIMITS } from "@/lib/form-limits";
 import { slugify } from "@/lib/format";
 
 type Props = {
@@ -10,6 +11,7 @@ type Props = {
   pathPreview?: string;
   defaultName?: string;
   nameRequired?: boolean;
+  maxLength?: number;
 };
 
 /** Chỉ nhập tên — slug được BE tự sinh từ tên. */
@@ -19,6 +21,7 @@ export function NameSlugFields({
   pathPreview,
   defaultName = "",
   nameRequired = true,
+  maxLength = FORM_LIMITS.name,
 }: Props) {
   const [name, setName] = useState(defaultName);
   const previewSlug = slugify(name);
@@ -30,6 +33,7 @@ export function NameSlugFields({
         label={nameLabel}
         required={nameRequired}
         value={name}
+        maxLength={maxLength}
         onChange={(e) => setName(e.target.value)}
       />
       {pathPreview && previewSlug ? (
