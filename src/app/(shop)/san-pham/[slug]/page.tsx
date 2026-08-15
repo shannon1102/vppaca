@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { AddToCartButton } from "@/components/store/add-to-cart-button";
+import { ProductImageGallery } from "@/components/store/product-image-gallery";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
 import { RichContent } from "@/components/ui/rich-content";
 import { ProductCard } from "@/components/store/product-card";
@@ -77,28 +77,7 @@ export default async function ProductDetailPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="grid gap-10 md:grid-cols-2">
-        <div className="space-y-3">
-          <div className="relative aspect-square overflow-hidden rounded-[var(--radius)] border border-slate-200 bg-white">
-            <Image
-              src={product.images[0]}
-              alt={product.name}
-              fill
-              className="object-cover"
-              priority
-              sizes="(max-width:768px) 100vw, 50vw"
-            />
-          </div>
-          <div className="grid grid-cols-4 gap-2">
-            {product.images.map((src) => (
-              <div
-                key={src}
-                className="relative aspect-square overflow-hidden rounded-lg border border-slate-200 bg-white"
-              >
-                <Image src={src} alt={product.name} fill className="object-cover" sizes="100px" />
-              </div>
-            ))}
-          </div>
-        </div>
+        <ProductImageGallery images={product.images} name={product.name} />
 
         <div className="min-w-0">
           {onSale ? <Badge>Giảm giá</Badge> : null}
