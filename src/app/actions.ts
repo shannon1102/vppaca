@@ -196,7 +196,7 @@ export async function saveProductAction(formData: FormData) {
     .split("\n")
     .map((s) => s.trim())
     .filter(Boolean);
-  let specs: Record<string, string> = parseSpecsFromForm(formData);
+  const specs: Record<string, string> = parseSpecsFromForm(formData);
   const sale = String(formData.get("sale_price") ?? "");
   const name = clampText(String(formData.get("name") ?? ""), FORM_LIMITS.name);
   const description = clampText(
