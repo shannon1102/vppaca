@@ -5,6 +5,7 @@ import {
   PendingSubmitButton,
 } from "@/components/admin/form-pending";
 import { Input } from "@/components/ui/input";
+import { FORM_LIMITS } from "@/lib/form-limits";
 import { requireAdminPage } from "@/lib/require-admin";
 import { repo } from "@/lib/data/repository";
 
@@ -24,33 +25,111 @@ export default async function BrandingPage() {
           <FormBusyBar />
           <FormBusyFence className="space-y-3">
             <h2 className="font-semibold">Thông tin & brand</h2>
-            <Input name="shop_name" label="Tên shop" defaultValue={s.shop_name} required />
-            <Input name="tagline" label="Tagline" defaultValue={s.tagline} />
-            <Input name="phone" label="Hotline" defaultValue={s.phone} />
-            <Input name="email" label="Email" defaultValue={s.email} />
-            <Input name="address" label="Địa chỉ" defaultValue={s.address} />
-            <Input name="logo_url" label="Logo URL" defaultValue={s.logo_url} />
-            <Input name="favicon_url" label="Favicon URL" defaultValue={s.favicon_url} />
-            <Input name="primary_color" label="Primary color" defaultValue={s.primary_color} />
+            <Input
+              name="shop_name"
+              label="Tên shop"
+              defaultValue={s.shop_name}
+              required
+              maxLength={FORM_LIMITS.shopName}
+            />
+            <Input
+              name="tagline"
+              label="Tagline"
+              defaultValue={s.tagline}
+              maxLength={FORM_LIMITS.tagline}
+            />
+            <Input
+              name="phone"
+              label="Hotline"
+              defaultValue={s.phone}
+              maxLength={FORM_LIMITS.phone}
+            />
+            <Input
+              name="email"
+              label="Email"
+              defaultValue={s.email}
+              maxLength={FORM_LIMITS.email}
+            />
+            <Input
+              name="address"
+              label="Địa chỉ"
+              defaultValue={s.address}
+              maxLength={FORM_LIMITS.address}
+            />
+            <Input
+              name="logo_url"
+              label="Logo URL"
+              defaultValue={s.logo_url}
+              maxLength={FORM_LIMITS.url}
+            />
+            <Input
+              name="favicon_url"
+              label="Favicon URL"
+              defaultValue={s.favicon_url}
+              maxLength={FORM_LIMITS.url}
+            />
+            <Input
+              name="primary_color"
+              label="Primary color"
+              defaultValue={s.primary_color}
+              maxLength={FORM_LIMITS.color}
+            />
             <Input
               name="secondary_color"
               label="Secondary color"
               defaultValue={s.secondary_color}
+              maxLength={FORM_LIMITS.color}
             />
-            <Input name="accent_color" label="Accent color" defaultValue={s.accent_color} />
-            <Input name="facebook_url" label="Facebook URL" defaultValue={s.facebook_url} />
-            <Input name="zalo_url" label="Zalo URL" defaultValue={s.zalo_url} />
+            <Input
+              name="accent_color"
+              label="Accent color"
+              defaultValue={s.accent_color}
+              maxLength={FORM_LIMITS.color}
+            />
+            <Input
+              name="facebook_url"
+              label="Facebook URL"
+              defaultValue={s.facebook_url}
+              maxLength={FORM_LIMITS.url}
+            />
+            <Input
+              name="zalo_url"
+              label="Zalo URL"
+              defaultValue={s.zalo_url}
+              maxLength={FORM_LIMITS.url}
+            />
 
             <h2 className="pt-4 font-semibold">Chuyển khoản + QR</h2>
-            <Input name="bank_name" label="Ngân hàng" defaultValue={s.bank_name} />
-            <Input name="bank_account" label="Số TK" defaultValue={s.bank_account} />
-            <Input name="bank_holder" label="Chủ TK" defaultValue={s.bank_holder} />
+            <Input
+              name="bank_name"
+              label="Ngân hàng"
+              defaultValue={s.bank_name}
+              maxLength={FORM_LIMITS.bankName}
+            />
+            <Input
+              name="bank_account"
+              label="Số TK"
+              defaultValue={s.bank_account}
+              maxLength={FORM_LIMITS.bankAccount}
+            />
+            <Input
+              name="bank_holder"
+              label="Chủ TK"
+              defaultValue={s.bank_holder}
+              maxLength={FORM_LIMITS.bankHolder}
+            />
             <Input
               name="transfer_content_template"
               label="Nội dung CK (dùng {code})"
               defaultValue={s.transfer_content_template}
+              maxLength={FORM_LIMITS.transferTemplate}
             />
-            <Input name="qr_image_url" label="QR image URL" defaultValue={s.qr_image_url} />
+            <Input
+              name="qr_image_url"
+              label="QR image URL"
+              defaultValue={s.qr_image_url}
+              maxLength={FORM_LIMITS.url}
+            />
           </FormBusyFence>
           <PendingSubmitButton>Lưu branding</PendingSubmitButton>
         </form>

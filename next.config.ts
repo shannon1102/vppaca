@@ -3,6 +3,13 @@ import type { NextConfig } from "next";
 const CANONICAL_HOST = "thietbiytetamduc.vn";
 
 const nextConfig: NextConfig = {
+  // Vercel request body hard-limit ~4.5MB; keep Next in sync (never rely on
+  // base64-in-form — images must upload via /api/admin/upload first).
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "4.5mb",
+    },
+  },
   async redirects() {
     return [
       {

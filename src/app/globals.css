@@ -62,9 +62,13 @@ h4 {
   min-height: var(--editor-height, 360px);
 }
 
-.rich-text-editor .ql-editor.ql-blank::before {
-  color: var(--brand-muted);
-  font-style: normal;
+/* Quill picker dropdowns — keep above form chrome; no native context bleed */
+.rich-text-editor .ql-picker-options {
+  z-index: 40;
+}
+
+.rich-text-editor .ql-toolbar .ql-picker.ql-expanded .ql-picker-options {
+  z-index: 40;
 }
 
 /* Rich HTML content (product descriptions, health articles) */

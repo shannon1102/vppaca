@@ -23,7 +23,18 @@ import { BRAND_COLORS } from "@/lib/brand-colors";
 import { normalizeImageSrc } from "@/lib/media/helpers";
 import { parseSpecsFromForm } from "@/lib/product-specs";
 import { persistRichHtmlImages } from "@/lib/media/process-html-images";
+import {
+  FORM_LIMITS,
+  clampText,
+  stripDataImages,
+} from "@/lib/form-limits";
 import type { HealthArticle, Order, OrderStatus, Product } from "@/lib/types";
+
+async function sanitizeRichHtml(raw: string): Promise<string> {
+  const stripped = stripDataImages(raw);
+  const persisted = await persistRichHtmlImages(stripped);
+  return clampText(stripDataImages(persisted), FORM_LIMITS.richHtml);
+}
 
 const checkoutSchema = z.object({
   customer_name: z.string().min(2),
@@ -132,25 +143,41 @@ async function requireAdmin() {
 export async function saveSettingsAction(formData: FormData) {
   await requireAdmin();
   await repo.updateSettings({
-    shop_name: String(formData.get("shop_name") ?? ""),
-    tagline: String(formData.get("tagline") ?? ""),
-    phone: String(formData.get("phone") ?? ""),
-    email: String(formData.get("email") ?? ""),
-    address: String(formData.get("address") ?? ""),
-    logo_url: String(formData.get("logo_url") ?? ""),
-    favicon_url: String(formData.get("favicon_url") ?? ""),
-    primary_color: String(formData.get("primary_color") ?? BRAND_COLORS.primary),
-    secondary_color: String(formData.get("secondary_color") ?? BRAND_COLORS.secondary),
-    accent_color: String(formData.get("accent_color") ?? BRAND_COLORS.accent),
-    bank_name: String(formData.get("bank_name") ?? ""),
-    bank_account: String(formData.get("bank_account") ?? ""),
-    bank_holder: String(formData.get("bank_holder") ?? ""),
-    transfer_content_template: String(
-      formData.get("transfer_content_template") ?? "DH {code}",
+    shop_name: clampText(String(formData.get("shop_name") ?? ""), FORM_LIMITS.shopName),
+    tagline: clampText(String(formData.get("tagline") ?? ""), FORM_LIMITS.tagline),
+    phone: clampText(String(formData.get("phone") ?? ""), FORM_LIMITS.phone),
+    email: clampText(String(formData.get("email") ?? ""), FORM_LIMITS.email),
+    address: clampText(String(formData.get("address") ?? ""), FORM_LIMITS.address),
+    logo_url: clampText(String(formData.get("logo_url") ?? ""), FORM_LIMITS.url),
+    favicon_url: clampText(String(formData.get("favicon_url") ?? ""), FORM_LIMITS.url),
+    primary_color: clampText(
+      String(formData.get("primary_color") ?? BRAND_COLORS.primary),
+      FORM_LIMITS.color,
     ),
-    qr_image_url: String(formData.get("qr_image_url") ?? ""),
-    facebook_url: String(formData.get("facebook_url") ?? ""),
-    zalo_url: String(formData.get("zalo_url") ?? ""),
+    secondary_color: clampText(
+      String(formData.get("secondary_color") ?? BRAND_COLORS.secondary),
+      FORM_LIMITS.color,
+    ),
+    accent_color: clampText(
+      String(formData.get("accent_color") ?? BRAND_COLORS.accent),
+      FORM_LIMITS.color,
+    ),
+    bank_name: clampText(String(formData.get("bank_name") ?? ""), FORM_LIMITS.bankName),
+    bank_account: clampText(
+      String(formData.get("bank_account") ?? ""),
+      FORM_LIMITS.bankAccount,
+    ),
+    bank_holder: clampText(
+      String(formData.get("bank_holder") ?? ""),
+      FORM_LIMITS.bankHolder,
+    ),
+    transfer_content_template: clampText(
+      String(formData.get("transfer_content_template") ?? "DH {code}"),
+      FORM_LIMITS.transferTemplate,
+    ),
+    qr_image_url: clampText(String(formData.get("qr_image_url") ?? ""), FORM_LIMITS.url),
+    facebook_url: clampText(String(formData.get("facebook_url") ?? ""), FORM_LIMITS.url),
+    zalo_url: clampText(String(formData.get("zalo_url") ?? ""), FORM_LIMITS.url),
   });
   revalidatePath("/");
   revalidatePath("/admin/branding");
@@ -171,13 +198,16 @@ export async function saveProductAction(formData: FormData) {
     .filter(Boolean);
   let specs: Record<string, string> = parseSpecsFromForm(formData);
   const sale = String(formData.get("sale_price") ?? "");
-  const name = String(formData.get("name") ?? "");
-  const description = String(formData.get("description") ?? "");
+  const name = clampText(String(formData.get("name") ?? ""), FORM_LIMITS.name);
+  const description = clampText(
+    String(formData.get("description") ?? ""),
+    FORM_LIMITS.description,
+  );
   let detailDescription = String(formData.get("detail_description") ?? "");
   // Overlap image persist with catalog fetch to shorten submit wait
   const existingPromise = repo.listProducts();
   try {
-    detailDescription = await persistRichHtmlImages(detailDescription);
+    detailDescription = await sanitizeRichHtml(detailDescription);
   } catch (e) {
     console.error("[product] persistRichHtmlImages failed", e);
     redirect(`${backPath}?error=save`);
@@ -212,8 +242,11 @@ export async function saveProductAction(formData: FormData) {
     sold_count: existingProduct?.sold_count ?? 10,
     is_published: formData.get("is_published") === "on",
     is_featured: formData.get("is_featured") === "on",
-    seo_title: String(formData.get("seo_title") ?? ""),
-    seo_description: String(formData.get("seo_description") ?? ""),
+    seo_title: clampText(String(formData.get("seo_title") ?? ""), FORM_LIMITS.seoTitle),
+    seo_description: clampText(
+      String(formData.get("seo_description") ?? ""),
+      FORM_LIMITS.seoDescription,
+    ),
   };
 
   try {
@@ -240,15 +273,21 @@ export async function deleteProductAction(formData: FormData) {
 
 export async function saveCategoryAction(formData: FormData) {
   await requireAdmin();
-  const catName = String(formData.get("name") ?? "");
-  const catId = String(formData.get("id") || `cat-${Date.now()}`);
+  const catName = clampText(String(formData.get("name") ?? ""), FORM_LIMITS.name);
+  const catId = clampText(
+    String(formData.get("id") || `cat-${Date.now()}`),
+    FORM_LIMITS.categoryId,
+  );
   const categories = await repo.listCategories();
-  const imageRaw = String(formData.get("image_url") ?? "");
+  const imageRaw = clampText(String(formData.get("image_url") ?? ""), FORM_LIMITS.url);
   const cat = buildCategoryFromInput(
     {
       id: catId,
       name: catName,
-      description: String(formData.get("description") ?? ""),
+      description: clampText(
+        String(formData.get("description") ?? ""),
+        FORM_LIMITS.categoryDescription,
+      ),
       sort: Number(formData.get("sort") ?? 0),
       image_url: imageRaw || null,
     },
@@ -291,17 +330,20 @@ export async function updateOrderStatusAction(
 export async function saveArticleAction(formData: FormData) {
   await requireAdmin();
   const id = String(formData.get("id") || `art-${Date.now()}`);
-  const tagsRaw = String(formData.get("tags") ?? "");
+  const tagsRaw = clampText(String(formData.get("tags") ?? ""), FORM_LIMITS.tags);
   const tags = tagsRaw
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean)
     .slice(0, 5);
   const now = new Date().toISOString();
-  const title = String(formData.get("title") ?? "");
-  const coverRaw = String(formData.get("cover_image_url") ?? "").trim();
+  const title = clampText(String(formData.get("title") ?? ""), FORM_LIMITS.title);
+  const coverRaw = clampText(
+    String(formData.get("cover_image_url") ?? "").trim(),
+    FORM_LIMITS.url,
+  );
   const articlesPromise = repo.listArticles();
-  const content = await persistRichHtmlImages(String(formData.get("content") ?? ""));
+  const content = await sanitizeRichHtml(String(formData.get("content") ?? ""));
   const articles = await articlesPromise;
   const existingArticle = articles.find((a) => a.id === id);
   const article: HealthArticle = {
@@ -313,13 +355,16 @@ export async function saveArticleAction(formData: FormData) {
       current: existingArticle?.slug,
       taken: articles.filter((a) => a.id !== id).map((a) => a.slug),
     }),
-    excerpt: String(formData.get("excerpt") ?? ""),
+    excerpt: clampText(String(formData.get("excerpt") ?? ""), FORM_LIMITS.excerpt),
     content,
     cover_image_url: coverRaw ? normalizeImageSrc(coverRaw) : null,
     tags,
     is_published: formData.get("is_published") === "on",
-    seo_title: String(formData.get("seo_title") ?? ""),
-    seo_description: String(formData.get("seo_description") ?? ""),
+    seo_title: clampText(String(formData.get("seo_title") ?? ""), FORM_LIMITS.seoTitle),
+    seo_description: clampText(
+      String(formData.get("seo_description") ?? ""),
+      FORM_LIMITS.seoDescription,
+    ),
     created_at: String(formData.get("created_at") || now),
     updated_at: now,
   };

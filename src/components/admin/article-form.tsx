@@ -8,6 +8,8 @@ import {
 import { NameSlugFields } from "@/components/admin/name-slug-fields";
 import { RichTextEditor } from "@/components/ui/rich-text-editor";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { FORM_LIMITS } from "@/lib/form-limits";
 import type { HealthArticle } from "@/lib/types";
 
 export function ArticleForm({
@@ -28,34 +30,41 @@ export function ArticleForm({
           nameLabel="Tiêu đề"
           pathPreview="/bai-viet-suc-khoe"
           defaultName={article.title}
+          maxLength={FORM_LIMITS.title}
         />
-        <label className="block space-y-1.5 text-sm">
-          <span className="font-medium">Tóm tắt</span>
-          <textarea
-            name="excerpt"
-            rows={2}
-            defaultValue={article.excerpt}
-            className="w-full rounded-[var(--radius)] border border-slate-200 px-3 py-2"
-            placeholder="Mô tả ngắn hiển thị trên danh sách bài viết"
-          />
-        </label>
+        <Textarea
+          name="excerpt"
+          label="Tóm tắt"
+          rows={2}
+          defaultValue={article.excerpt}
+          maxLength={FORM_LIMITS.excerpt}
+          placeholder="Mô tả ngắn hiển thị trên danh sách bài viết"
+        />
         <RichTextEditor
           name="content"
           label="Nội dung"
           defaultValue={article.content}
           height={480}
+          maxLength={FORM_LIMITS.richHtml}
         />
         <ArticleCoverField defaultValue={article.cover_image_url} />
         <Input
           name="tags"
           label="Tags (phân cách bằng dấu phẩy, tối đa 5)"
           defaultValue={(article.tags ?? []).join(", ")}
+          maxLength={FORM_LIMITS.tags}
         />
-        <Input name="seo_title" label="SEO title" defaultValue={article.seo_title} />
+        <Input
+          name="seo_title"
+          label="SEO title"
+          defaultValue={article.seo_title}
+          maxLength={FORM_LIMITS.seoTitle}
+        />
         <Input
           name="seo_description"
           label="SEO description"
           defaultValue={article.seo_description}
+          maxLength={FORM_LIMITS.seoDescription}
         />
         <label className="flex items-center gap-2 text-sm">
           <input

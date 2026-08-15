@@ -74,7 +74,8 @@ export function ArticleCoverField({ defaultValue = "" }: Props) {
         </div>
       </div>
       <p className="text-xs text-[var(--brand-muted)]">
-        Ảnh hiển thị trên danh sách bài viết sức khỏe.
+        Ảnh hiển thị trên danh sách bài viết sức khỏe. Ảnh mỗi file ≤ 5MB
+        (JPG/PNG/GIF/WEBP, tự nén khi tải lên).
       </p>
       {error ? <p className="text-sm text-red-600">{error}</p> : null}
     </div>
