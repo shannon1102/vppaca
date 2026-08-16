@@ -5,6 +5,7 @@ import { isSupabaseConfigured } from "@/lib/data/repository";
 import {
   extFromMime,
   safeFilename,
+  uploadDatePrefix,
   validateImageFile,
 } from "@/lib/media/helpers";
 import type { MediaFile } from "@/lib/types";
@@ -53,7 +54,7 @@ async function localSaveRecord(record: MediaFile): Promise<MediaFile> {
 export async function saveUploadedImage(file: File): Promise<MediaFile> {
   validateImageFile(file);
 
-  const id = `media-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  const id = `${uploadDatePrefix()}-media-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   const ext = extFromMime(file.type);
   const storageKey = `${id}.${ext}`;
   const originalName = safeFilename(file.name || `image.${ext}`);

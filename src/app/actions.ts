@@ -21,6 +21,7 @@ import { CACHE_TAGS } from "@/lib/data/cached-repo";
 import { ensureUniqueSku, ensureUniqueSlug, orderCode } from "@/lib/format";
 import { BRAND_COLORS } from "@/lib/brand-colors";
 import { normalizeImageSrc } from "@/lib/media/helpers";
+import { deleteArticleMedia } from "@/lib/media/delete-media";
 import { parseSpecsFromForm } from "@/lib/product-specs";
 import { persistRichHtmlImages } from "@/lib/media/process-html-images";
 import {
@@ -377,7 +378,12 @@ export async function saveArticleAction(formData: FormData) {
 
 export async function deleteArticleAction(formData: FormData) {
   await requireAdmin();
-  await repo.deleteArticle(String(formData.get("id")));
+  const id = String(formData.get("id"));
+  const article = await repo.getArticleById(id);
+  if (article) {
+    await deleteArticleMedia(article);
+  }
+  await repo.deleteArticle(id);
   revalidatePath("/bai-viet-suc-khoe");
   revalidatePath("/admin/articles");
   revalidateTag(CACHE_TAGS.articles, "max");

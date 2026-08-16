@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isAdminAuthenticated } from "@/lib/auth-admin";
 import { repo } from "@/lib/data/repository";
+import { deleteArticleMedia } from "@/lib/media/delete-media";
 import { ensureUniqueSlug } from "@/lib/format";
 import type { HealthArticle } from "@/lib/types";
 
@@ -56,6 +57,7 @@ export async function DELETE(_req: Request, ctx: RouteCtx) {
   if (!existing) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
+  await deleteArticleMedia(existing);
   await repo.deleteArticle(existing.id);
   return NextResponse.json({ ok: true });
 }

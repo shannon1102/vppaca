@@ -1,13 +1,12 @@
 /**
  * Reset catalog data for client handoff.
  * Keeps: site_settings (email/branding/bank), categories, admin (env-based)
- * Clears: products, orders, order_items, health_articles, media_files
+ * Clears: products, orders, order_items, health_articles, media_files + storage bucket
  *
  * Usage: node scripts/reset-catalog.cjs
  */
 const fs = require("fs");
 const path = require("path");
-const { createClient } = require("@supabase/supabase-js");
 
 const root = path.join(__dirname, "..");
 
@@ -33,19 +32,87 @@ function loadEnv() {
   return env;
 }
 
-async function clearTable(sb, name) {
-  const { error } = await sb.from(name).delete().neq("id", "__none__");
-  if (error) {
+function sbHeaders(key) {
+  return {
+    apikey: key,
+    Authorization: `Bearer ${key}`,
+    "Content-Type": "application/json",
+  };
+}
+
+async function sbFetch(env, route, opts = {}) {
+  const base = env.NEXT_PUBLIC_SUPABASE_URL || env.SUPABASE_URL;
+  const key = env.SUPABASE_SERVICE_ROLE_KEY || env.SUPABASE_SECRET_KEY;
+  const res = await fetch(`${base}${route}`, {
+    ...opts,
+    headers: { ...sbHeaders(key), ...(opts.headers || {}) },
+  });
+  const text = await res.text();
+  let json = null;
+  try {
+    json = text ? JSON.parse(text) : null;
+  } catch {
+    json = text;
+  }
+  if (!res.ok) {
+    const msg =
+      typeof json === "object" && json?.message
+        ? json.message
+        : text || res.statusText;
+    const err = new Error(`${route} failed (${res.status}): ${msg}`);
+    err.status = res.status;
+    err.body = json;
+    throw err;
+  }
+  return json;
+}
+
+async function clearTable(env, name) {
+  try {
+    await sbFetch(env, `/rest/v1/${name}?id=neq.__none__`, {
+      method: "DELETE",
+      headers: { Prefer: "return=minimal" },
+    });
+    console.log(`cleared ${name}`);
+  } catch (e) {
     if (
-      error.code === "PGRST205" ||
-      error.message?.includes("Could not find")
+      e.status === 404 ||
+      String(e.message).includes("Could not find") ||
+      String(e.message).includes("PGRST205")
     ) {
       console.log(`skip ${name}: table missing`);
       return;
     }
-    throw error;
+    throw e;
   }
-  console.log(`cleared ${name}`);
+}
+
+async function clearStorageBucket(env) {
+  const limit = 100;
+  let offset = 0;
+  let removed = 0;
+
+  while (true) {
+    const list = await sbFetch(env, "/storage/v1/object/list/media", {
+      method: "POST",
+      body: JSON.stringify({ prefix: "", limit, offset }),
+    });
+    if (!Array.isArray(list) || list.length === 0) break;
+
+    const names = list.map((f) => f.name).filter(Boolean);
+    if (names.length) {
+      await sbFetch(env, "/storage/v1/object/media", {
+        method: "DELETE",
+        body: JSON.stringify({ prefixes: names }),
+      });
+      removed += names.length;
+    }
+
+    if (list.length < limit) break;
+    offset += limit;
+  }
+
+  console.log(`cleared storage bucket: ${removed} file(s)`);
 }
 
 async function main() {
@@ -54,35 +121,32 @@ async function main() {
   const key = env.SUPABASE_SERVICE_ROLE_KEY || env.SUPABASE_SECRET_KEY;
   if (!url || !key) throw new Error("Missing Supabase credentials");
 
-  const sb = createClient(url, key, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
-
   // order_items first (FK to orders)
-  await clearTable(sb, "order_items");
-  await clearTable(sb, "orders");
-  await clearTable(sb, "products");
-  await clearTable(sb, "health_articles");
-  await clearTable(sb, "media_files");
+  await clearTable(env, "order_items");
+  await clearTable(env, "orders");
+  await clearTable(env, "products");
+  await clearTable(env, "health_articles");
+  await clearTable(env, "media_files");
+  await clearStorageBucket(env);
 
-  const { data: cats, error: cErr } = await sb
-    .from("categories")
-    .select("id,name")
-    .order("sort");
-  if (cErr) throw cErr;
-
-  const { data: settings, error: sErr } = await sb
-    .from("site_settings")
-    .select("shop_name,email,phone")
-    .limit(1)
-    .maybeSingle();
-  if (sErr) throw sErr;
+  const cats = await sbFetch(
+    env,
+    "/rest/v1/categories?select=id,name&order=sort.asc",
+  );
+  const settings = await sbFetch(
+    env,
+    "/rest/v1/site_settings?select=shop_name,email,phone&limit=1",
+  );
 
   console.log(
     "OK — kept categories:",
     (cats ?? []).map((c) => c.name).join(", ") || "(none)",
   );
-  console.log("OK — kept settings:", settings?.shop_name, settings?.email);
+  console.log(
+    "OK — kept settings:",
+    settings?.[0]?.shop_name ?? settings?.shop_name,
+    settings?.[0]?.email ?? settings?.email,
+  );
   console.log(
     "Admin login remains via ADMIN_EMAIL / ADMIN_PASSWORD env on Vercel.",
   );

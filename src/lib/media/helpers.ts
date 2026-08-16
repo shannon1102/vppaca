@@ -34,6 +34,48 @@ export function safeFilename(name: string): string {
   return name.replace(/[^\w.\-() ]+/g, "_").slice(0, 120);
 }
 
+/** YYYYMMDD prefix for uploaded files (traceability). */
+export function uploadDatePrefix(date = new Date()): string {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}${m}${d}`;
+}
+
+const MANAGED_KEY_RE =
+  /^(\d{8}-)?media-\d+-[a-z0-9]+\.(jpg|jpeg|png|gif|webp)$/i;
+
+/** Extract storage key from a managed upload URL or path. */
+export function storageKeyFromUrl(src: string): string | null {
+  const url = normalizeImageSrc(src);
+  if (!url) return null;
+
+  if (url.startsWith("/uploads/")) {
+    const key = url.slice("/uploads/".length).split("?")[0];
+    return MANAGED_KEY_RE.test(key) ? key : null;
+  }
+
+  const match = url.match(/\/storage\/v1\/object\/public\/media\/([^?#]+)/i);
+  if (match) {
+    const key = decodeURIComponent(match[1]);
+    return MANAGED_KEY_RE.test(key) ? key : null;
+  }
+
+  return MANAGED_KEY_RE.test(url) ? url : null;
+}
+
+const IMG_SRC_RE = /<img\b[^>]*\ssrc=["']([^"']+)["']/gi;
+
+/** Collect managed upload URLs referenced in rich HTML. */
+export function extractManagedImageUrlsFromHtml(html: string): string[] {
+  const urls = new Set<string>();
+  for (const match of html.matchAll(IMG_SRC_RE)) {
+    const key = storageKeyFromUrl(match[1]);
+    if (key) urls.add(normalizeImageSrc(match[1]));
+  }
+  return [...urls];
+}
+
 /** Unwrap nested Next.js image optimizer URLs from copy-paste. */
 export function normalizeImageSrc(src: string): string {
   let url = src.trim();
