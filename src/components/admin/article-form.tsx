@@ -40,13 +40,15 @@ export function ArticleForm({
           maxLength={FORM_LIMITS.excerpt}
           placeholder="Mô tả ngắn hiển thị trên danh sách bài viết"
         />
-        <RichTextEditor
-          name="content"
-          label="Nội dung"
-          defaultValue={article.content}
-          height={480}
-          maxLength={FORM_LIMITS.richHtml}
-        />
+        <div className="flex h-[min(70vh,70dvh,52rem)] min-h-[24rem] w-full flex-col">
+          <RichTextEditor
+            name="content"
+            label="Nội dung"
+            defaultValue={article.content}
+            heightPercent={100}
+            maxLength={FORM_LIMITS.richHtml}
+          />
+        </div>
         <ArticleCoverField defaultValue={article.cover_image_url} />
         <Input
           name="tags"

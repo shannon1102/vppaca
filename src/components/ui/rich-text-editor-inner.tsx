@@ -52,15 +52,39 @@ type Props = {
   name: string;
   label?: string;
   defaultValue?: string;
-  height?: number;
+  /**
+   * Editor shell height. Number = px.
+   * String = any CSS length (e.g. "70%", "65vh", "min(65vh, 48rem)").
+   * Percent is relative to the parent; parent should have an explicit height.
+   */
+  height?: number | string;
+  /** Shortcut: height as % of parent (e.g. 70 → "70%"). Overrides `height` when set. */
+  heightPercent?: number;
   maxLength?: number;
 };
+
+function resolveEditorHeight(
+  height: number | string | undefined,
+  heightPercent: number | undefined,
+): string {
+  if (typeof heightPercent === "number" && Number.isFinite(heightPercent)) {
+    return `${Math.min(100, Math.max(20, heightPercent))}%`;
+  }
+  if (typeof height === "number" && Number.isFinite(height)) {
+    return `${height}px`;
+  }
+  if (typeof height === "string" && height.trim()) {
+    return height.trim();
+  }
+  return "min(65vh, 48rem)";
+}
 
 export function RichTextEditorInner({
   name,
   label,
   defaultValue = "",
-  height = 360,
+  height,
+  heightPercent,
   maxLength = FORM_LIMITS.richHtml,
 }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -72,6 +96,7 @@ export function RichTextEditorInner({
   const [value, setValue] = useState(defaultValue);
   const [uploading, setUploading] = useState(false);
   const [charCount, setCharCount] = useState(defaultValue.length);
+  const editorHeight = resolveEditorHeight(height, heightPercent);
 
   const setBusy = useCallback((busy: boolean) => {
     busyRef.current = busy;
@@ -323,11 +348,18 @@ export function RichTextEditorInner({
   }, [flushEditorToHidden, maxLength, setBusy, uploadPendingBase64]);
 
   const overLimit = charCount > maxLength;
+  const fillParent = typeof heightPercent === "number";
 
   return (
-    <label className="block space-y-1.5 text-sm">
+    <label
+      className={
+        fillParent
+          ? "flex h-full min-h-0 flex-col gap-1.5 text-sm"
+          : "block space-y-1.5 text-sm"
+      }
+    >
       {label ? (
-        <span className="flex items-baseline justify-between gap-2 font-medium">
+        <span className="flex shrink-0 items-baseline justify-between gap-2 font-medium">
           <span>{label}</span>
           <span
             className={
@@ -341,15 +373,24 @@ export function RichTextEditorInner({
         </span>
       ) : null}
       {uploading ? (
-        <p className="text-xs text-[var(--brand-primary)]">Đang tải ảnh lên...</p>
+        <p className="shrink-0 text-xs text-[var(--brand-primary)]">Đang tải ảnh lên...</p>
       ) : null}
       <div
         ref={wrapRef}
-        className="rich-text-editor overflow-hidden rounded-[var(--radius)] border border-slate-200 bg-white"
-        style={{ ["--editor-height" as string]: `${height}px` }}
+        className={
+          fillParent
+            ? "rich-text-editor rich-text-editor--fill rounded-[var(--radius)] border border-slate-200 bg-white"
+            : "rich-text-editor rounded-[var(--radius)] border border-slate-200 bg-white"
+        }
+        style={
+          fillParent
+            ? undefined
+            : { ["--editor-height" as string]: editorHeight }
+        }
       >
         <ReactQuill
           theme="snow"
+          className="quill"
           value={value}
           onChange={(html) => {
             setValue(html);
@@ -371,7 +412,7 @@ export function RichTextEditorInner({
         name={name}
         defaultValue={hasDataImages(defaultValue) ? stripDataImages(defaultValue) : defaultValue}
       />
-      <span className="block text-xs text-[var(--brand-muted)]">
+      <span className="block shrink-0 text-xs text-[var(--brand-muted)]">
         {formatRichHtmlLimit()} · {formatImageLimit()}
       </span>
     </label>

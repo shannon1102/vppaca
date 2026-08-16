@@ -45,21 +45,65 @@ h4 {
   font-family: var(--font-display);
 }
 
-/* Quill editor (admin) */
+/* Quill editor (admin) — fixed shell, sticky toolbar, scrollable body */
+.rich-text-editor {
+  display: flex;
+  flex-direction: column;
+  height: var(--editor-height, min(65vh, 65dvh, 48rem));
+  min-height: 20rem;
+  /* Keep visible so toolbar pickers are not clipped on laptop */
+  overflow: visible;
+}
+
+/* Fill remaining space inside a sized parent (percent / flex layouts) */
+.rich-text-editor.rich-text-editor--fill {
+  height: auto;
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+.rich-text-editor .quill {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
 .rich-text-editor .ql-toolbar {
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 3;
   border: none;
   border-bottom: 1px solid #e2e8f0;
   background: #f8fafc;
 }
 
 .rich-text-editor .ql-container {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: auto !important; /* override Quill snow fixed height on laptop */
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   border: none;
   font-family: var(--font-body);
   font-size: 1rem;
 }
 
 .rich-text-editor .ql-editor {
-  min-height: var(--editor-height, 360px);
+  min-height: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.rich-text-editor .ql-editor img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Quill picker dropdowns — keep above form chrome; no native context bleed */

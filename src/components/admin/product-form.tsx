@@ -76,13 +76,15 @@ export function ProductForm({
           maxLength={FORM_LIMITS.description}
           placeholder="Mô tả ngắn hiển thị cạnh giá trên trang sản phẩm"
         />
-        <RichTextEditor
-          name="detail_description"
-          label="Mô tả chi tiết"
-          defaultValue={product.detail_description}
-          height={360}
-          maxLength={FORM_LIMITS.richHtml}
-        />
+        <div className="flex h-[min(55vh,55dvh,40rem)] min-h-[20rem] w-full flex-col">
+          <RichTextEditor
+            name="detail_description"
+            label="Mô tả chi tiết"
+            defaultValue={product.detail_description}
+            heightPercent={100}
+            maxLength={FORM_LIMITS.richHtml}
+          />
+        </div>
         <ProductImageFields defaultImages={product.images} />
         <ProductSpecsFields specs={product.specs} />
         <Input
