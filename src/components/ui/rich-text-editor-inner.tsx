@@ -34,11 +34,16 @@ type QuillInstance = {
   on: (event: string, handler: () => void) => void;
 };
 
+function getEditorRoot(wrapper: HTMLElement | null): HTMLElement | null {
+  return wrapper?.querySelector(".ql-editor") ?? null;
+}
+
 function getQuillFromWrapper(wrapper: HTMLElement | null): QuillInstance | null {
-  if (!wrapper) return null;
-  const editor = wrapper.querySelector(".ql-editor");
+  const editor = getEditorRoot(wrapper);
   if (!editor) return null;
-  return Quill.find(editor) as QuillInstance | null;
+  const quill = Quill.find(editor) as QuillInstance | null;
+  if (!quill?.root) return null;
+  return quill;
 }
 
 function safeHtmlForSubmit(html: string): string | null {
@@ -105,8 +110,7 @@ export function RichTextEditorInner({
 
   /** Never write base64 into the form field — that caused HTTP 413 (~5MB+). */
   const flushEditorToHidden = useCallback(() => {
-    const quill = getQuillFromWrapper(wrapRef.current);
-    const raw = quill?.root.innerHTML ?? "";
+    const raw = getEditorRoot(wrapRef.current)?.innerHTML ?? "";
     setValue(raw);
     setCharCount(raw.length);
 
@@ -120,10 +124,10 @@ export function RichTextEditorInner({
   }, [maxLength]);
 
   const uploadPendingBase64 = useCallback(async () => {
-    const quill = getQuillFromWrapper(wrapRef.current);
-    if (!quill) return;
+    const editor = getEditorRoot(wrapRef.current);
+    if (!editor) return;
 
-    const imgs = quill.root.querySelectorAll('img[src^="data:"]');
+    const imgs = editor.querySelectorAll('img[src^="data:"]');
     if (!imgs.length) return;
 
     for (const img of Array.from(imgs)) {
@@ -149,8 +153,8 @@ export function RichTextEditorInner({
   }, [flushEditorToHidden]);
 
   const replaceBase64Images = useCallback(async () => {
-    const quill = getQuillFromWrapper(wrapRef.current);
-    if (!quill?.root.querySelector('img[src^="data:"]')) return;
+    const editor = getEditorRoot(wrapRef.current);
+    if (!editor?.querySelector('img[src^="data:"]')) return;
     if (busyRef.current) {
       await uploadPendingBase64();
       return;
@@ -230,10 +234,12 @@ export function RichTextEditorInner({
         }
       };
 
-      quill.root.addEventListener("paste", onPaste, true);
+      const editorRoot = quill.root ?? getEditorRoot(wrapRef.current);
+      if (!editorRoot) return;
+      editorRoot.addEventListener("paste", onPaste, true);
       quill.on("text-change", () => {
         void replaceBase64Images();
-        const html = quill.root.innerHTML;
+        const html = editorRoot.innerHTML;
         setCharCount(html.length);
         if (!hasDataImages(html) && hiddenRef.current) {
           hiddenRef.current.value =
@@ -299,6 +305,11 @@ export function RichTextEditorInner({
       }
 
       void (async () => {
+        if (!getEditorRoot(wrapRef.current)) {
+          alert("Trình soạn thảo chưa sẵn sàng. Vui lòng đợi vài giây rồi thử lưu lại.");
+          return;
+        }
+
         setBusy(true);
         try {
           await uploadPendingBase64();
