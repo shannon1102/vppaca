@@ -128,6 +128,7 @@ h4 {
 .rich-content h2,
 .rich-content h3 {
   font-family: var(--font-display);
+  scroll-margin-top: 5.5rem;
 }
 
 .rich-content h2 {
@@ -142,6 +143,24 @@ h4 {
   margin-bottom: 0.5em;
   font-size: 1.15rem;
   font-weight: 600;
+}
+
+/* Health article TOC */
+.article-toc ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rich-content h2[id],
+.rich-content h3[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 .rich-content p {

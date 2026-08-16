@@ -1,10 +1,14 @@
 import sanitizeHtml from "sanitize-html";
+import { injectHeadingAnchors } from "@/lib/content/article-toc";
 import { normalizeImageSrc, normalizeRichHtml } from "@/lib/media/helpers";
 import { embedYouTubeInContent, extractYouTubeId } from "@/lib/media/youtube";
+import { ArticleToc } from "@/components/store/article-toc";
 
 type Props = {
   content: string;
   className?: string;
+  /** When true, build TOC from h2/h3 and inject anchor ids (health articles only). */
+  withToc?: boolean;
 };
 
 function looksLikeHtml(content: string): boolean {
@@ -27,6 +31,8 @@ const sanitizeOptions: sanitizeHtml.IOptions = {
     a: ["href", "name", "target", "rel"],
     iframe: ["src", "title", "allow", "allowfullscreen", "loading", "referrerpolicy"],
     div: ["class"],
+    h2: ["id"],
+    h3: ["id"],
   },
   allowedSchemesByTag: {
     img: ["http", "https", "data"],
@@ -81,22 +87,33 @@ const sanitizeOptions: sanitizeHtml.IOptions = {
         },
       };
     },
+    // Quill Header 1 → h2 so article H1 stays the page title only
     h1: () => ({ tagName: "h2", attribs: {} }),
   },
 };
 
-export function RichContent({ content, className = "" }: Props) {
-  if (!content.trim()) return null;
-
+function toSafeHtml(content: string): string {
   const raw = looksLikeHtml(content) ? content : plainToHtml(content);
   const withYoutube = embedYouTubeInContent(raw);
   const normalized = normalizeRichHtml(withYoutube);
-  const html = sanitizeHtml(normalized, sanitizeOptions);
+  return sanitizeHtml(normalized, sanitizeOptions);
+}
+
+export function RichContent({ content, className = "", withToc = false }: Props) {
+  if (!content.trim()) return null;
+
+  const safe = toSafeHtml(content);
+  const { html, toc } = withToc
+    ? injectHeadingAnchors(safe)
+    : { html: safe, toc: [] };
 
   return (
-    <div
-      className={`rich-content text-[var(--brand-text)] ${className}`}
-      dangerouslySetInnerHTML={{ __html: html }}
-    />
+    <>
+      {withToc ? <ArticleToc items={toc} /> : null}
+      <div
+        className={`rich-content text-[var(--brand-text)] ${className}`}
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
+    </>
   );
 }
