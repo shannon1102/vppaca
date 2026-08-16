@@ -1,8 +1,8 @@
 /** Shared admin form limits — keep under Vercel ~4.5MB request body. */
 
 export const FORM_LIMITS = {
-  /** Next/Vercel practical ceiling for Server Action body */
-  requestBodyBytes: 4 * 1024 * 1024,
+  /** Next/Vercel practical ceiling for Server Action body (matches next.config) */
+  requestBodyBytes: Math.floor(4.5 * 1024 * 1024),
   imageUploadBytes: 5 * 1024 * 1024,
   imageUploadLabel: "5MB",
 
@@ -10,8 +10,8 @@ export const FORM_LIMITS = {
   name: 200,
   excerpt: 500,
   description: 2000,
-  /** Rich HTML without base64 images */
-  richHtml: 400_000,
+  /** Rich HTML without base64 images (counts tags, spaces, entities) */
+  richHtml: 4_000_000,
   tags: 120,
   seoTitle: 70,
   seoDescription: 160,
