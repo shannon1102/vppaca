@@ -146,7 +146,7 @@ h4 {
 }
 
 /* Health article TOC */
-.article-toc ol {
+.article-toc ul {
   list-style: none;
   padding: 0;
   margin: 0;

@@ -1,24 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import type { TocItem } from "@/lib/content/article-toc";
-
-type NumberedTocItem = TocItem & { label: string };
-
-function withHierarchicalNumbers(items: TocItem[]): NumberedTocItem[] {
-  let major = 0;
-  let minor = 0;
-  return items.map((item) => {
-    if (item.level === 2) {
-      major += 1;
-      minor = 0;
-      return { ...item, label: `${major}` };
-    }
-    if (major === 0) major = 1;
-    minor += 1;
-    return { ...item, label: `${major}.${minor}` };
-  });
-}
 
 function ListIcon({ className }: { className?: string }) {
   return (
@@ -59,10 +42,12 @@ function ChevronIcon({ open, className }: { open: boolean; className?: string })
   );
 }
 
-/** WordPress-style collapsible TOC — health articles only. */
+/**
+ * Collapsible TOC — health articles only.
+ * No auto-numbering: Quill headings often already include "1.", "2.1." etc.
+ */
 export function ArticleToc({ items }: { items: TocItem[] }) {
   const [open, setOpen] = useState(true);
-  const numbered = useMemo(() => withHierarchicalNumbers(items), [items]);
 
   if (items.length < 2) return null;
 
@@ -73,7 +58,7 @@ export function ArticleToc({ items }: { items: TocItem[] }) {
     >
       <button
         type="button"
-        className="flex w-full cursor-pointer items-center gap-2.5 px-5 py-4 text-left sm:px-6 sm:py-4"
+        className="flex w-full cursor-pointer items-center gap-2.5 px-6 py-4 text-left sm:px-8 sm:py-4"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
       >
@@ -85,22 +70,25 @@ export function ArticleToc({ items }: { items: TocItem[] }) {
       </button>
 
       {open ? (
-        <ol className="space-y-3 border-t border-slate-300/70 px-5 py-5 text-sm leading-relaxed sm:space-y-3.5 sm:px-6 sm:py-6 sm:text-base">
-          {numbered.map((item) => (
+        <ul className="space-y-0 border-t border-slate-300/70 px-6 py-4 text-sm leading-snug sm:px-8 sm:py-5 sm:text-base">
+          {items.map((item) => (
             <li
               key={item.id}
-              className={`list-none ${item.level === 3 ? "ml-5 sm:ml-7" : ""}`}
+              className={`flex list-none gap-2 ${item.level === 3 ? "ml-5 sm:ml-7" : ""}`}
             >
+              <span
+                className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-700"
+                aria-hidden
+              />
               <a
                 href={`#${item.id}`}
-                className="inline-block py-0.5 text-slate-900 underline underline-offset-4 hover:text-[var(--brand-primary)]"
+                className="py-0.5 text-slate-900 underline underline-offset-2 hover:text-[var(--brand-primary)]"
               >
-                <span className="font-medium tabular-nums">{item.label}.</span>{" "}
                 {item.text}
               </a>
             </li>
           ))}
-        </ol>
+        </ul>
       ) : null}
     </nav>
   );
