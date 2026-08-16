@@ -73,7 +73,7 @@ export function ArticleToc({ items }: { items: TocItem[] }) {
     >
       <button
         type="button"
-        className="flex w-full cursor-pointer items-center gap-2 px-4 py-3 text-left"
+        className="flex w-full cursor-pointer items-center gap-2.5 px-5 py-4 text-left sm:px-6 sm:py-4"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
       >
@@ -85,15 +85,15 @@ export function ArticleToc({ items }: { items: TocItem[] }) {
       </button>
 
       {open ? (
-        <ol className="space-y-2 border-t border-slate-300/70 px-4 py-3 text-sm sm:text-base">
+        <ol className="space-y-3 border-t border-slate-300/70 px-5 py-5 text-sm leading-relaxed sm:space-y-3.5 sm:px-6 sm:py-6 sm:text-base">
           {numbered.map((item) => (
             <li
               key={item.id}
-              className={`list-none ${item.level === 3 ? "ml-5 sm:ml-6" : ""}`}
+              className={`list-none ${item.level === 3 ? "ml-5 sm:ml-7" : ""}`}
             >
               <a
                 href={`#${item.id}`}
-                className="text-slate-900 underline underline-offset-2 hover:text-[var(--brand-primary)]"
+                className="inline-block py-0.5 text-slate-900 underline underline-offset-4 hover:text-[var(--brand-primary)]"
               >
                 <span className="font-medium tabular-nums">{item.label}.</span>{" "}
                 {item.text}

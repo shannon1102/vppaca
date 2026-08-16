@@ -18,8 +18,8 @@ export function AdminShell({
       <Suspense fallback={null}>
         <AdminToastListener />
       </Suspense>
-      <aside className="flex w-full shrink-0 flex-col bg-[var(--brand-secondary)] text-white md:w-60 md:min-h-screen">
-        <div className="border-b border-white/10 px-5 py-5">
+      <aside className="flex w-full shrink-0 flex-col bg-[var(--brand-secondary)] text-white md:sticky md:top-0 md:h-screen md:w-60 md:overflow-hidden">
+        <div className="shrink-0 border-b border-white/10 px-5 py-5">
           <Link href="/admin" prefetch className="block cursor-pointer">
             <span className="text-lg font-bold tracking-tight line-clamp-2">
               {shopName}
@@ -29,8 +29,10 @@ export function AdminShell({
             </span>
           </Link>
         </div>
-        <AdminNav />
-        <div className="mt-auto hidden space-y-2 border-t border-white/10 px-3 py-4 md:block">
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+          <AdminNav />
+        </div>
+        <div className="mt-auto hidden shrink-0 space-y-2 border-t border-white/10 px-3 py-4 md:block">
           <Link
             href="/"
             prefetch
@@ -50,7 +52,7 @@ export function AdminShell({
             </Button>
           </form>
         </div>
-        <div className="flex items-center justify-between gap-2 border-t border-white/10 px-3 py-3 md:hidden">
+        <div className="flex shrink-0 items-center justify-between gap-2 border-t border-white/10 px-3 py-3 md:hidden">
           <Link
             href="/"
             prefetch
