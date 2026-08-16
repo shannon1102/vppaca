@@ -42,7 +42,7 @@ export function injectHeadingAnchors(html: string): {
       }
 
       const level = Number(levelStr) as 2 | 3;
-      let base = slugify(text) || `muc-${++auto}`;
+      const base = slugify(text) || `muc-${++auto}`;
       let id = base;
       let n = 2;
       while (used.has(id)) {
