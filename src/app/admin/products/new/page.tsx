@@ -1,7 +1,9 @@
 import { ProductForm } from "@/components/admin/product-form";
 import { FormErrorBanner } from "@/components/admin/form-error-banner";
 import { requireAdminPage } from "@/lib/require-admin";
+import { isAtProductLimit } from "@/lib/catalog-limits";
 import { repo } from "@/lib/data/repository";
+import { redirect } from "next/navigation";
 import type { Product } from "@/lib/types";
 
 export default async function NewProductPage({
@@ -11,7 +13,13 @@ export default async function NewProductPage({
 }) {
   await requireAdminPage();
   const { error } = await searchParams;
-  const categories = await repo.listCategories();
+  const [categories, products] = await Promise.all([
+    repo.listCategories(),
+    repo.listProducts(),
+  ]);
+  if (isAtProductLimit(products.length)) {
+    redirect("/admin/products?error=product-limit");
+  }
   const blank: Partial<Product> = {
     name: "",
     slug: "",

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { isAdminAuthenticated } from "@/lib/auth-admin";
+import { isAtArticleLimit, articleLimitMessage } from "@/lib/catalog-limits";
 import { repo } from "@/lib/data/repository";
 import { ensureUniqueSlug } from "@/lib/format";
 import type { HealthArticle } from "@/lib/types";
@@ -34,6 +35,10 @@ export async function POST(req: Request) {
   const now = new Date().toISOString();
   const id = body.id ?? `art-${Date.now()}`;
   const articles = await repo.listArticles();
+  const existing = articles.find((a) => a.id === id);
+  if (!existing && isAtArticleLimit(articles.length)) {
+    return NextResponse.json({ error: articleLimitMessage() }, { status: 403 });
+  }
   const article: HealthArticle = {
     id,
     title: body.title,

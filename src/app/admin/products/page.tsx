@@ -2,6 +2,11 @@ import Link from "next/link";
 import { deleteProductAction } from "@/app/actions";
 import { PendingTextSubmit } from "@/components/admin/form-pending";
 import { Button } from "@/components/ui/button";
+import {
+  CATALOG_LIMITS,
+  formatCatalogUsage,
+  isAtProductLimit,
+} from "@/lib/catalog-limits";
 import { formatVnd } from "@/lib/format";
 import { requireAdminPage } from "@/lib/require-admin";
 import { repo } from "@/lib/data/repository";
@@ -9,14 +14,26 @@ import { repo } from "@/lib/data/repository";
 export default async function AdminProductsPage() {
   await requireAdminPage();
   const products = await repo.listProducts();
+  const atLimit = isAtProductLimit(products.length);
 
   return (
     <div>
-      <div className="flex items-center justify-between gap-4">
-        <h1 className="text-3xl font-bold">Sản phẩm</h1>
-        <Link href="/admin/products/new">
-          <Button>Thêm sản phẩm</Button>
-        </Link>
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-bold">Sản phẩm</h1>
+          <p className="mt-1 text-sm text-[var(--brand-muted)]">
+            {formatCatalogUsage(products.length, CATALOG_LIMITS.maxProducts)} sản phẩm
+          </p>
+        </div>
+        {atLimit ? (
+          <Button disabled title="Đã đạt giới hạn 30 sản phẩm">
+            Thêm sản phẩm
+          </Button>
+        ) : (
+          <Link href="/admin/products/new">
+            <Button>Thêm sản phẩm</Button>
+          </Link>
+        )}
       </div>
       <div className="mt-6 overflow-x-auto rounded-[var(--radius)] border border-slate-200 bg-white">
         <table className="min-w-full text-left text-sm">

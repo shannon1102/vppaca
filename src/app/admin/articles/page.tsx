@@ -2,20 +2,37 @@ import Link from "next/link";
 import { deleteArticleAction } from "@/app/actions";
 import { PendingTextSubmit } from "@/components/admin/form-pending";
 import { Button } from "@/components/ui/button";
+import {
+  CATALOG_LIMITS,
+  formatCatalogUsage,
+  isAtArticleLimit,
+} from "@/lib/catalog-limits";
 import { requireAdminPage } from "@/lib/require-admin";
 import { repo } from "@/lib/data/repository";
 
 export default async function AdminArticlesPage() {
   await requireAdminPage();
   const articles = await repo.listArticles();
+  const atLimit = isAtArticleLimit(articles.length);
 
   return (
     <div>
-      <div className="flex items-center justify-between gap-4">
-        <h1 className="text-3xl font-bold">Bài viết sức khỏe</h1>
-        <Link href="/admin/articles/new">
-          <Button>Thêm bài viết</Button>
-        </Link>
+      <div className="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-bold">Bài viết sức khỏe</h1>
+          <p className="mt-1 text-sm text-[var(--brand-muted)]">
+            {formatCatalogUsage(articles.length, CATALOG_LIMITS.maxArticles)} bài viết
+          </p>
+        </div>
+        {atLimit ? (
+          <Button disabled title="Đã đạt giới hạn 50 bài viết">
+            Thêm bài viết
+          </Button>
+        ) : (
+          <Link href="/admin/articles/new">
+            <Button>Thêm bài viết</Button>
+          </Link>
+        )}
       </div>
       <div className="mt-6 overflow-x-auto rounded-[var(--radius)] border border-slate-200 bg-white">
         <table className="min-w-full text-left text-sm">

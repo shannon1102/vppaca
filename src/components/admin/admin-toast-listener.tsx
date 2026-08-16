@@ -2,6 +2,10 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import {
+  articleLimitMessage,
+  productLimitMessage,
+} from "@/lib/catalog-limits";
 import { toast } from "@/store/toast";
 
 const SUCCESS_TOASTS: Record<string, string> = {
@@ -18,6 +22,8 @@ const ERROR_TOASTS: Record<string, string> = {
   save: "Không lưu được. Vui lòng thử lại sau.",
   sku: "Mã SKU bị trùng — hệ thống sẽ tự tạo lại. Thử lưu lần nữa.",
   slug: "Slug URL bị trùng — hệ thống sẽ tự tạo lại. Thử lưu lần nữa.",
+  "product-limit": productLimitMessage(),
+  "article-limit": articleLimitMessage(),
   "1": "Email hoặc mật khẩu không đúng.",
   locked: "Đăng nhập sai quá nhiều lần. Vui lòng thử lại sau.",
 };

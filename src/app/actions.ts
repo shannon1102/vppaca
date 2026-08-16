@@ -16,6 +16,10 @@ import {
   recordFailedLogin,
 } from "@/lib/auth/login-rate-limit";
 import { buildCategoryFromInput } from "@/lib/categories/build-category";
+import {
+  isAtArticleLimit,
+  isAtProductLimit,
+} from "@/lib/catalog-limits";
 import { repo } from "@/lib/data/repository";
 import { CACHE_TAGS } from "@/lib/data/cached-repo";
 import { ensureUniqueSku, ensureUniqueSlug, orderCode } from "@/lib/format";
@@ -214,6 +218,9 @@ export async function saveProductAction(formData: FormData) {
     redirect(`${backPath}?error=save`);
   }
   const existing = await existingPromise;
+  if (isNew && isAtProductLimit(existing.length)) {
+    redirect("/admin/products?error=product-limit");
+  }
   const slug = ensureUniqueSlug({
     title: name,
     id,
@@ -347,6 +354,9 @@ export async function saveArticleAction(formData: FormData) {
   const content = await sanitizeRichHtml(String(formData.get("content") ?? ""));
   const articles = await articlesPromise;
   const existingArticle = articles.find((a) => a.id === id);
+  if (!existingArticle && isAtArticleLimit(articles.length)) {
+    redirect("/admin/articles?error=article-limit");
+  }
   const article: HealthArticle = {
     id,
     title,

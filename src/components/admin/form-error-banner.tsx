@@ -1,7 +1,14 @@
+import {
+  articleLimitMessage,
+  productLimitMessage,
+} from "@/lib/catalog-limits";
+
 const MESSAGES: Record<string, string> = {
   save: "Không lưu được. Kiểm tra ảnh đã upload xong và nội dung không quá lớn (~4MB).",
   sku: "Mã SKU bị trùng — hệ thống sẽ tự tạo lại. Thử lưu lần nữa.",
   slug: "Slug URL bị trùng — hệ thống sẽ tự tạo lại. Thử lưu lần nữa.",
+  "product-limit": productLimitMessage(),
+  "article-limit": articleLimitMessage(),
   payload:
     "Dữ liệu gửi lên quá lớn (HTTP 413). Ảnh phải upload riêng qua nút Image — không dán ảnh base64 vào form.",
 };
