@@ -7,7 +7,7 @@ const RichTextEditorInner = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="flex h-48 items-center justify-center rounded-[var(--radius)] border border-slate-200 bg-slate-50 text-sm text-[var(--brand-muted)]">
+      <div className="flex h-[min(65vh,48rem)] min-h-[20rem] items-center justify-center rounded-[var(--radius)] border border-slate-200 bg-slate-50 text-sm text-[var(--brand-muted)]">
         Đang tải trình soạn thảo...
       </div>
     ),
@@ -18,7 +18,14 @@ type Props = {
   name: string;
   label?: string;
   defaultValue?: string;
-  height?: number;
+  /**
+   * Editor shell height. Number = px.
+   * String = any CSS length (e.g. "70%", "65vh", "min(65vh, 48rem)").
+   * Percent is relative to the parent; parent should have an explicit height.
+   */
+  height?: number | string;
+  /** Shortcut: height as % of parent (e.g. 70 → "70%"). Overrides `height` when set. */
+  heightPercent?: number;
   maxLength?: number;
 };
 
