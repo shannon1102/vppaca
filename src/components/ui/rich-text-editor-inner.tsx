@@ -322,9 +322,9 @@ export function RichTextEditorInner({
           if (hiddenRef.current) hiddenRef.current.value = safe;
 
           const approxBytes = new Blob([safe]).size;
-          if (approxBytes > FORM_LIMITS.requestBodyBytes * 0.85) {
+          if (approxBytes > FORM_LIMITS.requestBodyBytes * 0.9) {
             alert(
-              "Nội dung quá lớn để lưu qua form (giới hạn ~4MB). Hãy rút ngắn bài hoặc giảm số ảnh trong nội dung.",
+              "Nội dung quá lớn để lưu qua form (giới hạn ~4,5MB). Hãy rút ngắn bài hoặc giảm số ảnh trong nội dung.",
             );
             return;
           }
