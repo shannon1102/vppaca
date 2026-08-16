@@ -145,11 +145,40 @@ h4 {
   font-weight: 600;
 }
 
-/* Health article TOC */
-.article-toc ul {
-  list-style: none;
-  padding: 0;
+/* Health article TOC — no bullets; padding set here so Tailwind isn't overridden */
+.article-toc ul.article-toc-list,
+.article-toc .article-toc-list {
+  list-style: none !important;
+  list-style-type: none !important;
   margin: 0;
+  padding: 1rem 1.5rem 1.25rem 2rem; /* top right bottom left — left padding rõ ràng */
+}
+
+.article-toc .article-toc-item {
+  list-style: none !important;
+  list-style-type: none !important;
+  margin: 0;
+  padding: 0.15rem 0;
+}
+
+.article-toc .article-toc-item::before,
+.article-toc .article-toc-item::marker {
+  content: none !important;
+  display: none !important;
+}
+
+.article-toc .article-toc-item--sub {
+  padding-left: 1.25rem;
+}
+
+.article-toc .article-toc-item a {
+  color: #0f172a;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.article-toc .article-toc-item a:hover {
+  color: var(--brand-primary);
 }
 
 .rich-content h2[id],

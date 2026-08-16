@@ -44,7 +44,7 @@ function ChevronIcon({ open, className }: { open: boolean; className?: string })
 
 /**
  * Collapsible TOC — health articles only.
- * No auto-numbering: Quill headings often already include "1.", "2.1." etc.
+ * Plain links only (no bullets / auto-numbers). Quill headings may already include "1." etc.
  */
 export function ArticleToc({ items }: { items: TocItem[] }) {
   const [open, setOpen] = useState(true);
@@ -58,7 +58,7 @@ export function ArticleToc({ items }: { items: TocItem[] }) {
     >
       <button
         type="button"
-        className="flex w-full cursor-pointer items-center gap-2.5 px-6 py-4 text-left sm:px-8 sm:py-4"
+        className="flex w-full cursor-pointer items-center gap-2.5 px-6 py-4 text-left sm:px-8"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
       >
@@ -70,22 +70,13 @@ export function ArticleToc({ items }: { items: TocItem[] }) {
       </button>
 
       {open ? (
-        <ul className="space-y-0 border-t border-slate-300/70 px-6 py-4 text-sm leading-snug sm:px-8 sm:py-5 sm:text-base">
+        <ul className="article-toc-list border-t border-slate-300/70 text-sm leading-snug sm:text-base">
           {items.map((item) => (
             <li
               key={item.id}
-              className={`flex list-none gap-2 ${item.level === 3 ? "ml-5 sm:ml-7" : ""}`}
+              className={item.level === 3 ? "article-toc-item article-toc-item--sub" : "article-toc-item"}
             >
-              <span
-                className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-slate-700"
-                aria-hidden
-              />
-              <a
-                href={`#${item.id}`}
-                className="py-0.5 text-slate-900 underline underline-offset-2 hover:text-[var(--brand-primary)]"
-              >
-                {item.text}
-              </a>
+              <a href={`#${item.id}`}>{item.text}</a>
             </li>
           ))}
         </ul>
