@@ -119,7 +119,7 @@ export default async function HealthArticleDetailPage({ params }: Props) {
       ) : null}
 
       <div className="mt-10">
-        <RichContent content={article.content} />
+        <RichContent content={article.content} withToc />
       </div>
     </article>
   );
