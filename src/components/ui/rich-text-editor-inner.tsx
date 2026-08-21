@@ -6,6 +6,7 @@ import Quill from "quill";
 import "react-quill-new/dist/quill.snow.css";
 import { uploadImageFile } from "@/lib/media/client-upload";
 import {
+  countRichTextPlain,
   FORM_LIMITS,
   formatImageLimit,
   formatRichHtmlLimit,
@@ -90,7 +91,7 @@ export function RichTextEditorInner({
   defaultValue = "",
   height,
   heightPercent,
-  maxLength = FORM_LIMITS.richHtml,
+  maxLength = FORM_LIMITS.richHtmlPlain,
 }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const hiddenRef = useRef<HTMLInputElement>(null);
@@ -100,7 +101,7 @@ export function RichTextEditorInner({
   const allowNativeSubmitRef = useRef(false);
   const [value, setValue] = useState(defaultValue);
   const [uploading, setUploading] = useState(false);
-  const [charCount, setCharCount] = useState(defaultValue.length);
+  const [charCount, setCharCount] = useState(countRichTextPlain(defaultValue));
   const editorHeight = resolveEditorHeight(height, heightPercent);
 
   const setBusy = useCallback((busy: boolean) => {
@@ -112,13 +113,13 @@ export function RichTextEditorInner({
   const flushEditorToHidden = useCallback(() => {
     const raw = getEditorRoot(wrapRef.current)?.innerHTML ?? "";
     setValue(raw);
-    setCharCount(raw.length);
+    setCharCount(countRichTextPlain(raw));
 
     if (hasDataImages(raw)) {
       return raw;
     }
     if (hiddenRef.current) {
-      hiddenRef.current.value = raw.length > maxLength ? raw.slice(0, maxLength) : raw;
+      hiddenRef.current.value = raw;
     }
     return raw;
   }, [maxLength]);
@@ -240,10 +241,9 @@ export function RichTextEditorInner({
       quill.on("text-change", () => {
         void replaceBase64Images();
         const html = editorRoot.innerHTML;
-        setCharCount(html.length);
+        setCharCount(countRichTextPlain(html));
         if (!hasDataImages(html) && hiddenRef.current) {
-          hiddenRef.current.value =
-            html.length > maxLength ? html.slice(0, maxLength) : html;
+          hiddenRef.current.value = html;
         }
       });
     },
@@ -319,7 +319,7 @@ export function RichTextEditorInner({
           const html = flushEditorToHidden();
           const safe = safeHtmlForSubmit(html);
           if (!safe) {
-            if (html.length > maxLength) {
+            if (countRichTextPlain(html) > maxLength) {
               alert(
                 `Nội dung vượt quá ${maxLength.toLocaleString("vi-VN")} ký tự. Hãy rút ngắn bài viết.`,
               );
@@ -328,6 +328,12 @@ export function RichTextEditorInner({
                 "Một số ảnh chưa tải lên được. Dùng nút Image trên thanh công cụ hoặc ảnh ≤ 5MB.",
               );
             }
+            return;
+          }
+          if (countRichTextPlain(html) > maxLength) {
+            alert(
+              `Nội dung vượt quá ${maxLength.toLocaleString("vi-VN")} ký tự. Hãy rút ngắn bài viết.`,
+            );
             return;
           }
           if (hiddenRef.current) hiddenRef.current.value = safe;
@@ -405,10 +411,9 @@ export function RichTextEditorInner({
           value={value}
           onChange={(html) => {
             setValue(html);
-            setCharCount(html.length);
+            setCharCount(countRichTextPlain(html));
             if (hiddenRef.current && !hasDataImages(html)) {
-              hiddenRef.current.value =
-                html.length > maxLength ? html.slice(0, maxLength) : html;
+              hiddenRef.current.value = html;
             }
             const quill = getQuillFromWrapper(wrapRef.current);
             if (quill) bindQuillHandlers(quill);
