@@ -82,7 +82,7 @@ export function ProductForm({
             label="Mô tả chi tiết"
             defaultValue={product.detail_description}
             heightPercent={100}
-            maxLength={FORM_LIMITS.richHtml}
+            maxLength={FORM_LIMITS.richHtmlPlain}
           />
         </div>
         <ProductImageFields defaultImages={product.images} />

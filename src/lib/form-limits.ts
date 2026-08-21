@@ -10,8 +10,10 @@ export const FORM_LIMITS = {
   name: 200,
   excerpt: 500,
   description: 2000,
-  /** Rich HTML without base64 images (counts tags, spaces, entities) */
+  /** Server-side max persisted HTML length (Postgres text + transport guard) */
   richHtml: 4_000_000,
+  /** Rich editor plain-text limit shown to admins (excludes HTML tags and images) */
+  richHtmlPlain: 100_000,
   tags: 120,
   seoTitle: 70,
   seoDescription: 160,
@@ -41,7 +43,27 @@ export function formatImageLimit(): string {
 }
 
 export function formatRichHtmlLimit(): string {
-  return `${formatCharLimit(FORM_LIMITS.richHtml)} · ảnh chèn qua nút Image / dán — không gửi base64 trong form`;
+  return `${formatCharLimit(FORM_LIMITS.richHtmlPlain)} nội dung (không tính ảnh/HTML) · ảnh chèn qua nút Image / dán`;
+}
+
+/** Plain-text length for rich editor UI — strips tags/entities, ignores <img>. */
+export function countRichTextPlain(html: string): number {
+  if (!html.trim()) return 0;
+
+  const withoutImages = html.replace(/<img\b[^>]*>/gi, "");
+  const text = withoutImages
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/(p|div|h[1-6]|li|tr|blockquote)>/gi, "\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/&lt;/gi, "<")
+    .replace(/&gt;/gi, ">")
+    .replace(/&quot;/gi, '"')
+    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
+    .replace(/\u00a0/g, " ");
+
+  return text.replace(/\n+$/, "").length;
 }
 
 /** Strip inline base64 images from HTML (last-resort server/client guard). */

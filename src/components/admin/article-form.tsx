@@ -46,7 +46,7 @@ export function ArticleForm({
             label="Nội dung"
             defaultValue={article.content}
             heightPercent={100}
-            maxLength={FORM_LIMITS.richHtml}
+            maxLength={FORM_LIMITS.richHtmlPlain}
           />
         </div>
         <ArticleCoverField defaultValue={article.cover_image_url} />
