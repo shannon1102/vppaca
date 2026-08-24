@@ -119,7 +119,8 @@ export function LeadForm({
           required
           showRequiredMark
           labelClassName={fieldLabelClass}
-          rows={3}
+          rows={4}
+          className="h-[100px] min-h-[100px] resize-y"
           maxLength={FORM_LIMITS.leadMessage}
           placeholder="Mô tả ngắn tình trạng sức khỏe hoặc nhu cầu tư vấn..."
           showLimit={false}
