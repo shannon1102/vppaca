@@ -1,5 +1,7 @@
 /** Shared admin form limits — keep under Vercel ~4.5MB request body. */
 
+import { stripLeadFormEmbeds } from "@/lib/content/lead-form-embed";
+
 export const FORM_LIMITS = {
   /** Next/Vercel practical ceiling for Server Action body (matches next.config) */
   requestBodyBytes: Math.floor(4.5 * 1024 * 1024),
@@ -32,6 +34,7 @@ export const FORM_LIMITS = {
   categoryDescription: 500,
   specKey: 80,
   specValue: 200,
+  leadMessage: 2000,
 } as const;
 
 export function formatCharLimit(max: number): string {
@@ -51,7 +54,8 @@ export function countRichTextPlain(html: string): number {
   if (!html.trim()) return 0;
 
   const withoutImages = html.replace(/<img\b[^>]*>/gi, "");
-  const text = withoutImages
+  const withoutEmbeds = stripLeadFormEmbeds(withoutImages);
+  const text = withoutEmbeds
     .replace(/<br\s*\/?>/gi, "\n")
     .replace(/<\/(p|div|h[1-6]|li|tr|blockquote)>/gi, "\n")
     .replace(/<[^>]+>/g, "")

@@ -1,14 +1,21 @@
 import sanitizeHtml from "sanitize-html";
 import { injectHeadingAnchors } from "@/lib/content/article-toc";
+import {
+  richContentHasLeadForms,
+  splitRichContentSegments,
+} from "@/lib/content/lead-form-embed";
 import { normalizeImageSrc, normalizeRichHtml } from "@/lib/media/helpers";
 import { embedYouTubeInContent, extractYouTubeId } from "@/lib/media/youtube";
 import { ArticleToc } from "@/components/store/article-toc";
+import { RichContentBody } from "@/components/ui/rich-content-body";
 
 type Props = {
   content: string;
   className?: string;
   /** When true, build TOC from h2/h3 and inject anchor ids (health articles only). */
   withToc?: boolean;
+  /** Passed to embedded lead forms as submission source. */
+  leadSource?: string;
 };
 
 function looksLikeHtml(content: string): boolean {
@@ -30,7 +37,8 @@ const sanitizeOptions: sanitizeHtml.IOptions = {
     img: ["src", "alt", "title", "width", "height", "class", "loading", "decoding"],
     a: ["href", "name", "target", "rel"],
     iframe: ["src", "title", "allow", "allowfullscreen", "loading", "referrerpolicy"],
-    div: ["class"],
+    div: ["class", "data-form", "contenteditable"],
+    span: ["class"],
     h2: ["id"],
     h3: ["id"],
   },
@@ -60,6 +68,23 @@ const sanitizeOptions: sanitizeHtml.IOptions = {
     div: (_tag, attribs) => {
       if (attribs.class === "rich-youtube") {
         return { tagName: "div", attribs: { class: "rich-youtube" } };
+      }
+      if (
+        typeof attribs.class === "string" &&
+        attribs.class.split(/\s+/).includes("rich-lead-form")
+      ) {
+        const formId =
+          typeof attribs["data-form"] === "string" && attribs["data-form"].trim()
+            ? attribs["data-form"].trim()
+            : "tu-van";
+        return {
+          tagName: "div",
+          attribs: {
+            class: "rich-lead-form",
+            "data-form": formId,
+            contenteditable: "false",
+          },
+        };
       }
       return { tagName: "div", attribs };
     },
@@ -99,13 +124,32 @@ function toSafeHtml(content: string): string {
   return sanitizeHtml(normalized, sanitizeOptions);
 }
 
-export function RichContent({ content, className = "", withToc = false }: Props) {
+export function RichContent({
+  content,
+  className = "",
+  withToc = false,
+  leadSource,
+}: Props) {
   if (!content.trim()) return null;
 
   const safe = toSafeHtml(content);
   const { html, toc } = withToc
     ? injectHeadingAnchors(safe)
     : { html: safe, toc: [] };
+
+  if (richContentHasLeadForms(html)) {
+    const segments = splitRichContentSegments(html);
+    return (
+      <>
+        {withToc ? <ArticleToc items={toc} /> : null}
+        <RichContentBody
+          segments={segments}
+          className={className}
+          leadSource={leadSource}
+        />
+      </>
+    );
+  }
 
   return (
     <>

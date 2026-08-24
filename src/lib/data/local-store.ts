@@ -1,7 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { defaultSettings, seedArticles, seedCategories, seedProducts } from "@/data/seed";
-import type { Category, HealthArticle, Order, Product, SiteSettings } from "@/lib/types";
+import type { Category, ContactLead, HealthArticle, Order, Product, SiteSettings } from "@/lib/types";
 
 const DATA_DIR = path.join(process.cwd(), ".data");
 
@@ -11,6 +11,7 @@ type LocalDb = {
   products: Product[];
   orders: Order[];
   articles: HealthArticle[];
+  leads: ContactLead[];
 };
 
 async function ensureDb(): Promise<LocalDb> {
@@ -20,6 +21,7 @@ async function ensureDb(): Promise<LocalDb> {
     const raw = await fs.readFile(file, "utf8");
     const db = JSON.parse(raw) as LocalDb;
     if (!db.articles) db.articles = seedArticles;
+    if (!db.leads) db.leads = [];
     db.products = db.products.map((p) => ({
       ...p,
       detail_description: p.detail_description ?? "",
@@ -33,6 +35,7 @@ async function ensureDb(): Promise<LocalDb> {
       products: seedProducts,
       orders: [],
       articles: seedArticles,
+      leads: [],
     };
     await fs.writeFile(file, JSON.stringify(initial, null, 2), "utf8");
     return initial;
@@ -223,4 +226,12 @@ export async function localDeleteArticle(id: string): Promise<void> {
   const db = await ensureDb();
   db.articles = db.articles.filter((a) => a.id !== id);
   await saveDb(db);
+}
+
+export async function localCreateLead(lead: ContactLead): Promise<ContactLead> {
+  const db = await ensureDb();
+  if (!db.leads) db.leads = [];
+  db.leads.unshift(lead);
+  await saveDb(db);
+  return lead;
 }
