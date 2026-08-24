@@ -89,7 +89,7 @@ export function buildAdminLeadEmailHtml(opts: {
                 ${
                   lead.message
                     ? `<tr>
-                  <td style="padding:10px 16px;background:#f8fafc;font-size:13px;color:#64748b;vertical-align:top;">Nội dung</td>
+                  <td style="padding:10px 16px;background:#f8fafc;font-size:13px;color:#64748b;vertical-align:top;">Tình trạng bệnh lý</td>
                   <td style="padding:10px 16px;font-size:14px;color:#0f172a;">${escapeHtml(lead.message)}</td>
                 </tr>`
                     : ""
@@ -121,7 +121,7 @@ export function buildAdminLeadEmailHtml(opts: {
     `Khách: ${lead.name} | ${lead.phone}`,
     `Email: ${lead.email || "—"}`,
     `Nguồn: ${lead.source || "website"}`,
-    lead.message ? `Nội dung: ${lead.message}` : "",
+    lead.message ? `Tình trạng bệnh lý: ${lead.message}` : "",
     "",
     `Xem admin: ${adminUrl}`,
   ]

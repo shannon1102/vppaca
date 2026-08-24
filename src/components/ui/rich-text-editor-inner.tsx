@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Quill from "quill";
 import "react-quill-new/dist/quill.snow.css";
 import { uploadImageFile } from "@/lib/media/client-upload";
@@ -13,8 +13,9 @@ import {
   hasDataImages,
   stripDataImages,
 } from "@/lib/form-limits";
-import { LEAD_FORM_DEFAULT_ID } from "@/lib/content/lead-form-embed";
+import { LEAD_FORM_DEFAULT_ID, normalizeLeadFormEmbedsInHtml } from "@/lib/content/lead-form-embed";
 import { registerLeadFormBlot } from "@/lib/quill/lead-form-blot";
+import { toast } from "@/store/toast";
 
 registerLeadFormBlot();
 
@@ -104,6 +105,8 @@ export function RichTextEditorInner({
   const uploadingRef = useRef<Set<string>>(new Set());
   const busyRef = useRef(false);
   const allowNativeSubmitRef = useRef(false);
+  const flushRef = useRef<() => string>(() => "");
+  const setBusyRef = useRef<(busy: boolean) => void>(() => {});
   const [value, setValue] = useState(defaultValue);
   const [uploading, setUploading] = useState(false);
   const [charCount, setCharCount] = useState(countRichTextPlain(defaultValue));
@@ -114,9 +117,13 @@ export function RichTextEditorInner({
     setUploading(busy);
   }, []);
 
+  setBusyRef.current = setBusy;
+
   /** Never write base64 into the form field — that caused HTTP 413 (~5MB+). */
   const flushEditorToHidden = useCallback(() => {
-    const raw = getEditorRoot(wrapRef.current)?.innerHTML ?? "";
+    const raw = normalizeLeadFormEmbedsInHtml(
+      getEditorRoot(wrapRef.current)?.innerHTML ?? "",
+    );
     setValue(raw);
     setCharCount(countRichTextPlain(raw));
 
@@ -128,6 +135,53 @@ export function RichTextEditorInner({
     }
     return raw;
   }, [maxLength]);
+
+  flushRef.current = flushEditorToHidden;
+
+  const quillModules = useMemo(
+    () => ({
+      toolbar: {
+        container: toolbar,
+        handlers: {
+          image: function handleImage(this: { quill: QuillInstance }) {
+            const quill = this.quill;
+            const input = document.createElement("input");
+            input.type = "file";
+            input.accept = "image/jpeg,image/png,image/gif,image/webp";
+            input.onchange = async () => {
+              const file = input.files?.[0];
+              if (!file) return;
+              const range = quill.getSelection(true);
+              if (!range) return;
+              setBusyRef.current(true);
+              try {
+                const url = await uploadImageFile(file);
+                quill.insertEmbed(range.index, "image", url);
+                quill.setSelection(range.index + 1);
+                flushRef.current();
+              } catch (e) {
+                alert(e instanceof Error ? e.message : "Upload ảnh thất bại");
+              } finally {
+                setBusyRef.current(false);
+              }
+            };
+            input.click();
+          },
+          leadForm: function handleLeadForm(this: { quill: QuillInstance }) {
+            const quill = this.quill;
+            const range = quill.getSelection(true);
+            if (!range) return;
+            quill.insertEmbed(range.index, "leadForm", LEAD_FORM_DEFAULT_ID);
+            quill.insertText(range.index + 1, "\n");
+            quill.setSelection(range.index + 2);
+            flushRef.current();
+            toast.success("Đã chèn form đăng ký tư vấn");
+          },
+        },
+      },
+    }),
+    [],
+  );
 
   const uploadPendingBase64 = useCallback(async () => {
     const editor = getEditorRoot(wrapRef.current);
@@ -177,43 +231,6 @@ export function RichTextEditorInner({
     (quill: QuillInstance) => {
       if (boundRef.current) return;
       boundRef.current = true;
-
-      const toolbarModule = quill.getModule("toolbar") as {
-        addHandler: (name: string, fn: () => void) => void;
-      };
-
-      toolbarModule.addHandler("image", () => {
-        const input = document.createElement("input");
-        input.type = "file";
-        input.accept = "image/jpeg,image/png,image/gif,image/webp";
-        input.onchange = async () => {
-          const file = input.files?.[0];
-          if (!file) return;
-          const range = quill.getSelection(true);
-          if (!range) return;
-          setBusy(true);
-          try {
-            const url = await uploadImageFile(file);
-            quill.insertEmbed(range.index, "image", url);
-            quill.setSelection(range.index + 1);
-            flushEditorToHidden();
-          } catch (e) {
-            alert(e instanceof Error ? e.message : "Upload ảnh thất bại");
-          } finally {
-            setBusy(false);
-          }
-        };
-        input.click();
-      });
-
-      toolbarModule.addHandler("leadForm", () => {
-        const range = quill.getSelection(true);
-        if (!range) return;
-        quill.insertEmbed(range.index, "leadForm", LEAD_FORM_DEFAULT_ID);
-        quill.insertText(range.index + 1, "\n");
-        quill.setSelection(range.index + 2);
-        flushEditorToHidden();
-      });
 
       const onPaste = async (e: ClipboardEvent) => {
         const items = e.clipboardData?.items;
@@ -423,6 +440,7 @@ export function RichTextEditorInner({
           theme="snow"
           className="quill"
           value={value}
+          useSemanticHTML={false}
           onChange={(html) => {
             setValue(html);
             setCharCount(countRichTextPlain(html));
@@ -432,7 +450,7 @@ export function RichTextEditorInner({
             const quill = getQuillFromWrapper(wrapRef.current);
             if (quill) bindQuillHandlers(quill);
           }}
-          modules={{ toolbar }}
+          modules={quillModules}
           placeholder="Nhập nội dung — dán ảnh (Ctrl+V) sẽ tự upload; không gửi ảnh base64 trong form"
         />
       </div>

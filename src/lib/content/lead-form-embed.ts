@@ -10,9 +10,9 @@ export type LeadFormPreset = {
 
 export const LEAD_FORM_PRESETS: Record<string, LeadFormPreset> = {
   "tu-van": {
-    title: "Đăng ký tư vấn",
+    title: "ĐĂNG KÝ TƯ VẤN",
     description:
-      "Để lại thông tin, đội ngũ Tâm Đức sẽ liên hệ tư vấn trong thời gian sớm nhất.",
+      "Để lại thông tin để được đội ngũ bác sĩ tư vấn sớm nhất!",
     submitLabel: "Gửi đăng ký",
   },
 };
@@ -21,9 +21,15 @@ export function leadFormPreset(formId: string): LeadFormPreset {
   return LEAD_FORM_PRESETS[formId] ?? LEAD_FORM_PRESETS[LEAD_FORM_DEFAULT_ID];
 }
 
+/** Inner preview markup shown inside the editor embed block. */
+export function leadFormEditorPreviewHtml(formId = LEAD_FORM_DEFAULT_ID): string {
+  const preset = leadFormPreset(formId);
+  return `<span class="rich-lead-form__title">${preset.title}</span><span class="rich-lead-form__desc">${preset.description}</span><span class="rich-lead-form__fields">Họ tên · SĐT · Tình trạng bệnh lý</span>`;
+}
+
 /** HTML saved in article content when admin clicks toolbar "Form". */
 export function leadFormEmbedHtml(formId = LEAD_FORM_DEFAULT_ID): string {
-  return `<div class="rich-lead-form" data-form="${formId}" contenteditable="false"><span class="rich-lead-form__placeholder">📋 Form đăng ký tư vấn</span></div>`;
+  return `<div class="rich-lead-form" data-form="${formId}" contenteditable="false">${leadFormEditorPreviewHtml(formId)}</div>`;
 }
 
 const LEAD_FORM_BLOCK_RE =
@@ -37,6 +43,12 @@ function extractFormId(blockHtml: string): string {
   const match = blockHtml.match(/\bdata-form=["']([^"']+)["']/i);
   const formId = match?.[1]?.trim();
   return formId && LEAD_FORM_PRESETS[formId] ? formId : LEAD_FORM_DEFAULT_ID;
+}
+
+/** Canonicalize lead-form blocks so save/load and storefront parsing stay stable. */
+export function normalizeLeadFormEmbedsInHtml(html: string): string {
+  if (!richContentHasLeadForms(html)) return html;
+  return html.replace(LEAD_FORM_BLOCK_RE, (block) => leadFormEmbedHtml(extractFormId(block)));
 }
 
 /** Split sanitized HTML into alternating html chunks and lead-form embeds. */

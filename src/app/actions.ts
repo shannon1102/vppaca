@@ -36,9 +36,11 @@ import {
 import type { HealthArticle, Order, OrderStatus, Product, ContactLeadStatus } from "@/lib/types";
 
 async function sanitizeRichHtml(raw: string): Promise<string> {
+  const { normalizeLeadFormEmbedsInHtml } = await import("@/lib/content/lead-form-embed");
   const stripped = stripDataImages(raw);
   const persisted = await persistRichHtmlImages(stripped);
-  return clampText(stripDataImages(persisted), FORM_LIMITS.richHtml);
+  const normalized = normalizeLeadFormEmbedsInHtml(stripDataImages(persisted));
+  return clampText(normalized, FORM_LIMITS.richHtml);
 }
 
 const checkoutSchema = z.object({

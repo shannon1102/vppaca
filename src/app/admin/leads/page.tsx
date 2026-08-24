@@ -44,7 +44,7 @@ export default async function AdminLeadsPage({ searchParams }: Props) {
               <th className="px-4 py-3 font-semibold">Điện thoại</th>
               <th className="px-4 py-3 font-semibold">Email</th>
               <th className="px-4 py-3 font-semibold">Nguồn</th>
-              <th className="px-4 py-3 font-semibold">Nội dung</th>
+              <th className="px-4 py-3 font-semibold">Tình trạng bệnh lý</th>
               <th className="px-4 py-3 font-semibold">Trạng thái</th>
             </tr>
           </thead>

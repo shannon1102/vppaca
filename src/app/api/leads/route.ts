@@ -21,9 +21,8 @@ const leadSchema = z.object({
   message: z
     .string()
     .trim()
-    .max(FORM_LIMITS.leadMessage)
-    .optional()
-    .or(z.literal("")),
+    .min(2, "Vui lòng mô tả tình trạng bệnh lý.")
+    .max(FORM_LIMITS.leadMessage),
   source: z.string().trim().max(120).optional(),
   form_id: z.string().trim().max(40).optional(),
   /** Honeypot — bots often fill hidden fields. */

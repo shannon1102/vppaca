@@ -33,7 +33,7 @@ export function LeadForm({
       >
         <p className="font-semibold text-emerald-800">Đã gửi đăng ký thành công</p>
         <p className="mt-1 text-sm text-emerald-700">
-          Cảm ơn bạn. Chúng tôi sẽ liên hệ trong thời gian sớm nhất.
+          Cảm ơn bạn. Đội ngũ bác sĩ sẽ liên hệ tư vấn trong thời gian sớm nhất.
         </p>
       </aside>
     );
@@ -44,7 +44,7 @@ export function LeadForm({
       className={`rich-lead-form-embed my-8 rounded-[var(--radius)] border border-slate-200 bg-white px-5 py-6 shadow-sm sm:px-6 ${className}`}
     >
       <div className="mx-auto max-w-xl">
-        <h2 className="text-lg font-semibold text-[var(--brand-text)] sm:text-xl">
+        <h2 className="text-lg font-semibold uppercase tracking-wide text-[var(--brand-text)] sm:text-xl">
           {preset.title}
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-[var(--brand-muted)]">
@@ -60,7 +60,7 @@ export function LeadForm({
             const payload = {
               name: String(fd.get("name") ?? "").trim(),
               phone: String(fd.get("phone") ?? "").trim(),
-              email: String(fd.get("email") ?? "").trim(),
+              email: "",
               message: String(fd.get("message") ?? "").trim(),
               source,
               form_id: formId,
@@ -91,39 +91,30 @@ export function LeadForm({
             });
           }}
         >
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Input
-              name="name"
-              label="Họ và tên"
-              required
-              autoComplete="name"
-              maxLength={FORM_LIMITS.name}
-              placeholder="Nguyễn Văn A"
-            />
-            <Input
-              name="phone"
-              label="Số điện thoại"
-              required
-              type="tel"
-              autoComplete="tel"
-              maxLength={FORM_LIMITS.phone}
-              placeholder="0901234567"
-            />
-          </div>
           <Input
-            name="email"
-            label="Email (tuỳ chọn)"
-            type="email"
-            autoComplete="email"
-            maxLength={FORM_LIMITS.email}
-            placeholder="email@example.com"
+            name="name"
+            label="Họ tên"
+            required
+            autoComplete="name"
+            maxLength={FORM_LIMITS.name}
+            placeholder="Nguyễn Văn A"
+          />
+          <Input
+            name="phone"
+            label="SĐT"
+            required
+            type="tel"
+            autoComplete="tel"
+            maxLength={FORM_LIMITS.phone}
+            placeholder="0901234567"
           />
           <Textarea
             name="message"
-            label="Nội dung / câu hỏi (tuỳ chọn)"
-            rows={3}
+            label="Tình trạng bệnh lý"
+            required
+            rows={4}
             maxLength={FORM_LIMITS.leadMessage}
-            placeholder="Bạn cần tư vấn về sản phẩm hoặc dịch vụ nào?"
+            placeholder="Mô tả ngắn tình trạng sức khỏe hoặc nhu cầu tư vấn..."
           />
 
           {/* Honeypot — hidden from users */}

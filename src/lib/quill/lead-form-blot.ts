@@ -1,7 +1,7 @@
 import Quill from "quill";
 import {
   LEAD_FORM_DEFAULT_ID,
-  leadFormPreset,
+  leadFormEditorPreviewHtml,
 } from "@/lib/content/lead-form-embed";
 
 // Quill's BlockEmbed typing is loose across versions.
@@ -16,13 +16,9 @@ class LeadFormBlot extends BlockEmbed {
   static create(value?: string) {
     const node = super.create() as HTMLElement;
     const formId = value?.trim() || LEAD_FORM_DEFAULT_ID;
-    const preset = leadFormPreset(formId);
     node.setAttribute("data-form", formId);
     node.setAttribute("contenteditable", "false");
-    const span = document.createElement("span");
-    span.className = "rich-lead-form__placeholder";
-    span.textContent = `📋 ${preset.title}`;
-    node.appendChild(span);
+    node.innerHTML = leadFormEditorPreviewHtml(formId);
     return node;
   }
 
