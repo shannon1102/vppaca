@@ -1,4 +1,5 @@
 import {
+  localListLeads,
   localCreateLead,
   localCreateOrder,
   localDeleteArticle,
@@ -15,6 +16,7 @@ import {
   localListOrders,
   localListProducts,
   localListRelatedProducts,
+  localUpdateLeadStatus,
   localUpdateOrderStatus,
   localUpdateSettings,
   localUpsertArticle,
@@ -22,6 +24,7 @@ import {
   localUpsertProduct,
 } from "@/lib/data/local-store";
 import {
+  sbListLeads,
   sbCreateLead,
   sbCreateOrder,
   sbDeleteArticle,
@@ -39,6 +42,7 @@ import {
   sbListOrders,
   sbListProducts,
   sbListRelatedProducts,
+  sbUpdateLeadStatus,
   sbUpdateOrderStatus,
   sbUpdateSettings,
   sbUpsertArticle,
@@ -141,4 +145,12 @@ export const repo = {
     isSupabaseConfigured()
       ? withSeed(() => sbCreateLead(lead))
       : localCreateLead(lead),
+  listLeads: (opts?: { page?: number; pageSize?: number }) =>
+    isSupabaseConfigured()
+      ? withSeed(() => sbListLeads(opts))
+      : localListLeads(opts),
+  updateLeadStatus: (id: string, status: ContactLead["status"]) =>
+    isSupabaseConfigured()
+      ? withSeed(() => sbUpdateLeadStatus(id, status))
+      : localUpdateLeadStatus(id, status),
 };

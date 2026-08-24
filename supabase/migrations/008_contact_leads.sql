@@ -23,3 +23,6 @@ do $$ begin
   create policy "Auth manage contact_leads" on public.contact_leads
     for all using (auth.role() = 'authenticated') with check (auth.role() = 'authenticated');
 exception when duplicate_object then null; end $$;
+
+create index if not exists contact_leads_created_at_idx
+  on public.contact_leads (created_at desc);

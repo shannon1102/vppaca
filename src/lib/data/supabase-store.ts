@@ -442,6 +442,58 @@ export async function sbCreateLead(lead: ContactLead): Promise<ContactLead> {
   return mapContactLead(data as Record<string, unknown>);
 }
 
+export async function sbListLeads(opts?: {
+  page?: number;
+  pageSize?: number;
+}): Promise<{ items: ContactLead[]; total: number }> {
+  const sb = adminClient();
+  const pageSize = Math.min(Math.max(opts?.pageSize ?? 20, 1), 100);
+  const page = Math.max(opts?.page ?? 1, 1);
+  const from = (page - 1) * pageSize;
+  const to = from + pageSize - 1;
+
+  const { count, error: countError } = await sb
+    .from("contact_leads")
+    .select("*", { count: "exact", head: true });
+  if (countError) {
+    if (isMissingTableError(countError)) return { items: [], total: 0 };
+    throw countError;
+  }
+
+  const { data, error } = await sb
+    .from("contact_leads")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .range(from, to);
+  if (error) {
+    if (isMissingTableError(error)) return { items: [], total: 0 };
+    throw error;
+  }
+
+  return {
+    items: (data ?? []).map((r) => mapContactLead(r as Record<string, unknown>)),
+    total: count ?? 0,
+  };
+}
+
+export async function sbUpdateLeadStatus(
+  id: string,
+  status: ContactLead["status"],
+): Promise<ContactLead | null> {
+  const sb = adminClient();
+  const { data, error } = await sb
+    .from("contact_leads")
+    .update({ status })
+    .eq("id", id)
+    .select("*")
+    .maybeSingle();
+  if (error) {
+    if (isMissingTableError(error)) return null;
+    throw error;
+  }
+  return data ? mapContactLead(data as Record<string, unknown>) : null;
+}
+
 function mapContactLead(row: Record<string, unknown>): ContactLead {
   return {
     id: String(row.id),

@@ -69,6 +69,22 @@ export async function POST(req: Request) {
     };
 
     await repo.createLead(lead);
+
+    try {
+      const settings = await repo.getSettings();
+      const { notifyAdminNewLead } = await import("@/lib/email/send");
+      const result = await notifyAdminNewLead({ lead, settings });
+      if (!result.sent) {
+        console.error("[email] lead notify not sent", {
+          id: lead.id,
+          provider: result.provider,
+          reason: result.reason,
+        });
+      }
+    } catch (e) {
+      console.error("[email] lead notify failed", e);
+    }
+
     return NextResponse.json({ data: { id: lead.id } }, { status: 201 });
   } catch (e) {
     console.error("[POST /api/leads]", e);

@@ -235,3 +235,33 @@ export async function localCreateLead(lead: ContactLead): Promise<ContactLead> {
   await saveDb(db);
   return lead;
 }
+
+export async function localListLeads(opts?: {
+  page?: number;
+  pageSize?: number;
+}): Promise<{ items: ContactLead[]; total: number }> {
+  const db = await ensureDb();
+  const leads = [...(db.leads ?? [])].sort(
+    (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
+  );
+  const pageSize = Math.min(Math.max(opts?.pageSize ?? 20, 1), 100);
+  const page = Math.max(opts?.page ?? 1, 1);
+  const start = (page - 1) * pageSize;
+  return {
+    items: leads.slice(start, start + pageSize),
+    total: leads.length,
+  };
+}
+
+export async function localUpdateLeadStatus(
+  id: string,
+  status: ContactLead["status"],
+): Promise<ContactLead | null> {
+  const db = await ensureDb();
+  if (!db.leads) db.leads = [];
+  const idx = db.leads.findIndex((l) => l.id === id);
+  if (idx < 0) return null;
+  db.leads[idx] = { ...db.leads[idx], status };
+  await saveDb(db);
+  return db.leads[idx];
+}

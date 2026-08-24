@@ -33,7 +33,7 @@ import {
   clampText,
   stripDataImages,
 } from "@/lib/form-limits";
-import type { HealthArticle, Order, OrderStatus, Product } from "@/lib/types";
+import type { HealthArticle, Order, OrderStatus, Product, ContactLeadStatus } from "@/lib/types";
 
 async function sanitizeRichHtml(raw: string): Promise<string> {
   const stripped = stripDataImages(raw);
@@ -332,6 +332,29 @@ export async function updateOrderStatusAction(
   } catch (e) {
     console.error("[order] update status failed", e);
     return { ok: false, error: "Cập nhật đơn hàng thất bại" };
+  }
+}
+
+export async function updateLeadStatusAction(
+  formData: FormData,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  try {
+    await requireAdmin();
+    const id = String(formData.get("id"));
+    const status = String(formData.get("status")) as ContactLeadStatus;
+    const valid: ContactLeadStatus[] = ["new", "contacted", "closed"];
+    if (!valid.includes(status)) {
+      return { ok: false, error: "Trạng thái không hợp lệ" };
+    }
+    const updated = await repo.updateLeadStatus(id, status);
+    if (!updated) {
+      return { ok: false, error: "Không tìm thấy đăng ký" };
+    }
+    revalidatePath("/admin/leads");
+    return { ok: true };
+  } catch (e) {
+    console.error("[lead] update status failed", e);
+    return { ok: false, error: "Cập nhật đăng ký thất bại" };
   }
 }
 
