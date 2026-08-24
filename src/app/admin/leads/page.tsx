@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { LeadStatusForm } from "@/components/admin/lead-status-form";
-import { LEAD_STATUS_LABELS } from "@/lib/lead-status";
 import { requireAdminPage } from "@/lib/require-admin";
 import { repo } from "@/lib/data/repository";
 
@@ -78,12 +77,7 @@ export default async function AdminLeadsPage({ searchParams }: Props) {
                     {lead.message || "—"}
                   </td>
                   <td className="px-4 py-3">
-                    <div className="space-y-2">
-                      <p className="text-xs font-semibold text-[var(--brand-text)]">
-                        {LEAD_STATUS_LABELS[lead.status]}
-                      </p>
-                      <LeadStatusForm leadId={lead.id} status={lead.status} />
-                    </div>
+                    <LeadStatusForm leadId={lead.id} status={lead.status} />
                   </td>
                 </tr>
               ))

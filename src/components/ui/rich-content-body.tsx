@@ -27,7 +27,6 @@ export function RichContentBody({ segments, className = "", leadSource }: Props)
             key={`form-${index}-${segment.formId}`}
             formId={segment.formId}
             source={leadSource}
-            className="my-8"
           />
         );
       })}
