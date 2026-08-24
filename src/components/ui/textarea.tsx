@@ -10,6 +10,8 @@ type Props = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
   hint?: string;
   showLimit?: boolean;
   showCount?: boolean;
+  showRequiredMark?: boolean;
+  labelClassName?: string;
 };
 
 export function Textarea({
@@ -18,12 +20,15 @@ export function Textarea({
   hint,
   showLimit = true,
   showCount = true,
+  showRequiredMark = false,
+  labelClassName,
   className,
   id,
   maxLength,
   defaultValue,
   value,
   onChange,
+  required,
   ...props
 }: Props) {
   const autoId = useId();
@@ -38,10 +43,18 @@ export function Textarea({
   const mergedHint = [hint, limitHint].filter(Boolean).join(" · ");
 
   return (
-    <label className="block space-y-1.5 text-sm">
+    <label className={cn("block text-sm", labelClassName ?? "space-y-1.5")}>
       {label ? (
         <span className="flex items-baseline justify-between gap-2 font-medium text-[var(--brand-text)]">
-          <span>{label}</span>
+          <span>
+            {label}
+            {showRequiredMark && required ? (
+              <span className="text-red-600" aria-hidden="true">
+                {" "}
+                *
+              </span>
+            ) : null}
+          </span>
           {showCount && typeof maxLength === "number" ? (
             <span className="font-normal text-xs text-[var(--brand-muted)]">
               {current.length.toLocaleString("vi-VN")}/
@@ -59,6 +72,7 @@ export function Textarea({
           className,
         )}
         {...props}
+        required={required}
         value={isControlled ? value : undefined}
         defaultValue={isControlled ? undefined : defaultValue}
         onChange={(e) => {

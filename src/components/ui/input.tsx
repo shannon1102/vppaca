@@ -8,6 +8,10 @@ type Props = React.InputHTMLAttributes<HTMLInputElement> & {
   hint?: string;
   /** When true and maxLength is set, show “Tối đa N ký tự”. */
   showLimit?: boolean;
+  /** Red asterisk after label when `required` is set. */
+  showRequiredMark?: boolean;
+  /** Wrapper classes (e.g. gap between label and input). */
+  labelClassName?: string;
 };
 
 export function Input({
@@ -15,9 +19,12 @@ export function Input({
   error,
   hint,
   showLimit = true,
+  showRequiredMark = false,
+  labelClassName,
   className,
   id,
   maxLength,
+  required,
   ...props
 }: Props) {
   const inputId = id ?? props.name;
@@ -28,9 +35,17 @@ export function Input({
   const mergedHint = [hint, limitHint].filter(Boolean).join(" · ");
 
   return (
-    <label className="block space-y-1.5 text-sm">
+    <label className={cn("block text-sm", labelClassName ?? "space-y-1.5")}>
       {label ? (
-        <span className="font-medium text-[var(--brand-text)]">{label}</span>
+        <span className="font-medium text-[var(--brand-text)]">
+          {label}
+          {showRequiredMark && required ? (
+            <span className="text-red-600" aria-hidden="true">
+              {" "}
+              *
+            </span>
+          ) : null}
+        </span>
       ) : null}
       <input
         id={inputId}
@@ -40,6 +55,7 @@ export function Input({
           className,
         )}
         {...props}
+        required={required}
         maxLength={maxLength}
       />
       {error ? <span className="text-xs text-red-600">{error}</span> : null}

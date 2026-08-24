@@ -15,11 +15,7 @@ type Props = {
   className?: string;
 };
 
-/** Họ tên đầy đủ: ít nhất 2 từ (họ và tên). */
-function isFullName(value: string): boolean {
-  const parts = value.trim().split(/\s+/).filter(Boolean);
-  return parts.length >= 2 && parts.every((p) => p.length >= 1);
-}
+const fieldLabelClass = "flex flex-col gap-[6px]";
 
 export function LeadForm({
   formId = "tu-van",
@@ -27,16 +23,14 @@ export function LeadForm({
   className = "",
 }: Props) {
   const preset = leadFormPreset(formId);
-  const [name, setName] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
   const [pending, startTransition] = useTransition();
-  const nameOk = isFullName(name);
 
   if (done) {
     return (
       <aside
-        className={`rich-lead-form-embed mx-auto my-6 w-full rounded-[var(--radius)] border border-emerald-200 bg-emerald-50 px-4 py-4 sm:w-[80%] ${className}`}
+        className={`rich-lead-form-embed mt-6 mb-0 w-full rounded-[var(--radius)] border border-emerald-200 bg-emerald-50 p-[20px] ${className}`}
         aria-live="polite"
       >
         <p className="font-semibold text-emerald-800">Đã gửi đăng ký thành công</p>
@@ -49,7 +43,7 @@ export function LeadForm({
 
   return (
     <aside
-      className={`rich-lead-form-embed mx-auto my-6 w-full rounded-[var(--radius)] border border-slate-200 bg-white px-4 py-4 shadow-sm sm:w-[80%] ${className}`}
+      className={`rich-lead-form-embed mt-6 mb-0 w-full rounded-[var(--radius)] border border-slate-200 bg-white p-[20px] shadow-sm ${className}`}
     >
       <p className="rich-lead-form-embed__title">{preset.title}</p>
       <p className="mt-1.5 text-sm leading-snug text-[var(--brand-muted)]">
@@ -62,16 +56,8 @@ export function LeadForm({
           e.preventDefault();
           setError(null);
           const fd = new FormData(e.currentTarget);
-          const trimmedName = String(fd.get("name") ?? "").trim();
-          if (!isFullName(trimmedName)) {
-            const msg = "Vui lòng nhập đầy đủ họ và tên.";
-            setError(msg);
-            toast.error(msg);
-            return;
-          }
-
           const payload = {
-            name: trimmedName,
+            name: String(fd.get("name") ?? "").trim(),
             phone: String(fd.get("phone") ?? "").trim(),
             email: "",
             message: String(fd.get("message") ?? "").trim(),
@@ -108,17 +94,19 @@ export function LeadForm({
           name="name"
           label="Họ tên"
           required
+          showRequiredMark
+          labelClassName={fieldLabelClass}
           autoComplete="name"
           maxLength={FORM_LIMITS.name}
           placeholder="Nguyễn Văn A"
           showLimit={false}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
         />
         <Input
           name="phone"
           label="SĐT"
           required
+          showRequiredMark
+          labelClassName={fieldLabelClass}
           type="tel"
           autoComplete="tel"
           maxLength={FORM_LIMITS.phone}
@@ -129,6 +117,8 @@ export function LeadForm({
           name="message"
           label="Tình trạng bệnh lý"
           required
+          showRequiredMark
+          labelClassName={fieldLabelClass}
           rows={3}
           maxLength={FORM_LIMITS.leadMessage}
           placeholder="Mô tả ngắn tình trạng sức khỏe hoặc nhu cầu tư vấn..."
@@ -147,12 +137,7 @@ export function LeadForm({
           </p>
         ) : null}
 
-        <Button
-          type="submit"
-          disabled={pending || !nameOk}
-          className="w-full sm:w-auto"
-          title={!nameOk ? "Nhập đầy đủ họ và tên để gửi" : undefined}
-        >
+        <Button type="submit" disabled={pending} className="min-h-12 w-full">
           {pending ? "Đang gửi..." : preset.submitLabel}
         </Button>
       </form>

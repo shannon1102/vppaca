@@ -6,15 +6,7 @@ import { clampText, FORM_LIMITS } from "@/lib/form-limits";
 import type { ContactLead } from "@/lib/types";
 
 const leadSchema = z.object({
-  name: z
-    .string()
-    .trim()
-    .min(2, "Vui lòng nhập họ tên.")
-    .max(FORM_LIMITS.name)
-    .refine(
-      (v) => v.split(/\s+/).filter(Boolean).length >= 2,
-      "Vui lòng nhập đầy đủ họ và tên.",
-    ),
+  name: z.string().trim().min(2, "Vui lòng nhập họ tên.").max(FORM_LIMITS.name),
   phone: z
     .string()
     .trim()
