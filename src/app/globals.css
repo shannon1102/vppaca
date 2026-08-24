@@ -268,6 +268,23 @@ h4 {
   clear: both;
 }
 
+.rich-content .rich-lead-form-embed__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--brand-text);
+}
+
+@media (min-width: 640px) {
+  .rich-content .rich-lead-form-embed__title {
+    font-size: 1.25rem;
+  }
+}
+
 .rich-text-editor .ql-toolbar button.ql-leadForm::before {
   content: "Form";
   font-size: 12px;
