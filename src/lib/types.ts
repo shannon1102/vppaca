@@ -112,3 +112,17 @@ export type MediaFile = {
   storage_key: string;
   created_at: string;
 };
+
+export type ContactLeadStatus = "new" | "contacted" | "closed";
+
+export type ContactLead = {
+  id: string;
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
+  source: string;
+  form_id: string;
+  status: ContactLeadStatus;
+  created_at: string;
+};

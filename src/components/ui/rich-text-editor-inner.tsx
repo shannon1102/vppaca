@@ -13,6 +13,10 @@ import {
   hasDataImages,
   stripDataImages,
 } from "@/lib/form-limits";
+import { LEAD_FORM_DEFAULT_ID } from "@/lib/content/lead-form-embed";
+import { registerLeadFormBlot } from "@/lib/quill/lead-form-blot";
+
+registerLeadFormBlot();
 
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
@@ -22,7 +26,7 @@ const toolbar = [
   ["blockquote", "code-block"],
   [{ list: "ordered" }, { list: "bullet" }],
   [{ align: [] }],
-  ["link", "image"],
+  ["link", "image", "leadForm"],
   ["clean"],
 ];
 
@@ -30,6 +34,7 @@ type QuillInstance = {
   root: HTMLElement;
   getSelection: (focus?: boolean) => { index: number; length: number } | null;
   insertEmbed: (index: number, type: string, value: string) => void;
+  insertText: (index: number, text: string) => void;
   setSelection: (index: number) => void;
   getModule: (name: string) => unknown;
   on: (event: string, handler: () => void) => void;
@@ -199,6 +204,15 @@ export function RichTextEditorInner({
           }
         };
         input.click();
+      });
+
+      toolbarModule.addHandler("leadForm", () => {
+        const range = quill.getSelection(true);
+        if (!range) return;
+        quill.insertEmbed(range.index, "leadForm", LEAD_FORM_DEFAULT_ID);
+        quill.insertText(range.index + 1, "\n");
+        quill.setSelection(range.index + 2);
+        flushEditorToHidden();
       });
 
       const onPaste = async (e: ClipboardEvent) => {
@@ -429,7 +443,7 @@ export function RichTextEditorInner({
         defaultValue={hasDataImages(defaultValue) ? stripDataImages(defaultValue) : defaultValue}
       />
       <span className="block shrink-0 text-xs text-[var(--brand-muted)]">
-        {formatRichHtmlLimit()} · {formatImageLimit()}
+        {formatRichHtmlLimit()} · {formatImageLimit()} · nút Form chèn đăng ký tư vấn
       </span>
     </label>
   );

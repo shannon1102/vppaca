@@ -264,6 +264,33 @@ h4 {
   text-decoration: underline;
 }
 
+.rich-content .rich-lead-form-embed {
+  clear: both;
+}
+
+.rich-text-editor .ql-toolbar button.ql-leadForm::before {
+  content: "Form";
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.rich-text-editor .rich-lead-form {
+  margin: 1rem 0;
+  padding: 0.875rem 1rem;
+  border: 2px dashed color-mix(in srgb, var(--brand-primary) 45%, transparent);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--brand-primary) 6%, white);
+  text-align: center;
+  user-select: none;
+}
+
+.rich-text-editor .rich-lead-form__placeholder {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--brand-primary);
+}
+
 .rich-content table {
   width: 100%;
   margin: 1.25em 0;

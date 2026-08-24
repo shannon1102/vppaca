@@ -1,7 +1,8 @@
 import { Resend } from "resend";
+import { buildAdminLeadEmailHtml } from "@/lib/email/lead-admin-template";
 import { buildAdminOrderEmailHtml } from "@/lib/email/order-admin-template";
 import { isGmailConfigured, sendViaGmail } from "@/lib/email/smtp";
-import type { Order, SiteSettings } from "@/lib/types";
+import type { ContactLead, Order, SiteSettings } from "@/lib/types";
 
 type NotifyResult = {
   sent: boolean;
@@ -11,6 +12,14 @@ type NotifyResult = {
 
 function cleanEnv(value: string | undefined): string {
   return (value ?? "").trim().replace(/^["']|["']$/g, "");
+}
+
+function adminRecipient(settings: SiteSettings): string {
+  return (
+    cleanEnv(process.env.ADMIN_NOTIFY_EMAIL) ||
+    cleanEnv(process.env.ADMIN_EMAIL) ||
+    cleanEnv(settings.email)
+  );
 }
 
 async function sendViaResend(input: {
@@ -49,19 +58,64 @@ async function sendViaResend(input: {
   }
 }
 
-export async function notifyAdminNewOrder(opts: {
-  order: Order;
+async function deliverAdminEmail(opts: {
   settings: SiteSettings;
+  subject: string;
+  html: string;
+  text: string;
+  logContext: Record<string, string>;
 }): Promise<NotifyResult> {
-  const to =
-    cleanEnv(process.env.ADMIN_NOTIFY_EMAIL) ||
-    cleanEnv(process.env.ADMIN_EMAIL) ||
-    cleanEnv(opts.settings.email);
+  const to = adminRecipient(opts.settings);
   if (!to) {
     console.warn("[email] missing recipient — skip admin notify");
     return { sent: false, reason: "missing_admin_email" };
   }
 
+  if (isGmailConfigured()) {
+    const from =
+      cleanEnv(process.env.EMAIL_FROM) ||
+      `${opts.settings.shop_name} <${cleanEnv(process.env.GMAIL_USER)}>`;
+    const result = await sendViaGmail({
+      to,
+      from,
+      subject: opts.subject,
+      html: opts.html,
+      text: opts.text,
+    });
+    if (result.sent) {
+      console.info("[email] sent via gmail", { to, ...opts.logContext });
+    } else {
+      console.error("[email] gmail failed", { to, ...opts.logContext, reason: result.reason });
+    }
+    return { ...result, provider: "gmail" };
+  }
+
+  const from =
+    cleanEnv(process.env.EMAIL_FROM) ||
+    `${opts.settings.shop_name} <onboarding@resend.dev>`;
+  const result = await sendViaResend({
+    to,
+    from,
+    subject: opts.subject,
+    html: opts.html,
+    text: opts.text,
+  });
+  if (result.sent) {
+    console.info("[email] sent via resend", { to, ...opts.logContext });
+  } else {
+    console.error("[email] resend failed / skipped", {
+      to,
+      ...opts.logContext,
+      reason: result.reason,
+    });
+  }
+  return result;
+}
+
+export async function notifyAdminNewOrder(opts: {
+  order: Order;
+  settings: SiteSettings;
+}): Promise<NotifyResult> {
   const site = cleanEnv(process.env.NEXT_PUBLIC_SITE_URL) || "http://localhost:3000";
   const adminUrl = `${site.replace(/\/$/, "")}/admin/orders`;
   const { subject, html, text } = buildAdminOrderEmailHtml({
@@ -70,35 +124,32 @@ export async function notifyAdminNewOrder(opts: {
     adminUrl,
   });
 
-  if (isGmailConfigured()) {
-    const from =
-      cleanEnv(process.env.EMAIL_FROM) ||
-      `${opts.settings.shop_name} <${cleanEnv(process.env.GMAIL_USER)}>`;
-    const result = await sendViaGmail({ to, from, subject, html, text });
-    if (result.sent) {
-      console.info("[email] sent via gmail", { to, order: opts.order.code });
-    } else {
-      console.error("[email] gmail failed", {
-        to,
-        order: opts.order.code,
-        reason: result.reason,
-      });
-    }
-    return { ...result, provider: "gmail" };
-  }
+  return deliverAdminEmail({
+    settings: opts.settings,
+    subject,
+    html,
+    text,
+    logContext: { order: opts.order.code },
+  });
+}
 
-  const from =
-    cleanEnv(process.env.EMAIL_FROM) ||
-    `${opts.settings.shop_name} <onboarding@resend.dev>`;
-  const result = await sendViaResend({ to, from, subject, html, text });
-  if (result.sent) {
-    console.info("[email] sent via resend", { to, order: opts.order.code });
-  } else {
-    console.error("[email] resend failed / skipped", {
-      to,
-      order: opts.order.code,
-      reason: result.reason,
-    });
-  }
-  return result;
+export async function notifyAdminNewLead(opts: {
+  lead: ContactLead;
+  settings: SiteSettings;
+}): Promise<NotifyResult> {
+  const site = cleanEnv(process.env.NEXT_PUBLIC_SITE_URL) || "http://localhost:3000";
+  const adminUrl = `${site.replace(/\/$/, "")}/admin/leads`;
+  const { subject, html, text } = buildAdminLeadEmailHtml({
+    lead: opts.lead,
+    settings: opts.settings,
+    adminUrl,
+  });
+
+  return deliverAdminEmail({
+    settings: opts.settings,
+    subject,
+    html,
+    text,
+    logContext: { lead: opts.lead.id },
+  });
 }

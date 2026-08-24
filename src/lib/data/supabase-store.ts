@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import type {
   Category,
+  ContactLead,
   HealthArticle,
   Order,
   OrderItem,
@@ -418,6 +419,93 @@ export async function sbDeleteArticle(id: string): Promise<void> {
   const sb = adminClient();
   const { error } = await sb.from("health_articles").delete().eq("id", id);
   if (error) throw error;
+}
+
+export async function sbCreateLead(lead: ContactLead): Promise<ContactLead> {
+  const sb = adminClient();
+  const { data, error } = await sb
+    .from("contact_leads")
+    .insert({
+      id: lead.id,
+      name: lead.name,
+      phone: lead.phone,
+      email: lead.email,
+      message: lead.message,
+      source: lead.source,
+      form_id: lead.form_id,
+      status: lead.status,
+      created_at: lead.created_at,
+    })
+    .select("*")
+    .single();
+  if (error) throw error;
+  return mapContactLead(data as Record<string, unknown>);
+}
+
+export async function sbListLeads(opts?: {
+  page?: number;
+  pageSize?: number;
+}): Promise<{ items: ContactLead[]; total: number }> {
+  const sb = adminClient();
+  const pageSize = Math.min(Math.max(opts?.pageSize ?? 20, 1), 100);
+  const page = Math.max(opts?.page ?? 1, 1);
+  const from = (page - 1) * pageSize;
+  const to = from + pageSize - 1;
+
+  const { count, error: countError } = await sb
+    .from("contact_leads")
+    .select("*", { count: "exact", head: true });
+  if (countError) {
+    if (isMissingTableError(countError)) return { items: [], total: 0 };
+    throw countError;
+  }
+
+  const { data, error } = await sb
+    .from("contact_leads")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .range(from, to);
+  if (error) {
+    if (isMissingTableError(error)) return { items: [], total: 0 };
+    throw error;
+  }
+
+  return {
+    items: (data ?? []).map((r) => mapContactLead(r as Record<string, unknown>)),
+    total: count ?? 0,
+  };
+}
+
+export async function sbUpdateLeadStatus(
+  id: string,
+  status: ContactLead["status"],
+): Promise<ContactLead | null> {
+  const sb = adminClient();
+  const { data, error } = await sb
+    .from("contact_leads")
+    .update({ status })
+    .eq("id", id)
+    .select("*")
+    .maybeSingle();
+  if (error) {
+    if (isMissingTableError(error)) return null;
+    throw error;
+  }
+  return data ? mapContactLead(data as Record<string, unknown>) : null;
+}
+
+function mapContactLead(row: Record<string, unknown>): ContactLead {
+  return {
+    id: String(row.id),
+    name: String(row.name ?? ""),
+    phone: String(row.phone ?? ""),
+    email: String(row.email ?? ""),
+    message: String(row.message ?? ""),
+    source: String(row.source ?? "website"),
+    form_id: String(row.form_id ?? "tu-van"),
+    status: (row.status as ContactLead["status"]) ?? "new",
+    created_at: String(row.created_at ?? new Date().toISOString()),
+  };
 }
 
 /**
