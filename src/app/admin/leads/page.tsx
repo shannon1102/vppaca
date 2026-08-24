@@ -35,7 +35,7 @@ export default async function AdminLeadsPage({ searchParams }: Props) {
       </p>
 
       <div className="mt-6 overflow-x-auto rounded-[var(--radius)] border border-slate-200 bg-white">
-        <table className="min-w-full text-sm">
+        <table className="min-w-full text-sm [&_tbody_td]:align-top [&_thead_th]:align-middle">
           <thead>
             <tr className="border-b border-slate-200 bg-slate-50 text-left text-xs uppercase tracking-wide text-[var(--brand-muted)]">
               <th className="px-4 py-3 font-semibold">Thời gian</th>
@@ -44,7 +44,7 @@ export default async function AdminLeadsPage({ searchParams }: Props) {
               <th className="px-4 py-3 font-semibold">Email</th>
               <th className="px-4 py-3 font-semibold">Nguồn</th>
               <th className="px-4 py-3 font-semibold">Tình trạng bệnh lý</th>
-              <th className="px-4 py-3 font-semibold">Trạng thái</th>
+              <th className="whitespace-nowrap px-4 py-3 font-semibold">Trạng thái</th>
             </tr>
           </thead>
           <tbody>
@@ -56,7 +56,7 @@ export default async function AdminLeadsPage({ searchParams }: Props) {
               </tr>
             ) : (
               items.map((lead) => (
-                <tr key={lead.id} className="border-b border-slate-100 align-top last:border-0">
+                <tr key={lead.id} className="border-b border-slate-100 last:border-0">
                   <td className="whitespace-nowrap px-4 py-3 text-[var(--brand-muted)]">
                     <time dateTime={lead.created_at}>{formatWhen(lead.created_at)}</time>
                   </td>
@@ -76,7 +76,7 @@ export default async function AdminLeadsPage({ searchParams }: Props) {
                   <td className="max-w-xs px-4 py-3 text-[var(--brand-muted)]">
                     {lead.message || "—"}
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="whitespace-nowrap px-4 py-3">
                     <LeadStatusForm leadId={lead.id} status={lead.status} />
                   </td>
                 </tr>

@@ -18,7 +18,7 @@ export function LeadStatusForm({
 
   return (
     <form
-      className="flex items-center gap-2"
+      className="inline-flex items-start gap-2"
       onSubmit={(e) => {
         e.preventDefault();
         const fd = new FormData(e.currentTarget);
