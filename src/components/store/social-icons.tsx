@@ -23,13 +23,14 @@ function SocialIconImage({ src, size }: { src: string; size: number }) {
   );
 }
 
-function iconLinkClass(variant: Variant) {
+function iconLinkClass(key: keyof typeof ICONS, variant: Variant) {
+  const isZalo = key === "zalo";
   const base =
     variant === "float"
       ? "pointer-events-auto flex h-11 w-11 items-center justify-center overflow-hidden rounded-full shadow-lg transition hover:-translate-y-0.5 hover:scale-105 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
       : "inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-full transition hover:scale-105 hover:brightness-110";
 
-  return base;
+  return isZalo ? `${base} bg-white` : base;
 }
 
 export function SocialIcons({
@@ -71,7 +72,7 @@ export function SocialIcons({
             rel="noopener noreferrer"
             aria-label={item.label}
             title={item.label}
-            className={iconLinkClass("float")}
+            className={iconLinkClass(item.key, "float")}
           >
             <SocialIconImage src={ICONS[item.key]} size={size} />
           </a>
@@ -90,7 +91,7 @@ export function SocialIcons({
           rel="noopener noreferrer"
           aria-label={item.label}
           title={item.label}
-          className={iconLinkClass("footer")}
+          className={iconLinkClass(item.key, "footer")}
         >
           <SocialIconImage src={ICONS[item.key]} size={size} />
         </a>
