@@ -23,14 +23,13 @@ function SocialIconImage({ src, size }: { src: string; size: number }) {
   );
 }
 
-function iconLinkClass(key: keyof typeof ICONS, variant: Variant) {
-  const isZalo = key === "zalo";
+function iconLinkClass(variant: Variant) {
   const base =
     variant === "float"
-      ? "pointer-events-auto flex h-11 w-11 items-center justify-center overflow-hidden shadow-lg transition hover:-translate-y-0.5 hover:scale-105 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-      : "inline-flex h-9 w-9 items-center justify-center overflow-hidden transition hover:scale-105 hover:brightness-110";
+      ? "pointer-events-auto flex h-11 w-11 items-center justify-center overflow-hidden rounded-full shadow-lg transition hover:-translate-y-0.5 hover:scale-105 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      : "inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-full transition hover:scale-105 hover:brightness-110";
 
-  return isZalo ? `${base} rounded-xl bg-white p-0.5` : `${base} rounded-full`;
+  return base;
 }
 
 export function SocialIcons({
@@ -72,7 +71,7 @@ export function SocialIcons({
             rel="noopener noreferrer"
             aria-label={item.label}
             title={item.label}
-            className={iconLinkClass(item.key, "float")}
+            className={iconLinkClass("float")}
           >
             <SocialIconImage src={ICONS[item.key]} size={size} />
           </a>
@@ -91,7 +90,7 @@ export function SocialIcons({
           rel="noopener noreferrer"
           aria-label={item.label}
           title={item.label}
-          className={iconLinkClass(item.key, "footer")}
+          className={iconLinkClass("footer")}
         >
           <SocialIconImage src={ICONS[item.key]} size={size} />
         </a>
