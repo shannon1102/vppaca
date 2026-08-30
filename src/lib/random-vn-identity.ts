@@ -80,3 +80,25 @@ export function randomMaskedPhone(): string {
   const suffix = String(Math.floor(Math.random() * 1000)).padStart(3, "0");
   return `0${prefix}xxxx${suffix}`;
 }
+
+const AVATAR_COLORS = [
+  { bg: "#E8F5E9", text: "#2E7D32" },
+  { bg: "#E3F2FD", text: "#1565C0" },
+  { bg: "#FFF3E0", text: "#E65100" },
+  { bg: "#F3E5F5", text: "#7B1FA2" },
+  { bg: "#FCE4EC", text: "#C2185B" },
+  { bg: "#E0F2F1", text: "#00695C" },
+];
+
+export function nameInitials(name: string): string {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (!parts.length) return "?";
+  const given = parts[parts.length - 1]!;
+  return given.charAt(0).toLocaleUpperCase("vi-VN");
+}
+
+export function avatarColorsForName(name: string): { bg: string; text: string } {
+  let hash = 0;
+  for (const ch of name) hash = (hash + ch.charCodeAt(0)) % 997;
+  return AVATAR_COLORS[hash % AVATAR_COLORS.length]!;
+}
