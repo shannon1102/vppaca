@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   avatarColorsForName,
   nameInitials,
@@ -11,38 +11,32 @@ import {
 const INTERVAL_MS = 10_000;
 const VISIBLE_MS = 4_500;
 
-export function RegistrationToast() {
-  const [visible, setVisible] = useState(false);
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+function createToastData() {
+  return {
+    name: randomVietnameseName(),
+    phone: randomMaskedPhone(),
+  };
+}
 
-  const show = useCallback(() => {
-    setName(randomVietnameseName());
-    setPhone(randomMaskedPhone());
-    setVisible(true);
-  }, []);
+export function RegistrationToast() {
+  const [visible, setVisible] = useState(true);
+  const [{ name, phone }, setData] = useState(createToastData);
 
   useEffect(() => {
-    let hideTimer: ReturnType<typeof setTimeout> | undefined;
-
-    const scheduleHide = () => {
-      hideTimer = setTimeout(() => setVisible(false), VISIBLE_MS);
-    };
-
-    show();
-    scheduleHide();
+    let hideTimer = setTimeout(() => setVisible(false), VISIBLE_MS);
 
     const interval = setInterval(() => {
-      show();
-      if (hideTimer) clearTimeout(hideTimer);
-      scheduleHide();
+      setData(createToastData());
+      setVisible(true);
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => setVisible(false), VISIBLE_MS);
     }, INTERVAL_MS);
 
     return () => {
       clearInterval(interval);
-      if (hideTimer) clearTimeout(hideTimer);
+      clearTimeout(hideTimer);
     };
-  }, [show]);
+  }, []);
 
   if (!visible) return null;
 
