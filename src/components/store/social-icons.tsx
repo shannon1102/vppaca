@@ -19,6 +19,7 @@ function SocialIconImage({ src, size }: { src: string; size: number }) {
       height={size}
       className="h-full w-full object-contain"
       aria-hidden
+      unoptimized
     />
   );
 }
