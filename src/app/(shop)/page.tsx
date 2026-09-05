@@ -28,6 +28,7 @@ export default async function HomePage() {
     repo.listArticles({ publishedOnly: true }),
   ]);
   const featured = products.filter((p) => p.is_featured).slice(0, 8);
+  const latestArticles = articles.slice(0, 3);
 
   return (
     <div>
@@ -138,9 +139,9 @@ export default async function HomePage() {
             Xem tất cả
           </Link>
         </div>
-        {articles.length > 0 ? (
+        {latestArticles.length > 0 ? (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {articles.map((a) => (
+            {latestArticles.map((a) => (
               <ArticleCard key={a.id} article={a} />
             ))}
           </div>
