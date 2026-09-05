@@ -28,7 +28,7 @@ export default async function HomePage() {
     repo.listArticles({ publishedOnly: true }),
   ]);
   const featured = products.filter((p) => p.is_featured).slice(0, 8);
-  const latestArticles = articles.slice(0, 3);
+  const latestArticles = articles.slice(0, 6);
 
   return (
     <div>
@@ -127,7 +127,14 @@ export default async function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-14">
         <div className="mb-8 flex items-end justify-between">
           <div>
-            <h2 className="text-2xl font-bold">Kiến thức sức khỏe</h2>
+            <h2 className="text-2xl font-bold">
+              <Link
+                href="/bai-viet-suc-khoe"
+                className="transition hover:text-[var(--brand-primary)]"
+              >
+                Kiến thức sức khỏe
+              </Link>
+            </h2>
             <p className="mt-1 text-sm text-[var(--brand-muted)]">
               Kiến thức y tế, mẹo chăm sóc sức khỏe và hướng dẫn sử dụng thiết bị y tế tại nhà.
             </p>
