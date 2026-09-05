@@ -101,13 +101,6 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
               >
                 {settings.phone}
               </a>
-              {" · "}
-              <a
-                className="font-semibold text-white hover:underline"
-                href={`tel:${TAM_DUC_BRAND.phoneSecondary.replace(/\s/g, "")}`}
-              >
-                {TAM_DUC_BRAND.phoneSecondary}
-              </a>
             </p>
             <p>
               Email:{" "}

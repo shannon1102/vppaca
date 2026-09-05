@@ -45,7 +45,7 @@ export function SocialIcons({
   const items = [
     {
       key: "zalo" as const,
-      label: "Zalo 0962 732 786",
+      label: "Zalo 0935 883 361",
       href: links.zalo,
     },
     {

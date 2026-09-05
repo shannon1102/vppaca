@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HeaderInteractive } from "@/components/store/header-interactive";
-import { TAM_DUC_BRAND } from "@/lib/brand-content";
 import type { Category, SiteSettings } from "@/lib/types";
 
 export function SiteHeader({
@@ -25,12 +24,6 @@ export function SiteHeader({
               className="font-semibold hover:text-white"
             >
               Hotline: {settings.phone}
-            </a>
-            <a
-              href={`tel:${TAM_DUC_BRAND.phoneSecondary.replace(/\s/g, "")}`}
-              className="hidden font-semibold hover:text-white sm:inline"
-            >
-              {TAM_DUC_BRAND.phoneSecondary}
             </a>
           </div>
           <div className="hidden items-center gap-4 sm:flex">

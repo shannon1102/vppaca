@@ -30,7 +30,6 @@ export function socialLinks(settings: {
   const facebook = settings.facebook_url || TAM_DUC_BRAND.social.facebook;
   return {
     zalo: settings.zalo_url || TAM_DUC_BRAND.social.zalo,
-    zaloSecondary: TAM_DUC_BRAND.social.zaloSecondary,
     facebook,
     messenger: messengerUrl(facebook),
   };
