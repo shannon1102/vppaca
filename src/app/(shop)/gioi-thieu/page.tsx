@@ -58,13 +58,6 @@ export default async function AboutPage() {
           <a className="font-semibold text-[var(--brand-primary)]" href={`tel:${s.phone.replace(/\s/g, "")}`}>
             {s.phone}
           </a>
-          {" · "}
-          <a
-            className="font-semibold text-[var(--brand-primary)]"
-            href={`tel:${TAM_DUC_BRAND.phoneSecondary.replace(/\s/g, "")}`}
-          >
-            {TAM_DUC_BRAND.phoneSecondary}
-          </a>
         </p>
         <p className="mt-2">
           Email:{" "}

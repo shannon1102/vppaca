@@ -563,7 +563,7 @@ const products = [
 const settings = {
   shop_name: "Thiết bị Y tế Tâm Đức",
   tagline: "Tận tâm vì sức khỏe từng gia đình",
-  phone: "0962 732 786",
+  phone: "0935 883 361",
   email: "cotruyentamduc268@gmail.com",
   address:
     "CS1: 200 Nguyễn Viết Xuân, Hà Cầu, Hà Đông | CS2: 18 LK06A, Làng Việt Kiều, Mỗ Lao, Hà Đông",
@@ -578,7 +578,7 @@ const settings = {
   transfer_content_template: "DH {code}",
   qr_image_url: "/seed/qr-demo.svg",
   facebook_url: "https://www.facebook.com/profile.php?id=61561988987352",
-  zalo_url: "https://zalo.me/0962732786",
+  zalo_url: "https://zalo.me/0935883361",
 };
 
 async function main() {

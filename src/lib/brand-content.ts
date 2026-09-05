@@ -8,7 +8,6 @@ export type Branch = {
 export const TAM_DUC_BRAND = {
   legalName: "Công ty TNHH Dịch vụ Y khoa - Cổ truyền Tâm Đức",
   taxCode: "0111502541",
-  phoneSecondary: "0935 312 733",
   hours: "8:00 – 19:00 (T2–CN)",
   branches: [
     {
@@ -51,8 +50,7 @@ export const TAM_DUC_BRAND = {
     "cửa hàng thiết bị y tế Hà Nội",
   ],
   social: {
-    zalo: "https://zalo.me/0962732786",
-    zaloSecondary: "https://zalo.me/0935312733",
+    zalo: "https://zalo.me/0935883361",
     facebook: "https://www.facebook.com/profile.php?id=61561988987352",
     messenger: "https://m.me/61561988987352",
   },

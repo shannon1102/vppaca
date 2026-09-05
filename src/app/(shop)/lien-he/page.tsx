@@ -6,7 +6,7 @@ import { pageMetadata, SEO_KEYWORDS } from "@/lib/seo/metadata";
 export const metadata = pageMetadata({
   title: "Liên hệ Thiết bị Y tế Tâm Đức | Hotline Hà Nội",
   description:
-    "Liên hệ Thiết bị Y tế Tâm Đức — hotline tư vấn thiết bị y tế Hà Nội, 2 cơ sở tại Hà Đông. Email và bản đồ cửa hàng thiết bị y tế.",
+    "Liên hệ Thiết bị Y tế Tâm Đức — hotline tư vấn thiết bị y tế Hà Nội, 2 cơ sở tại Hà Đông. Hotline 0935 883 361. Email và bản đồ cửa hàng thiết bị y tế.",
   path: "/lien-he",
   keywords: [...SEO_KEYWORDS, "liên hệ thiết bị y tế Hà Nội"],
 });
@@ -30,25 +30,14 @@ export default async function ContactPage() {
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         <div className="rounded-[var(--radius)] border border-slate-200 bg-white p-6 text-sm">
           <h2 className="font-semibold">Hotline</h2>
-          <div className="mt-3 space-y-2">
-            <p>
-              <a
-                className="text-lg font-bold text-[var(--brand-primary)] hover:underline"
-                href={telHref(s.phone)}
-              >
-                {s.phone}
-              </a>
-              <span className="ml-2 text-xs text-[var(--brand-muted)]">(chính)</span>
-            </p>
-            <p>
-              <a
-                className="font-semibold text-[var(--brand-primary)] hover:underline"
-                href={telHref(TAM_DUC_BRAND.phoneSecondary)}
-              >
-                {TAM_DUC_BRAND.phoneSecondary}
-              </a>
-            </p>
-          </div>
+          <p className="mt-3">
+            <a
+              className="text-lg font-bold text-[var(--brand-primary)] hover:underline"
+              href={telHref(s.phone)}
+            >
+              {s.phone}
+            </a>
+          </p>
 
           <h2 className="mt-6 font-semibold">Email</h2>
           <p className="mt-2">
@@ -64,17 +53,7 @@ export default async function ContactPage() {
           <ul className="mt-3 space-y-2">
             <li>
               <a className="text-[var(--brand-primary)] underline" href={links.zalo} target="_blank" rel="noopener noreferrer">
-                Zalo — 0962 732 786
-              </a>
-            </li>
-            <li>
-              <a
-                className="text-[var(--brand-primary)] underline"
-                href={links.zaloSecondary}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Zalo — 0935 312 733
+                Zalo — 0935 883 361
               </a>
             </li>
             <li>
