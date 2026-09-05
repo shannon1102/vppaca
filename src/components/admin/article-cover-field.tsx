@@ -32,11 +32,11 @@ export function ArticleCoverField({ defaultValue = "" }: Props) {
       <input type="hidden" name="cover_image_url" value={coverUrl} />
       <div className="flex flex-wrap items-start gap-4">
         {coverUrl ? (
-          <div className="relative h-28 w-44 overflow-hidden rounded-lg border border-slate-200 bg-white">
+          <div className="relative aspect-video w-44 overflow-hidden rounded-lg border border-slate-200 bg-white">
             <Image src={coverUrl} alt="" fill className="object-cover" sizes="176px" />
           </div>
         ) : (
-          <div className="flex h-28 w-44 items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50 text-xs text-[var(--brand-muted)]">
+          <div className="flex aspect-video w-44 items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50 text-xs text-[var(--brand-muted)]">
             Chưa có ảnh
           </div>
         )}
@@ -74,8 +74,9 @@ export function ArticleCoverField({ defaultValue = "" }: Props) {
         </div>
       </div>
       <p className="text-xs text-[var(--brand-muted)]">
-        Ảnh hiển thị trên danh sách bài viết sức khỏe. Ảnh mỗi file ≤ 5MB
-        (JPG/PNG/GIF/WEBP, tự nén khi tải lên).
+        Tỷ lệ khuyến nghị 16:9 (vd. 1280×720 hoặc 1920×1080). Ảnh hiển thị trên
+        danh sách và trang chi tiết bài viết. Mỗi file ≤ 5MB (JPG/PNG/GIF/WEBP,
+        tự nén khi tải lên).
       </p>
       {error ? <p className="text-sm text-red-600">{error}</p> : null}
     </div>
