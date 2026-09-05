@@ -11,7 +11,7 @@ export function ArticleCard({ article }: { article: HealthArticle }) {
       className="group overflow-hidden rounded-[var(--radius)] border border-slate-200 bg-white transition hover:border-[var(--brand-primary)] hover:shadow-md"
     >
       {article.cover_image_url ? (
-        <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+        <div className="relative aspect-video overflow-hidden bg-slate-100">
           <Image
             src={normalizeImageSrc(article.cover_image_url)}
             alt={article.title}
