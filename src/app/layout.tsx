@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Source_Sans_3 } from "next/font/google";
 import { repo } from "@/lib/data/repository";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo/jsonld";
 import { rootMetadata } from "@/lib/seo/metadata";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { ToastHost } from "@/components/ui/toast-host";
 import { themeStyleFromSettings } from "@/lib/theme";
 import "./globals.css";
@@ -40,6 +41,7 @@ export default async function RootLayout({
         className="flex min-h-full flex-col antialiased"
         style={themeStyleFromSettings(settings)}
       >
+        <GoogleAnalytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
