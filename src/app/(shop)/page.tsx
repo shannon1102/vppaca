@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArticleCard } from "@/components/store/article-card";
 import { ProductCard } from "@/components/store/product-card";
 import { TAM_DUC_BRAND } from "@/lib/brand-content";
 import { repo } from "@/lib/data/repository";
@@ -20,13 +21,13 @@ export async function generateMetadata() {
 }
 
 export default async function HomePage() {
-  const [settings, categories, products] = await Promise.all([
+  const [settings, categories, products, articles] = await Promise.all([
     repo.getSettings(),
     repo.listCategories(),
     repo.listProducts({ publishedOnly: true }),
+    repo.listArticles({ publishedOnly: true }),
   ]);
   const featured = products.filter((p) => p.is_featured).slice(0, 8);
-  const latest = products.slice(0, 8);
 
   return (
     <div>
@@ -125,27 +126,27 @@ export default async function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-14">
         <div className="mb-8 flex items-end justify-between">
           <div>
-            <h2 className="text-2xl font-bold">Mới cập nhật</h2>
+            <h2 className="text-2xl font-bold">Kiến thức sức khỏe</h2>
             <p className="mt-1 text-sm text-[var(--brand-muted)]">
-              {products.length} sản phẩm đang bán
+              Kiến thức y tế, mẹo chăm sóc sức khỏe và hướng dẫn sử dụng thiết bị y tế tại nhà.
             </p>
           </div>
           <Link
-            href="/san-pham"
+            href="/bai-viet-suc-khoe"
             className="text-sm font-semibold text-[var(--brand-primary)] hover:underline"
           >
             Xem tất cả
           </Link>
         </div>
-        {latest.length > 0 ? (
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {latest.map((p) => (
-              <ProductCard key={p.id} product={p} />
+        {articles.length > 0 ? (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {articles.map((a) => (
+              <ArticleCard key={a.id} article={a} />
             ))}
           </div>
         ) : (
           <p className="rounded-[var(--radius)] border border-dashed border-slate-200 bg-slate-50 px-4 py-10 text-center text-sm text-[var(--brand-muted)]">
-            Chưa có sản phẩm thiết bị y tế trên website. Admin hãy thêm sản phẩm mới trong trang quản trị.
+            Chưa có bài viết nào.
           </p>
         )}
       </section>
