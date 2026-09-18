@@ -18,7 +18,7 @@ export const defaultSettings: SiteSettings = {
   phone: "1900 1234",
   email: "sales@vppaca.vn",
   address: "Hà Nội, Việt Nam",
-  logo_url: "/brand/aca-logo-horizontal.svg",
+  logo_url: "/brand/aca-logo-linear-gradient-red-yellow.png",
   favicon_url: "/brand/aca-icon.svg",
   primary_color: BRAND_COLORS.primary,
   secondary_color: BRAND_COLORS.secondary,

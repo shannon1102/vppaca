@@ -43,7 +43,9 @@ export default async function HealthArticleDetailPage({ params }: Props) {
     ? normalizeImageSrc(article.cover_image_url)
     : null;
   const articleUrl = absoluteUrl(`/bai-viet-suc-khoe/${article.slug}`);
-  const logoUrl = absoluteUrl(settings.logo_url || "/brand/tam-duc-logo.png");
+  const logoUrl = absoluteUrl(
+    settings.logo_url || "/brand/aca-logo-linear-gradient-red-yellow.png",
+  );
   const coverAbs = coverUrl ? absoluteUrl(coverUrl) : undefined;
 
   const jsonLd = {

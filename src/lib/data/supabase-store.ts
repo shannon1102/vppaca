@@ -11,6 +11,7 @@ import type {
 } from "@/lib/types";
 import { defaultSettings } from "@/data/seed";
 import { BRAND_COLORS } from "@/lib/brand-colors";
+import { resolveLogoUrl } from "@/lib/brand-logo";
 
 function adminClient() {
   const url =
@@ -79,7 +80,7 @@ function mapSettings(row: Record<string, unknown>): SiteSettings {
     phone: String(row.phone ?? ""),
     email: String(row.email ?? ""),
     address: String(row.address ?? ""),
-    logo_url: String(row.logo_url ?? ""),
+    logo_url: resolveLogoUrl(String(row.logo_url ?? "")),
     favicon_url: String(row.favicon_url ?? ""),
     primary_color: String(row.primary_color ?? BRAND_COLORS.primary),
     secondary_color: String(row.secondary_color ?? BRAND_COLORS.secondary),

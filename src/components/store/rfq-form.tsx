@@ -47,8 +47,8 @@ export function RfqForm() {
   }
 
   return (
-    <div className="space-y-8">
-      <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6">
+    <div className="space-y-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8 md:p-10">
+      <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50/80 p-6 md:p-8">
         <h2 className="font-bold">Upload Excel</h2>
         <p className="mt-1 text-sm text-[var(--brand-muted)]">
           Cột: <code>sku</code>, <code>so_luong</code>, <code>don_vi</code> (tùy chọn).{" "}
@@ -68,7 +68,7 @@ export function RfqForm() {
       </div>
 
       {lines.length ? (
-        <div className="overflow-x-auto rounded-xl border bg-white">
+        <div className="overflow-x-auto rounded-xl border bg-white p-2 sm:p-4">
           <table className="w-full min-w-[640px] text-sm">
             <thead className="bg-slate-50 text-left">
               <tr>
@@ -101,7 +101,7 @@ export function RfqForm() {
       ) : null}
 
       <form
-        className="space-y-4 rounded-xl border bg-white p-6"
+        className="space-y-5 rounded-xl border border-slate-200 bg-slate-50/50 p-6 md:p-8"
         onSubmit={(e) => {
           e.preventDefault();
           const fd = new FormData(e.currentTarget);

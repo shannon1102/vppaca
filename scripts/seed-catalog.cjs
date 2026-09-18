@@ -567,7 +567,7 @@ const settings = {
   email: "cotruyentamduc268@gmail.com",
   address:
     "CS1: 200 Nguyễn Viết Xuân, Hà Cầu, Hà Đông | CS2: 18 LK06A, Làng Việt Kiều, Mỗ Lao, Hà Đông",
-  logo_url: "/brand/tam-duc-logo.png",
+  logo_url: "/brand/aca-logo-linear-gradient-red-yellow.png",
   favicon_url: "/brand/tam-duc-favicon.png",
   primary_color: "#2E7D32",
   secondary_color: "#1B4332",

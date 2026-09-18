@@ -19,7 +19,7 @@ export async function generateMetadata() {
     title: `${settings.shop_name} — Văn phòng phẩm B2B & B2C`,
     description: `${settings.tagline} ${VPPACA_BRAND.heroDescription}`,
     path: "/",
-    image: settings.logo_url || "/brand/aca-logo-horizontal.svg",
+    image: settings.logo_url || "/brand/aca-logo-linear-gradient-red-yellow.png",
     keywords: [...SEO_KEYWORDS],
   });
 }
@@ -90,7 +90,7 @@ export default async function HomePage() {
 
       <section className="shop-container mt-8">
         <h2 className="text-lg font-bold text-[var(--brand-text)]">Gợi ý hôm nay</h2>
-        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <div className="product-grid-shopee mt-4">
           {featured.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
@@ -99,14 +99,14 @@ export default async function HomePage() {
 
       <section className="shop-container mt-10">
         <h2 className="text-lg font-bold">Bán chạy</h2>
-        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <div className="product-grid-shopee mt-4">
           {bestSeller.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
         </div>
       </section>
 
-      <section className="shop-container mt-10 rounded-xl bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-accent)] p-6 text-white">
+      <section className="shop-container mt-10 rounded-xl brand-gradient-bg p-6 text-white">
         <h2 className="text-xl font-bold">Doanh nghiệp & trường học</h2>
         <p className="mt-2 max-w-xl text-sm text-white/90">{VPPACA_BRAND.aboutIntro}</p>
         <Link

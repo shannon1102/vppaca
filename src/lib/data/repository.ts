@@ -50,7 +50,12 @@ import {
   sbUpsertProduct,
 } from "@/lib/data/supabase-store";
 import { cachedRepo } from "@/lib/data/cached-repo";
-import type { Category, ContactLead, HealthArticle, Order, Product, SiteSettings } from "@/lib/types";
+import {
+  paginateFilteredProducts,
+  type ProductsPageResult,
+} from "@/lib/catalog/list-products-page";
+import type { CatalogFilterParams } from "@/lib/catalog-filters";
+import type { Category, ContactLead, HealthArticle, Order, Product, PromotionProduct, SiteSettings } from "@/lib/types";
 import { isSupabaseConfigured } from "@/lib/data/config";
 
 export { isSupabaseConfigured };
@@ -85,6 +90,26 @@ export const repo = {
       : localDeleteCategory(id),
   listProducts: (opts?: { publishedOnly?: boolean; categorySlug?: string }) =>
     cachedRepo.listProducts(opts),
+  listProductsPage: async (opts: {
+    publishedOnly?: boolean;
+    categorySlug?: string;
+    filters?: CatalogFilterParams;
+    promoProducts?: PromotionProduct[];
+    page?: number;
+    pageSize?: number;
+  }): Promise<ProductsPageResult> => {
+    const products = await cachedRepo.listProducts({
+      publishedOnly: opts.publishedOnly,
+      categorySlug: opts.categorySlug,
+    });
+    return paginateFilteredProducts({
+      products,
+      filters: opts.filters,
+      promoProducts: opts.promoProducts,
+      page: opts.page,
+      pageSize: opts.pageSize,
+    });
+  },
   getProductBySlug: (slug: string, publishedOnly = true) =>
     cachedRepo.getProductBySlug(slug, publishedOnly),
   listRelatedProducts: (categoryId: string, excludeId: string, limit = 4) =>

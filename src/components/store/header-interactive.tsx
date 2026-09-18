@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { BrandLogo } from "@/components/store/brand-logo";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CartLink } from "@/components/store/cart-link";
@@ -49,12 +49,13 @@ export function HeaderInteractive({
       <div className="border-b border-slate-200 bg-[var(--brand-surface)]">
         <div className="shop-container flex items-center gap-3 py-3 md:gap-6 md:py-4">
           <Link href="/" className="flex min-w-0 shrink-0 items-center gap-2.5">
-            <Image
+            <BrandLogo
               src={logoUrl}
               alt={shopName}
               width={48}
               height={48}
               className="h-11 w-11 rounded-xl object-contain md:h-12 md:w-12"
+              priority
             />
             <span className="hidden min-w-0 sm:block">
               <span className="block truncate text-base font-bold leading-tight text-[var(--brand-text)] md:text-lg">
@@ -124,7 +125,7 @@ export function HeaderInteractive({
               type="button"
               onClick={() => setCatOpen((v) => !v)}
               onBlur={() => setTimeout(() => setCatOpen(false), 150)}
-              className="inline-flex h-11 items-center gap-2 rounded-[var(--radius)] bg-[var(--brand-primary)] px-4 text-sm font-semibold text-white shadow-sm transition hover:bg-[var(--brand-primary-hover)]"
+              className="brand-gradient-bg inline-flex h-11 items-center gap-2 rounded-[var(--radius)] px-4 text-sm font-semibold text-white shadow-sm transition hover:brightness-95"
             >
               <MenuIcon />
               Danh mục sản phẩm

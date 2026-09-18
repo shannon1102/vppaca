@@ -1,6 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { defaultSettings, seedArticles, seedCategories, seedProducts } from "@/data/seed";
+import { resolveLogoUrl } from "@/lib/brand-logo";
 import type { Category, ContactLead, HealthArticle, Order, Product, SiteSettings } from "@/lib/types";
 
 const DATA_DIR = path.join(process.cwd(), ".data");
@@ -53,7 +54,7 @@ async function saveDb(db: LocalDb) {
 
 export async function localGetSettings(): Promise<SiteSettings> {
   const db = await ensureDb();
-  return db.settings;
+  return { ...db.settings, logo_url: resolveLogoUrl(db.settings.logo_url) };
 }
 
 export async function localUpdateSettings(

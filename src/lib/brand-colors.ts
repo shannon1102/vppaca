@@ -1,8 +1,9 @@
-/** ACA / VPPACA brand — gradient đỏ–vàng + nền cream */
+/** ACA logo — đỏ → vàng */
 export const BRAND_COLORS = {
-  primary: "#C17A2E",
-  primaryHover: "#A06524",
-  secondary: "#8B5A2B",
-  accent: "#F5C563",
-  sale: "#EE4D2D",
+  primary: "#EC2229",
+  primaryHover: "#C41C23",
+  secondary: "#9B1519",
+  accent: "#EDA909",
+  sale: "#EC2229",
+  gradient: "linear-gradient(135deg, #EC2229 0%, #EDA909 100%)",
 } as const;

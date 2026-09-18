@@ -5,7 +5,8 @@ import { CatalogSidebar } from "@/components/store/catalog-sidebar";
 import { ProductCard } from "@/components/store/product-card";
 import { ProductPriceFilter } from "@/components/store/product-price-filter";
 import { EmptyState } from "@/components/ui/empty";
-import { filterAndSortProducts } from "@/lib/catalog-filters";
+import { CatalogPagination } from "@/components/store/catalog-pagination";
+import { parseCatalogPage } from "@/lib/catalog/list-products-page";
 import { repo, vppGetActiveFlashSale } from "@/lib/data/repository";
 import { pageMetadata, SEO_KEYWORDS } from "@/lib/seo/metadata";
 
@@ -42,7 +43,13 @@ export default async function ProductsPage({
     vppGetActiveFlashSale(),
   ]);
   const promoMap = new Map(flash.products.map((p) => [p.product_id, p.sale_price]));
-  const list = filterAndSortProducts(products, sp, flash.products);
+  const page = parseCatalogPage(sp.page);
+  const { items: list, total, totalPages } = await repo.listProductsPage({
+    publishedOnly: true,
+    filters: sp,
+    promoProducts: flash.products,
+    page,
+  });
 
   return (
     <div className="shop-container py-10">
@@ -52,8 +59,8 @@ export default async function ProductsPage({
           <h1 className="text-3xl font-bold">Sản phẩm</h1>
           <p className="mt-2 text-[var(--brand-muted)]">
             {sp.q?.trim()
-              ? `Kết quả “${sp.q.trim()}”: ${list.length} sản phẩm`
-              : `${list.length} mặt hàng văn phòng phẩm`}
+              ? `Kết quả “${sp.q.trim()}”: ${total} sản phẩm`
+              : `${total} mặt hàng văn phòng phẩm`}
             {(sp.minPrice || sp.maxPrice) && (
               <span>
                 {" "}
@@ -108,15 +115,24 @@ export default async function ProductsPage({
               <EmptyState title="Không tìm thấy sản phẩm" />
             </div>
           ) : (
-            <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-              {list.map((p) => (
-                <ProductCard
-                  key={p.id}
-                  product={p}
-                  overrideSalePrice={promoMap.get(p.id) ?? undefined}
-                />
-              ))}
-            </div>
+            <>
+              <div className="product-grid-shopee mt-8">
+                {list.map((p) => (
+                  <ProductCard
+                    key={p.id}
+                    product={p}
+                    overrideSalePrice={promoMap.get(p.id) ?? undefined}
+                  />
+                ))}
+              </div>
+              <CatalogPagination
+                basePath="/san-pham"
+                searchParams={sp}
+                page={page}
+                totalPages={totalPages}
+                total={total}
+              />
+            </>
           )}
         </div>
       </div>

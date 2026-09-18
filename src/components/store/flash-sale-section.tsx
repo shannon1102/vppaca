@@ -48,7 +48,7 @@ export function FlashSaleSection({
           Xem tất cả
         </Link>
       </div>
-      <div className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6">
+      <div className="product-grid-shopee mt-4">
         {products.slice(0, 6).map((p) => (
           <div key={p.id} className="rounded-lg bg-white p-1">
             <ProductCard

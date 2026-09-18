@@ -1,3 +1,4 @@
+import { ACA_LOGO_URL, resolveLogoUrl } from "@/lib/brand-logo";
 import type { SiteSettings } from "@/lib/types";
 import { siteUrl } from "@/lib/seo/metadata";
 
@@ -23,7 +24,7 @@ export function postalAddress(settings: SiteSettings) {
 
 export function organizationJsonLd(settings: SiteSettings) {
   const base = siteUrl();
-  const logo = absoluteUrl(settings.logo_url || "/brand/tam-duc-logo.png");
+  const logo = absoluteUrl(resolveLogoUrl(settings.logo_url || ACA_LOGO_URL));
   return {
     "@context": "https://schema.org",
     "@type": ["Organization", "LocalBusiness"],

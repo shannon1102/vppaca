@@ -3,11 +3,13 @@
 :root {
   /* Shopee VN desktop content column ≈ 1270px */
   --shop-content-max: 1270px;
-  --brand-primary: #c17a2e;
-  --brand-primary-hover: #a06524;
-  --brand-secondary: #8b5a2b;
-  --brand-accent: #f5c563;
-  --brand-sale: #ee4d2d;
+  --nc-primary: #ec2229;
+  --brand-primary: var(--nc-primary);
+  --brand-primary-hover: #c41c23;
+  --brand-secondary: #9b1519;
+  --brand-accent: #eda909;
+  --brand-gradient: linear-gradient(135deg, #ec2229 0%, #eda909 100%);
+  --brand-sale: #ec2229;
   --brand-bg: #fafaf9;
   --brand-surface: #ffffff;
   --brand-text: #0f172a;
@@ -358,6 +360,20 @@ h4 {
 }
 
 /* Storefront shell — align with Shopee content width */
+.brand-gradient-bg {
+  background: var(--brand-gradient);
+}
+
+.brand-gradient-bg:hover {
+  filter: brightness(0.95);
+}
+
+.product-grid-shopee {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(188px, 1fr));
+  gap: 0.625rem;
+}
+
 .shop-container {
   box-sizing: border-box;
   width: 100%;
