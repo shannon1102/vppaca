@@ -1,0 +1,37 @@
+# CI gate on master; production deploy is triggered by Vercel Git (project: vppaca, branch: master).
+name: Production (master)
+
+on:
+  push:
+    branches: [master]
+
+concurrency:
+  group: production-master
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+        env:
+          USE_SUPABASE: "false"
+          ADMIN_EMAIL: admintamduc
+          ADMIN_PASSWORD: admin123
+          NEXT_PUBLIC_SITE_URL: https://vppaca.vercel.app
+
+  deploy-note:
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vercel auto-deploy
+        run: |
+          echo "Build passed. Vercel project vppaca deploys production on push to master."
+          echo "Dashboard: https://vercel.com/shannon1102s-projects/vppaca"
