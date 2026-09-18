@@ -1,10 +1,14 @@
 # Product image credits (royalty-free)
 
-Images stored in `/public/products/` for MediStore demo catalog.
-
 | File | Source | License |
 |------|--------|---------|
-| p-01.jpg … p-09, p-11–p-17, p-19–p-20 | [Unsplash](https://unsplash.com) (medical / healthcare photos) | [Unsplash License](https://unsplash.com/license) — free commercial use |
-| p-10.jpg, p-18.jpg | [Pexels](https://www.pexels.com) | [Pexels License](https://www.pexels.com/license/) — free commercial use |
+| giay-a4-ream-01.jpg | [Unsplash](https://unsplash.com/photos/white-printer-paper-on-brown-wooden-table-7KLa-xLSCnc) | [Unsplash License](https://unsplash.com/license) |
+| giay-a4-ream-02.jpg | [Pexels](https://www.pexels.com/photo/white-printer-paper-356079/) | [Pexels License](https://www.pexels.com/license/) |
+| giay-a4-box.jpg | [Pexels](https://www.pexels.com/photo/books-on-brown-wooden-shelf-159866/) | Pexels License |
+| but-bi.jpg | [Pexels](https://www.pexels.com/photo/blue-and-black-pen-on-white-paper-4484076/) | Pexels License |
+| bia-ho-so.jpg | [Pexels](https://www.pexels.com/photo/person-holding-white-printer-paper-6169662/) | Pexels License |
+| muc-in.jpg | [Pexels](https://www.pexels.com/photo/black-and-gray-printer-4498290/) | Pexels License |
+| dung-cu-vp.jpg | [Pexels](https://www.pexels.com/photo/assorted-color-markers-4475709/) | Pexels License |
+| vo-so.jpg | [Pexels](https://www.pexels.com/photo/open-book-on-brown-wooden-desk-256541/) | Pexels License |
 
-No attribution required by license; credits kept for transparency.
+Logo ACA: file nội bộ trong `/public/brand/` và `/logo/`.

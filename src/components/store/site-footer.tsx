@@ -7,7 +7,7 @@ import { SocialIcons } from "@/components/store/social-icons";
 export function SiteFooter({ settings }: { settings: SiteSettings }) {
   return (
     <footer className="mt-auto bg-[var(--brand-secondary)] text-white">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="shop-container grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3">
@@ -113,7 +113,7 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-4 text-xs text-white/55 sm:flex-row">
+        <div className="shop-container flex flex-col items-center justify-between gap-2 py-4 text-xs text-white/55 sm:flex-row">
           <p>
             © {new Date().getFullYear()} {settings.shop_name}. MST: {TAM_DUC_BRAND.taxCode}
           </p>

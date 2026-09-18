@@ -1,5 +1,5 @@
 {
-  "name": "medical-store-web",
+  "name": "vppaca-web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,8 +8,10 @@
     "start": "next start",
     "lint": "eslint",
     "seed:reset": "node -e \"require('fs').rmSync('.data',{recursive:true,force:true}); console.log('Cleared .data — restart dev to reseed');\"",
-    "seed:catalog": "node scripts/seed-catalog.cjs",
-    "reset:catalog": "node scripts/reset-catalog.cjs"
+    "seed:catalog": "node scripts/seed-vpp-catalog.cjs",
+    "reset:catalog": "node scripts/reset-catalog.cjs",
+    "product-docs:export": "python scripts/export-product-docs.py",
+    "catalog:paper:generate": "node scripts/generate-paper-seed-from-docs.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.0",
@@ -22,6 +24,8 @@
     "resend": "^6.17.2",
     "sanitize-html": "^2.17.5",
     "zod": "^4.4.3",
+    "pdf-lib": "^1.17.1",
+    "xlsx": "^0.18.5",
     "zustand": "^5.0.14"
   },
   "devDependencies": {

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 160" fill="none" role="img" aria-label="ACA Vn phòng ph©m">
+  <defs>
+    <linearGradient id="aca-bg-h" x1="0" y1="0" x2="160" y2="160" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F5C563"/>
+      <stop offset="0.45" stop-color="#C17A2E"/>
+      <stop offset="1" stop-color="#8B5A2B"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="144" height="144" rx="32" fill="url(#aca-bg-h)"/>
+  <path d="M118 36 L134 20 L142 28 L126 44 Z" fill="#FDF8F0" opacity="0.9"/>
+  <text x="80" y="102" text-anchor="middle" font-family="Segoe UI, system-ui, Arial, sans-serif" font-size="52" font-weight="800" letter-spacing="-2" fill="#FDF8F0">ACA</text>
+  <text x="184" y="72" font-family="Segoe UI, system-ui, Arial, sans-serif" font-size="56" font-weight="800" letter-spacing="-1" fill="#1C1917">ACA</text>
+  <text x="184" y="112" font-family="Segoe UI, system-ui, Arial, sans-serif" font-size="22" font-weight="600" letter-spacing="0.5" fill="#A06524">VN PHÒNG PH¨M</text>
+  <line x1="184" y1="124" x2="420" y2="124" stroke="#F5E6D3" stroke-width="3" stroke-linecap="round"/>
+</svg>

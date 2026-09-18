@@ -1,0 +1,138 @@
+{
+  "category_slug": "giay-ve-sinh",
+  "count": 7,
+  "items": [
+    {
+      "source_product_id": 5745,
+      "name": "Giấy Vệ Sinh An An",
+      "slug": "giay-ve-sinh-an-an",
+      "sku": "GVSANAN",
+      "price": 36000,
+      "regular_price": 39000,
+      "aca_category_hint": "cat-hs",
+      "specs": {
+        "Thương hiệu": "An An",
+        "Sản xuất tại": "Việt Nam.",
+        "Chất liệu": "100% bột giấy nguyên chất.",
+        "Quy cách đóng gói": "1 cây = 10 cuộn, 1 vành = 10 cây."
+      },
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/an-an.jpg"
+      ],
+      "doc_file": "giay-ve-sinh-an-an.md"
+    },
+    {
+      "source_product_id": 5748,
+      "name": "GIẤY VỆ SINH PULPPY",
+      "slug": "giay-ve-sinh-pulppy",
+      "sku": "GVSPUPY",
+      "price": 80000,
+      "regular_price": 80000,
+      "aca_category_hint": "cat-hs",
+      "specs": {
+        "Thương hiệu": "Pulppy",
+        "Sản Xuất": "Indonesia",
+        "Kích thước": "20×30 cm",
+        "Số cuộn": "2 cuộn – 6 cuộn / bao PE",
+        "Định lượng": "25 gsm"
+      },
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-ve-sinh-pulppy-van-phong-pham-ba-nhat.jpg"
+      ],
+      "doc_file": "giay-ve-sinh-pulppy.md"
+    },
+    {
+      "source_product_id": 5753,
+      "name": "Giấy vệ sinh Bless you",
+      "slug": "giay-ve-sinh-bless-you",
+      "sku": "GVSBLESSYOU",
+      "price": 78000,
+      "regular_price": 79000,
+      "aca_category_hint": "cat-hs",
+      "specs": {},
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-ve-sinh-bless-you-1.png",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-ve-sinh-bless-you-1-1.jpg",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-ve-sinh-bless-you-2.jpg"
+      ],
+      "doc_file": "giay-ve-sinh-bless-you.md"
+    },
+    {
+      "source_product_id": 5937,
+      "name": "Giấy Vệ Sinh Cuộn Lớn 700g",
+      "slug": "giay-ve-sinh-cuon-lon-700g",
+      "sku": "GVSHANOICUONLON",
+      "price": 35000,
+      "regular_price": 39000,
+      "aca_category_hint": "cat-hs",
+      "specs": {},
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-ve-sinh-cong-nghiep-cuon-lon-700g-2.png",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-ve-sinh-cong-nghiep-cuon-lon-700g-1.jpg",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-ve-sinh-cong-nghiep-cuon-lon-700g-1.png"
+      ],
+      "doc_file": "giay-ve-sinh-cuon-lon-700g.md"
+    },
+    {
+      "source_product_id": 8457,
+      "name": "Giấy vệ sinh Toply có lõi 12 cuộn 2 lớp",
+      "slug": "giay-ve-sinh-toply-co-loi-12-cuon",
+      "sku": "GVSTOPLY",
+      "price": 42000,
+      "regular_price": 48000,
+      "aca_category_hint": "cat-hs",
+      "specs": {
+        "Thương hiệu": "Toply",
+        "Sản Xuất": "Indonesia",
+        "Kích thước": "90 x 100 mm",
+        "Số cuộn": "12 cuộn",
+        "Số lớp": "2 lớp"
+      },
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2020/01/giay-ve-sinh-toply-co-loi-1.png",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2020/01/giay-cuon-co-loi.png"
+      ],
+      "doc_file": "giay-ve-sinh-toply-co-loi-12-cuon.md"
+    },
+    {
+      "source_product_id": 8458,
+      "name": "Giấy vệ sinh May",
+      "slug": "giay-ve-sinh-may",
+      "sku": "GVSMAY",
+      "price": 60000,
+      "regular_price": 65000,
+      "aca_category_hint": "cat-hs",
+      "specs": {},
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2020/01/giay-cuon-may-gia-re-3.png",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2020/01/giay-cuon-may-gia-re-2.png"
+      ],
+      "doc_file": "giay-ve-sinh-may.md"
+    },
+    {
+      "source_product_id": 45685,
+      "name": "Giấy vệ sinh JAPANI SILK cuộn nhỏ có lõi",
+      "slug": "giay-ve-sinh-japani-silk",
+      "sku": "GVSJAPANISILK",
+      "price": 50000,
+      "regular_price": 60000,
+      "aca_category_hint": "cat-hs",
+      "specs": {
+        "Tên sản phẩm": "Giấy lụa Japani Silk 10",
+        "Thành phần chính": "100% bột giấy nguyên sinh nhập khẩu từ Indonesia",
+        "Định lượng": "14gsm ±2",
+        "Chiều cao": "96mm",
+        "Đóng gói": "mỗi lốc 10 cuộn, cuộn 3 lớp, dải dài 297m",
+        "Đặc tính": "Giấy trắng, mềm, mịn, dai, hoa văn mặt trong chấm bi mặt ngoài bông hoa",
+        "Cách sử dụng": "Đựng trong hộp đựng giấy vệ sinh cuộn nhỏ, rút và xé từng tờ sử dụng",
+        "Hạn sử dụng": "03 năm kể từ ngày sản xuất."
+      },
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2022/04/giay-ve-sinh-cuon-nho-japani-silk-10-vpp-ba-nhat-2.jpg",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2022/04/giay-ve-sinh-cuon-nho-japani-silk-10-vpp-ba-nhat-4.jpg",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2022/04/giay-ve-sinh-cuon-nho-japani-silk-10-vpp-ba-nhat-3.jpg"
+      ],
+      "doc_file": "giay-ve-sinh-japani-silk.md"
+    }
+  ]
+}

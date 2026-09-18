@@ -1,0 +1,115 @@
+{
+  "category_slug": "giay-than",
+  "count": 4,
+  "items": [
+    {
+      "source_product_id": 5771,
+      "name": "GIẤY THAN KOKUSAI – CARBON PAPER",
+      "slug": "giay-than-kokusai",
+      "sku": "GTHANKOKUSAI",
+      "price": 85000,
+      "regular_price": 91000,
+      "aca_category_hint": "cat-giay",
+      "specs": {
+        "Xuất xứ": "Nhật bản.",
+        "Chất liệu": "Giấy đặc biệt có tráng lớp carbon trên bề mặt.",
+        "Màu": "Chủ yếu là hai màu xanh, đen.",
+        "Đơn vị tính": "Tập, 100 tờ/tập.",
+        "Cỡ giấy": "A4(210 x 297mm)",
+        "Nhiệt độ lưu trữ": "10°C – 55°C",
+        "Độ ẩm lưu trữ": "55 – 99%RH"
+      },
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/van-phong-pham-giay-than-kokusai.jpg"
+      ],
+      "doc_file": "giay-than-kokusai.md"
+    },
+    {
+      "source_product_id": 5808,
+      "name": "Giấy Than Horse",
+      "slug": "giay-than-horse",
+      "sku": "GTHANHORES4400",
+      "price": 90000,
+      "regular_price": 91000,
+      "aca_category_hint": "cat-giay",
+      "specs": {
+        "Nhà sản xuất": "Thái Lan.",
+        "Kích thước": "210 x 297 mm.",
+        "Đóng gói": "100 tờ/tập",
+        "Điều kiện nhiệt độ và độ ẩm": "Bảo quản giấy Than Horse trong khoảng nhiệt độ từ 10 đến 55º C và độ ẩm từ 55 đến 95% RH để đảm bảo giữ được chất lượng tốt nhất của sản phẩm.",
+        "Tránh nguồn nhiệt và chất lỏng": "Giữ giấy Than Horse cách xa nguồn nhiệt, dầu mỡ, và các chất lỏng khác để tránh ảnh hưởng đến cấu trúc và chất lượng của giấy.",
+        "Ngăn chặn tác động của ẩm": "Tránh đặt giấy ở những nơi có độ ẩm thấp hoặc gần nguồn nước, vì điều này có thể gây hại cho chất lượng và tính nhất quán của giấy.",
+        "Nguyên tắc về nhiệt độ cao": "Hạn chế đặt giấy Than Horse ở những nơi có nhiệt độ cao quá mức, vì điều này có thể dẫn đến biến dạng giấy.",
+        "Ngăn chặn bụi bám": "Tránh để giấy bị bám bụi quá nhiều, vì điều này có thể ảnh hưởng đến độ sáng, độ mịn, và định lượng của giấy. Đặt giấy ở những nơi sạch sẽ để giữ cho bề mặt giấy luôn trong tình trạng tốt nhất."
+      },
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-than-horse.png",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-than-2.jpg",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-than-1.jpg"
+      ],
+      "doc_file": "giay-than-horse.md"
+    },
+    {
+      "source_product_id": 5810,
+      "name": "Giấy Than Gstar",
+      "slug": "giay-than-gstar",
+      "sku": "GTHANGSTAR",
+      "price": 82000,
+      "regular_price": 82000,
+      "aca_category_hint": "cat-giay",
+      "specs": {
+        "Xuất xứ": "Mỹ.",
+        "Nhà sản xuất": "G. Start.",
+        "Màu sắc": "Xanh dương, đen.",
+        "Đơn vị bán": "Hộp.",
+        "Kích thước": "21*33cm.",
+        "Đặc điểm": "Dùng để sao chép tài liệu, chứng từ.",
+        "Đóng gói": "100 tờ/1 tập.",
+        "Sự đa dạng màu sắc": "Giấy than GStar được biết đến với sự đa dạng màu sắc, phổ biến nhất là màu xanh và đen. Sự lựa chọn này không chỉ tạo nên sự phong cách mà còn giúp làm nổi bật văn bản trên mọi loại hóa đơn hay chứng từ.",
+        "Chất lượng In Ấn xuất sắc": "Sản phẩm được sản xuất trên công nghệ hàng đầu, đạt chuẩn cao. Nhờ đó, những hình ảnh được in ra luôn đảm bảo rõ nét và không gây khó nhìn, cho dù in trên loại hóa đơn hay chứng từ nào.",
+        "Kích thước tiện lợi": "Với kích thước nhỏ gọn, giấy than GStar phù hợp với mọi nhu cầu sử dụng, đặc biệt hiệu quả trong các công việc thu – chi hay xuất – nhập đơn hàng.",
+        "Nguyên vật liệu chất lượng cao": "Sử dụng nguyên vật liệu chất lượng cao, giấy than luôn đạt chuẩn và trải qua quá trình kiểm tra nghiêm ngặt trước khi đến tay người tiêu dùng, giúp bảo đảm an toàn và chất lượng.",
+        "Tính an toàn cao": "Không chứa chất độc hại, giấy than GStar cam kết mang lại sự an toàn cho người tiêu dùng.",
+        "Tính tái sử dụng và nét mực rõ": "Khả năng tái sử dụng và nét mực rõ là những ưu điểm lớn của sản phẩm này, giúp giảm chi phí và đảm bảo chất lượng khi sử dụng.",
+        "Khổ giấy tính toán kỹ lưỡng": "Khổ giấy được tính toán kỹ lưỡng trong quá trình sản xuất, giúp sản phẩm vừa và phù hợp cho mọi loại hóa đơn hay chứng từ.",
+        "Chất liệu cao cấp đảm bảo độ láng mịn": "Sử dụng chất liệu cao cấp, giấy than GStar có độ láng mịn cao, đảm bảo độ nét tương đối lớn, không có sự sai sót trong bản sao và in ấn.",
+        "Độ dai nhất định và không gây mùi khó chịu": "Sản phẩm có độ dai nhất định, giúp việc sử dụng trở nên dễ dàng mà không tạo mùi khó chịu như một số loại giấy than khác.",
+        "Khả năng sử dụng nhiều lần": "Giấy than Gstar Ấn Độ được thiết kế để có thể tái sử dụng nhiều lần, mang lại sự tiện lợi và hiệu quả kinh tế cho người sử dụng.",
+        "Nét mực rõ, không nhòe": "Sản phẩm này đảm bảo cho người sử dụng một trải nghiệm viết tuyệt vời với nét mực rõ ràng. Không xảy ra hiện tượng nhòe, giúp bảo đảm văn bản được sao chép với độ chính xác cao.",
+        "Khổ giấy phù hợp": "Với kích thước khổ giấy vừa phải, Giấy than Gstar Ấn Độ là sự lựa chọn lý tưởng cho người sử dụng trong việc sao chép các loại chứng từ và hóa đơn. Sự thuận tiện trong việc sử dụng kích thước giấy giúp tối ưu hóa quá trình làm việc của người dùng.",
+        "Điều kiện nhiệt độ và độ ẩm": "Nhiệt độ lưu trữ được khuyến khích trong khoảng 10 ~ 55º C, đồng thời độ ẩm nên duy trì ở mức 55 ~ 95% RH. Điều này giúp đảm bảo rằng giấy than được bảo quản ở môi trường lý tưởng để duy trì chất lượng tốt nhất.",
+        "Tránh gần nguồn nhiệt và chất lỏng": "Giấy than nên được giữ xa nguồn nhiệt, dầu mỡ, và các chất lỏng khác có thể ảnh hưởng đến cấu trúc và chất lượng của nó.",
+        "Phòng tránh ẩm và nước": "Tránh để giấy than ở những nơi có độ ẩm thấp hoặc nơi gần nguồn nước. Sự tránh xa khỏi môi trường ẩm giúp ngăn chặn quá trình hấp thụ nước và bảo vệ giấy khỏi bị biến dạng.",
+        "Kiểm soát nhiệt độ cao": "Không nên để giấy than ở nơi có nhiệt độ quá cao, vì điều này có thể dẫn đến biến dạng của sản phẩm. Việc giữ nhiệt độ ổn định là quan trọng để đảm bảo giữ nguyên cấu trúc của giấy.",
+        "Tránh bụi bám quá nhiều": "Không nên để bụi bám quá nhiều lên giấy, vì điều này có thể ảnh hưởng đến độ sáng, độ mịn và định lượng của giấy than. Điều này đặc biệt quan trọng để duy trì chất lượng in và sao chép."
+      },
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/h4h4h.png",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-than-5.jpg"
+      ],
+      "doc_file": "giay-than-gstar.md"
+    },
+    {
+      "source_product_id": 5811,
+      "name": "Giấy Niêm Phong",
+      "slug": "giay-niem-phong",
+      "sku": "GNIEMPHONG",
+      "price": 18000,
+      "regular_price": 20000,
+      "aca_category_hint": "cat-giay",
+      "specs": {
+        "Tên sản phẩm": "Giấy niêm phong .",
+        "Quy cách": "Khổ A4.",
+        "Đóng gói": "100 tờ / 1 xấp",
+        "Đơn vị tính": "Tập.",
+        "Xuất xứ": "Việt Nam."
+      },
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-niem-phong-pelure-gia-re-vpp-ba-nhat.jpg",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-niem-phong-2.jpg",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-niem-phong-1.jpg"
+      ],
+      "doc_file": "giay-niem-phong.md"
+    }
+  ]
+}

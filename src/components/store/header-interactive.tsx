@@ -5,14 +5,16 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CartLink } from "@/components/store/cart-link";
+import { CategoryNavDropdown, CategoryNavMobile } from "@/components/store/category-nav-menu";
+import { buildCategoryNav } from "@/lib/catalog/category-tree";
 import type { Category } from "@/lib/types";
 
 const navLinks = [
-  { href: "/san-pham", label: "Sản phẩm nổi bật" },
-  { href: "/san-pham?sort=price-asc", label: "Khuyến mãi" },
-  { href: "/bai-viet-suc-khoe", label: "Bài viết sức khỏe" },
+  { href: "/san-pham", label: "Tất cả sản phẩm" },
+  { href: "/san-pham?sale=1", label: "Flash Sale" },
+  { href: "/bao-gia-doanh-nghiep", label: "Báo giá B2B" },
   { href: "/gioi-thieu", label: "Giới thiệu" },
-  { href: "/lien-he", label: "Tư vấn" },
+  { href: "/lien-he", label: "Liên hệ" },
   { href: "/chinh-sach", label: "Chính sách" },
 ];
 
@@ -33,6 +35,7 @@ export function HeaderInteractive({
   const [catOpen, setCatOpen] = useState(false);
   const [q, setQ] = useState("");
   const router = useRouter();
+  const categoryGroups = buildCategoryNav(categories);
 
   function onSearch(e: FormEvent) {
     e.preventDefault();
@@ -44,7 +47,7 @@ export function HeaderInteractive({
   return (
     <>
       <div className="border-b border-slate-200 bg-[var(--brand-surface)]">
-        <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 md:gap-6 md:py-4">
+        <div className="shop-container flex items-center gap-3 py-3 md:gap-6 md:py-4">
           <Link href="/" className="flex min-w-0 shrink-0 items-center gap-2.5">
             <Image
               src={logoUrl}
@@ -68,8 +71,8 @@ export function HeaderInteractive({
             <input
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder="Tìm máy đo huyết áp, máy khí dung, nhiệt kế..."
-              className="h-12 w-full rounded-full border border-slate-200 bg-slate-50 pl-11 pr-4 text-sm outline-none transition focus:border-[var(--brand-primary)] focus:bg-white focus:ring-2 focus:ring-[var(--brand-primary)]/20"
+              placeholder="Tìm giấy A4, bút bi, mực in, bìa còng..."
+              className="h-12 w-full rounded-full border border-slate-200 bg-slate-50 pl-11 pr-4 text-sm outline-none transition focus:border-[var(--brand-sale)] focus:bg-white focus:ring-2 focus:ring-[var(--brand-sale)]/20"
             />
           </form>
 
@@ -115,7 +118,7 @@ export function HeaderInteractive({
       </div>
 
       <div className="hidden border-b border-slate-200 bg-[var(--brand-surface)] md:block">
-        <div className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2.5">
+        <div className="shop-container flex items-center gap-2 py-2.5">
           <div className="relative">
             <button
               type="button"
@@ -126,18 +129,7 @@ export function HeaderInteractive({
               <MenuIcon />
               Danh mục sản phẩm
             </button>
-            {catOpen ? (
-              <div className="absolute left-0 top-full z-50 mt-1 w-64 overflow-hidden rounded-[var(--radius)] border border-slate-200 bg-white py-1 shadow-lg">
-                <Link href="/san-pham" className="block px-4 py-2.5 text-sm font-medium hover:bg-slate-50 hover:text-[var(--brand-primary)]">
-                  Tất cả sản phẩm
-                </Link>
-                {categories.map((c) => (
-                  <Link key={c.id} href={`/danh-muc/${c.slug}`} className="block px-4 py-2.5 text-sm hover:bg-slate-50 hover:text-[var(--brand-primary)]">
-                    {c.name}
-                  </Link>
-                ))}
-              </div>
-            ) : null}
+            {catOpen ? <CategoryNavDropdown groups={categoryGroups} /> : null}
           </div>
           <nav className="flex flex-1 items-center gap-1 overflow-x-auto pl-2">
             {navLinks.map((l) => (
@@ -151,16 +143,11 @@ export function HeaderInteractive({
 
       {menuOpen ? (
         <div className="border-b border-slate-200 bg-white px-4 py-3 md:hidden">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-[var(--brand-muted)]">Danh mục</p>
-          <div className="flex flex-col gap-1">
+          <CategoryNavMobile groups={categoryGroups} onNavigate={() => setMenuOpen(false)} />
+          <div className="mt-2 flex flex-col gap-1">
             <Link href="/san-pham" className="rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-slate-50" onClick={() => setMenuOpen(false)}>
               Tất cả sản phẩm
             </Link>
-            {categories.map((c) => (
-              <Link key={c.id} href={`/danh-muc/${c.slug}`} className="rounded-lg px-3 py-2.5 text-sm hover:bg-slate-50" onClick={() => setMenuOpen(false)}>
-                {c.name}
-              </Link>
-            ))}
           </div>
           <div className="mt-3 flex flex-col gap-1 border-t border-slate-100 pt-3">
             {navLinks.map((l) => (

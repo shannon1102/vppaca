@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { ClearCartOnMount } from "@/components/store/clear-cart-on-mount";
+import { OrderPaymentBlock } from "@/components/store/order-payment-block";
 import { OrderSummaryCard } from "@/components/store/order-summary-card";
 import { repo } from "@/lib/data/repository";
 import { noindexMetadata } from "@/lib/seo/metadata";
@@ -35,6 +36,7 @@ export default async function ThankYouPage({ params }: Props) {
 
       <div className="mt-8">
         <OrderSummaryCard order={order} shopName={settings.shop_name} />
+        <OrderPaymentBlock order={order} settings={settings} />
       </div>
 
       <div className="mt-8 flex flex-wrap gap-3">

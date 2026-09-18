@@ -14,10 +14,13 @@ export function AddToCartButton({ product }: { product: Product }) {
   const addItem = () => {
     add({
       productId: product.id,
+      uomCode: product.base_uom_code || "cai",
       name: product.name,
       slug: product.slug,
       image: product.images[0] ?? "/seed/product-01.svg",
       price: effectivePrice(product.price, product.sale_price),
+      factorToBase: 1,
+      uomLabel: product.base_uom_code || "cai",
     });
     toast.success("Đã thêm vào giỏ hàng");
   };

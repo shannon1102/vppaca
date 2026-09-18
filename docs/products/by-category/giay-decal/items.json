@@ -1,0 +1,86 @@
+{
+  "category_slug": "giay-decal",
+  "count": 2,
+  "items": [
+    {
+      "source_product_id": 5944,
+      "name": "Giấy Decal in ảnh 135 gsm",
+      "slug": "giay-decal-in-anh-135-gsm",
+      "sku": "GDECALA4INANH",
+      "price": 63000,
+      "regular_price": 72000,
+      "aca_category_hint": "cat-giay",
+      "specs": {
+        "Tên sản phẩm": "Giấy Decal in ảnh 135 gsm .",
+        "Định lượng": "135 gsm.",
+        "Kích thước": "2210 mm * 297 mm.",
+        "Xuất xứ": "China.",
+        "Đóng gói": "50 tờ/ xấp.",
+        "Màu sắc": "Trắng.",
+        "Công dụng": "Chuyên để in ảnh, in màu, in tờ rơi, menu,…Chất lượng bản in đẹp nhất là khi in với máy in epson. Sản phẩm là giải pháp tiết kiệm trong việc thay thế cho giấy in ảnh chuyên nghiệp.",
+        "gsm_inferred": "135"
+      },
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-in-anh-decal-135-gsm-1.png",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-in-anh-decal-135-gsm-2.jpg",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-in-anh-decal-135-gsm-1.jpg"
+      ],
+      "doc_file": "giay-decal-in-anh-135-gsm.md"
+    },
+    {
+      "source_product_id": 6480,
+      "name": "Nhãn Tomy A4 (Số Từ 125 – 149)",
+      "slug": "nhan-tomy-a4-so-tu-125-149",
+      "sku": "NTOMYA4-125",
+      "price": 140000,
+      "regular_price": 150000,
+      "aca_category_hint": "cat-giay",
+      "specs": {
+        "Giấy dán nhãn Số": "Số tem / 1 tờ A4",
+        "125": "206 x 145",
+        "126": "102 x 143",
+        "127": "100 x 94",
+        "128": "100 x 72",
+        "129": "98 x 56",
+        "130": "101 x 47",
+        "131": "98 x 40",
+        "132": "45.7 x 21.2",
+        "133": "101 x 36",
+        "134": "98 x 18",
+        "135": "66 x 40",
+        "136": "70 x 35",
+        "137": "50 x 28",
+        "138": "40 x 14",
+        "139": "70 x 20",
+        "140": "38 x 17",
+        "141": "45.7 x 16.9",
+        "142": "Ø 60",
+        "143": "48 x 25",
+        "144": "67 x 28",
+        "145": "38 x 21",
+        "146": "20 x 15",
+        "147": "48 x 34",
+        "148": "66 x 25",
+        "149": "68 x 47",
+        "MÃ SỐ": "KÍCH THƯỚC",
+        "(No.)": "Size (mm)",
+        "Xuất xứ": "Việt Nam.",
+        "Thương hiệu": "Tommy.",
+        "Khổ giấy": "A4",
+        "Đơn vị tính": "Xấp",
+        "Sử dụng cho": "Máy in laser (có hỗ trợ in loại giấy nhãn).",
+        "Tình trạng": "Còn hàng.",
+        "Định dạng giấy Tomy A4 mã số 142 có kích thước tem Ø 60 mm": "Link Download – file Word",
+        "Bước 1": "Kiểm tra kích cỡ giấy hiện tại của máy tính. Nếu kích cỡ giấy là loại No.131 như ví dụ thì kích cỡ giấy là A4. Nếu bạn đặt kích cỡ mặc định là A5 hoặc Letter thì bản in sẽ bị lệch. Do đó, bạn cần chọn về khổ giấy A4.",
+        "Bước 2": "Cài đặt kích cỡ giấy cho máy in. Bạn nhấn tổ hợp phím Ctrl + P, sau đó chọn Properties và chọn kích cỡ giấy phù hợp.",
+        "size_inferred": "A4"
+      },
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/TK-Tomy-a4.jpg",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2023/04/mau-in-giay-decal-tomy-a4-vpp-ba-nhat-3.jpg",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2023/04/mau-in-giay-decal-tomy-a4-vpp-ba-nhat-2.jpg"
+      ],
+      "doc_file": "nhan-tomy-a4-so-tu-125-149.md"
+    }
+  ]
+}

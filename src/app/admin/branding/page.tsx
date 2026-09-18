@@ -107,6 +107,12 @@ export default async function BrandingPage() {
               maxLength={FORM_LIMITS.bankName}
             />
             <Input
+              name="bank_bin"
+              label="BIN VietQR (vd. 970436 VCB)"
+              defaultValue={s.bank_bin ?? ""}
+              maxLength={16}
+            />
+            <Input
               name="bank_account"
               label="Số TK"
               defaultValue={s.bank_account}

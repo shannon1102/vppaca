@@ -19,7 +19,10 @@ const nav = [
   { href: "/admin/articles", label: "Bài viết SK", Icon: IconArticles },
   { href: "/admin/categories", label: "Danh mục", Icon: IconCategories },
   { href: "/admin/orders", label: "Đơn hàng", Icon: IconOrders },
-  { href: "/admin/leads", label: "Đăng ký tư vấn", Icon: IconLeads },
+  { href: "/admin/rfq", label: "Báo giá B2B", Icon: IconLeads },
+  { href: "/admin/banners", label: "Banner / Sale", Icon: IconBranding },
+  { href: "/admin/exports", label: "Xuất CSV", Icon: IconEmail },
+  { href: "/admin/leads", label: "Liên hệ", Icon: IconLeads },
   { href: "/admin/branding", label: "Branding + CK/QR", Icon: IconBranding },
   { href: "/admin/email-preview", label: "Email preview", Icon: IconEmail },
 ] as const;

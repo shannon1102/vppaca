@@ -73,25 +73,24 @@ export function pageMetadata(opts: {
   };
 }
 
-/** Primary SEO phrases for Thiết bị Y tế Tâm Đức */
+/** Primary SEO phrases VPPACA */
 export const SEO_KEYWORDS = [
-  "Thiết bị Y tế Tâm Đức",
-  "Thiết bị Y tế",
-  "Thiết bị Y tế Hà Nội",
-  "Thiết bị y tế Hà Đông",
-  "cửa hàng thiết bị y tế",
-  "máy đo huyết áp",
-  "máy xông khí dung",
-  "nhiệt kế y tế",
-  "vật tư y tế",
-  "thiết bị phòng khám",
+  "vppaca",
+  "văn phòng phẩm",
+  "văn phòng phẩm online",
+  "giấy A4",
+  "bút bi",
+  "mực in",
+  "báo giá văn phòng phẩm",
+  "văn phòng phẩm B2B",
+  "ACA văn phòng phẩm",
 ] as const;
 
 export function rootMetadata(settings: SiteSettings): Metadata {
-  const title = `${settings.shop_name} — Thiết bị Y tế Hà Nội`;
+  const title = `${settings.shop_name} — Văn phòng phẩm B2B & B2C`;
   const description =
     settings.tagline ||
-    "Thiết bị Y tế Tâm Đức — cung cấp thiết bị y tế chính hãng tại Hà Nội, Hà Đông. Tư vấn tận tâm, giao hàng toàn quốc.";
+    "Mua văn phòng phẩm chính hãng — giấy in, bút viết, mực in. Giá sỉ theo bậc, báo giá doanh nghiệp, giao hàng toàn quốc.";
   const image = defaultOgImage(settings);
   return {
     metadataBase: new URL(siteUrl()),

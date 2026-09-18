@@ -52,6 +52,10 @@ function mapProduct(row: Record<string, unknown>): Product {
     is_featured: Boolean(row.is_featured),
     seo_title: String(row.seo_title ?? ""),
     seo_description: String(row.seo_description ?? ""),
+    brand: String(row.brand ?? ""),
+    base_uom_code: String(row.base_uom_code ?? "cai"),
+    min_stock: Number(row.min_stock ?? 0),
+    filter_attrs: (row.filter_attrs as Record<string, string>) ?? {},
   };
 }
 
@@ -63,6 +67,7 @@ function mapCategory(row: Record<string, unknown>): Category {
     description: String(row.description ?? ""),
     sort: Number(row.sort ?? 0),
     image_url: row.image_url == null ? null : String(row.image_url),
+    parent_id: row.parent_id == null ? null : String(row.parent_id),
   };
 }
 
@@ -88,6 +93,7 @@ function mapSettings(row: Record<string, unknown>): SiteSettings {
     qr_image_url: String(row.qr_image_url ?? ""),
     facebook_url: String(row.facebook_url ?? ""),
     zalo_url: String(row.zalo_url ?? ""),
+    bank_bin: String(row.bank_bin ?? ""),
   };
 }
 
@@ -174,18 +180,15 @@ export async function sbListProducts(opts?: {
   categorySlug?: string;
 }): Promise<Product[]> {
   const sb = adminClient();
-  let categoryId: string | undefined;
+  let categoryIds: string[] | undefined;
   if (opts?.categorySlug) {
-    const { data: cat } = await sb
-      .from("categories")
-      .select("id")
-      .eq("slug", opts.categorySlug)
-      .maybeSingle();
-    categoryId = cat?.id;
+    const categories = await sbListCategories();
+    const { categoryIdsForSlug } = await import("@/lib/catalog/category-tree");
+    categoryIds = categoryIdsForSlug(categories, opts.categorySlug) ?? undefined;
   }
   let q = sb.from("products").select("*");
   if (opts?.publishedOnly) q = q.eq("is_published", true);
-  if (categoryId) q = q.eq("category_id", categoryId);
+  if (categoryIds?.length) q = q.in("category_id", categoryIds);
   const { data, error } = await q.order("name");
   if (error) throw error;
   return (data ?? []).map((r) => mapProduct(r as Record<string, unknown>));
@@ -262,6 +265,15 @@ export async function sbCreateOrder(order: Order): Promise<Order> {
     status: header.status,
     total: header.total,
     created_at: header.created_at,
+    customer_type: header.customer_type ?? "b2c",
+    payment_method: header.payment_method ?? "bank_transfer",
+    need_vat_invoice: header.need_vat_invoice ?? false,
+    vat_company_name: header.vat_company_name ?? "",
+    vat_tax_code: header.vat_tax_code ?? "",
+    vat_address: header.vat_address ?? "",
+    vat_email: header.vat_email ?? "",
+    subtotal: header.subtotal ?? header.total,
+    discount_total: header.discount_total ?? 0,
   });
   if (e1) throw e1;
   const { error: e2 } = await sb.from("order_items").insert(
@@ -272,9 +284,21 @@ export async function sbCreateOrder(order: Order): Promise<Order> {
       name: i.name,
       qty: i.qty,
       unit_price: i.unit_price,
+      uom_code: i.uom_code ?? "",
+      factor_to_base: i.factor_to_base ?? 1,
+      qty_base: i.qty_base ?? i.qty,
+      tier_label: i.tier_label ?? "",
     })),
   );
   if (e2) throw e2;
+  const { vppDeductStock } = await import("@/lib/data/vpp-data");
+  const stock = await vppDeductStock(
+    items.map((i) => ({
+      productId: i.product_id,
+      qtyBase: i.qty_base ?? i.qty * (i.factor_to_base ?? 1),
+    })),
+  );
+  if (!stock.ok) throw new Error(stock.error ?? "stock");
   await sbIncrementProductsSoldCount(
     items.map((i) => ({ productId: i.product_id, qty: i.qty })),
   );
@@ -332,6 +356,18 @@ export async function sbListOrders(): Promise<Order[]> {
     status: o.status as OrderStatus,
     total: Number(o.total),
     created_at: String(o.created_at),
+    customer_type: (o.customer_type as Order["customer_type"]) ?? "b2c",
+    payment_method: String(o.payment_method ?? "bank_transfer"),
+    need_vat_invoice: Boolean(o.need_vat_invoice),
+    vat_company_name: String(o.vat_company_name ?? ""),
+    vat_tax_code: String(o.vat_tax_code ?? ""),
+    vat_address: String(o.vat_address ?? ""),
+    vat_email: String(o.vat_email ?? ""),
+    subtotal: o.subtotal == null ? null : Number(o.subtotal),
+    discount_total: Number(o.discount_total ?? 0),
+    accounting_exported_at: o.accounting_exported_at
+      ? String(o.accounting_exported_at)
+      : null,
     items: (items ?? [])
       .filter((i) => i.order_id === o.id)
       .map((i) => ({
@@ -341,6 +377,10 @@ export async function sbListOrders(): Promise<Order[]> {
         name: String(i.name),
         qty: Number(i.qty),
         unit_price: Number(i.unit_price),
+        uom_code: String(i.uom_code ?? ""),
+        factor_to_base: Number(i.factor_to_base ?? 1),
+        qty_base: Number(i.qty_base ?? i.qty),
+        tier_label: String(i.tier_label ?? ""),
       })),
   }));
 }
@@ -516,8 +556,10 @@ function mapContactLead(row: Record<string, unknown>): ContactLead {
 export async function sbEnsureSeed(): Promise<void> {
   const sb = adminClient();
   const { data: settings } = await sb.from("site_settings").select("id").limit(1);
-  if (settings?.length) return;
-
-  const { id: _id, ...rest } = defaultSettings;
-  await sb.from("site_settings").insert(rest);
+  if (!settings?.length) {
+    const { id: _id, ...rest } = defaultSettings;
+    await sb.from("site_settings").insert(rest);
+  }
+  const { vppSeedCatalogIfEmpty } = await import("@/lib/data/vpp-data");
+  await vppSeedCatalogIfEmpty();
 }
