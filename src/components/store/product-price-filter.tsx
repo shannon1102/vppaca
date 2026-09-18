@@ -35,8 +35,8 @@ export function ProductPriceFilter({ basePath }: Props) {
   }
 
   return (
-    <div className="mt-4 space-y-2 rounded-lg border border-slate-200 bg-white p-3 text-sm">
-      <p className="font-semibold">Khoảng giá (đ/đv cơ sở)</p>
+    <div className="catalog-sidebar-panel mt-3 space-y-2 text-sm">
+      <p className="catalog-sidebar-panel__title !mb-3">Khoảng giá</p>
       <div className="flex flex-wrap items-center gap-2">
         <input
           type="number"

@@ -96,41 +96,47 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           products={allProducts}
           activeCategorySlug={slug}
         />
-        <div>
-          <h1 className="text-3xl font-bold">{cat.name}</h1>
-          <p className="mt-2 text-[var(--brand-muted)]">{cat.description}</p>
-          <div className="mt-4 md:hidden">
-            <Suspense fallback={null}>
-              <ProductPriceFilter basePath={basePath} />
-            </Suspense>
-          </div>
-          {products.length === 0 ? (
-            <div className="mt-10">
-              <EmptyState title="Không có sản phẩm phù hợp bộ lọc" />
+        <div className="catalog-main-panel min-w-0">
+          <div className="catalog-main-panel__head">
+            <h1 className="text-2xl font-bold md:text-3xl">{cat.name}</h1>
+            {cat.description ? (
+              <p className="mt-2 text-sm text-[var(--brand-muted)] md:text-base">{cat.description}</p>
+            ) : null}
+            <p className="mt-3 text-sm font-medium text-[var(--brand-text)]">
+              {total.toLocaleString("vi-VN")} sản phẩm
+            </p>
+            <div className="mt-4 md:hidden">
+              <Suspense fallback={null}>
+                <ProductPriceFilter basePath={basePath} />
+              </Suspense>
             </div>
-          ) : (
-            <>
-              <p className="mt-4 text-sm text-[var(--brand-muted)]">
-                {total.toLocaleString("vi-VN")} sản phẩm trong danh mục
-              </p>
-              <div className="product-grid-shopee mt-6">
-                {products.map((p) => (
-                  <ProductCard
-                    key={p.id}
-                    product={p}
-                    overrideSalePrice={promoMap.get(p.id) ?? undefined}
-                  />
-                ))}
-              </div>
-              <CatalogPagination
-                basePath={basePath}
-                searchParams={sp}
-                page={page}
-                totalPages={totalPages}
-                total={total}
-              />
-            </>
-          )}
+          </div>
+          <div className="catalog-main-panel__body">
+            {products.length === 0 ? (
+              <EmptyState title="Không có sản phẩm phù hợp bộ lọc" />
+            ) : (
+              <>
+                <div className="catalog-grid-frame">
+                  <div className="product-grid-shopee">
+                    {products.map((p) => (
+                      <ProductCard
+                        key={p.id}
+                        product={p}
+                        overrideSalePrice={promoMap.get(p.id) ?? undefined}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <CatalogPagination
+                  basePath={basePath}
+                  searchParams={sp}
+                  page={page}
+                  totalPages={totalPages}
+                  total={total}
+                />
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>

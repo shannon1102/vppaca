@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 420" role="img" aria-label="DËch vå mÛi VPPACA B2B">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1260" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF9F0"/>
+      <stop offset="0.35" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#FFE8E8"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="400" y2="0">
+      <stop offset="0" stop-color="#EC2229"/>
+      <stop offset="1" stop-color="#EDA909"/>
+    </linearGradient>
+  </defs>
+  <rect width="1260" height="420" fill="url(#bg3)"/>
+  <rect x="0" y="0" width="12" height="420" fill="url(#accent)"/>
+  <text x="80" y="95" fill="#EC2229" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="3">DÊCH Vä MÚI</text>
+  <text x="80" y="175" fill="#0F172A" font-family="Segoe UI, Arial, sans-serif" font-size="48" font-weight="800">Báo giá B2B · Excel · VAT</text>
+  <text x="80" y="235" fill="#64748B" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="500">Upload danh måc ’ ghép mã ’ báo giá t­p trung</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="600">
+    <rect x="80" y="275" width="320" height="44" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+    <text x="240" y="304" fill="#EC2229" text-anchor="middle">Giá sÉ minh b¡ch theo b­c</text>
+    <rect x="420" y="275" width="320" height="44" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+    <text x="580" y="304" fill="#EC2229" text-anchor="middle">Xu¥t thông tin VAT trên ¡n</text>
+    <rect x="760" y="275" width="320" height="44" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+    <text x="920" y="304" fill="#EC2229" text-anchor="middle">Giao volume gi¥y thùng / pallet</text>
+  </g>
+  <rect x="980" y="60" width="200" height="200" rx="20" fill="url(#accent)" fill-opacity="0.12" stroke="url(#accent)" stroke-width="3"/>
+  <text x="1080" y="145" fill="#EC2229" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="900" text-anchor="middle">B2B</text>
+  <text x="1080" y="185" fill="#EDA909" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">ACA</text>
+</svg>

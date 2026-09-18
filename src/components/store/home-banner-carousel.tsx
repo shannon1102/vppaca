@@ -5,6 +5,44 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import type { Banner } from "@/lib/types";
 
+function BannerSlideImage({
+  src,
+  alt,
+  useNativeImg,
+}: {
+  src: string;
+  alt: string;
+  useNativeImg: boolean;
+}) {
+  if (useNativeImg) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={src}
+        alt={alt}
+        className="absolute inset-0 h-full w-full object-cover object-center"
+        decoding="async"
+        fetchPriority="high"
+      />
+    );
+  }
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      className="object-cover object-center"
+      sizes="(min-width: 1270px) 1270px, 100vw"
+      priority
+    />
+  );
+}
+
+function shouldUseNativeImg(url: string): boolean {
+  return url.endsWith(".svg") || url.startsWith("/banners/");
+}
+
 export function HomeBannerCarousel({ banners }: { banners: Banner[] }) {
   const [index, setIndex] = useState(0);
   const slides = banners.filter((b) => b.placement === "home_carousel");
@@ -17,28 +55,24 @@ export function HomeBannerCarousel({ banners }: { banners: Banner[] }) {
 
   if (!slides.length) return null;
   const current = slides[index] ?? slides[0];
-
+  const nativeImg = shouldUseNativeImg(current.image_url);
   const isLogoSlide =
     current.image_url.includes("aca-logo") || current.image_url.includes("logo-hero");
 
   return (
-    <div className="relative overflow-hidden rounded-xl bg-white shadow-sm">
+    <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-md">
       <Link href={current.link_url} className="block">
         <div
           className={`relative aspect-[21/7] w-full ${
-            isLogoSlide
-              ? "bg-gradient-to-r from-[#fafaf9] via-[#fff5eb] to-[#fff9e6]"
-              : "bg-gradient-to-r from-[#EE4D2D]/10 to-[#F5C563]/20"
+            nativeImg || isLogoSlide
+              ? "bg-[var(--brand-bg)]"
+              : "bg-gradient-to-r from-[#ec2229]/10 to-[#eda909]/20"
           }`}
         >
-          <Image
+          <BannerSlideImage
             src={current.image_url}
             alt={current.title}
-            fill
-            className={isLogoSlide ? "object-contain p-6 md:p-10" : "object-cover object-center"}
-            sizes="(min-width: 1270px) 1270px, 100vw"
-            priority
-            unoptimized={isLogoSlide && current.image_url.endsWith(".png")}
+            useNativeImg={nativeImg || (isLogoSlide && current.image_url.endsWith(".png"))}
           />
         </div>
       </Link>

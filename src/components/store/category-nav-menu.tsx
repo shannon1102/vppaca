@@ -21,7 +21,7 @@ function Chevron({ open }: { open: boolean }) {
 
 export function CategoryNavDropdown({ groups }: { groups: CategoryNavGroup[] }) {
   return (
-    <div className="absolute left-0 top-full z-50 mt-1 max-h-[min(70vh,28rem)] w-72 overflow-y-auto rounded-[var(--radius)] border border-slate-200 bg-white py-1 shadow-lg">
+    <div className="absolute left-0 top-full z-50 mt-1 max-h-[min(70vh,28rem)] w-72 overflow-y-auto rounded-[var(--radius)] border border-slate-300 bg-white py-1 shadow-xl ring-1 ring-slate-200/80">
       <Link
         href="/san-pham"
         className="block px-4 py-2.5 text-sm font-medium hover:bg-slate-50 hover:text-[var(--brand-primary)]"
