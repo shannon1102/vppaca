@@ -6,7 +6,7 @@ import { SocialIcons } from "@/components/store/social-icons";
 
 export function SiteFooter({ settings }: { settings: SiteSettings }) {
   return (
-    <footer className="mt-auto bg-[var(--brand-secondary)] text-white">
+    <footer className="mt-auto brand-gradient-bg text-white">
       <div className="shop-container grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         {/* Brand */}
         <div>
