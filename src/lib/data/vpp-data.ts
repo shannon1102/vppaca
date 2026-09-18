@@ -307,6 +307,18 @@ export async function vppListRfqs(): Promise<RfqRequest[]> {
   return local.rfqs;
 }
 
+/** Đồng bộ banner trang chủ (carousel + strip) từ seed — idempotent. */
+export async function vppSyncHomeBanners(): Promise<void> {
+  if (!isSupabaseConfigured()) return;
+  const sb = adminClient();
+  const { error } = await sb.from("banners").upsert(seedBanners, { onConflict: "id" });
+  if (error) throw error;
+  await sb
+    .from("banners")
+    .update({ is_active: false })
+    .in("id", ["ban-1", "ban-2", "ban-3"]);
+}
+
 export async function vppSeedCatalogIfEmpty(): Promise<void> {
   if (!isSupabaseConfigured()) return;
   const sb = adminClient();

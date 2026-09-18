@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 420" role="img" aria-label="MÎng khai tr∞°ng VPPACA">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1260" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#EC2229"/>
+      <stop offset="0.55" stop-color="#E85A2A"/>
+      <stop offset="1" stop-color="#EDA909"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1260" height="420" fill="url(#bg)"/>
+  <rect width="1260" height="420" fill="url(#shine)"/>
+  <circle cx="1080" cy="80" r="120" fill="#fff" fill-opacity="0.08"/>
+  <circle cx="180" cy="360" r="90" fill="#fff" fill-opacity="0.06"/>
+  <text x="80" y="120" fill="#FFF8E7" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="600" letter-spacing="6">MÍNG KHAI TRØ†NG</text>
+  <text x="80" y="200" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="56" font-weight="800">VPPACA ∑ ACA</text>
+  <text x="80" y="268" fill="#FFF8E7" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="500">Vn phÚng ph©m B2C &amp; B2B  vppaca.vn</text>
+  <rect x="80" y="300" width="420" height="52" rx="26" fill="#FFFFFF" fill-opacity="0.95"/>
+  <text x="290" y="335" fill="#EC2229" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Øu „i °n ßu ∑ Giao nhanh to‡n qu—c</text>
+</svg>

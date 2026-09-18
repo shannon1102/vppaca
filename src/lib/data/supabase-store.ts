@@ -561,6 +561,7 @@ export async function sbEnsureSeed(): Promise<void> {
     const { id: _id, ...rest } = defaultSettings;
     await sb.from("site_settings").insert(rest);
   }
-  const { vppSeedCatalogIfEmpty } = await import("@/lib/data/vpp-data");
+  const { vppSeedCatalogIfEmpty, vppSyncHomeBanners } = await import("@/lib/data/vpp-data");
   await vppSeedCatalogIfEmpty();
+  await vppSyncHomeBanners();
 }

@@ -67,12 +67,12 @@ export default async function HomePage() {
       </section>
 
       {stripBanners.length ? (
-        <div className="shop-container mt-4 flex gap-3 overflow-x-auto">
+        <div className="shop-container mt-4 flex gap-3 overflow-x-auto pb-1">
           {stripBanners.map((b) => (
             <Link
               key={b.id}
               href={b.link_url}
-              className="shrink-0 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-[var(--brand-sale)] shadow-sm"
+              className="shrink-0 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-[var(--brand-primary)] shadow-sm transition hover:border-[var(--brand-accent)] hover:shadow-md"
             >
               {b.title}
             </Link>

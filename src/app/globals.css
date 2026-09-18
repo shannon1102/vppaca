@@ -368,6 +368,65 @@ h4 {
   filter: brightness(0.95);
 }
 
+/* Catalog PLP — khung sidebar + lưới sản phẩm */
+.catalog-sidebar-panel {
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  background: var(--brand-surface);
+  padding: 1rem 1.125rem;
+  box-shadow: 0 1px 3px rgb(15 23 42 / 0.06);
+}
+
+.catalog-sidebar-panel + .catalog-sidebar-panel {
+  margin-top: 0.75rem;
+}
+
+.catalog-sidebar-panel__title {
+  margin: 0 0 0.75rem;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--brand-muted);
+}
+
+.catalog-main-panel {
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius);
+  background: var(--brand-surface);
+  box-shadow: 0 2px 8px rgb(15 23 42 / 0.06);
+}
+
+.catalog-main-panel__head {
+  border-bottom: 1px solid #e2e8f0;
+  background: linear-gradient(180deg, #fafafa 0%, #fff 100%);
+  padding: 1.25rem 1.5rem;
+}
+
+.catalog-main-panel__toolbar {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1rem;
+}
+
+.catalog-main-panel__body {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.catalog-grid-frame {
+  border: 1px solid #e2e8f0;
+  border-radius: calc(var(--radius) - 2px);
+  background: var(--brand-bg);
+  padding: 0.75rem;
+}
+
 .product-grid-shopee {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(188px, 1fr));

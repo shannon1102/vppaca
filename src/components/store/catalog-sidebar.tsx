@@ -19,56 +19,62 @@ export function CatalogSidebar({
   const navGroups = buildCategoryNav(categories);
 
   return (
-    <aside className="hidden md:block">
-      <h2 className="text-sm font-bold uppercase text-[var(--brand-muted)]">Danh mục</h2>
-      <ul className="mt-3 space-y-2 text-sm">
-        {navGroups.map(({ category, children }) => (
-          <li key={category.id}>
-            <Link
-              href={`/danh-muc/${category.slug}`}
-              className={
-                activeCategorySlug === category.slug
-                  ? "font-semibold text-[var(--brand-sale)]"
-                  : "font-medium text-[var(--brand-text)] hover:text-[var(--brand-primary)]"
-              }
-            >
-              {category.name}
-            </Link>
-            {children.length > 0 ? (
-              <ul className="mt-1 space-y-0.5 border-l border-slate-200 pl-3">
-                {children.map((sub) => (
-                  <li key={sub.id}>
-                    <Link
-                      href={`/danh-muc/${sub.slug}`}
-                      className={
-                        activeCategorySlug === sub.slug
-                          ? "font-semibold text-[var(--brand-sale)]"
-                          : "text-[var(--brand-primary)] hover:underline"
-                      }
-                    >
-                      {sub.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-          </li>
-        ))}
-      </ul>
+    <aside className="sticky top-24 hidden self-start md:block">
+      <div className="catalog-sidebar-panel">
+        <h2 className="catalog-sidebar-panel__title">Danh mục</h2>
+        <ul className="space-y-2 text-sm">
+          {navGroups.map(({ category, children }) => (
+            <li key={category.id}>
+              <Link
+                href={`/danh-muc/${category.slug}`}
+                className={
+                  activeCategorySlug === category.slug
+                    ? "font-semibold text-[var(--brand-sale)]"
+                    : "font-medium text-[var(--brand-text)] hover:text-[var(--brand-primary)]"
+                }
+              >
+                {category.name}
+              </Link>
+              {children.length > 0 ? (
+                <ul className="mt-1 space-y-0.5 border-l-2 border-slate-200 pl-3">
+                  {children.map((sub) => (
+                    <li key={sub.id}>
+                      <Link
+                        href={`/danh-muc/${sub.slug}`}
+                        className={
+                          activeCategorySlug === sub.slug
+                            ? "font-semibold text-[var(--brand-sale)]"
+                            : "text-[var(--brand-primary)] hover:underline"
+                        }
+                      >
+                        {sub.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </li>
+          ))}
+        </ul>
+      </div>
 
-      <h2 className="mt-6 text-sm font-bold uppercase text-[var(--brand-muted)]">Thương hiệu</h2>
-      <ul className="mt-3 max-h-48 space-y-1 overflow-y-auto text-sm">
-        {brands.map((b) => (
-          <li key={b}>
-            <Link
-              href={`${basePath}?brand=${encodeURIComponent(b)}`}
-              className="text-[var(--brand-primary)] hover:underline"
-            >
-              {b}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {brands.length > 0 ? (
+        <div className="catalog-sidebar-panel">
+          <h2 className="catalog-sidebar-panel__title">Thương hiệu</h2>
+          <ul className="max-h-48 space-y-1 overflow-y-auto text-sm">
+            {brands.map((b) => (
+              <li key={b}>
+                <Link
+                  href={`${basePath}?brand=${encodeURIComponent(b)}`}
+                  className="text-[var(--brand-primary)] hover:underline"
+                >
+                  {b}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
 
       <Suspense fallback={null}>
         <ProductPriceFilter basePath={basePath} />

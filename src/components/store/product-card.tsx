@@ -21,7 +21,7 @@ export function ProductCard({
   return (
     <Link
       href={`/san-pham/${product.slug}`}
-      className="group flex flex-col overflow-hidden rounded-[var(--radius)] border border-slate-200 bg-[var(--brand-surface)] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+      className="group flex flex-col overflow-hidden rounded-[var(--radius)] border border-slate-300 bg-[var(--brand-surface)] shadow-sm transition hover:-translate-y-0.5 hover:border-[var(--brand-primary)]/40 hover:shadow-md"
     >
       <div className="relative aspect-square overflow-hidden bg-slate-100">
         <Image

@@ -55,85 +55,92 @@ export default async function ProductsPage({
     <div className="shop-container py-10">
       <div className="grid gap-8 md:grid-cols-[220px_1fr]">
         <CatalogSidebar basePath="/san-pham" categories={categories} products={products} />
-        <div>
-          <h1 className="text-3xl font-bold">Sản phẩm</h1>
-          <p className="mt-2 text-[var(--brand-muted)]">
-            {sp.q?.trim()
-              ? `Kết quả “${sp.q.trim()}”: ${total} sản phẩm`
-              : `${total} mặt hàng văn phòng phẩm`}
-            {(sp.minPrice || sp.maxPrice) && (
-              <span>
-                {" "}
-                · Giá{" "}
-                {sp.minPrice ? `từ ${Number(sp.minPrice).toLocaleString("vi-VN")}đ` : ""}
-                {sp.maxPrice ? ` đến ${Number(sp.maxPrice).toLocaleString("vi-VN")}đ` : ""}
-              </span>
-            )}
-          </p>
+        <div className="catalog-main-panel min-w-0">
+          <div className="catalog-main-panel__head">
+            <h1 className="text-2xl font-bold md:text-3xl">Sản phẩm</h1>
+            <p className="mt-2 text-sm text-[var(--brand-muted)] md:text-base">
+              {sp.q?.trim()
+                ? `Kết quả “${sp.q.trim()}”: ${total} sản phẩm`
+                : `${total} mặt hàng văn phòng phẩm`}
+              {(sp.minPrice || sp.maxPrice) && (
+                <span>
+                  {" "}
+                  · Giá{" "}
+                  {sp.minPrice ? `từ ${Number(sp.minPrice).toLocaleString("vi-VN")}đ` : ""}
+                  {sp.maxPrice ? ` đến ${Number(sp.maxPrice).toLocaleString("vi-VN")}đ` : ""}
+                </span>
+              )}
+            </p>
 
-          <div className="mt-4 flex flex-wrap gap-2">
-            <Link
-              href="/san-pham"
-              className="rounded-full bg-[var(--brand-sale)] px-3 py-1.5 text-sm text-white"
-            >
-              Tất cả
-            </Link>
-            {categories.map((c) => (
+            <div className="mt-4 flex flex-wrap gap-2">
               <Link
-                key={c.id}
-                href={`/danh-muc/${c.slug}`}
-                className="rounded-full bg-white px-3 py-1.5 text-sm ring-1 ring-slate-200 hover:ring-[var(--brand-primary)]"
+                href="/san-pham"
+                className="rounded-full bg-[var(--brand-sale)] px-3 py-1.5 text-sm font-medium text-white shadow-sm"
               >
-                {c.name}
+                Tất cả
               </Link>
-            ))}
-          </div>
-
-          <div className="mt-4 flex flex-wrap gap-3 text-sm">
-            <Link href="/san-pham?sort=sold" className="text-[var(--brand-primary)]">
-              Bán chạy
-            </Link>
-            <Link href="/san-pham?sort=price-asc" className="text-[var(--brand-primary)]">
-              Giá tăng
-            </Link>
-            <Link href="/san-pham?sort=price-desc" className="text-[var(--brand-primary)]">
-              Giá giảm
-            </Link>
-            <Link href="/san-pham?sale=1" className="font-semibold text-[var(--brand-sale)]">
-              Đang giảm giá
-            </Link>
-          </div>
-
-          <div className="mt-4 md:hidden">
-            <Suspense fallback={null}>
-              <ProductPriceFilter basePath="/san-pham" />
-            </Suspense>
-          </div>
-
-          {list.length === 0 ? (
-            <div className="mt-10">
-              <EmptyState title="Không tìm thấy sản phẩm" />
-            </div>
-          ) : (
-            <>
-              <div className="product-grid-shopee mt-8">
-                {list.map((p) => (
-                  <ProductCard
-                    key={p.id}
-                    product={p}
-                    overrideSalePrice={promoMap.get(p.id) ?? undefined}
-                  />
+              {categories
+                .filter((c) => !c.parent_id)
+                .map((c) => (
+                  <Link
+                    key={c.id}
+                    href={`/danh-muc/${c.slug}`}
+                    className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium shadow-sm hover:border-[var(--brand-primary)]"
+                  >
+                    {c.name}
+                  </Link>
                 ))}
-              </div>
-              <CatalogPagination
-                basePath="/san-pham"
-                searchParams={sp}
-                page={page}
-                totalPages={totalPages}
-                total={total}
-              />
-            </>
-          )}
+            </div>
+
+            <div className="catalog-main-panel__toolbar text-sm">
+              <span className="font-semibold text-[var(--brand-muted)]">Sắp xếp:</span>
+              <Link href="/san-pham?sort=sold" className="font-medium text-[var(--brand-primary)]">
+                Bán chạy
+              </Link>
+              <Link href="/san-pham?sort=price-asc" className="font-medium text-[var(--brand-primary)]">
+                Giá tăng
+              </Link>
+              <Link href="/san-pham?sort=price-desc" className="font-medium text-[var(--brand-primary)]">
+                Giá giảm
+              </Link>
+              <Link href="/san-pham?sale=1" className="font-semibold text-[var(--brand-sale)]">
+                Đang giảm giá
+              </Link>
+            </div>
+
+            <div className="mt-4 md:hidden">
+              <Suspense fallback={null}>
+                <ProductPriceFilter basePath="/san-pham" />
+              </Suspense>
+            </div>
+          </div>
+
+          <div className="catalog-main-panel__body">
+            {list.length === 0 ? (
+              <EmptyState title="Không tìm thấy sản phẩm" />
+            ) : (
+              <>
+                <div className="catalog-grid-frame">
+                  <div className="product-grid-shopee">
+                    {list.map((p) => (
+                      <ProductCard
+                        key={p.id}
+                        product={p}
+                        overrideSalePrice={promoMap.get(p.id) ?? undefined}
+                      />
+                    ))}
+                  </div>
+                </div>
+                <CatalogPagination
+                  basePath="/san-pham"
+                  searchParams={sp}
+                  page={page}
+                  totalPages={totalPages}
+                  total={total}
+                />
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>
