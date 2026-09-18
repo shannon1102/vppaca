@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 420" role="img" aria-label="Gi£m giá flash sale VPPACA">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 420" role="img" aria-label="Giam gia flash sale VPPACA">
   <defs>
     <linearGradient id="bg2" x1="0" y1="210" x2="1260" y2="210" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#1a1a2e"/>
@@ -8,13 +9,13 @@
   </defs>
   <rect width="1260" height="420" fill="url(#bg2)"/>
   <text x="80" y="100" fill="#F5C563" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="4">FLASH SALE</text>
-  <text x="80" y="185" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="58" font-weight="800">Gi£m ¿n 30%</text>
-  <text x="80" y="250" fill="#FFE8CC" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="500">Gi¥y A4 · Bút bi · Mñc in · Bìa hÓ s¡</text>
+  <text x="80" y="185" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="58" font-weight="800">Giam den 30%</text>
+  <text x="80" y="250" fill="#FFE8CC" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="500">Giay A4 &#183; But bi &#183; Muc in &#183; Bia ho so</text>
   <g transform="translate(920, 80)">
     <circle cx="120" cy="120" r="118" fill="#EDA909" fill-opacity="0.25" stroke="#FFF" stroke-width="4"/>
     <text x="120" y="115" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="72" font-weight="900" text-anchor="middle">30</text>
     <text x="120" y="165" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="800" text-anchor="middle">%</text>
   </g>
   <rect x="80" y="300" width="280" height="52" rx="26" fill="#EDA909"/>
-  <text x="220" y="335" fill="#1a1a2e" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" text-anchor="middle">Mua ngay ’</text>
+  <text x="220" y="335" fill="#1a1a2e" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="800" text-anchor="middle">Mua ngay</text>
 </svg>

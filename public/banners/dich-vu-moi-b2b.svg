@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 420" role="img" aria-label="DËch vå mÛi VPPACA B2B">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 420" role="img" aria-label="Dich vu moi VPPACA B2B">
   <defs>
     <linearGradient id="bg3" x1="0" y1="0" x2="1260" y2="420" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#FFF9F0"/>
@@ -12,16 +13,16 @@
   </defs>
   <rect width="1260" height="420" fill="url(#bg3)"/>
   <rect x="0" y="0" width="12" height="420" fill="url(#accent)"/>
-  <text x="80" y="95" fill="#EC2229" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="3">DÊCH Vä MÚI</text>
-  <text x="80" y="175" fill="#0F172A" font-family="Segoe UI, Arial, sans-serif" font-size="48" font-weight="800">Báo giá B2B · Excel · VAT</text>
-  <text x="80" y="235" fill="#64748B" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="500">Upload danh måc ’ ghép mã ’ báo giá t­p trung</text>
-  <g font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="600">
+  <text x="80" y="95" fill="#EC2229" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="3">DICH VU MOI</text>
+  <text x="80" y="175" fill="#0F172A" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="800">Bao gia B2B &#183; Excel &#183; VAT</text>
+  <text x="80" y="235" fill="#64748B" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="500">Upload danh muc, ghep ma, bao gia tap trung</text>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600">
     <rect x="80" y="275" width="320" height="44" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
-    <text x="240" y="304" fill="#EC2229" text-anchor="middle">Giá sÉ minh b¡ch theo b­c</text>
+    <text x="240" y="304" fill="#EC2229" text-anchor="middle">Gia si minh bach theo bac</text>
     <rect x="420" y="275" width="320" height="44" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
-    <text x="580" y="304" fill="#EC2229" text-anchor="middle">Xu¥t thông tin VAT trên ¡n</text>
+    <text x="580" y="304" fill="#EC2229" text-anchor="middle">Xuat thong tin VAT tren don</text>
     <rect x="760" y="275" width="320" height="44" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
-    <text x="920" y="304" fill="#EC2229" text-anchor="middle">Giao volume gi¥y thùng / pallet</text>
+    <text x="920" y="304" fill="#EC2229" text-anchor="middle">Giao volume giay thung</text>
   </g>
   <rect x="980" y="60" width="200" height="200" rx="20" fill="url(#accent)" fill-opacity="0.12" stroke="url(#accent)" stroke-width="3"/>
   <text x="1080" y="145" fill="#EC2229" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="900" text-anchor="middle">B2B</text>
