@@ -46,6 +46,8 @@ export const VPPACA_BRAND = {
   ],
   aboutCommitment:
     "Hàng chính hãng; minh bạch giá bậc; hỗ trợ nhanh; nội dung sản phẩm trên web do ACA biên soạn, phục vụ thương hiệu riêng.",
+  contactIntro:
+    "Liên hệ VPPACA (ACA) để đặt văn phòng phẩm lẻ hoặc sỉ, nhận báo giá doanh nghiệp (upload Excel) và hỗ trợ đơn volume giấy in, bút viết, mực in. Hotline, Zalo và email được ưu tiên phản hồi trong giờ làm việc.",
   salesPolicies: [
     {
       title: "Đặt hàng & xác nhận",
