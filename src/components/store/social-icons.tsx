@@ -42,20 +42,21 @@ export function SocialIcons({
   variant?: Variant;
 }) {
   const links = socialLinks(settings);
+  const phoneLabel = settings.phone?.trim() || "hotline";
   const items = [
     {
       key: "zalo" as const,
-      label: "Zalo 0935 883 361",
+      label: `Zalo ${phoneLabel}`,
       href: links.zalo,
     },
     {
       key: "facebook" as const,
-      label: "Facebook Viện Trị Liệu Cổ Truyền Tâm Đức",
+      label: "Facebook VPPACA (ACA)",
       href: links.facebook,
     },
     {
       key: "messenger" as const,
-      label: "Messenger Viện Trị Liệu Cổ Truyền Tâm Đức",
+      label: "Messenger VPPACA",
       href: links.messenger,
     },
   ];
