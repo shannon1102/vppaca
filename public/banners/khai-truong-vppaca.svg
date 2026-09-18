@@ -10,11 +10,36 @@
       <stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
+    <linearGradient id="scrim" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#EC2229" stop-opacity="0.92"/>
+      <stop offset="0.45" stop-color="#C92A22" stop-opacity="0.75"/>
+      <stop offset="0.72" stop-color="#E85A2A" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#EDA909" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="heroPhoto">
+      <rect x="640" y="0" width="620" height="420" rx="0"/>
+    </clipPath>
+    <clipPath id="cardA">
+      <rect x="720" y="240" width="200" height="150" rx="16"/>
+    </clipPath>
+    <clipPath id="cardB">
+      <rect x="960" y="200" width="180" height="140" rx="16"/>
+    </clipPath>
   </defs>
   <rect width="1260" height="420" fill="url(#bg)"/>
+  <g clip-path="url(#heroPhoto)">
+    <image href="/products/bia-ho-so.jpg" x="580" y="0" width="720" height="480" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <g clip-path="url(#cardA)">
+    <image href="/products/giay-a4-ream-01.jpg" x="720" y="220" width="220" height="180" preserveAspectRatio="xMidYMid slice"/>
+    <rect x="720" y="240" width="200" height="150" fill="#000" fill-opacity="0.08"/>
+  </g>
+  <g clip-path="url(#cardB)">
+    <image href="/products/but-bi.jpg" x="950" y="180" width="200" height="170" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <rect width="1260" height="420" fill="url(#scrim)"/>
   <rect width="1260" height="420" fill="url(#shine)"/>
-  <circle cx="1080" cy="80" r="120" fill="#fff" fill-opacity="0.08"/>
-  <circle cx="180" cy="360" r="90" fill="#fff" fill-opacity="0.06"/>
+  <circle cx="1080" cy="80" r="120" fill="#fff" fill-opacity="0.06"/>
   <text x="80" y="120" fill="#FFF8E7" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="600" letter-spacing="4">MUNG KHAI TRUONG</text>
   <text x="80" y="200" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="56" font-weight="800">VPPACA &#183; ACA</text>
   <text x="80" y="268" fill="#FFF8E7" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="500">Van phong pham B2C &amp; B2B &#183; vppaca.vn</text>

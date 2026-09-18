@@ -6,12 +6,43 @@
       <stop offset="0.4" stop-color="#EC2229"/>
       <stop offset="1" stop-color="#EDA909"/>
     </linearGradient>
+    <linearGradient id="scrim2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1a1a2e" stop-opacity="0.94"/>
+      <stop offset="0.5" stop-color="#EC2229" stop-opacity="0.55"/>
+      <stop offset="0.78" stop-color="#E85A2A" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#EDA909" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="p1">
+      <rect x="680" y="40" width="240" height="180" rx="18"/>
+    </clipPath>
+    <clipPath id="p2">
+      <rect x="920" y="100" width="200" height="160" rx="18"/>
+    </clipPath>
+    <clipPath id="p3">
+      <rect x="760" y="220" width="220" height="170" rx="18"/>
+    </clipPath>
+    <clipPath id="p4">
+      <rect x="1000" y="250" width="200" height="150" rx="18"/>
+    </clipPath>
   </defs>
   <rect width="1260" height="420" fill="url(#bg2)"/>
+  <g clip-path="url(#p1)">
+    <image href="/products/giay-a4-ream-02.jpg" x="660" y="20" width="280" height="210" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <g clip-path="url(#p2)">
+    <image href="/products/but-bi.jpg" x="900" y="80" width="240" height="200" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <g clip-path="url(#p3)">
+    <image href="/products/muc-in.jpg" x="740" y="200" width="260" height="200" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <g clip-path="url(#p4)">
+    <image href="/products/bia-ho-so.jpg" x="980" y="230" width="240" height="180" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <rect width="1260" height="420" fill="url(#scrim2)"/>
   <text x="80" y="100" fill="#F5C563" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="4">FLASH SALE</text>
   <text x="80" y="185" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="58" font-weight="800">Giam den 30%</text>
   <text x="80" y="250" fill="#FFE8CC" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="500">Giay A4 &#183; But bi &#183; Muc in &#183; Bia ho so</text>
-  <g transform="translate(920, 80)">
+  <g transform="translate(520, 80)">
     <circle cx="120" cy="120" r="118" fill="#EDA909" fill-opacity="0.25" stroke="#FFF" stroke-width="4"/>
     <text x="120" y="115" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="72" font-weight="900" text-anchor="middle">30</text>
     <text x="120" y="165" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="800" text-anchor="middle">%</text>
