@@ -4,8 +4,10 @@ import { BRAND_COLORS } from "@/lib/brand-colors";
 
 export function themeStyleFromSettings(s: SiteSettings): CSSProperties {
   return {
-    ["--brand-primary" as string]: s.primary_color,
+    ["--nc-primary" as string]: s.primary_color || BRAND_COLORS.primary,
+    ["--brand-primary" as string]: s.primary_color || BRAND_COLORS.primary,
     ["--brand-primary-hover" as string]: BRAND_COLORS.primaryHover,
+    ["--brand-gradient" as string]: BRAND_COLORS.gradient,
     ["--brand-secondary" as string]: s.secondary_color,
     ["--brand-accent" as string]: s.accent_color,
     ["--brand-bg" as string]: "#F9FAF5",

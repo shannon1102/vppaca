@@ -1,23 +1,48 @@
+import Link from "next/link";
+
+import { VPPACA_BRAND } from "@/lib/brand-content";
 import { pageMetadata, SEO_KEYWORDS } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
-  title: "Chính sách bán hàng thiết bị y tế | Tâm Đức",
+  title: "Chính sách bán hàng | VPPACA",
   description:
-    "Chính sách đặt hàng, thanh toán, giao hàng và đổi trả thiết bị y tế tại Thiết bị Y tế Tâm Đức — Hà Nội.",
+    "Chính sách đặt hàng, thanh toán, giao hàng, đổi trả và VAT khi mua văn phòng phẩm tại VPPACA (ACA).",
   path: "/chinh-sach",
-  keywords: [...SEO_KEYWORDS],
+  keywords: [...SEO_KEYWORDS, "chính sách văn phòng phẩm", "đổi trả VPP"],
 });
 
 export default function PolicyPage() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 prose prose-slate">
-      <h1 className="text-3xl font-bold">Chính sách bán hàng</h1>
-      <ul className="mt-6 list-disc space-y-2 pl-5 text-sm leading-relaxed text-[var(--brand-muted)]">
-        <li>Đặt hàng trên website, thanh toán chuyển khoản theo QR / số tài khoản.</li>
-        <li>Đơn hàng được xác nhận sau khi shop nhận được chuyển khoản đúng nội dung.</li>
-        <li>Giao hàng toàn quốc; phí ship báo trước khi gửi.</li>
-        <li>Đổi trả theo tình trạng sản phẩm trong 7 ngày (còn tem, chưa sử dụng).</li>
-      </ul>
+    <div className="shop-container max-w-3xl py-12">
+      <h1 className="text-3xl font-bold">Chính sách bán hàng VPPACA</h1>
+      <p className="mt-3 leading-relaxed text-[var(--brand-muted)]">
+        Áp dụng cho giao dịch mua văn phòng phẩm trên website{" "}
+        <Link href="/" className="text-[var(--brand-primary)] hover:underline">
+          vppaca.vn
+        </Link>{" "}
+        — {VPPACA_BRAND.legalName}.
+      </p>
+
+      <div className="mt-10 space-y-8">
+        {VPPACA_BRAND.salesPolicies.map((section) => (
+          <section key={section.title}>
+            <h2 className="text-lg font-bold text-[var(--brand-text)]">{section.title}</h2>
+            <p className="mt-3 text-sm leading-relaxed text-[var(--brand-muted)]">{section.body}</p>
+          </section>
+        ))}
+      </div>
+
+      <p className="mt-10 text-sm text-[var(--brand-muted)]">
+        Cần hỗ trợ thêm? Xem{" "}
+        <Link href="/gioi-thieu" className="text-[var(--brand-primary)] hover:underline">
+          Giới thiệu
+        </Link>{" "}
+        hoặc{" "}
+        <Link href="/lien-he" className="text-[var(--brand-primary)] hover:underline">
+          Liên hệ
+        </Link>
+        .
+      </p>
     </div>
   );
 }

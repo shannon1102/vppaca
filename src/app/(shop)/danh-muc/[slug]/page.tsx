@@ -6,7 +6,8 @@ import { CatalogSidebar } from "@/components/store/catalog-sidebar";
 import { ProductCard } from "@/components/store/product-card";
 import { ProductPriceFilter } from "@/components/store/product-price-filter";
 import { EmptyState } from "@/components/ui/empty";
-import { filterAndSortProducts } from "@/lib/catalog-filters";
+import { CatalogPagination } from "@/components/store/catalog-pagination";
+import { parseCatalogPage } from "@/lib/catalog/list-products-page";
 import { repo, vppGetActiveFlashSale } from "@/lib/data/repository";
 import { absoluteUrl } from "@/lib/seo/jsonld";
 import { noindexMetadata, pageMetadata, SEO_KEYWORDS } from "@/lib/seo/metadata";
@@ -44,7 +45,18 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     vppGetActiveFlashSale(),
   ]);
   const promoMap = new Map(flash.products.map((p) => [p.product_id, p.sale_price]));
-  const products = filterAndSortProducts(allProducts, sp, flash.products);
+  const page = parseCatalogPage(sp.page);
+  const {
+    items: products,
+    total,
+    totalPages,
+  } = await repo.listProductsPage({
+    publishedOnly: true,
+    categorySlug: slug,
+    filters: sp,
+    promoProducts: flash.products,
+    page,
+  });
   const basePath = `/danh-muc/${slug}`;
 
   const collectionJsonLd = {
@@ -97,15 +109,27 @@ export default async function CategoryPage({ params, searchParams }: Props) {
               <EmptyState title="Không có sản phẩm phù hợp bộ lọc" />
             </div>
           ) : (
-            <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-              {products.map((p) => (
-                <ProductCard
-                  key={p.id}
-                  product={p}
-                  overrideSalePrice={promoMap.get(p.id) ?? undefined}
-                />
-              ))}
-            </div>
+            <>
+              <p className="mt-4 text-sm text-[var(--brand-muted)]">
+                {total.toLocaleString("vi-VN")} sản phẩm trong danh mục
+              </p>
+              <div className="product-grid-shopee mt-6">
+                {products.map((p) => (
+                  <ProductCard
+                    key={p.id}
+                    product={p}
+                    overrideSalePrice={promoMap.get(p.id) ?? undefined}
+                  />
+                ))}
+              </div>
+              <CatalogPagination
+                basePath={basePath}
+                searchParams={sp}
+                page={page}
+                totalPages={totalPages}
+                total={total}
+              />
+            </>
           )}
         </div>
       </div>

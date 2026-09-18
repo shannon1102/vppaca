@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
+import { BrandLogo } from "@/components/store/brand-logo";
+import { VPPACA_BRAND } from "@/lib/brand-content";
 import type { SiteSettings } from "@/lib/types";
-import { TAM_DUC_BRAND } from "@/lib/brand-content";
 import { SocialIcons } from "@/components/store/social-icons";
 
 export function SiteFooter({ settings }: { settings: SiteSettings }) {
@@ -11,7 +11,7 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3">
-            <Image
+            <BrandLogo
               src={settings.logo_url}
               alt={settings.shop_name}
               width={44}
@@ -24,7 +24,7 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
             </div>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-white/75">
-            {TAM_DUC_BRAND.footerDescription}
+            {VPPACA_BRAND.footerDescription}
           </p>
           <div className="mt-5">
             <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-white/60">
@@ -115,9 +115,9 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
       <div className="border-t border-white/10">
         <div className="shop-container flex flex-col items-center justify-between gap-2 py-4 text-xs text-white/55 sm:flex-row">
           <p>
-            © {new Date().getFullYear()} {settings.shop_name}. MST: {TAM_DUC_BRAND.taxCode}
+            © {new Date().getFullYear()} {settings.shop_name}. MST: {VPPACA_BRAND.taxCode}
           </p>
-          <p>{TAM_DUC_BRAND.legalName}</p>
+          <p>{VPPACA_BRAND.legalName}</p>
         </div>
       </div>
     </footer>

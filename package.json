@@ -11,21 +11,22 @@
     "seed:catalog": "node scripts/seed-vpp-catalog.cjs",
     "reset:catalog": "node scripts/reset-catalog.cjs",
     "product-docs:export": "python scripts/export-product-docs.py",
-    "catalog:paper:generate": "node scripts/generate-paper-seed-from-docs.mjs"
+    "catalog:paper:generate": "node scripts/generate-paper-seed-from-docs.mjs",
+    "supabase:bootstrap": "node scripts/vpp-supabase-bootstrap.cjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.0",
     "@supabase/supabase-js": "^2.110.2",
     "next": "16.2.10",
     "nodemailer": "^9.0.3",
+    "pdf-lib": "^1.17.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-quill-new": "^3.8.3",
     "resend": "^6.17.2",
     "sanitize-html": "^2.17.5",
-    "zod": "^4.4.3",
-    "pdf-lib": "^1.17.1",
     "xlsx": "^0.18.5",
+    "zod": "^4.4.3",
     "zustand": "^5.0.14"
   },
   "devDependencies": {
@@ -37,7 +38,9 @@
     "@types/sanitize-html": "^2.16.1",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "pg": "^8.23.0",
     "tailwindcss": "^4",
+    "tsx": "^4.23.13",
     "typescript": "^5"
   }
 }

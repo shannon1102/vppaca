@@ -13,7 +13,7 @@ export function Button({
     "inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-[var(--radius)] px-4 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50";
   const variants = {
     primary:
-      "bg-[var(--brand-primary)] text-white hover:bg-[var(--brand-primary-hover)] focus-visible:outline-[var(--brand-primary)]",
+      "brand-gradient-bg text-white hover:brightness-95 focus-visible:outline-[var(--brand-primary)]",
     secondary:
       "bg-[var(--brand-secondary)] text-white hover:brightness-110 focus-visible:outline-[var(--brand-secondary)]",
     ghost:

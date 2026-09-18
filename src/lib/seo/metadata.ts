@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { resolveLogoUrl } from "@/lib/brand-logo";
 import type { SiteSettings } from "@/lib/types";
 
 export const CANONICAL_SITE_URL = "https://thietbiytetamduc.vn";
@@ -11,8 +12,9 @@ export function siteUrl(): string {
 }
 
 export function defaultOgImage(settings: SiteSettings): string {
-  if (settings.logo_url?.startsWith("http") || settings.logo_url?.startsWith("/")) {
-    return settings.logo_url;
+  const logo = resolveLogoUrl(settings.logo_url);
+  if (logo.startsWith("http") || logo.startsWith("/")) {
+    return logo;
   }
   return "/products/p-01.jpg";
 }
