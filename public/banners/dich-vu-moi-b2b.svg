@@ -10,9 +10,35 @@
       <stop offset="0" stop-color="#EC2229"/>
       <stop offset="1" stop-color="#EDA909"/>
     </linearGradient>
+    <linearGradient id="scrim3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.97"/>
+      <stop offset="0.55" stop-color="#FFF9F0" stop-opacity="0.88"/>
+      <stop offset="0.78" stop-color="#FFE8E8" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#FFE8E8" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="team">
+      <rect x="720" y="30" width="480" height="360" rx="24"/>
+    </clipPath>
+    <clipPath id="volume">
+      <rect x="580" y="240" width="200" height="150" rx="16"/>
+    </clipPath>
+    <clipPath id="tools">
+      <rect x="580" y="60" width="180" height="150" rx="16"/>
+    </clipPath>
   </defs>
   <rect width="1260" height="420" fill="url(#bg3)"/>
   <rect x="0" y="0" width="12" height="420" fill="url(#accent)"/>
+  <g clip-path="url(#team)">
+    <image href="/products/p-07.jpg" x="700" y="0" width="520" height="390" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <g clip-path="url(#tools)">
+    <image href="/products/dung-cu-vp.jpg" x="560" y="50" width="220" height="170" preserveAspectRatio="xMidYMid slice"/>
+    <rect x="580" y="60" width="180" height="150" fill="#fff" fill-opacity="0.12"/>
+  </g>
+  <g clip-path="url(#volume)">
+    <image href="/products/giay-a4-box.jpg" x="560" y="220" width="240" height="180" preserveAspectRatio="xMidYMid slice"/>
+  </g>
+  <rect width="1260" height="420" fill="url(#scrim3)"/>
   <text x="80" y="95" fill="#EC2229" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="3">DICH VU MOI</text>
   <text x="80" y="175" fill="#0F172A" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="800">Bao gia B2B &#183; Excel &#183; VAT</text>
   <text x="80" y="235" fill="#64748B" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="500">Upload danh muc, ghep ma, bao gia tap trung</text>
@@ -21,10 +47,10 @@
     <text x="240" y="304" fill="#EC2229" text-anchor="middle">Gia si minh bach theo bac</text>
     <rect x="420" y="275" width="320" height="44" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
     <text x="580" y="304" fill="#EC2229" text-anchor="middle">Xuat thong tin VAT tren don</text>
-    <rect x="760" y="275" width="320" height="44" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
-    <text x="920" y="304" fill="#EC2229" text-anchor="middle">Giao volume giay thung</text>
   </g>
-  <rect x="980" y="60" width="200" height="200" rx="20" fill="url(#accent)" fill-opacity="0.12" stroke="url(#accent)" stroke-width="3"/>
+  <rect x="80" y="330" width="660" height="44" rx="10" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <text x="410" y="359" fill="#EC2229" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600" text-anchor="middle">Giao volume giay thung &#183; Doi ngu van phong dong hanh</text>
+  <rect x="980" y="60" width="200" height="200" rx="20" fill="url(#accent)" fill-opacity="0.15" stroke="url(#accent)" stroke-width="3"/>
   <text x="1080" y="145" fill="#EC2229" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="900" text-anchor="middle">B2B</text>
   <text x="1080" y="185" fill="#EDA909" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">ACA</text>
 </svg>
