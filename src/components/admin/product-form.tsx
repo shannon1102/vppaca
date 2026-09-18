@@ -50,9 +50,34 @@ export function ProductForm({
         <Input
           name="stock"
           type="number"
-          label="Tồn kho"
+          label="Tồn kho (đơn vị cơ sở)"
           defaultValue={product.stock ?? 0}
           showLimit={false}
+        />
+        <Input name="brand" label="Thương hiệu" defaultValue={product.brand ?? ""} />
+        <Input
+          name="base_uom_code"
+          label="Mã đv cơ sở (ram, cay, cai...)"
+          defaultValue={product.base_uom_code ?? "cai"}
+        />
+        <Input
+          name="min_stock"
+          type="number"
+          label="Tồn tối thiểu (cảnh báo)"
+          defaultValue={product.min_stock ?? 0}
+          showLimit={false}
+        />
+        <Textarea
+          name="uoms_json"
+          label="UoM JSON (admin nâng cao)"
+          rows={4}
+          placeholder='[{"id":"uom-1","product_id":"...","code":"ram","label_vi":"Ram","factor_to_base":1,...}]'
+        />
+        <Textarea
+          name="tiers_json"
+          label="Giá bậc JSON"
+          rows={4}
+          placeholder='[{"id":"tier-1","product_id":"...","uom_code":"ram","min_qty":1,"max_qty":9,"unit_price":65000}]'
         />
         <label className="block space-y-1.5 text-sm">
           <span className="font-medium">Danh mục</span>

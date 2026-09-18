@@ -1,6 +1,6 @@
 export default function ShopLoading() {
   return (
-    <div className="mx-auto max-w-6xl animate-pulse px-4 py-10">
+    <div className="shop-container animate-pulse py-10">
       <div className="h-8 w-48 rounded bg-slate-200" />
       <div className="mt-4 h-4 w-72 rounded bg-slate-100" />
       <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">

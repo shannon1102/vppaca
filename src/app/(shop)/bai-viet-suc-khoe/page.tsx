@@ -15,7 +15,7 @@ export default async function HealthArticlesPage() {
   const articles = await repo.listArticles({ publishedOnly: true });
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
+    <div className="shop-container py-10">
       <div className="max-w-2xl">
         <h1 className="text-3xl font-bold md:text-4xl">Bài viết sức khỏe</h1>
         <p className="mt-3 text-[var(--brand-muted)]">

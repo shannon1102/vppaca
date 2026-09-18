@@ -15,6 +15,7 @@ export default function CheckoutPage() {
   const router = useRouter();
   const { items, total } = useCart();
   const [error, setError] = useState<string | null>(null);
+  const [needVat, setNeedVat] = useState(false);
   const [pending, startTransition] = useTransition();
 
   const itemsJson = useMemo(
@@ -22,9 +23,8 @@ export default function CheckoutPage() {
       JSON.stringify(
         items.map((i) => ({
           productId: i.productId,
-          name: i.name,
+          uomCode: i.uomCode,
           qty: i.qty,
-          unit_price: i.price,
         })),
       ),
     [items],
@@ -32,7 +32,7 @@ export default function CheckoutPage() {
 
   if (items.length === 0) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-16">
+      <div className="shop-container py-16">
         <EmptyState
           title="Chưa có sản phẩm để thanh toán"
           action={
@@ -46,11 +46,11 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="mx-auto grid max-w-5xl gap-8 px-4 py-10 md:grid-cols-5">
+    <div className="shop-container grid gap-8 py-10 md:grid-cols-5">
       <div className="md:col-span-3">
         <h1 className="text-3xl font-bold">Thanh toán</h1>
         <p className="mt-2 text-sm text-[var(--brand-muted)]">
-          Đặt hàng — thanh toán chuyển khoản thủ công (có QR sau khi đặt).
+          Chuyển khoản / VietQR sau khi đặt hàng. Giá được xác nhận lại trên hệ thống.
         </p>
         <form
           className="mt-8 space-y-4"
@@ -82,6 +82,33 @@ export default function CheckoutPage() {
           <Input name="customer_phone" label="Số điện thoại *" required />
           <Input name="customer_email" type="email" label="Email" />
           <Input name="customer_address" label="Địa chỉ nhận hàng *" required />
+          <label className="flex items-center gap-2 text-sm">
+            <select
+              name="customer_type"
+              className="rounded-lg border border-slate-200 px-3 py-2"
+              defaultValue="b2c"
+            >
+              <option value="b2c">Khách lẻ (B2C)</option>
+              <option value="b2b">Doanh nghiệp (B2B)</option>
+            </select>
+          </label>
+          <label className="flex items-center gap-2 text-sm font-medium">
+            <input
+              type="checkbox"
+              name="need_vat_invoice"
+              checked={needVat}
+              onChange={(e) => setNeedVat(e.target.checked)}
+            />
+            Xuất hóa đơn VAT
+          </label>
+          {needVat ? (
+            <div className="space-y-3 rounded-lg border border-amber-200 bg-amber-50/50 p-4">
+              <Input name="vat_company_name" label="Tên công ty *" required={needVat} />
+              <Input name="vat_tax_code" label="Mã số thuế *" required={needVat} />
+              <Input name="vat_address" label="Địa chỉ đăng ký thuế *" required={needVat} />
+              <Input name="vat_email" type="email" label="Email nhận hóa đơn *" required={needVat} />
+            </div>
+          ) : null}
           <label className="block space-y-1.5 text-sm">
             <span className="font-medium">Ghi chú</span>
             <textarea
@@ -98,19 +125,22 @@ export default function CheckoutPage() {
       </div>
       <aside className="md:col-span-2">
         <div className="rounded-[var(--radius)] border border-slate-200 bg-white p-5">
-          <h2 className="font-semibold">Đơn hàng</h2>
-          <ul className="mt-4 space-y-3 text-sm">
+          <h2 className="font-bold">Tóm tắt</h2>
+          <ul className="mt-4 space-y-2 text-sm">
             {items.map((i) => (
-              <li key={i.productId} className="flex justify-between gap-3">
-                <span>
-                  {i.name} × {i.qty}
+              <li key={`${i.productId}-${i.uomCode}`} className="flex justify-between gap-2">
+                <span className="line-clamp-2">
+                  {i.name} × {i.qty} ({i.uomLabel})
                 </span>
-                <span className="font-medium">{formatVnd(i.price * i.qty)}</span>
+                <span className="shrink-0 font-medium">{formatVnd(i.price * i.qty)}</span>
               </li>
             ))}
           </ul>
-          <p className="mt-4 border-t border-slate-100 pt-4 text-lg font-bold">
-            Tổng: {formatVnd(total())}
+          <p className="mt-4 border-t pt-4 text-lg font-bold">
+            Tổng tạm tính: {formatVnd(total())}
+          </p>
+          <p className="mt-2 text-xs text-[var(--brand-muted)]">
+            Giá cuối cùng áp dụng theo bậc số lượng khi xác nhận đơn.
           </p>
         </div>
       </aside>

@@ -1,11 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --brand-primary: #2e7d32;
-  --brand-primary-hover: #1b5e20;
-  --brand-secondary: #1b4332;
-  --brand-accent: #8bc34a;
-  --brand-bg: #f8fafc;
+  /* Shopee VN desktop content column ≈ 1270px */
+  --shop-content-max: 1270px;
+  --brand-primary: #c17a2e;
+  --brand-primary-hover: #a06524;
+  --brand-secondary: #8b5a2b;
+  --brand-accent: #f5c563;
+  --brand-sale: #ee4d2d;
+  --brand-bg: #fafaf9;
   --brand-surface: #ffffff;
   --brand-text: #0f172a;
   --brand-muted: #64748b;
@@ -352,6 +355,21 @@ h4 {
 .rich-content th {
   background: #f8fafc;
   font-weight: 600;
+}
+
+/* Storefront shell — align with Shopee content width */
+.shop-container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--shop-content-max);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 768px) {
+  .shop-container {
+    padding-inline: 1.25rem;
+  }
 }
 
 @keyframes admin-indeterminate {

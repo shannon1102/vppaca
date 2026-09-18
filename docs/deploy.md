@@ -1,52 +1,28 @@
-# Deploy — Vercel + Supabase
+# Deploy vppaca.vn — Vercel + Supabase
 
 ## Checklist
 
-- [x] Vercel project linked (`medical-store-web`)
-- [x] Supabase Marketplace resource `medical-store-db` (Free)
-- [x] Migration `supabase/migrations/001_init.sql` applied
-- [x] Migration `supabase/migrations/002_health_articles.sql` applied (bài viết sức khỏe)
-- [x] Migration `supabase/migrations/003_media_files.sql` applied (upload ảnh rich text)
-- [x] Migration `supabase/migrations/004_product_detail_description.sql` applied (mô tả chi tiết sản phẩm)
-- [x] Migration `supabase/migrations/005_brand_colors.sql` applied (màu primary #2E7D32)
-- [x] Migration `supabase/migrations/006_product_sold_count.sql` applied (đã bán)
-- [x] Catalog reset for client handoff (products/orders/articles cleared; categories + settings kept)
-- [x] Env: Supabase keys (auto), `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `NEXT_PUBLIC_SITE_URL`
-- [x] Health: `/api/health`
-- [x] GitHub Actions keep-alive: `.github/workflows/supabase-keepalive.yml`
-- [ ] UptimeRobot (optional)
-- [x] Custom domain (`thietbiytetamduc.vn` primary, `thietbiytetamduc.com` redirect)
+1. Tạo project Supabase `vppaca-db`
+2. Chạy migrations `supabase/migrations/001_init.sql` … `010_site_settings_bank_bin.sql`
+3. Bucket Storage `media` (public read cho ảnh SP)
+4. Vercel project link repo `vppaca`
+5. Env production (xem `.env.example`)
+6. Domain `vppaca.vn` trỏ Vercel
+7. GitHub Actions keep-alive (copy từ medical-store-web)
 
-## Commands
+## Lệnh
 
 ```bash
-cd medical-store-web
+npm install
+npm run build
+vercel login   # một lần trên máy dev
 npx vercel --prod
-npx vercel env pull .env.local
 ```
 
-## Rollback
+CLI cần đăng nhập Vercel (`vercel login`). Supabase: tạo project trên dashboard, dán URL + service role vào env Vercel, chạy SQL migrations theo thứ tự file trong `supabase/migrations/`.
 
-Vercel Dashboard → Deployments → Promote previous production deployment.
+## Seed catalog
 
-## Data
+Lần đầu deploy với DB trống: app tự seed `site_settings` + catalog VPP khi có `SUPABASE_SERVICE_ROLE_KEY`.
 
-- Production data: Supabase (service role on server)
-- Local without keys: `.data/store.json`
-- Seed auto-runs once when `products` table empty
-
-## Supabase keep-alive (GitHub Actions)
-
-Workflow `supabase-keepalive.yml` ping DB **2 lần/ngày** (8h & 20h VN) để giảm nguy cơ Supabase Free tier bị pause.
-
-**GitHub repo → Settings → Secrets and variables → Actions**, thêm:
-
-| Secret | Giá trị |
-|--------|---------|
-| `NEXT_PUBLIC_SUPABASE_URL` | `https://xxx.supabase.co` |
-| `SUPABASE_SERVICE_ROLE_KEY` | service role key |
-| `NEXT_PUBLIC_SITE_URL` | `https://thietbiytetamduc.vn` |
-
-Chạy thử tay: **Actions → Supabase keep-alive → Run workflow**.
-
-> Supabase có thể vẫn pause dù có cron (xem [thảo luận DEV](https://dev.to/jps27cse/how-to-prevent-your-supabase-project-database-from-being-paused-using-github-actions-3hel)). Khi nhận email pause → vào Supabase Dashboard → **Restore project**.
+Local không Supabase: xóa `.data/store.json` và restart `npm run dev`.

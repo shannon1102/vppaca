@@ -1,0 +1,40 @@
+{
+  "category_slug": "giay-ford-mau",
+  "count": 1,
+  "items": [
+    {
+      "source_product_id": 64092,
+      "name": "Giấy ford màu đặc biệt Grand A4 80",
+      "slug": "giay-ford-mau-dac-biet-grand",
+      "sku": "FORMAUDB80",
+      "price": 190000,
+      "regular_price": 202000,
+      "aca_category_hint": "cat-giay",
+      "specs": {
+        "Tên sản phẩm": "Giấy ford A4 80gsm Grand",
+        "Phân loại": "Giấy ford màu đặc biệt",
+        "Kích thước": "Khổ A4",
+        "Định lượng": "80gsm",
+        "Màu sắc": "12 màu, Xanh dương, vàng, hồng, Xanh lá, trắng…",
+        "Đơn vị": "Ream 500 tờ",
+        "Thương hiệu": "Grand",
+        "Xuất xứ": "Indonesia",
+        "Chất Lượng Ưu Việt": "Sản phẩm đạt tiêu chuẩn chất lượng cao, phù hợp với mọi loại máy in và máy photocopy hiện đại.",
+        "Không Bụi, An Toàn Cho Sức Khỏe": "Giấy không chứa bụi, giúp bảo vệ sức khỏe người sử dụng và kéo dài tuổi thọ của máy in.",
+        "Đa Dạng Màu Sắc": "12 màu đặc biệt đa dạng, giúp tạo ra những tác phẩm nghệ thuật sáng tạo.",
+        "Chất Lượng": "Kiểm tra định lượng và đặc điểm A4 để đảm bảo chất lượng sản phẩm.",
+        "Màu Sắc": "Lựa chọn từ 12 màu đặc biệt, đồng nhất và không biến đổi màu.",
+        "Chức Năng": "Xác định mục đích sử dụng để chọn giấy phù hợp, từ in ấn đến trang trí.",
+        "Nguồn Cung Cấp": "Mua từ cửa hàng uy tín, kiểm tra đánh giá để đảm bảo chất lượng.",
+        "Giá Cả": "So sánh giá để đảm bảo bạn nhận được giá trị tốt nhất.",
+        "size_inferred": "A4"
+      },
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2024/01/giay-ford-mau-dac-biet-a4-80gsm-grand-vpp-ba-nhat-3.jpg",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2024/01/giay-ford-mau-dac-biet-a4-80gsm-grand-vpp-ba-nhat-4.jpg",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2024/01/giay-ford-mau-dac-biet-a4-80gsm-grand-vpp-ba-nhat-2.jpg"
+      ],
+      "doc_file": "giay-ford-mau-dac-biet-grand.md"
+    }
+  ]
+}

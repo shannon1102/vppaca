@@ -1,0 +1,74 @@
+{
+  "category_slug": "giay-a0-giay-a1",
+  "count": 3,
+  "items": [
+    {
+      "source_product_id": 5850,
+      "name": "Giấy A0 định lượng 100 gsm cuộn lớn",
+      "slug": "giay-a0-dinh-luong-100-gsm",
+      "sku": "GA0K907KGDL100",
+      "price": 280000,
+      "regular_price": 290000,
+      "aca_category_hint": "cat-giay",
+      "specs": {
+        "Định lượng": "100 gsm",
+        "Đối tượng sử dụng": "máy in khổ lớn.",
+        "Trọng lượng": "7,2 kg, 4,7 kg",
+        "gsm_inferred": "100",
+        "size_inferred": "A0"
+      },
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-in-cuon-a0-1.png",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-in-cuon-a0-2.jpg"
+      ],
+      "doc_file": "giay-a0-dinh-luong-100-gsm.md"
+    },
+    {
+      "source_product_id": 5943,
+      "name": "Giấy A0 khổ 84 định lượng 80 gsm cuộn lớn",
+      "slug": "giay-a0-80-dang-cuon",
+      "sku": "GINA0K84DL807KGLN",
+      "price": 250000,
+      "regular_price": 280000,
+      "aca_category_hint": "cat-giay",
+      "specs": {
+        "Kiểu dáng": "dạng cuồn không lõi, cuộn lớn có lõi",
+        "Nhập khẩu & đóng gói": "Indonesia & Việt Nam",
+        "Quy cách": "Khổ giấy A0",
+        "Trọng lượng": "7,2 kg và 4,7 kg.",
+        "Định lượng": "80 gsm",
+        "gsm_inferred": "80",
+        "size_inferred": "A0"
+      },
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-in-cuon-a0-1.png",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-in-cuon-a0-2.jpg",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-in-cuon-a0-1.jpg"
+      ],
+      "doc_file": "giay-a0-80-dang-cuon.md"
+    },
+    {
+      "source_product_id": 8432,
+      "name": "Giấy A1 định lượng 100 gsm cuộn lớn 5 kg",
+      "slug": "giay-a1-dinh-luong-100-gsm",
+      "sku": "GINA1DL1005KGLN",
+      "price": 200000,
+      "regular_price": 250000,
+      "aca_category_hint": "cat-giay",
+      "specs": {
+        "Kiểu dáng": "dạng cuồn, cuộn lớn có lõi",
+        "Nhập khẩu & đóng gói": "Indonesia & Việt Nam",
+        "Quy cách": "Khổ A1",
+        "Trọng lượng": "5,2 kg và 2,7 kg",
+        "Định lượng": "100 gsm",
+        "gsm_inferred": "100",
+        "size_inferred": "A1"
+      },
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/TK.a1-100.jpg",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/giay-cuon-a-1-1.jpg"
+      ],
+      "doc_file": "giay-a1-dinh-luong-100-gsm.md"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "category_slug": "giay-a3",
+  "count": 1,
+  "items": [
+    {
+      "source_product_id": 46853,
+      "name": "Giấy Paper One A3 80 gsm",
+      "slug": "giay-paper-one-a3-80",
+      "sku": "GINPAPERONEA380",
+      "price": 158000,
+      "regular_price": 170000,
+      "aca_category_hint": "cat-giay",
+      "specs": {
+        "Tên sản phẩm": "Giấy A3 Paper One 80gsm",
+        "Kích thước": "Khổ A3 (297 x 420 mm)",
+        "Định lượng": "80gsm",
+        "Số lượng": "500 tờ",
+        "Giấy màu": "Trắng",
+        "Đơn vị tính": "Ream",
+        "Thương hiệu": "Paper One",
+        "Xuất xứ": "Indonesia",
+        "Quy cách đóng gói": "500 tờ /ream, 5 ream /thùng",
+        "Ứng dụng": "in văn bản, tài liệu, hợp đồng, photocopy",
+        "Trọng lượng": "Khoảng 4.8kg /ream, 24kg /thùng",
+        "Địa Chỉ": "B1-09 Hẻm 515 Đường Lê Văn Lương, P. Tân Phong, Q.7, Tp.HCM",
+        "Điện thoại": "028 66566 202-0937 191 311",
+        "Hotline": "0937 151 311 (Chị Hiền) – 0937 191 311 ( Anh. Ràng)",
+        "Email": "banhang@vanphongphambanhat.com – kinhdoanh@vanphongphambanhat.com",
+        "gsm_inferred": "80",
+        "size_inferred": "A3"
+      },
+      "images": [
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/paper-one-a3-80.png",
+        "https://vanphongphambanhat.com.vn/wp-content/uploads/2019/12/paper-one-a3-80.jpg"
+      ],
+      "doc_file": "giay-paper-one-a3-80.md"
+    }
+  ]
+}

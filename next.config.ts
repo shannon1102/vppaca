@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const CANONICAL_HOST = "thietbiytetamduc.vn";
+const CANONICAL_HOST = process.env.NEXT_PUBLIC_CANONICAL_HOST || "vppaca.vercel.app";
 
 const nextConfig: NextConfig = {
   // Vercel request body hard-limit ~4.5MB; keep Next in sync (never rely on

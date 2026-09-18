@@ -4,9 +4,20 @@ import { Badge } from "@/components/ui/badge";
 import { effectivePrice, formatVnd } from "@/lib/format";
 import type { Product } from "@/lib/types";
 
-export function ProductCard({ product }: { product: Product }) {
-  const price = effectivePrice(product.price, product.sale_price);
-  const onSale = product.sale_price != null && product.sale_price < product.price;
+export function ProductCard({
+  product,
+  overrideSalePrice,
+}: {
+  product: Product;
+  overrideSalePrice?: number | null;
+}) {
+  const sale = overrideSalePrice ?? product.sale_price;
+  const price = effectivePrice(product.price, sale);
+  const onSale = sale != null && sale < product.price;
+  const pct =
+    onSale && product.price > 0
+      ? Math.round(((product.price - price) / product.price) * 100)
+      : 0;
   return (
     <Link
       href={`/san-pham/${product.slug}`}
@@ -21,8 +32,8 @@ export function ProductCard({ product }: { product: Product }) {
           sizes="(max-width:768px) 50vw, 25vw"
         />
         {onSale ? (
-          <div className="absolute left-3 top-3">
-            <Badge>Giảm giá</Badge>
+          <div className="absolute left-2 top-2 rounded bg-[var(--brand-sale)] px-2 py-0.5 text-xs font-bold text-white">
+            -{pct}%
           </div>
         ) : null}
       </div>
@@ -33,7 +44,7 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="text-xs text-[var(--brand-muted)]">{product.sku}</p>
         <p className="text-xs text-[var(--brand-muted)]">Đã bán {product.sold_count}</p>
         <div className="mt-auto flex items-baseline gap-2">
-          <span className="text-base font-bold text-[var(--brand-primary)]">
+          <span className="text-base font-bold text-[var(--brand-sale)]">
             {formatVnd(price)}
           </span>
           {onSale ? (

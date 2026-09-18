@@ -133,6 +133,25 @@ export async function notifyAdminNewOrder(opts: {
   });
 }
 
+export async function notifyAdminRfq(opts: {
+  rfqId: string;
+  contactName: string;
+  contactPhone: string;
+  lineCount: number;
+  settings: SiteSettings;
+}): Promise<NotifyResult> {
+  const subject = `[VPPACA] RFQ ${opts.rfqId}`;
+  const html = `<p>Yêu cầu báo giá mới từ <strong>${opts.contactName}</strong> (${opts.contactPhone}).</p><p>${opts.lineCount} dòng hàng.</p>`;
+  const text = `RFQ ${opts.rfqId} — ${opts.contactName} — ${opts.lineCount} lines`;
+  return deliverAdminEmail({
+    settings: opts.settings,
+    subject,
+    html,
+    text,
+    logContext: { rfq: opts.rfqId },
+  });
+}
+
 export async function notifyAdminNewLead(opts: {
   lead: ContactLead;
   settings: SiteSettings;

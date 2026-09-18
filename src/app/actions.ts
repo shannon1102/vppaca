@@ -50,6 +50,12 @@ const checkoutSchema = z.object({
   customer_address: z.string().min(5),
   note: z.string().optional(),
   items_json: z.string().min(2),
+  customer_type: z.enum(["b2c", "b2b"]).optional(),
+  need_vat_invoice: z.string().optional(),
+  vat_company_name: z.string().optional(),
+  vat_tax_code: z.string().optional(),
+  vat_address: z.string().optional(),
+  vat_email: z.string().optional(),
 });
 
 export async function placeOrderAction(formData: FormData) {
@@ -60,22 +66,50 @@ export async function placeOrderAction(formData: FormData) {
     customer_address: formData.get("customer_address"),
     note: formData.get("note") ?? "",
     items_json: formData.get("items_json"),
+    customer_type: formData.get("customer_type") ?? "b2c",
+    need_vat_invoice: formData.get("need_vat_invoice") ?? "",
+    vat_company_name: formData.get("vat_company_name") ?? "",
+    vat_tax_code: formData.get("vat_tax_code") ?? "",
+    vat_address: formData.get("vat_address") ?? "",
+    vat_email: formData.get("vat_email") ?? "",
   });
   if (!parsed.success) {
     return { error: "Vui lòng điền đầy đủ thông tin hợp lệ." };
   }
 
-  type Line = { productId: string; name: string; qty: number; unit_price: number };
-  let lines: Line[] = [];
+  type CartLine = { productId: string; uomCode: string; qty: number };
+  let cartLines: CartLine[] = [];
   try {
-    lines = JSON.parse(parsed.data.items_json) as Line[];
+    cartLines = JSON.parse(parsed.data.items_json) as CartLine[];
   } catch {
     return { error: "Giỏ hàng không hợp lệ." };
   }
-  if (!lines.length) return { error: "Giỏ hàng trống." };
+  if (!cartLines.length) return { error: "Giỏ hàng trống." };
+
+  const needVat = parsed.data.need_vat_invoice === "on";
+  if (needVat) {
+    if (
+      !parsed.data.vat_company_name?.trim() ||
+      !parsed.data.vat_tax_code?.trim() ||
+      !parsed.data.vat_address?.trim() ||
+      !parsed.data.vat_email?.trim()
+    ) {
+      return { error: "Vui lòng điền đầy đủ thông tin xuất hóa đơn VAT." };
+    }
+  }
+
+  const { vppValidateCartLines } = await import("@/lib/data/vpp-data");
+  const validated = await vppValidateCartLines(
+    cartLines.map((l) => ({
+      productId: l.productId,
+      uomCode: l.uomCode || "cai",
+      qty: l.qty,
+    })),
+  );
+  if (!validated.ok) return { error: validated.error };
 
   const code = orderCode();
-  const total = lines.reduce((s, l) => s + l.unit_price * l.qty, 0);
+  const total = validated.subtotal;
   const id = `ord-${Date.now()}`;
   const order: Order = {
     id,
@@ -88,16 +122,35 @@ export async function placeOrderAction(formData: FormData) {
     status: "pending",
     total,
     created_at: new Date().toISOString(),
-    items: lines.map((l, idx) => ({
+    customer_type: parsed.data.customer_type ?? "b2c",
+    payment_method: "bank_transfer",
+    need_vat_invoice: needVat,
+    vat_company_name: parsed.data.vat_company_name?.trim() ?? "",
+    vat_tax_code: parsed.data.vat_tax_code?.trim() ?? "",
+    vat_address: parsed.data.vat_address?.trim() ?? "",
+    vat_email: parsed.data.vat_email?.trim() ?? "",
+    subtotal: validated.subtotal,
+    discount_total: 0,
+    accounting_exported_at: null,
+    items: validated.items.map((l, idx) => ({
       id: `${id}-${idx}`,
       order_id: id,
       product_id: l.productId,
       name: l.name,
       qty: l.qty,
       unit_price: l.unit_price,
+      uom_code: l.uom_code,
+      factor_to_base: l.factor_to_base,
+      qty_base: l.qty_base,
+      tier_label: l.tier_label,
     })),
   };
-  await repo.createOrder(order);
+  try {
+    await repo.createOrder(order);
+  } catch (e) {
+    console.error("[order]", e);
+    return { error: e instanceof Error ? e.message : "Không tạo được đơn hàng." };
+  }
 
   revalidateTag(CACHE_TAGS.products, "max");
 
@@ -170,6 +223,7 @@ export async function saveSettingsAction(formData: FormData) {
       FORM_LIMITS.color,
     ),
     bank_name: clampText(String(formData.get("bank_name") ?? ""), FORM_LIMITS.bankName),
+    bank_bin: clampText(String(formData.get("bank_bin") ?? ""), 16),
     bank_account: clampText(
       String(formData.get("bank_account") ?? ""),
       FORM_LIMITS.bankAccount,
@@ -257,10 +311,22 @@ export async function saveProductAction(formData: FormData) {
       String(formData.get("seo_description") ?? ""),
       FORM_LIMITS.seoDescription,
     ),
+    brand: clampText(String(formData.get("brand") ?? ""), FORM_LIMITS.name),
+    base_uom_code: clampText(String(formData.get("base_uom_code") ?? "cai"), 32),
+    min_stock: Number(formData.get("min_stock") ?? 0),
+    filter_attrs: specs,
   };
 
   try {
     await repo.upsertProduct(product);
+    const uomsJson = String(formData.get("uoms_json") ?? "");
+    const tiersJson = String(formData.get("tiers_json") ?? "");
+    if (uomsJson || tiersJson) {
+      const { vppSaveProductUomsTiers } = await import("@/lib/data/vpp-data");
+      const uoms = uomsJson ? (JSON.parse(uomsJson) as import("@/lib/types").ProductUom[]) : [];
+      const tiers = tiersJson ? (JSON.parse(tiersJson) as import("@/lib/types").ProductPriceTier[]) : [];
+      await vppSaveProductUomsTiers(product.id, uoms, tiers);
+    }
   } catch (e) {
     console.error("[product] upsert failed", e);
     redirect(`${backPath}?error=save`);
@@ -423,4 +489,64 @@ export async function deleteArticleAction(formData: FormData) {
   revalidatePath("/admin/articles");
   revalidateTag(CACHE_TAGS.articles, "max");
   redirect("/admin/articles?toast=article-deleted");
+}
+
+export async function submitRfqAction(formData: FormData) {
+  type RfqLine = {
+    sku: string;
+    qty: number;
+    uom_code: string;
+    product_id: string | null;
+    matched: boolean;
+  };
+  let lines: RfqLine[] = [];
+  try {
+    lines = JSON.parse(String(formData.get("lines_json") ?? "[]")) as RfqLine[];
+  } catch {
+    return { error: "Danh sách không hợp lệ." };
+  }
+  if (!lines.length) return { error: "Vui lòng upload Excel trước." };
+  const contact_name = String(formData.get("contact_name") ?? "").trim();
+  const contact_phone = String(formData.get("contact_phone") ?? "").trim();
+  if (contact_name.length < 2 || contact_phone.length < 8) {
+    return { error: "Vui lòng điền người liên hệ và số điện thoại." };
+  }
+  const id = `rfq-${Date.now()}`;
+  const { vppCreateRfq } = await import("@/lib/data/vpp-data");
+  await vppCreateRfq({
+    id,
+    company_name: String(formData.get("company_name") ?? "").trim(),
+    contact_name,
+    contact_phone,
+    contact_email: String(formData.get("contact_email") ?? "").trim(),
+    note: String(formData.get("note") ?? "").trim(),
+    status: "submitted",
+    source: "excel",
+    excel_path: "",
+    created_at: new Date().toISOString(),
+    items: lines.map((l, idx) => ({
+      id: `${id}-${idx}`,
+      rfq_id: id,
+      sku: l.sku,
+      product_id: l.product_id,
+      qty: l.qty,
+      uom_code: l.uom_code,
+      matched: l.matched,
+      note: "",
+    })),
+  });
+  try {
+    const settings = await repo.getSettings();
+    const { notifyAdminRfq } = await import("@/lib/email/send");
+    await notifyAdminRfq({
+      rfqId: id,
+      contactName: contact_name,
+      contactPhone: contact_phone,
+      lineCount: lines.length,
+      settings,
+    });
+  } catch (e) {
+    console.error("[rfq email]", e);
+  }
+  return { ok: true as const };
 }

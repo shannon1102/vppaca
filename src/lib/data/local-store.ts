@@ -26,6 +26,10 @@ async function ensureDb(): Promise<LocalDb> {
       ...p,
       detail_description: p.detail_description ?? "",
       sold_count: p.sold_count ?? 0,
+      brand: p.brand ?? "",
+      base_uom_code: p.base_uom_code ?? "cai",
+      min_stock: p.min_stock ?? 0,
+      filter_attrs: p.filter_attrs ?? {},
     }));
     return db;
   } catch {
@@ -89,8 +93,9 @@ export async function localListProducts(opts?: {
   let list = [...db.products];
   if (opts?.publishedOnly) list = list.filter((p) => p.is_published);
   if (opts?.categorySlug) {
-    const cat = db.categories.find((c) => c.slug === opts.categorySlug);
-    if (cat) list = list.filter((p) => p.category_id === cat.id);
+    const { categoryIdsForSlug } = await import("@/lib/catalog/category-tree");
+    const ids = categoryIdsForSlug(db.categories, opts.categorySlug);
+    if (ids?.length) list = list.filter((p) => ids.includes(p.category_id));
   }
   return list;
 }
@@ -149,6 +154,15 @@ export async function localDeleteProduct(id: string): Promise<void> {
 }
 
 export async function localCreateOrder(order: Order): Promise<Order> {
+  const { vppDeductStock } = await import("@/lib/data/vpp-data");
+  const stock = await vppDeductStock(
+    order.items.map((i) => ({
+      productId: i.product_id,
+      qtyBase: i.qty_base ?? i.qty * (i.factor_to_base ?? 1),
+    })),
+  );
+  if (!stock.ok) throw new Error(stock.error ?? "stock");
+
   const db = await ensureDb();
   db.orders.unshift(order);
   const totals = new Map<string, number>();

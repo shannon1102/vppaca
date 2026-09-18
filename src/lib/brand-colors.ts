@@ -1,7 +1,8 @@
-/** Tam Đức brand palette — aligned with logo green */
+/** ACA / VPPACA brand — gradient đỏ–vàng + nền cream */
 export const BRAND_COLORS = {
-  primary: "#2E7D32",
-  primaryHover: "#1B5E20",
-  secondary: "#1B4332",
-  accent: "#8BC34A",
+  primary: "#C17A2E",
+  primaryHover: "#A06524",
+  secondary: "#8B5A2B",
+  accent: "#F5C563",
+  sale: "#EE4D2D",
 } as const;
