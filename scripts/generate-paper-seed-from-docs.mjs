@@ -43,9 +43,15 @@ function pickBrand(name, specs) {
   const fromSpec = specs["Thương hiệu"];
   if (fromSpec && fromSpec.length < 40) return fromSpec;
   const brands = [
+    "Clever Up",
+    "Bãi Bằng Classic",
+    "Bãi Bằng",
     "Double A",
     "Excel",
     "IK Plus",
+    "IK One",
+    "IK Yellow",
+    "IK Natural",
     "IK",
     "PaperOne",
     "PaperLine",
@@ -57,6 +63,7 @@ function pickBrand(name, specs) {
     "Smartist",
     "Chenming",
     "Emerald",
+    "Idea Max",
     "Idea",
   ];
   const n = name.toLowerCase();

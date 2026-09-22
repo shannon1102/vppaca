@@ -10,6 +10,14 @@ import type {
 } from "@/lib/types";
 import { BRAND_COLORS } from "@/lib/brand-colors";
 import paperCatalog from "@/data/vpp-paper-products.generated.json";
+import {
+  giayA4BrandProducts,
+  giayA4BrandSuppressSlugs,
+} from "@/data/giay-a4-brand-products";
+import {
+  GIAY_A4_CATEGORY_HERO,
+  resolveGiayA4BrandImages,
+} from "@/data/giay-a4-brand-images";
 
 export const defaultSettings: SiteSettings = {
   id: "default",
@@ -47,9 +55,10 @@ export const seedCategories: Category[] = [
     id: "cat-giay-a4",
     name: "Giấy A4",
     slug: "giay-a4",
-    description: "Giấy in photocopy khổ A4 — 60–80gsm, nhiều thương hiệu",
+    description:
+      "Giấy photocopy A4 60–80gsm: Excel, Double A, PaperOne, Clever Up, Bãi Bằng, IK, Quality, Idea Max, Smartist…",
     sort: 1,
-    image_url: "/products/giay-a4-ream-01.jpg",
+    image_url: GIAY_A4_CATEGORY_HERO,
     parent_id: "cat-giay",
   },
   {
@@ -479,12 +488,16 @@ const rawProducts: RawP[] = [
   },
 ];
 
+const manualPaperSources: RawP[] = [...rawProducts, ...giayA4BrandProducts];
+
 const MANUAL_PAPER_SLUGS = new Set(
-  rawProducts.filter((p) => p.category_id === "cat-giay").map((p) => p.slug),
+  manualPaperSources
+    .filter((p) => p.category_id.startsWith("cat-giay"))
+    .map((p) => p.slug),
 );
 
 const paperFromDocs: RawP[] = (paperCatalog.products as RawP[]).filter(
-  (p) => !MANUAL_PAPER_SLUGS.has(p.slug),
+  (p) => !MANUAL_PAPER_SLUGS.has(p.slug) && !giayA4BrandSuppressSlugs.has(p.slug),
 );
 
 function expandProducts(): Product[] {
@@ -518,10 +531,14 @@ function expandProducts(): Product[] {
       imageIndex: i,
     });
   }
-  return [...rawProducts, ...paperFromDocs, ...extras].map((p) => ({
-    ...p,
-    images: defaultImages(p),
-  }));
+  return [...manualPaperSources, ...paperFromDocs, ...extras].map((p) => {
+    const brandImages =
+      p.category_id === "cat-giay-a4" ? resolveGiayA4BrandImages(p) : null;
+    return {
+      ...p,
+      images: brandImages ?? defaultImages(p),
+    };
+  });
 }
 
 export const seedProducts: Product[] = expandProducts();
