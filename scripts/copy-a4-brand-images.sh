@@ -34,4 +34,12 @@ copy "01a0ca90-8a57-7cd3-bfd9-0797750af18f.jpg" "double-a-a4-premium-ream.jpg"
 copy "01a0ca90-8aa2-7b46-b6bd-12fee3451a5c.jpg" "double-a-a4-70gsm-carton.jpg"
 copy "01a0ca90-8a6b-7bf2-87e2-5a833516c3a4.jpg" "ik-copy-a4-70gsm-carton.jpg"
 
+# Bổ sung từ shop (UUID assets)
+if [[ -f "$ASSETS/E630C0AC-5D14-4243-89CB-8A98A4D681A0_L0_001.jpg" ]]; then
+  copy "E630C0AC-5D14-4243-89CB-8A98A4D681A0_L0_001.jpg" "bai-bang-office-a4-70gsm-ream.jpg"
+fi
+if [[ -f "$ASSETS/03C88A06-FEF9-46E0-ACE8-B403BFF58AB4_L0_001.jpg" ]]; then
+  copy "03C88A06-FEF9-46E0-ACE8-B403BFF58AB4_L0_001.jpg" "excel-a4-70gsm-stack.jpg"
+fi
+
 echo "Copied $(ls -1 "$DEST" | wc -l) brand images to public/products/brands/"

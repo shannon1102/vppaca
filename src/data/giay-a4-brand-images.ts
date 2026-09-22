@@ -100,6 +100,10 @@ const SLUG_IMAGES: Record<string, string[]> = {
   ],
   "giay-a4-supreme-70-gsm": [`${B}/supreme-a4-70gsm-set.jpg`],
   "giay-smartist-a4-70gsm": [`${B}/quality-a4-70gsm-ream.jpg`],
+  "giay-in-a4-excel-65gsm": [`${B}/excel-a4-70gsm-stack.jpg`],
+  "giay-in-a4-excel-70gsm": [`${B}/excel-a4-70gsm-stack.jpg`],
+  "giay-a4-excel-70-gsm": [`${B}/excel-a4-70gsm-stack.jpg`],
+  "giay-in-excel-a4-80": [`${B}/excel-a4-70gsm-stack.jpg`],
 };
 
 type BrandRule = { keys: string[]; gsm?: string; images: string[] };
@@ -113,6 +117,10 @@ const BRAND_RULES: BrandRule[] = [
   {
     keys: ["bãi bằng", "bai bang", "baibang"],
     images: [`${B}/bai-bang-office-a4-70gsm-ream.jpg`, `${B}/bai-bang-office-a4-70gsm-alt.jpg`],
+  },
+  {
+    keys: ["excel"],
+    images: [`${B}/excel-a4-70gsm-stack.jpg`],
   },
   {
     keys: ["idea max", "idea"],
@@ -218,6 +226,9 @@ export function resolveGiayA4BrandImages(p: {
   }
   if (name.includes("ik copy")) {
     return [`${B}/ik-copy-a4-70gsm-carton.jpg`, `${B}/ik-plus-a4-70gsm-ream.jpg`];
+  }
+  if (/\bexcel\b/.test(name) && !name.includes("b2b")) {
+    return [`${B}/excel-a4-70gsm-stack.jpg`];
   }
 
   const brand = productBrand(p);

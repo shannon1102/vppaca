@@ -15,4 +15,4 @@ Logo ACA: file nội bộ trong `/public/brand/` và `/logo/`.
 
 | Thư mục `brands/` | Nguồn |
 |-------------------|--------|
-| `public/products/brands/*.jpg` | Ảnh bao bì thương hiệu do chủ shop cung cấp (Double A, PaperOne, IK, Quality, Clever Up, Bãi Bằng, Idea Max, Supreme…) — dùng hiển thị catalog Giấy A4. |
+| `public/products/brands/*.jpg` | Ảnh bao bì thương hiệu do chủ shop cung cấp (Double A, PaperOne, IK, Quality, Clever Up, Bãi Bằng, Idea Max, Supreme, Excel…) — dùng hiển thị catalog Giấy A4. |
