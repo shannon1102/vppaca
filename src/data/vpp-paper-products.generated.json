@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-09-18T18:42:50.866Z",
-  "count": 157,
+  "generatedAt": "2026-09-23T05:02:37.392Z",
+  "count": 151,
   "products": [
     {
       "id": "p-doc-bia-my-a3-lon-kho-f3",
@@ -572,7 +572,7 @@
       "specs": {
         "Khổ giấy": "A4",
         "Định lượng": "60gsm",
-        "Thương hiệu": "ACA Partner",
+        "Thương hiệu": "Bãi Bằng",
         "Xuất xứ": "Việt Nam",
         "Quy cách": "500 tờ /ream, 5 ream /kiện"
       },
@@ -583,13 +583,13 @@
       "is_featured": false,
       "seo_title": "Giấy A4 Bãi bằng vàng 60gsm | Giá sỉ VPPACA",
       "seo_description": "Giấy A4 Bãi bằng vàng 60gsm — 60gsm khổ A4, phù hợp in và photocopy văn phòng. Xuất xứ Việt Nam. Quy cách: 500 tờ /ream, 5 ream /kiện.",
-      "brand": "ACA Partner",
+      "brand": "Bãi Bằng",
       "base_uom_code": "ram",
       "min_stock": 20,
       "filter_attrs": {
         "kho": "A4",
         "gsm": "60",
-        "thuong_hieu": "ACA Partner"
+        "thuong_hieu": "Bãi Bằng"
       },
       "imagePaths": [
         "/products/giay-a4-ream-02.jpg",
@@ -1169,139 +1169,6 @@
       ]
     },
     {
-      "id": "p-doc-giay-decal-a4-de-vang",
-      "sku": "GDECALA4DEVANG",
-      "name": "Giấy Decal A4 Đế Vàng",
-      "slug": "giay-decal-a4-de-vang",
-      "price": 90000,
-      "sale_price": 78000,
-      "description": "Giấy Decal A4 Đế Vàng — 70 gsm. khổ A4, phù hợp in và photocopy văn phòng. Quy cách: 500 tờ/ram, 5 ram/thùng.",
-      "detail_description": "<p>Thông số sản phẩm (theo niêm yết nhà sản xuất):</p><ul><li><strong>Khổ:</strong> Khổ giấy A4 .</li><li><strong>Định lượng:</strong> 70 gsm.</li><li><strong>Số tờ/ram:</strong> 500 tờ</li><li><strong>Thương hiệu:</strong> Giấy Decal A4 đế vàng.</li></ul><p>Giá sỉ theo số lượng — liên hệ ACA hoặc upload Excel tại trang báo giá B2B.</p>",
-      "specs": {
-        "Khổ giấy": "A4",
-        "Định lượng": "70 gsm.",
-        "Thương hiệu": "Giấy Decal A4 đế vàng."
-      },
-      "category_id": "cat-giay-a4",
-      "stock": 440,
-      "sold_count": 424,
-      "is_published": true,
-      "is_featured": false,
-      "seo_title": "Giấy Decal A4 Đế Vàng | Giá sỉ VPPACA",
-      "seo_description": "Giấy Decal A4 Đế Vàng — 70 gsm. khổ A4, phù hợp in và photocopy văn phòng. Quy cách: 500 tờ/ram, 5 ram/thùng.",
-      "brand": "Giấy Decal A4 đế vàng.",
-      "base_uom_code": "ram",
-      "min_stock": 20,
-      "filter_attrs": {
-        "kho": "A4",
-        "gsm": "70",
-        "thuong_hieu": "Giấy Decal A4 đế vàng."
-      },
-      "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
-      ]
-    },
-    {
-      "id": "p-doc-giay-decal-a4-de-xanh",
-      "sku": "GDEALA4DEXANH",
-      "name": "Giấy Decal A4 Đế Xanh",
-      "slug": "giay-decal-a4-de-xanh",
-      "price": 90000,
-      "sale_price": 75000,
-      "description": "Giấy Decal A4 Đế Xanh — 70 gsm. khổ A3, phù hợp in và photocopy văn phòng. Quy cách: 500 tờ/ram, 5 ram/thùng.",
-      "detail_description": "<p>Thông số sản phẩm (theo niêm yết nhà sản xuất):</p><ul><li><strong>Khổ:</strong> Khổ A3-A4.</li><li><strong>Định lượng:</strong> 70 gsm.</li><li><strong>Số tờ/ram:</strong> 500 tờ</li><li><strong>Thương hiệu:</strong> Giấy decal A4 đế xanh.</li></ul><p>Giá sỉ theo số lượng — liên hệ ACA hoặc upload Excel tại trang báo giá B2B.</p>",
-      "specs": {
-        "Khổ giấy": "A3",
-        "Định lượng": "70 gsm.",
-        "Thương hiệu": "Giấy decal A4 đế xanh."
-      },
-      "category_id": "cat-giay-a3-a5",
-      "stock": 450,
-      "sold_count": 435,
-      "is_published": true,
-      "is_featured": false,
-      "seo_title": "Giấy Decal A4 Đế Xanh | Giá sỉ VPPACA",
-      "seo_description": "Giấy Decal A4 Đế Xanh — 70 gsm. khổ A3, phù hợp in và photocopy văn phòng. Quy cách: 500 tờ/ram, 5 ram/thùng.",
-      "brand": "Giấy decal A4 đế xanh.",
-      "base_uom_code": "ram",
-      "min_stock": 20,
-      "filter_attrs": {
-        "kho": "A3",
-        "gsm": "70",
-        "thuong_hieu": "Giấy decal A4 đế xanh."
-      },
-      "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
-      ]
-    },
-    {
-      "id": "p-doc-giay-decal-da-bo",
-      "sku": "GDECALA4DABO",
-      "name": "Giấy Decal Da Bò",
-      "slug": "giay-decal-da-bo",
-      "price": 90000,
-      "sale_price": 86300,
-      "description": "Giấy Decal Da Bò — , phù hợp in và photocopy văn phòng. Quy cách: 100 tờ / 1 xấp.",
-      "detail_description": "<p>Thông số sản phẩm (theo niêm yết nhà sản xuất):</p><ul><li><strong>Khổ:</strong> 210 x 297 mm</li><li><strong>Số tờ/ram:</strong> 500 tờ</li><li><strong>Màu giấy:</strong> Nâu, nhám</li><li><strong>Đóng gói:</strong> 100 tờ / 1 xấp</li></ul><p>Giá sỉ theo số lượng — liên hệ ACA hoặc upload Excel tại trang báo giá B2B.</p>",
-      "specs": {
-        "Thương hiệu": "ACA Partner",
-        "Quy cách": "100 tờ / 1 xấp"
-      },
-      "category_id": "cat-giay-decal",
-      "stock": 460,
-      "sold_count": 446,
-      "is_published": true,
-      "is_featured": false,
-      "seo_title": "Giấy Decal Da Bò | Giá sỉ VPPACA",
-      "seo_description": "Giấy Decal Da Bò — , phù hợp in và photocopy văn phòng. Quy cách: 100 tờ / 1 xấp.",
-      "brand": "ACA Partner",
-      "base_uom_code": "ram",
-      "min_stock": 20,
-      "filter_attrs": {
-        "thuong_hieu": "ACA Partner"
-      },
-      "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
-      ]
-    },
-    {
-      "id": "p-doc-giay-decal-in-anh-135-gsm",
-      "sku": "GDECALA4INANH",
-      "name": "Giấy Decal in ảnh 135 gsm",
-      "slug": "giay-decal-in-anh-135-gsm",
-      "price": 72000,
-      "sale_price": 63000,
-      "description": "Giấy Decal in ảnh 135 gsm — 135 gsm., phù hợp in và photocopy văn phòng. Xuất xứ China.. Quy cách: 50 tờ/ xấp..",
-      "detail_description": "<p>Thông số sản phẩm (theo niêm yết nhà sản xuất):</p><ul><li><strong>Khổ:</strong> 2210 mm * 297 mm.</li><li><strong>Định lượng:</strong> 135 gsm.</li><li><strong>Số tờ/ram:</strong> 500 tờ</li><li><strong>Màu giấy:</strong> Trắng.</li><li><strong>Xuất xứ:</strong> China.</li><li><strong>Đóng gói:</strong> 50 tờ/ xấp.</li></ul><p>Giá sỉ theo số lượng — liên hệ ACA hoặc upload Excel tại trang báo giá B2B.</p>",
-      "specs": {
-        "Định lượng": "135 gsm.",
-        "Thương hiệu": "ACA Partner",
-        "Xuất xứ": "China.",
-        "Quy cách": "50 tờ/ xấp."
-      },
-      "category_id": "cat-giay-decal",
-      "stock": 470,
-      "sold_count": 457,
-      "is_published": true,
-      "is_featured": false,
-      "seo_title": "Giấy Decal in ảnh 135 gsm | Giá sỉ VPPACA",
-      "seo_description": "Giấy Decal in ảnh 135 gsm — 135 gsm., phù hợp in và photocopy văn phòng. Xuất xứ China.. Quy cách: 50 tờ/ xấp..",
-      "brand": "ACA Partner",
-      "base_uom_code": "ram",
-      "min_stock": 20,
-      "filter_attrs": {
-        "gsm": "135",
-        "thuong_hieu": "ACA Partner"
-      },
-      "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
-      ]
-    },
-    {
       "id": "p-doc-giay-double-a-a4-70",
       "sku": "GINDOUBLEA470",
       "name": "Giấy Double A A4 70 gsm",
@@ -1318,8 +1185,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a4",
-      "stock": 480,
-      "sold_count": 468,
+      "stock": 440,
+      "sold_count": 424,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Double A A4 70 gsm | Giá sỉ VPPACA",
@@ -1333,8 +1200,8 @@
         "thuong_hieu": "Double A"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -1354,8 +1221,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 490,
-      "sold_count": 479,
+      "stock": 450,
+      "sold_count": 435,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Double A A5 80 GSM | Giá sỉ VPPACA",
@@ -1369,8 +1236,8 @@
         "thuong_hieu": "Double A"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -1387,8 +1254,8 @@
         "Thương hiệu": "Emerald"
       },
       "category_id": "cat-giay-a4",
-      "stock": 100,
-      "sold_count": 490,
+      "stock": 460,
+      "sold_count": 446,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Emerald A4 70 | Giá sỉ VPPACA",
@@ -1401,8 +1268,8 @@
         "thuong_hieu": "Emerald"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -1418,8 +1285,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-bia-mau",
-      "stock": 110,
-      "sold_count": 501,
+      "stock": 470,
+      "sold_count": 457,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy ép Bằng Lái 160 mic | Giá sỉ VPPACA",
@@ -1431,8 +1298,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -1449,8 +1316,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-bia-mau",
-      "stock": 120,
-      "sold_count": 512,
+      "stock": 480,
+      "sold_count": 468,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Ép Plastic A3 80mic | Giá sỉ VPPACA",
@@ -1463,8 +1330,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -1481,8 +1348,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-bia-mau",
-      "stock": 130,
-      "sold_count": 523,
+      "stock": 490,
+      "sold_count": 479,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Ép Plastic A4 100mic | Giá sỉ VPPACA",
@@ -1495,8 +1362,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -1513,8 +1380,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-bia-mau",
-      "stock": 140,
-      "sold_count": 534,
+      "stock": 100,
+      "sold_count": 490,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Ép Plastic A4 80mic | Giá sỉ VPPACA",
@@ -1527,8 +1394,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -1545,8 +1412,8 @@
         "Thương hiệu": "giấy ép Plastic."
       },
       "category_id": "cat-giay-bia-mau",
-      "stock": 150,
-      "sold_count": 545,
+      "stock": 110,
+      "sold_count": 501,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Ép Plastic A5 80mic | Giá sỉ VPPACA",
@@ -1559,8 +1426,8 @@
         "thuong_hieu": "giấy ép Plastic."
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -1579,8 +1446,8 @@
         "Quy cách": "100 tờ / xấp"
       },
       "category_id": "cat-giay-bia-mau",
-      "stock": 160,
-      "sold_count": 556,
+      "stock": 120,
+      "sold_count": 512,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy ép Plastic CMND 160 MIC | Giá sỉ VPPACA",
@@ -1593,8 +1460,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -1614,8 +1481,8 @@
         "Quy cách": "5 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 170,
-      "sold_count": 567,
+      "stock": 130,
+      "sold_count": 523,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Excel A3 70 gsm | Giá sỉ VPPACA",
@@ -1629,8 +1496,8 @@
         "thuong_hieu": "Excel"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -1650,8 +1517,8 @@
         "Quy cách": "5 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 180,
-      "sold_count": 578,
+      "stock": 140,
+      "sold_count": 534,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Excel A3 80 gsm | Giá sỉ VPPACA",
@@ -1665,8 +1532,8 @@
         "thuong_hieu": "Excel"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -1686,8 +1553,8 @@
         "Quy cách": "10 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 190,
-      "sold_count": 589,
+      "stock": 150,
+      "sold_count": 545,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Excel A5 70 gsm | Giá sỉ VPPACA",
@@ -1701,8 +1568,8 @@
         "thuong_hieu": "Excel"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -1722,8 +1589,8 @@
         "Quy cách": "10 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 200,
-      "sold_count": 600,
+      "stock": 160,
+      "sold_count": 556,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Excel A5 80 gsm | Giá sỉ VPPACA",
@@ -1737,8 +1604,8 @@
         "thuong_hieu": "Excel"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -1755,8 +1622,8 @@
         "Xuất xứ": "Japan."
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 210,
-      "sold_count": 611,
+      "stock": 170,
+      "sold_count": 567,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Fax Nhiệt 210 cm | Giá sỉ VPPACA",
@@ -1768,8 +1635,8 @@
         "thuong_hieu": "Sahaka."
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -1785,8 +1652,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 220,
-      "sold_count": 622,
+      "stock": 180,
+      "sold_count": 578,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Fax nhiệt Mitsubishi | Giá sỉ VPPACA",
@@ -1798,8 +1665,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -1817,8 +1684,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-kho-lon",
-      "stock": 230,
-      "sold_count": 633,
+      "stock": 190,
+      "sold_count": 589,
       "is_published": true,
       "is_featured": false,
       "seo_title": "GIẤY FLIPCHART A1 80 DẠNG TỜ | Giá sỉ VPPACA",
@@ -1832,8 +1699,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -1853,8 +1720,8 @@
         "Quy cách": "500 tờ/ram."
       },
       "category_id": "cat-giay-a4",
-      "stock": 240,
-      "sold_count": 644,
+      "stock": 200,
+      "sold_count": 600,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Ford Màu A4 70 | Giá sỉ VPPACA",
@@ -1868,8 +1735,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -1889,8 +1756,8 @@
         "Quy cách": "500 tờ / ream"
       },
       "category_id": "cat-giay-a4",
-      "stock": 250,
-      "sold_count": 655,
+      "stock": 210,
+      "sold_count": 611,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Ford Màu A4 80 | Giá sỉ VPPACA",
@@ -1904,8 +1771,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -1924,8 +1791,8 @@
         "Quy cách": "500 tờ / ream"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 260,
-      "sold_count": 666,
+      "stock": 220,
+      "sold_count": 622,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Ford Màu A5 70 | Giá sỉ VPPACA",
@@ -1939,8 +1806,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -1958,8 +1825,8 @@
         "Thương hiệu": "giấy in for màu A5 80."
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 270,
-      "sold_count": 677,
+      "stock": 230,
+      "sold_count": 633,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Ford Màu A5 80 | Giá sỉ VPPACA",
@@ -1973,8 +1840,8 @@
         "thuong_hieu": "giấy in for màu A5 80."
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -1993,8 +1860,8 @@
         "Xuất xứ": "Indonesia"
       },
       "category_id": "cat-giay-bia-mau",
-      "stock": 280,
-      "sold_count": 688,
+      "stock": 240,
+      "sold_count": 644,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy ford màu đặc biệt Grand A4 80 | Giá sỉ VPPACA",
@@ -2008,8 +1875,8 @@
         "thuong_hieu": "Grand"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -2029,8 +1896,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 290,
-      "sold_count": 699,
+      "stock": 250,
+      "sold_count": 655,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Idea A3 70 gsm | Giá sỉ VPPACA",
@@ -2044,8 +1911,8 @@
         "thuong_hieu": "IDEA"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -2065,8 +1932,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 300,
-      "sold_count": 710,
+      "stock": 260,
+      "sold_count": 666,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Idea A3 80 gsm | Giá sỉ VPPACA",
@@ -2080,8 +1947,8 @@
         "thuong_hieu": "IDEA"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -2101,8 +1968,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a4",
-      "stock": 310,
-      "sold_count": 721,
+      "stock": 270,
+      "sold_count": 677,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Idea A4 80 gsm | Giá sỉ VPPACA",
@@ -2116,8 +1983,8 @@
         "thuong_hieu": "IDEA"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -2137,8 +2004,8 @@
         "Quy cách": "500 tờ /ream, 10 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 320,
-      "sold_count": 732,
+      "stock": 280,
+      "sold_count": 688,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Idea A5 70 gsm | Giá sỉ VPPACA",
@@ -2152,8 +2019,8 @@
         "thuong_hieu": "IDEA"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -2173,8 +2040,8 @@
         "Quy cách": "500 tờ /ream, 10 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 330,
-      "sold_count": 743,
+      "stock": 290,
+      "sold_count": 699,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Idea A5 80 gsm | Giá sỉ VPPACA",
@@ -2188,8 +2055,8 @@
         "thuong_hieu": "IDEA"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -2209,8 +2076,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a4",
-      "stock": 340,
-      "sold_count": 754,
+      "stock": 300,
+      "sold_count": 710,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy IK Natural A4 70gsm | Giá sỉ VPPACA",
@@ -2224,8 +2091,8 @@
         "thuong_hieu": "IK"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -2245,8 +2112,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 350,
-      "sold_count": 765,
+      "stock": 310,
+      "sold_count": 721,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy IK Plus A3 70 gsm | Giá sỉ VPPACA",
@@ -2260,8 +2127,8 @@
         "thuong_hieu": "IK"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -2281,8 +2148,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 360,
-      "sold_count": 776,
+      "stock": 320,
+      "sold_count": 732,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy IK Plus A3 80 gsm | Giá sỉ VPPACA",
@@ -2296,8 +2163,8 @@
         "thuong_hieu": "IK"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -2317,8 +2184,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a4",
-      "stock": 370,
-      "sold_count": 787,
+      "stock": 330,
+      "sold_count": 743,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy IK Plus A4 70 gsm | Giá sỉ VPPACA",
@@ -2332,8 +2199,8 @@
         "thuong_hieu": "IK"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -2353,8 +2220,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a4",
-      "stock": 380,
-      "sold_count": 798,
+      "stock": 340,
+      "sold_count": 754,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy IK Plus A4 80 gsm | Giá sỉ VPPACA",
@@ -2368,8 +2235,8 @@
         "thuong_hieu": "IK"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -2389,8 +2256,8 @@
         "Quy cách": "500 tờ /ream, 10 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 390,
-      "sold_count": 809,
+      "stock": 350,
+      "sold_count": 765,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy IK Plus A5 80 gsm | Giá sỉ VPPACA",
@@ -2404,8 +2271,8 @@
         "thuong_hieu": "IK"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -2425,8 +2292,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a4",
-      "stock": 400,
-      "sold_count": 820,
+      "stock": 360,
+      "sold_count": 776,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in A4 A-one 72gsm | Giá sỉ VPPACA",
@@ -2440,8 +2307,8 @@
         "thuong_hieu": "A-One"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -2460,8 +2327,8 @@
         "Quy cách": "50 tờ/ xấp."
       },
       "category_id": "cat-giay-in-anh",
-      "stock": 410,
-      "sold_count": 831,
+      "stock": 370,
+      "sold_count": 787,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in ảnh 2 mặt 260 gsm | Giá sỉ VPPACA",
@@ -2474,8 +2341,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -2495,8 +2362,8 @@
         "Quy cách": "50 tờ / 1 tập"
       },
       "category_id": "cat-giay-in-anh",
-      "stock": 420,
-      "sold_count": 842,
+      "stock": 380,
+      "sold_count": 798,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in ảnh 2 mặt 300 gsm A4 | Giá sỉ VPPACA",
@@ -2510,8 +2377,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -2531,8 +2398,8 @@
         "Quy cách": "50 tờ/ xấp."
       },
       "category_id": "cat-giay-in-anh",
-      "stock": 430,
-      "sold_count": 853,
+      "stock": 390,
+      "sold_count": 809,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in ảnh 2 mặt A4 230 gsm | Giá sỉ VPPACA",
@@ -2546,8 +2413,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -2567,8 +2434,8 @@
         "Quy cách": "50 tờ / 1 tập"
       },
       "category_id": "cat-giay-in-anh",
-      "stock": 440,
-      "sold_count": 864,
+      "stock": 400,
+      "sold_count": 820,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in ảnh A3 230 gsm | Giá sỉ VPPACA",
@@ -2582,8 +2449,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -2603,8 +2470,8 @@
         "Quy cách": "20 hoặc 50 tờ / 1 xấp"
       },
       "category_id": "cat-giay-in-anh",
-      "stock": 450,
-      "sold_count": 875,
+      "stock": 410,
+      "sold_count": 831,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in ảnh A4 1 mặt 180 gsm | Giá sỉ VPPACA",
@@ -2618,8 +2485,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -2639,8 +2506,8 @@
         "Quy cách": "50 tờ / 1 xấp"
       },
       "category_id": "cat-giay-in-anh",
-      "stock": 460,
-      "sold_count": 886,
+      "stock": 420,
+      "sold_count": 842,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in ảnh A4 1 mặt 230 gsm | Giá sỉ VPPACA",
@@ -2654,8 +2521,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -2674,8 +2541,8 @@
         "Quy cách": "50 tờ/xấp."
       },
       "category_id": "cat-giay-in-anh",
-      "stock": 470,
-      "sold_count": 897,
+      "stock": 430,
+      "sold_count": 853,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in ảnh A4 135 gsm 1 mặt | Giá sỉ VPPACA",
@@ -2689,8 +2556,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -2708,8 +2575,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-in-anh",
-      "stock": 480,
-      "sold_count": 908,
+      "stock": 440,
+      "sold_count": 864,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in ảnh A4 2 mặt 160 gsm | Giá sỉ VPPACA",
@@ -2723,8 +2590,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -2741,8 +2608,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-in-anh",
-      "stock": 490,
-      "sold_count": 919,
+      "stock": 450,
+      "sold_count": 875,
       "is_published": true,
       "is_featured": false,
       "seo_title": "GIẤY IN ẢNH EPSON 1 MẶT 230 GSM | Giá sỉ VPPACA",
@@ -2755,8 +2622,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -2773,8 +2640,8 @@
         "Thương hiệu": "Emerald"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 100,
-      "sold_count": 930,
+      "stock": 460,
+      "sold_count": 886,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in Emerald A5 70 | Giá sỉ VPPACA",
@@ -2787,8 +2654,8 @@
         "thuong_hieu": "Emerald"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -2808,8 +2675,8 @@
         "Quy cách": "5 ream /thùng"
       },
       "category_id": "cat-giay-a4",
-      "stock": 110,
-      "sold_count": 941,
+      "stock": 470,
+      "sold_count": 897,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in Excel A4 80 GSM | Giá sỉ VPPACA",
@@ -2823,8 +2690,8 @@
         "thuong_hieu": "Excel"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -2842,8 +2709,8 @@
         "Quy cách": "100 cuộn /thùng"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 120,
-      "sold_count": 952,
+      "stock": 480,
+      "sold_count": 908,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in kim K75 2 liên, 3 liên | Giá sỉ VPPACA",
@@ -2855,8 +2722,8 @@
         "thuong_hieu": "Nhiều hãng sản xuất"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -2872,8 +2739,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-lien-tuc",
-      "stock": 130,
-      "sold_count": 963,
+      "stock": 490,
+      "sold_count": 919,
       "is_published": true,
       "is_featured": false,
       "seo_title": "GIẤY IN LIÊN TỤC 240×279 2 3 4 5 LIÊN CHIA 2 | Giá sỉ VPPACA",
@@ -2885,8 +2752,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -2902,8 +2769,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-lien-tuc",
-      "stock": 140,
-      "sold_count": 974,
+      "stock": 100,
+      "sold_count": 930,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in liên tục 380 x 279 2 3 4 5 liên | Giá sỉ VPPACA",
@@ -2915,8 +2782,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -2934,8 +2801,8 @@
         "Quy cách": "Lẻ 1 cuộn, chẵn lốc"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 150,
-      "sold_count": 985,
+      "stock": 110,
+      "sold_count": 941,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in mã vạch 2 tem 70×22 giá rẻ | Giá sỉ VPPACA",
@@ -2947,8 +2814,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -2966,8 +2833,8 @@
         "Quy cách": "Lẻ 1 cuộn, chẵn lốc"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 160,
-      "sold_count": 996,
+      "stock": 120,
+      "sold_count": 952,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in mã vạch 3 tem 35×22 cao cấp | Giá sỉ VPPACA",
@@ -2979,8 +2846,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -2999,8 +2866,8 @@
         "Quy cách": "500 tem /xấp"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 170,
-      "sold_count": 1007,
+      "stock": 130,
+      "sold_count": 963,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in nhiệt A6 khổ 100×150 giá rẻ | Giá sỉ VPPACA",
@@ -3013,8 +2880,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -3033,8 +2900,8 @@
         "Quy cách": "100 cuộn /thùng 8kg"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 180,
-      "sold_count": 1018,
+      "stock": 140,
+      "sold_count": 974,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in nhiệt K57 (57x45mm) giá rẻ | Giá sỉ VPPACA",
@@ -3047,8 +2914,8 @@
         "thuong_hieu": "Nhiều hãng sản xuất"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -3067,8 +2934,8 @@
         "Quy cách": "100 cuộn /thùng 5kg"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 190,
-      "sold_count": 1029,
+      "stock": 150,
+      "sold_count": 985,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in nhiệt K57x38mm | Giá sỉ VPPACA",
@@ -3081,8 +2948,8 @@
         "thuong_hieu": "Nhiều hãng sản xuất"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -3100,8 +2967,8 @@
         "Quy cách": "dạng cuộn 30mm, 38mm, 45mm (đối với giấy k57) và 45mm, 65mm, 100mm (đối với giấy k80)."
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 200,
-      "sold_count": 1040,
+      "stock": 160,
+      "sold_count": 996,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in nhiệt K80 | Giá sỉ VPPACA",
@@ -3113,8 +2980,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -3133,8 +3000,8 @@
         "Quy cách": "100 cuộn /thùng 10kg"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 210,
-      "sold_count": 1051,
+      "stock": 170,
+      "sold_count": 1007,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in nhiệt K80x45 giá rẻ | Giá sỉ VPPACA",
@@ -3147,8 +3014,8 @@
         "thuong_hieu": "Nhiều hãng sản xuất"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -3167,8 +3034,8 @@
         "Quy cách": "50 cuộn /thùng"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 220,
-      "sold_count": 1062,
+      "stock": 180,
+      "sold_count": 1018,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in nhiệt K80x65 giá rẻ | Giá sỉ VPPACA",
@@ -3181,8 +3048,8 @@
         "thuong_hieu": "Nhiều hãng sản xuất"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -3201,8 +3068,8 @@
         "Quy cách": "50 cuộn /thùng"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 230,
-      "sold_count": 1073,
+      "stock": 190,
+      "sold_count": 1029,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in nhiệt K80x80 giá rẻ | Giá sỉ VPPACA",
@@ -3215,8 +3082,8 @@
         "thuong_hieu": "Nhiều hãng sản xuất"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -3236,8 +3103,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 240,
-      "sold_count": 1084,
+      "stock": 200,
+      "sold_count": 1040,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in Quality a3 70 gsm | Giá sỉ VPPACA",
@@ -3251,8 +3118,8 @@
         "thuong_hieu": "Quality (Double A)"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -3271,8 +3138,8 @@
         "Quy cách": "Lẻ 1 cuộn, chẵn lốc"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 250,
-      "sold_count": 1095,
+      "stock": 210,
+      "sold_count": 1051,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in tem nhiệt 100×150 giá rẻ | Giá sỉ VPPACA",
@@ -3285,8 +3152,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -3304,8 +3171,8 @@
         "Quy cách": "Lẻ 1 cuộn, chẵn lốc"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 260,
-      "sold_count": 1106,
+      "stock": 220,
+      "sold_count": 1062,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in tem nhiệt 100×50 giá rẻ | Giá sỉ VPPACA",
@@ -3317,8 +3184,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -3336,8 +3203,8 @@
         "Quy cách": "Lẻ 1 cuộn, chẵn lốc"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 270,
-      "sold_count": 1117,
+      "stock": 230,
+      "sold_count": 1073,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in tem nhiệt 40×30 giá rẻ | Giá sỉ VPPACA",
@@ -3349,8 +3216,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -3368,8 +3235,8 @@
         "Quy cách": "Lẻ 1 cuộn, chẵn lốc"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 280,
-      "sold_count": 1128,
+      "stock": 240,
+      "sold_count": 1084,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in tem nhiệt 50×30 giá rẻ | Giá sỉ VPPACA",
@@ -3381,8 +3248,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -3400,8 +3267,8 @@
         "Quy cách": "Lẻ 1 cuộn, chẵn lốc"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 290,
-      "sold_count": 1139,
+      "stock": 250,
+      "sold_count": 1095,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in tem nhiệt 50×50 giá rẻ | Giá sỉ VPPACA",
@@ -3413,8 +3280,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -3432,8 +3299,8 @@
         "Quy cách": "Lẻ 1 cuộn, chẵn lốc"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 300,
-      "sold_count": 50,
+      "stock": 260,
+      "sold_count": 1106,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in tem nhiệt 58×40 giá rẻ | Giá sỉ VPPACA",
@@ -3445,8 +3312,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -3465,8 +3332,8 @@
         "Quy cách": "Lẻ 1 cuộn, chẵn lốc"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 310,
-      "sold_count": 61,
+      "stock": 270,
+      "sold_count": 1117,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in tem nhiệt 70×100 giá rẻ | Giá sỉ VPPACA",
@@ -3479,8 +3346,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -3498,8 +3365,8 @@
         "Quy cách": "Lẻ 1 cuộn, chẵn lốc"
       },
       "category_id": "cat-giay-nhiet",
-      "stock": 320,
-      "sold_count": 72,
+      "stock": 280,
+      "sold_count": 1128,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy in tem nhiệt 75×100 giá rẻ | Giá sỉ VPPACA",
@@ -3511,8 +3378,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -3528,8 +3395,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-lien-tuc",
-      "stock": 330,
-      "sold_count": 83,
+      "stock": 290,
+      "sold_count": 1139,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy liên tục 210 x 279 1 liên | Giá sỉ VPPACA",
@@ -3541,8 +3408,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -3560,8 +3427,8 @@
         "Quy cách": "thùng"
       },
       "category_id": "cat-giay-lien-tuc",
-      "stock": 340,
-      "sold_count": 94,
+      "stock": 300,
+      "sold_count": 50,
       "is_published": true,
       "is_featured": false,
       "seo_title": "GIẤY LIÊN TỤC 210 x 279 1 LIÊN CHIA | Giá sỉ VPPACA",
@@ -3573,8 +3440,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -3590,8 +3457,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-lien-tuc",
-      "stock": 350,
-      "sold_count": 105,
+      "stock": 310,
+      "sold_count": 61,
       "is_published": true,
       "is_featured": false,
       "seo_title": "GIẤY LIÊN TỤC 210 X 279 LIÊN CHIA 2,3,4,5 liên | Giá sỉ VPPACA",
@@ -3603,8 +3470,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -3620,8 +3487,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-lien-tuc",
-      "stock": 360,
-      "sold_count": 116,
+      "stock": 320,
+      "sold_count": 72,
       "is_published": true,
       "is_featured": false,
       "seo_title": "GIẤY LIÊN TỤC 240 x 279 1 LIÊN | Giá sỉ VPPACA",
@@ -3633,8 +3500,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -3652,8 +3519,8 @@
         "Quy cách": "thùng"
       },
       "category_id": "cat-giay-lien-tuc",
-      "stock": 370,
-      "sold_count": 127,
+      "stock": 330,
+      "sold_count": 83,
       "is_published": true,
       "is_featured": false,
       "seo_title": "GIẤY LIÊN TỤC 240×279 1 LIÊN CHIA | Giá sỉ VPPACA",
@@ -3665,8 +3532,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -3682,8 +3549,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-lien-tuc",
-      "stock": 380,
-      "sold_count": 138,
+      "stock": 340,
+      "sold_count": 94,
       "is_published": true,
       "is_featured": false,
       "seo_title": "GIẤY LIÊN TỤC 240×279 2 3 4 5 LIÊN | Giá sỉ VPPACA",
@@ -3695,8 +3562,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -3712,8 +3579,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-lien-tuc",
-      "stock": 390,
-      "sold_count": 149,
+      "stock": 350,
+      "sold_count": 105,
       "is_published": true,
       "is_featured": false,
       "seo_title": "GIẤY LIÊN TỤC 380 x 279 1 LIÊN | Giá sỉ VPPACA",
@@ -3725,8 +3592,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -3742,8 +3609,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-lien-tuc",
-      "stock": 400,
-      "sold_count": 160,
+      "stock": 360,
+      "sold_count": 116,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy liên tục chia liên 380 x 279 – 2,3,4 Liên chia | Giá sỉ VPPACA",
@@ -3755,8 +3622,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -3774,8 +3641,8 @@
         "Quy cách": "100 tờ / 1 xấp"
       },
       "category_id": "cat-giay-than",
-      "stock": 410,
-      "sold_count": 171,
+      "stock": 370,
+      "sold_count": 127,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Niêm Phong | Giá sỉ VPPACA",
@@ -3787,8 +3654,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -3804,8 +3671,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-note",
-      "stock": 420,
-      "sold_count": 182,
+      "stock": 380,
+      "sold_count": 138,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy note 2×3 Stickiii | Giá sỉ VPPACA",
@@ -3817,8 +3684,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -3835,8 +3702,8 @@
         "Quy cách": "50 tờ/màu, 150 tờ/tập"
       },
       "category_id": "cat-giay-note",
-      "stock": 430,
-      "sold_count": 193,
+      "stock": 390,
+      "sold_count": 149,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy note 3 size Double A màu dạ quang (Neon) | Giá sỉ VPPACA",
@@ -3848,8 +3715,8 @@
         "thuong_hieu": "Double A"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -3866,8 +3733,8 @@
         "Xuất xứ": "Mỹ."
       },
       "category_id": "cat-giay-note",
-      "stock": 440,
-      "sold_count": 204,
+      "stock": 400,
+      "sold_count": 160,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Note 3 x 5 Stickiii | Giá sỉ VPPACA",
@@ -3879,8 +3746,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -3896,8 +3763,8 @@
         "Thương hiệu": "stickii."
       },
       "category_id": "cat-giay-note",
-      "stock": 450,
-      "sold_count": 215,
+      "stock": 410,
+      "sold_count": 171,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Note 3×4 Stickiii | Giá sỉ VPPACA",
@@ -3909,8 +3776,8 @@
         "thuong_hieu": "stickii."
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -3927,8 +3794,8 @@
         "Thương hiệu": "giấy Pronoti"
       },
       "category_id": "cat-giay-note",
-      "stock": 460,
-      "sold_count": 226,
+      "stock": 420,
+      "sold_count": 182,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Note 4 Màu Pronoti | Giá sỉ VPPACA",
@@ -3941,8 +3808,8 @@
         "thuong_hieu": "giấy Pronoti"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -3958,8 +3825,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-note",
-      "stock": 470,
-      "sold_count": 237,
+      "stock": 430,
+      "sold_count": 193,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy note 4 màu Suremark | Giá sỉ VPPACA",
@@ -3971,8 +3838,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -3989,8 +3856,8 @@
         "Xuất xứ": "Việt Nam"
       },
       "category_id": "cat-giay-note",
-      "stock": 480,
-      "sold_count": 248,
+      "stock": 440,
+      "sold_count": 204,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Note 4×6 (10X15,2) CM | Giá sỉ VPPACA",
@@ -4002,8 +3869,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -4020,8 +3887,8 @@
         "Thương hiệu": "giấy Pronoti"
       },
       "category_id": "cat-giay-note",
-      "stock": 490,
-      "sold_count": 259,
+      "stock": 450,
+      "sold_count": 215,
       "is_published": true,
       "is_featured": false,
       "seo_title": "GIẤY NOTE 5 MÀU GIẤY PRONOTI | Giá sỉ VPPACA",
@@ -4034,8 +3901,8 @@
         "thuong_hieu": "giấy Pronoti"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -4051,8 +3918,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-note",
-      "stock": 100,
-      "sold_count": 270,
+      "stock": 460,
+      "sold_count": 226,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy note 5 màu nhựa 3M | Giá sỉ VPPACA",
@@ -4064,8 +3931,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -4081,8 +3948,8 @@
         "Thương hiệu": "Double A"
       },
       "category_id": "cat-giay-note",
-      "stock": 110,
-      "sold_count": 281,
+      "stock": 470,
+      "sold_count": 237,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Note 5 Màu Nhựa Double A | Giá sỉ VPPACA",
@@ -4094,8 +3961,8 @@
         "thuong_hieu": "Double A"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -4111,8 +3978,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-note",
-      "stock": 120,
-      "sold_count": 292,
+      "stock": 480,
+      "sold_count": 248,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Note 5 màu nhựa Pronoti | Giá sỉ VPPACA",
@@ -4124,8 +3991,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -4141,8 +4008,8 @@
         "Thương hiệu": "UNI-T"
       },
       "category_id": "cat-giay-note",
-      "stock": 130,
-      "sold_count": 303,
+      "stock": 490,
+      "sold_count": 259,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Note 5 màu nhựa Uni-T | Giá sỉ VPPACA",
@@ -4154,8 +4021,8 @@
         "thuong_hieu": "UNI-T"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -4171,8 +4038,8 @@
         "Thương hiệu": "Double A"
       },
       "category_id": "cat-giay-note",
-      "stock": 140,
-      "sold_count": 314,
+      "stock": 100,
+      "sold_count": 270,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy note Double A màu vàng | Giá sỉ VPPACA",
@@ -4184,8 +4051,8 @@
         "thuong_hieu": "Double A"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -4201,8 +4068,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-note",
-      "stock": 150,
-      "sold_count": 325,
+      "stock": 110,
+      "sold_count": 281,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy note please sign | Giá sỉ VPPACA",
@@ -4214,8 +4081,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -4231,8 +4098,8 @@
         "Thương hiệu": "PRONOTI"
       },
       "category_id": "cat-giay-note",
-      "stock": 160,
-      "sold_count": 336,
+      "stock": 120,
+      "sold_count": 292,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Note Pronoti màu vàng | Giá sỉ VPPACA",
@@ -4244,8 +4111,8 @@
         "thuong_hieu": "PRONOTI"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -4261,8 +4128,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-note",
-      "stock": 170,
-      "sold_count": 347,
+      "stock": 130,
+      "sold_count": 303,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Note STICKIII 3X3 | Giá sỉ VPPACA",
@@ -4274,8 +4141,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -4291,8 +4158,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-note",
-      "stock": 180,
-      "sold_count": 358,
+      "stock": 140,
+      "sold_count": 314,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy note trình ký Sign here 680-9 | Giá sỉ VPPACA",
@@ -4304,8 +4171,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -4321,8 +4188,8 @@
         "Thương hiệu": "UNI-T"
       },
       "category_id": "cat-giay-note",
-      "stock": 190,
-      "sold_count": 369,
+      "stock": 150,
+      "sold_count": 325,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy note UNI-T 3×3 màu vàng | Giá sỉ VPPACA",
@@ -4334,8 +4201,8 @@
         "thuong_hieu": "UNI-T"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -4355,8 +4222,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 200,
-      "sold_count": 380,
+      "stock": 160,
+      "sold_count": 336,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Paper One A3 70 gsm | Giá sỉ VPPACA",
@@ -4370,8 +4237,8 @@
         "thuong_hieu": "Paper One"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -4391,8 +4258,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 210,
-      "sold_count": 391,
+      "stock": 170,
+      "sold_count": 347,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Paper One A3 80 gsm | Giá sỉ VPPACA",
@@ -4406,8 +4273,8 @@
         "thuong_hieu": "Paper One"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -4427,8 +4294,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a4",
-      "stock": 220,
-      "sold_count": 402,
+      "stock": 180,
+      "sold_count": 358,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy PaperLine A4 80gsm chất lượng | Giá sỉ VPPACA",
@@ -4442,8 +4309,8 @@
         "thuong_hieu": "PaperLine (Dòng giấy)"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -4463,8 +4330,8 @@
         "Quy cách": "500 tờ /ream, 10 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 230,
-      "sold_count": 413,
+      "stock": 190,
+      "sold_count": 369,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy PaperLine A5 80gsm | Giá sỉ VPPACA",
@@ -4478,8 +4345,8 @@
         "thuong_hieu": "Paperline"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -4499,8 +4366,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 240,
-      "sold_count": 424,
+      "stock": 200,
+      "sold_count": 380,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Quality A3 80 gsm | Giá sỉ VPPACA",
@@ -4514,8 +4381,8 @@
         "thuong_hieu": "Quality (Double A)"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -4535,8 +4402,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a4",
-      "stock": 250,
-      "sold_count": 435,
+      "stock": 210,
+      "sold_count": 391,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Quality A4 80 gsm | Giá sỉ VPPACA",
@@ -4550,8 +4417,8 @@
         "thuong_hieu": "Quality (Double A)"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -4571,8 +4438,8 @@
         "Quy cách": "500 tờ /ream, 10 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 260,
-      "sold_count": 446,
+      "stock": 220,
+      "sold_count": 402,
       "is_published": true,
       "is_featured": false,
       "seo_title": "GIẤY QUALITY A5 70 gsm | Giá sỉ VPPACA",
@@ -4586,8 +4453,8 @@
         "thuong_hieu": "Quality (Double A)"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -4607,8 +4474,8 @@
         "Quy cách": "500 tờ /ream, 10 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 270,
-      "sold_count": 457,
+      "stock": 230,
+      "sold_count": 413,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Quality A5 80 gsm | Giá sỉ VPPACA",
@@ -4622,8 +4489,8 @@
         "thuong_hieu": "Quality (Double A)"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -4642,8 +4509,8 @@
         "Quy cách": "500 tờ/ream"
       },
       "category_id": "cat-giay-a4",
-      "stock": 280,
-      "sold_count": 468,
+      "stock": 240,
+      "sold_count": 424,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Smartist A4 70gsm | Giá sỉ VPPACA",
@@ -4657,8 +4524,8 @@
         "thuong_hieu": "Smartist"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -4678,8 +4545,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 290,
-      "sold_count": 479,
+      "stock": 250,
+      "sold_count": 435,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Supreme A3 70 gsm | Giá sỉ VPPACA",
@@ -4693,8 +4560,8 @@
         "thuong_hieu": "tối cao"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -4714,8 +4581,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 300,
-      "sold_count": 490,
+      "stock": 260,
+      "sold_count": 446,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Supreme A3 80 gsm | Giá sỉ VPPACA",
@@ -4729,8 +4596,8 @@
         "thuong_hieu": "Supreme"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -4750,8 +4617,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a4",
-      "stock": 310,
-      "sold_count": 501,
+      "stock": 270,
+      "sold_count": 457,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Supreme A4 80 gsm | Giá sỉ VPPACA",
@@ -4765,8 +4632,8 @@
         "thuong_hieu": "Supreme"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -4786,8 +4653,8 @@
         "Quy cách": "500 tờ /ream, 10 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 320,
-      "sold_count": 512,
+      "stock": 280,
+      "sold_count": 468,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Supreme A5 70 gsm | Giá sỉ VPPACA",
@@ -4801,8 +4668,8 @@
         "thuong_hieu": "Supreme"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -4822,8 +4689,8 @@
         "Quy cách": "500 tờ /ream, 10 ream /thùng"
       },
       "category_id": "cat-giay-a3-a5",
-      "stock": 330,
-      "sold_count": 523,
+      "stock": 290,
+      "sold_count": 479,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Supreme A5 80 gsm | Giá sỉ VPPACA",
@@ -4837,8 +4704,8 @@
         "thuong_hieu": "Supreme"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -4856,8 +4723,8 @@
         "Quy cách": "100 tờ/1 tập."
       },
       "category_id": "cat-giay-than",
-      "stock": 340,
-      "sold_count": 534,
+      "stock": 300,
+      "sold_count": 490,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Than Gstar | Giá sỉ VPPACA",
@@ -4869,8 +4736,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
+        "/products/giay-a4-ream-02.jpg",
+        "/products/giay-a4-ream-01.jpg"
       ]
     },
     {
@@ -4887,8 +4754,8 @@
         "Quy cách": "100 tờ/tập"
       },
       "category_id": "cat-giay-than",
-      "stock": 350,
-      "sold_count": 545,
+      "stock": 310,
+      "sold_count": 501,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy Than Horse | Giá sỉ VPPACA",
@@ -4900,8 +4767,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
+        "/products/giay-a4-box.jpg",
+        "/products/giay-a4-ream-02.jpg"
       ]
     },
     {
@@ -4918,8 +4785,8 @@
         "Xuất xứ": "Nhật bản."
       },
       "category_id": "cat-giay-than",
-      "stock": 360,
-      "sold_count": 556,
+      "stock": 320,
+      "sold_count": 512,
       "is_published": true,
       "is_featured": false,
       "seo_title": "GIẤY THAN KOKUSAI – CARBON PAPER | Giá sỉ VPPACA",
@@ -4931,8 +4798,8 @@
         "thuong_hieu": "ACA Partner"
       },
       "imagePaths": [
-        "/products/giay-a4-ream-02.jpg",
-        "/products/giay-a4-ream-01.jpg"
+        "/products/giay-a4-ream-01.jpg",
+        "/products/giay-a4-box.jpg"
       ]
     },
     {
@@ -4952,8 +4819,8 @@
         "Quy cách": "500 tờ /ream, 5 ream /thùng"
       },
       "category_id": "cat-giay-a4",
-      "stock": 370,
-      "sold_count": 567,
+      "stock": 330,
+      "sold_count": 523,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Giấy V-Paper A4 62gsm | Giá sỉ VPPACA",
@@ -4965,72 +4832,6 @@
         "kho": "A4",
         "gsm": "62",
         "thuong_hieu": "V-Paper"
-      },
-      "imagePaths": [
-        "/products/giay-a4-box.jpg",
-        "/products/giay-a4-ream-02.jpg"
-      ]
-    },
-    {
-      "id": "p-doc-nhan-tomy-a4-so-tu-125-149",
-      "sku": "NTOMYA4-125",
-      "name": "Nhãn Tomy A4 (Số Từ 125 – 149)",
-      "slug": "nhan-tomy-a4-so-tu-125-149",
-      "price": 150000,
-      "sale_price": 140000,
-      "description": "Nhãn Tomy A4 (Số Từ 125 – 149) — , phù hợp in và photocopy văn phòng. Xuất xứ Việt Nam.. Quy cách: 500 tờ/ram, 5 ram/thùng.",
-      "detail_description": "<p>Thông số sản phẩm (theo niêm yết nhà sản xuất):</p><ul><li><strong>Số tờ/ram:</strong> 500 tờ</li><li><strong>Thương hiệu:</strong> Tommy.</li><li><strong>Xuất xứ:</strong> Việt Nam.</li></ul><p>Giá sỉ theo số lượng — liên hệ ACA hoặc upload Excel tại trang báo giá B2B.</p>",
-      "specs": {
-        "Khổ giấy": "A4",
-        "Thương hiệu": "Tommy.",
-        "Xuất xứ": "Việt Nam."
-      },
-      "category_id": "cat-giay-decal",
-      "stock": 380,
-      "sold_count": 578,
-      "is_published": true,
-      "is_featured": false,
-      "seo_title": "Nhãn Tomy A4 (Số Từ 125 – 149) | Giá sỉ VPPACA",
-      "seo_description": "Nhãn Tomy A4 (Số Từ 125 – 149) — , phù hợp in và photocopy văn phòng. Xuất xứ Việt Nam.. Quy cách: 500 tờ/ram, 5 ram/thùng.",
-      "brand": "Tommy.",
-      "base_uom_code": "ram",
-      "min_stock": 20,
-      "filter_attrs": {
-        "kho": "A4",
-        "thuong_hieu": "Tommy."
-      },
-      "imagePaths": [
-        "/products/giay-a4-ream-01.jpg",
-        "/products/giay-a4-box.jpg"
-      ]
-    },
-    {
-      "id": "p-doc-nhan-tomy-a5-so-tu-99-124",
-      "sku": "NTOMYA5-99",
-      "name": "Nhãn Tomy A5 (Số Từ 99 – 124)",
-      "slug": "nhan-tomy-a5-so-tu-99-124",
-      "price": 13000,
-      "sale_price": 11000,
-      "description": "Nhãn Tomy A5 (Số Từ 99 – 124) — , phù hợp in và photocopy văn phòng. Xuất xứ Việt Nam.. Quy cách: 500 tờ/ram, 5 ram/thùng.",
-      "detail_description": "<p>Thông số sản phẩm (theo niêm yết nhà sản xuất):</p><ul><li><strong>Số tờ/ram:</strong> 500 tờ</li><li><strong>Thương hiệu:</strong> Tomy.</li><li><strong>Xuất xứ:</strong> Việt Nam.</li></ul><p>Giá sỉ theo số lượng — liên hệ ACA hoặc upload Excel tại trang báo giá B2B.</p>",
-      "specs": {
-        "Khổ giấy": "A5",
-        "Thương hiệu": "Tomy.",
-        "Xuất xứ": "Việt Nam."
-      },
-      "category_id": "cat-giay-a3-a5",
-      "stock": 390,
-      "sold_count": 589,
-      "is_published": true,
-      "is_featured": false,
-      "seo_title": "Nhãn Tomy A5 (Số Từ 99 – 124) | Giá sỉ VPPACA",
-      "seo_description": "Nhãn Tomy A5 (Số Từ 99 – 124) — , phù hợp in và photocopy văn phòng. Xuất xứ Việt Nam.. Quy cách: 500 tờ/ram, 5 ram/thùng.",
-      "brand": "Tomy.",
-      "base_uom_code": "ram",
-      "min_stock": 20,
-      "filter_attrs": {
-        "kho": "A5",
-        "thuong_hieu": "Tomy."
       },
       "imagePaths": [
         "/products/giay-a4-ream-02.jpg",
@@ -5050,8 +4851,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-note",
-      "stock": 400,
-      "sold_count": 600,
+      "stock": 340,
+      "sold_count": 534,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Phân trang giấy 10 màu | Giá sỉ VPPACA",
@@ -5080,8 +4881,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-note",
-      "stock": 410,
-      "sold_count": 611,
+      "stock": 350,
+      "sold_count": 545,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Phân Trang Giấy 10 số | Giá sỉ VPPACA",
@@ -5110,8 +4911,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-note",
-      "stock": 420,
-      "sold_count": 622,
+      "stock": 360,
+      "sold_count": 556,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Phân Trang Giấy 12 số | Giá sỉ VPPACA",
@@ -5140,8 +4941,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-note",
-      "stock": 430,
-      "sold_count": 633,
+      "stock": 370,
+      "sold_count": 567,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Phân Trang Nhựa 10 số | Giá sỉ VPPACA",
@@ -5170,8 +4971,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-note",
-      "stock": 440,
-      "sold_count": 644,
+      "stock": 380,
+      "sold_count": 578,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Phân Trang Nhựa 12 số | Giá sỉ VPPACA",
@@ -5200,8 +5001,8 @@
         "Thương hiệu": "ACA Partner"
       },
       "category_id": "cat-giay-note",
-      "stock": 450,
-      "sold_count": 655,
+      "stock": 390,
+      "sold_count": 589,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Phân Trang Nhựa 24 Chữ | Giá sỉ VPPACA",
@@ -5231,8 +5032,8 @@
         "Xuất xứ": "Việt Nam."
       },
       "category_id": "cat-giay-note",
-      "stock": 460,
-      "sold_count": 666,
+      "stock": 400,
+      "sold_count": 600,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Phân Trang Nhựa 31 số | Giá sỉ VPPACA",
@@ -5262,8 +5063,8 @@
         "Quy cách": "24 miếng/ xấp"
       },
       "category_id": "cat-giay-note",
-      "stock": 470,
-      "sold_count": 677,
+      "stock": 410,
+      "sold_count": 611,
       "is_published": true,
       "is_featured": false,
       "seo_title": "Phân trang nhựa dán 4 màu Double A | Giá sỉ VPPACA",

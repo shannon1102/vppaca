@@ -126,13 +126,22 @@ function normalizeSku(slug, sku) {
   return `GIAY-${base.slice(0, 24)}`;
 }
 
+function isExcludedPaperItem(item, folder) {
+  if (folder === "giay-decal") return true;
+  const slug = item.slug ?? "";
+  if (slug.startsWith("giay-decal-")) return true;
+  if (slug.startsWith("nhan-tomy-")) return true;
+  const name = (item.name ?? "").trim();
+  if (/^(Giấy Decal|Nhãn Tomy)/i.test(name)) return true;
+  return false;
+}
+
 const FOLDER_TO_CAT = {
   "giay-a4": "cat-giay-a4",
   "giay-a3": "cat-giay-a3-a5",
   "giay-a5": "cat-giay-a3-a5",
   "giay-in-anh": "cat-giay-in-anh",
   "giay-note-phan-trang": "cat-giay-note",
-  "giay-decal": "cat-giay-decal",
   "giay-a0-giay-a1": "cat-giay-kho-lon",
   "giay-lien-tuc": "cat-giay-lien-tuc",
   "giay-in-nhiet": "cat-giay-nhiet",
@@ -150,7 +159,6 @@ function resolveCategoryId(folder, item, specs) {
   if (size === "A4") return "cat-giay-a4";
   if (size === "A3" || size === "A5") return "cat-giay-a3-a5";
   if (/note|stick|phân trang|pronoti/i.test(item.name)) return "cat-giay-note";
-  if (/decal|tomy/i.test(item.name)) return "cat-giay-decal";
   if (/liên tục|lien tuc/i.test(item.name)) return "cat-giay-lien-tuc";
   if (/nhiệt|nhiet|fax|bill/i.test(item.name)) return "cat-giay-nhiet";
   if (/bìa|ford|plastic|ép/i.test(item.name)) return "cat-giay-bia-mau";
@@ -173,6 +181,7 @@ function loadAllPaperItems() {
     const data = JSON.parse(fs.readFileSync(itemsPath, "utf8"));
     for (const item of data.items ?? []) {
       if (!item.slug || !item.name) continue;
+      if (isExcludedPaperItem(item, dir)) continue;
       if (item.aca_category_hint && item.aca_category_hint !== "cat-giay") continue;
       if (!bySlug.has(item.slug)) bySlug.set(item.slug, { ...item, sourceFolder: dir });
     }

@@ -18,6 +18,7 @@ import {
   GIAY_A4_CATEGORY_HERO,
   resolveGiayA4BrandImages,
 } from "@/data/giay-a4-brand-images";
+import { isExcludedPaperProduct } from "@/data/paper-catalog-exclusions";
 
 export const defaultSettings: SiteSettings = {
   id: "default",
@@ -86,15 +87,6 @@ export const seedCategories: Category[] = [
     description: "Giấy note dán, phân trang, sticky",
     sort: 4,
     image_url: "/products/vo-so.jpg",
-    parent_id: "cat-giay",
-  },
-  {
-    id: "cat-giay-decal",
-    name: "Giấy Decal",
-    slug: "giay-decal",
-    description: "Decal in ấn, nhãn Tomy",
-    sort: 5,
-    image_url: "/products/giay-a4-box.jpg",
     parent_id: "cat-giay",
   },
   {
@@ -497,7 +489,10 @@ const MANUAL_PAPER_SLUGS = new Set(
 );
 
 const paperFromDocs: RawP[] = (paperCatalog.products as RawP[]).filter(
-  (p) => !MANUAL_PAPER_SLUGS.has(p.slug) && !giayA4BrandSuppressSlugs.has(p.slug),
+  (p) =>
+    !MANUAL_PAPER_SLUGS.has(p.slug) &&
+    !giayA4BrandSuppressSlugs.has(p.slug) &&
+    !isExcludedPaperProduct(p.slug, p.name),
 );
 
 function expandProducts(): Product[] {
