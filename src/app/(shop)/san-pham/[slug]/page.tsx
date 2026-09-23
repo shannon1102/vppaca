@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProductBuyPanel } from "@/components/store/product-buy-panel";
 import { ProductImageGallery } from "@/components/store/product-image-gallery";
+import { CatalogBreadcrumb } from "@/components/store/catalog-breadcrumb";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
 import { RichContent } from "@/components/ui/rich-content";
 import { ProductCard } from "@/components/store/product-card";
@@ -70,7 +71,14 @@ export default async function ProductDetailPage({ params }: Props) {
   };
 
   return (
-    <div className="shop-container py-10">
+    <div className="shop-container py-6 md:py-8">
+      <CatalogBreadcrumb
+        items={[
+          { name: "Trang chủ", href: "/" },
+          { name: "Sản phẩm", href: "/san-pham" },
+          { name: product.name },
+        ]}
+      />
       <BreadcrumbJsonLd
         items={[
           { name: "Trang chủ", path: "/" },
@@ -82,20 +90,44 @@ export default async function ProductDetailPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="grid gap-10 md:grid-cols-2">
+      <div className="pdp-layout">
         <ProductImageGallery images={product.images} name={product.name} />
 
         <div className="min-w-0">
-          <h1 className="text-2xl font-bold md:text-3xl">{product.name}</h1>
+          <h1 className="text-2xl font-bold leading-snug md:text-[1.75rem]">{product.name}</h1>
           <p className="mt-2 text-sm text-[var(--brand-muted)]">
-            SKU: {product.sku} · Đã bán {product.sold_count} · Tồn (đv cơ sở):{" "}
-            {product.stock} {product.base_uom_code}
+            Mã: {product.sku} ·{" "}
+            <span className={product.stock > 0 ? "font-semibold text-emerald-600" : "text-[var(--brand-sale)]"}>
+              {product.stock > 0 ? "Còn hàng" : "Hết hàng"}
+            </span>
           </p>
           <p className="mt-1 text-sm text-[var(--brand-muted)]">
-            Tham chiếu: {formatVnd(price)} / {product.base_uom_code}
+            Đã bán {product.sold_count.toLocaleString("vi-VN")} · Tồn: {product.stock}{" "}
+            {product.base_uom_code}
           </p>
+
+          <div className="pdp-price-block">
+            <p className="text-sm font-semibold text-[var(--brand-muted)]">Giá bán</p>
+            <p className="mt-1 flex flex-wrap items-baseline gap-2">
+              <span className="text-3xl font-extrabold text-[var(--brand-sale)]">
+                {formatVnd(price)}
+              </span>
+              {product.sale_price != null && product.sale_price < product.price ? (
+                <>
+                  <span className="text-base text-[var(--brand-muted)] line-through">
+                    {formatVnd(product.price)}
+                  </span>
+                  <span className="rounded bg-[var(--brand-sale)] px-2 py-0.5 text-xs font-bold text-white">
+                    -
+                    {Math.round(((product.price - price) / product.price) * 100)}%
+                  </span>
+                </>
+              ) : null}
+            </p>
+          </div>
+
           {product.description.trim() ? (
-            <p className="mt-4 whitespace-pre-wrap text-sm">{stripHtml(product.description)}</p>
+            <p className="mt-4 whitespace-pre-wrap text-sm leading-relaxed">{stripHtml(product.description)}</p>
           ) : null}
           <div className="mt-6">
             <ProductBuyPanel catalog={catalog} promoProducts={flash.products} />
@@ -123,7 +155,7 @@ export default async function ProductDetailPage({ params }: Props) {
       {related.length > 0 ? (
         <section className="mt-16">
           <h2 className="text-2xl font-bold">Sản phẩm liên quan</h2>
-          <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div className="product-grid-tl mt-6">
             {related.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}

@@ -73,8 +73,11 @@ export function HeaderInteractive({
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Tìm giấy A4, bút bi, mực in, bìa còng..."
-              className="h-12 w-full rounded-full border border-slate-200 bg-slate-50 pl-11 pr-4 text-sm outline-none transition focus:border-[var(--brand-sale)] focus:bg-white focus:ring-2 focus:ring-[var(--brand-sale)]/20"
+              className="h-12 w-full rounded-full border border-slate-200 bg-white pl-11 pr-14 text-sm outline-none transition focus:border-[var(--tl-header-navy)] focus:ring-2 focus:ring-[var(--tl-header-navy)]/15"
             />
+            <button type="submit" className="shop-search-submit" aria-label="Tìm kiếm">
+              <SearchIcon />
+            </button>
           </form>
 
           <div className="ml-auto flex items-center gap-2">
@@ -125,16 +128,20 @@ export function HeaderInteractive({
               type="button"
               onClick={() => setCatOpen((v) => !v)}
               onBlur={() => setTimeout(() => setCatOpen(false), 150)}
-              className="brand-gradient-bg inline-flex h-11 items-center gap-2 rounded-[var(--radius)] px-4 text-sm font-semibold text-white shadow-sm transition hover:brightness-95"
+              className="inline-flex h-11 items-center gap-2 rounded-[var(--radius)] bg-[var(--tl-header-navy)] px-4 text-sm font-semibold text-white shadow-sm transition hover:bg-[var(--tl-header-navy-dark)]"
             >
               <MenuIcon />
               Danh mục sản phẩm
             </button>
             {catOpen ? <CategoryNavDropdown groups={categoryGroups} /> : null}
           </div>
-          <nav className="flex flex-1 items-center gap-1 overflow-x-auto pl-2">
+          <nav className="flex flex-1 items-center gap-0.5 overflow-x-auto pl-2">
             {navLinks.map((l) => (
-              <Link key={l.href + l.label} href={l.href} className="whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium text-[var(--brand-text)] transition hover:bg-slate-50 hover:text-[var(--brand-primary)]">
+              <Link
+                key={l.href + l.label}
+                href={l.href}
+                className="whitespace-nowrap rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-wide text-[var(--brand-text)] transition hover:bg-slate-50 hover:text-[var(--tl-header-navy)] lg:text-[13px]"
+              >
                 {l.label}
               </Link>
             ))}

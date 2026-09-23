@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { FlashSaleSection } from "@/components/store/flash-sale-section";
+import { HomeCategoryTrends } from "@/components/store/home-category-trends";
 import { HomeBannerCarousel } from "@/components/store/home-banner-carousel";
 import { ProductCard } from "@/components/store/product-card";
 import { VPPACA_BRAND } from "@/lib/brand-content";
@@ -45,25 +45,8 @@ export default async function HomePage() {
         <HomeBannerCarousel banners={banners} />
       </div>
 
-      <section className="shop-container mt-4">
-        <div className="grid grid-cols-5 gap-2 rounded-xl bg-white p-3 shadow-sm md:gap-4 md:p-4">
-          {categories.filter((c) => !c.parent_id).map((c) => (
-            <Link
-              key={c.id}
-              href={`/danh-muc/${c.slug}`}
-              className="flex flex-col items-center gap-2 text-center transition hover:text-[var(--brand-sale)]"
-            >
-              <div className="relative h-12 w-12 overflow-hidden rounded-full bg-orange-50 md:h-14 md:w-14">
-                {c.image_url ? (
-                  <Image src={c.image_url} alt="" fill className="object-cover" sizes="56px" />
-                ) : null}
-              </div>
-              <span className="line-clamp-2 text-[10px] font-medium leading-tight md:text-xs">
-                {c.name}
-              </span>
-            </Link>
-          ))}
-        </div>
+      <section className="shop-container">
+        <HomeCategoryTrends categories={categories} />
       </section>
 
       {stripBanners.length ? (
@@ -90,7 +73,7 @@ export default async function HomePage() {
 
       <section className="shop-container mt-8">
         <h2 className="text-lg font-bold text-[var(--brand-text)]">Gợi ý hôm nay</h2>
-        <div className="product-grid-shopee mt-4">
+        <div className="product-grid-tl mt-4">
           {featured.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
@@ -99,7 +82,7 @@ export default async function HomePage() {
 
       <section className="shop-container mt-10">
         <h2 className="text-lg font-bold">Bán chạy</h2>
-        <div className="product-grid-shopee mt-4">
+        <div className="product-grid-tl mt-4">
           {bestSeller.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
