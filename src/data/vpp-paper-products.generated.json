@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-23T05:02:37.392Z",
+  "generatedAt": "2026-09-23T05:06:34.208Z",
   "count": 151,
   "products": [
     {
@@ -1719,7 +1719,7 @@
         "Xuất xứ": "Indonesia.",
         "Quy cách": "500 tờ/ram."
       },
-      "category_id": "cat-giay-a4",
+      "category_id": "cat-giay-bia-mau",
       "stock": 200,
       "sold_count": 600,
       "is_published": true,
@@ -1755,7 +1755,7 @@
         "Xuất xứ": "Việt Nam",
         "Quy cách": "500 tờ / ream"
       },
-      "category_id": "cat-giay-a4",
+      "category_id": "cat-giay-bia-mau",
       "stock": 210,
       "sold_count": 611,
       "is_published": true,
@@ -1790,7 +1790,7 @@
         "Thương hiệu": "ACA Partner",
         "Quy cách": "500 tờ / ream"
       },
-      "category_id": "cat-giay-a3-a5",
+      "category_id": "cat-giay-bia-mau",
       "stock": 220,
       "sold_count": 622,
       "is_published": true,
@@ -1824,7 +1824,7 @@
         "Định lượng": "80 gsm.",
         "Thương hiệu": "giấy in for màu A5 80."
       },
-      "category_id": "cat-giay-a3-a5",
+      "category_id": "cat-giay-bia-mau",
       "stock": 230,
       "sold_count": 633,
       "is_published": true,

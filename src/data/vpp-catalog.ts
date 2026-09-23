@@ -19,6 +19,10 @@ import {
   resolveGiayA4BrandImages,
 } from "@/data/giay-a4-brand-images";
 import { isExcludedPaperProduct } from "@/data/paper-catalog-exclusions";
+import {
+  GIAY_FORD_CATEGORY_HERO,
+  resolveGiayFordMauImages,
+} from "@/data/giay-ford-mau-images";
 
 export const defaultSettings: SiteSettings = {
   id: "default",
@@ -122,7 +126,7 @@ export const seedCategories: Category[] = [
     slug: "giay-bia-ford-mau",
     description: "Bìa màu A3/A4, giấy Ford, ép plastic",
     sort: 9,
-    image_url: "/products/bia-ho-so.jpg",
+    image_url: GIAY_FORD_CATEGORY_HERO,
     parent_id: "cat-giay",
   },
   {
@@ -529,9 +533,10 @@ function expandProducts(): Product[] {
   return [...manualPaperSources, ...paperFromDocs, ...extras].map((p) => {
     const brandImages =
       p.category_id === "cat-giay-a4" ? resolveGiayA4BrandImages(p) : null;
+    const fordImages = resolveGiayFordMauImages(p);
     return {
       ...p,
-      images: brandImages ?? defaultImages(p),
+      images: brandImages ?? fordImages ?? defaultImages(p),
     };
   });
 }

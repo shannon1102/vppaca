@@ -25,6 +25,31 @@ const PHOTO_CYCLE = [
   "/products/giay-a4-box.jpg",
 ];
 
+const FORD_MAU = "/products/ford-mau";
+const FORD_SLUG_IMAGES = {
+  "giay-ford-mau-a4-70": [
+    `${FORD_MAU}/colorful-papers-stacked.jpg`,
+    `${FORD_MAU}/colored-papers-rack.jpg`,
+  ],
+  "giay-ford-mau-a4-80": [
+    `${FORD_MAU}/colored-papers-rack.jpg`,
+    `${FORD_MAU}/colorful-papers-stacked.jpg`,
+  ],
+  "giay-ford-mau-a5-70": [
+    `${FORD_MAU}/office-paper-trays.jpg`,
+    `${FORD_MAU}/colorful-papers-stacked.jpg`,
+  ],
+  "giay-ford-mau-a5-80": [
+    `${FORD_MAU}/colorful-papers-stacked.jpg`,
+    `${FORD_MAU}/office-paper-trays.jpg`,
+  ],
+  "giay-ford-mau-dac-biet-grand": [
+    `${FORD_MAU}/colored-papers-rack.jpg`,
+    `${FORD_MAU}/colorful-papers-stacked.jpg`,
+    `${FORD_MAU}/office-paper-trays.jpg`,
+  ],
+};
+
 function cleanSpecs(specs) {
   if (!specs || typeof specs !== "object") return {};
   const out = {};
@@ -152,6 +177,7 @@ const FOLDER_TO_CAT = {
 
 function resolveCategoryId(folder, item, specs) {
   if (FOLDER_TO_CAT[folder]) return FOLDER_TO_CAT[folder];
+  if (/ford/i.test(item.name ?? "")) return "cat-giay-bia-mau";
   const size =
     specs.size_inferred ||
     specs["Kích thước"]?.match(/A[0-9]/i)?.[0]?.toUpperCase() ||
@@ -201,7 +227,8 @@ const products = items.map((item) => {
     item.price && item.regular_price && item.price < item.regular_price
       ? Number(item.price)
       : null;
-  const photo = PHOTO_CYCLE[idx % PHOTO_CYCLE.length];
+  const fordPhotos = FORD_SLUG_IMAGES[item.slug];
+  const photo = fordPhotos?.[0] ?? PHOTO_CYCLE[idx % PHOTO_CYCLE.length];
   idx += 1;
   const featured =
     /excel|double a|ik plus|paperone|a-one|a4.*70/i.test(item.name) && idx < 30;
@@ -235,7 +262,9 @@ const products = items.map((item) => {
     base_uom_code: "ram",
     min_stock: 20,
     filter_attrs,
-    imagePaths: [photo, PHOTO_CYCLE[(idx + 1) % PHOTO_CYCLE.length]],
+    imagePaths:
+      fordPhotos ??
+      [photo, PHOTO_CYCLE[(idx + 1) % PHOTO_CYCLE.length]],
   };
 });
 
