@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
+import { CatalogBreadcrumb } from "@/components/store/catalog-breadcrumb";
 import { CatalogSidebar } from "@/components/store/catalog-sidebar";
 import { ProductCard } from "@/components/store/product-card";
 import { ProductPriceFilter } from "@/components/store/product-price-filter";
@@ -52,9 +53,20 @@ export default async function ProductsPage({
   });
 
   return (
-    <div className="shop-container py-10">
-      <div className="grid gap-8 md:grid-cols-[220px_1fr]">
-        <CatalogSidebar basePath="/san-pham" categories={categories} products={products} />
+    <div className="shop-container py-6 md:py-8">
+      <CatalogBreadcrumb
+        items={[
+          { name: "Trang chủ", href: "/" },
+          { name: "Sản phẩm" },
+        ]}
+      />
+      <div className="catalog-layout">
+        <CatalogSidebar
+          basePath="/san-pham"
+          categories={categories}
+          products={products}
+          searchParams={sp}
+        />
         <div className="catalog-main-panel min-w-0">
           <div className="catalog-main-panel__head">
             <h1 className="text-2xl font-bold md:text-3xl">Sản phẩm</h1>
@@ -92,22 +104,6 @@ export default async function ProductsPage({
                 ))}
             </div>
 
-            <div className="catalog-main-panel__toolbar text-sm">
-              <span className="font-semibold text-[var(--brand-muted)]">Sắp xếp:</span>
-              <Link href="/san-pham?sort=sold" className="font-medium text-[var(--brand-primary)]">
-                Bán chạy
-              </Link>
-              <Link href="/san-pham?sort=price-asc" className="font-medium text-[var(--brand-primary)]">
-                Giá tăng
-              </Link>
-              <Link href="/san-pham?sort=price-desc" className="font-medium text-[var(--brand-primary)]">
-                Giá giảm
-              </Link>
-              <Link href="/san-pham?sale=1" className="font-semibold text-[var(--brand-sale)]">
-                Đang giảm giá
-              </Link>
-            </div>
-
             <div className="mt-4 md:hidden">
               <Suspense fallback={null}>
                 <ProductPriceFilter basePath="/san-pham" />
@@ -121,7 +117,7 @@ export default async function ProductsPage({
             ) : (
               <>
                 <div className="catalog-grid-frame">
-                  <div className="product-grid-shopee">
+                  <div className="product-grid-tl">
                     {list.map((p) => (
                       <ProductCard
                         key={p.id}

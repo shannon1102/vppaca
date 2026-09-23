@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import { formatVnd } from "@/lib/format";
 import { resolveUnitPrice } from "@/lib/pricing";
 import type { ProductCatalog, PromotionProduct } from "@/lib/types";
@@ -126,19 +125,23 @@ export function ProductBuyPanel({
       ) : null}
 
       <div className="flex flex-wrap gap-3">
-        <Button type="button" onClick={addToCart}>
-          Thêm vào giỏ
-        </Button>
-        <Button
+        <button
           type="button"
-          variant="secondary"
+          onClick={addToCart}
+          className="product-card-tl__btn product-card-tl__btn--outline min-h-11 flex-1 px-4 text-xs md:text-sm"
+        >
+          THÊM VÀO GIỎ
+        </button>
+        <button
+          type="button"
           onClick={() => {
             addToCart();
             router.push("/gio-hang");
           }}
+          className="product-card-tl__btn product-card-tl__btn--primary min-h-11 flex-1 px-4 text-xs md:text-sm"
         >
-          Mua ngay
-        </Button>
+          MUA NGAY
+        </button>
         <Link
           href="/bao-gia-doanh-nghiep"
           className="inline-flex min-h-11 items-center justify-center rounded-[var(--radius)] px-4 text-sm font-semibold text-[var(--brand-primary)] hover:underline"

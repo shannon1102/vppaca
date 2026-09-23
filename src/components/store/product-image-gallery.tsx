@@ -16,19 +16,19 @@ export function ProductImageGallery({ images, name }: Props) {
 
   return (
     <div className="space-y-3">
-      <div className="relative aspect-square overflow-hidden rounded-[var(--radius)] border border-slate-200 bg-white">
+      <div className="pdp-gallery-main">
         <Image
           key={selected}
           src={selected}
           alt={name}
           fill
-          className="object-cover"
+          className="object-contain p-3 md:p-5"
           priority={selectedIndex === 0}
-          sizes="(max-width:768px) 100vw, 50vw"
+          sizes="(max-width:768px) 100vw, (max-width:1580px) 58vw, 900px"
         />
       </div>
       {gallery.length > 1 ? (
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid grid-cols-5 gap-2 md:grid-cols-6">
           {gallery.map((src, index) => {
             const active = index === selectedIndex;
             return (
@@ -41,17 +41,11 @@ export function ProductImageGallery({ images, name }: Props) {
                 className={cn(
                   "relative aspect-square cursor-pointer overflow-hidden rounded-lg border bg-white transition",
                   active
-                    ? "border-[var(--brand-primary)] ring-2 ring-[var(--brand-primary)] ring-offset-1"
-                    : "border-slate-200 hover:border-[var(--brand-primary)]/60",
+                    ? "border-[var(--tl-header-navy)] ring-2 ring-[var(--tl-header-navy)] ring-offset-1"
+                    : "border-slate-200 hover:border-[var(--tl-header-navy)]/60",
                 )}
               >
-                <Image
-                  src={src}
-                  alt=""
-                  fill
-                  className="object-cover"
-                  sizes="100px"
-                />
+                <Image src={src} alt="" fill className="object-contain p-1" sizes="120px" />
               </button>
             );
           })}

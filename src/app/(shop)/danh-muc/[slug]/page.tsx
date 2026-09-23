@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import Image from "next/image";
 import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-jsonld";
+import { CatalogBreadcrumb } from "@/components/store/catalog-breadcrumb";
 import { CatalogSidebar } from "@/components/store/catalog-sidebar";
 import { ProductCard } from "@/components/store/product-card";
 import { ProductPriceFilter } from "@/components/store/product-price-filter";
@@ -77,7 +79,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   };
 
   return (
-    <div className="shop-container py-10">
+    <div className="shop-container py-6 md:py-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
@@ -89,16 +91,37 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           { name: cat.name, path: basePath },
         ]}
       />
-      <div className="grid gap-8 md:grid-cols-[220px_1fr]">
+      <CatalogBreadcrumb
+        items={[
+          { name: "Trang chủ", href: "/" },
+          { name: "Danh mục", href: "/san-pham" },
+          { name: cat.name },
+        ]}
+      />
+
+      <div className="catalog-layout">
         <CatalogSidebar
           basePath={basePath}
           categories={cats}
           products={allProducts}
           activeCategorySlug={slug}
+          searchParams={sp}
         />
         <div className="catalog-main-panel min-w-0">
           <div className="catalog-main-panel__head">
-            <h1 className="text-2xl font-bold md:text-3xl">{cat.name}</h1>
+            <h1 className="text-center text-2xl font-bold md:text-3xl">{cat.name}</h1>
+            {cat.image_url ? (
+              <div className="relative mx-auto mt-4 aspect-[21/6] max-h-52 w-full overflow-hidden rounded-[var(--radius)] border border-slate-200 bg-white">
+                <Image
+                  src={cat.image_url}
+                  alt={cat.name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width:1580px) 100vw, 1580px"
+                  priority
+                />
+              </div>
+            ) : null}
             {cat.description ? (
               <p className="mt-2 text-sm text-[var(--brand-muted)] md:text-base">{cat.description}</p>
             ) : null}
@@ -117,7 +140,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
             ) : (
               <>
                 <div className="catalog-grid-frame">
-                  <div className="product-grid-shopee">
+                  <div className="product-grid-tl">
                     {products.map((p) => (
                       <ProductCard
                         key={p.id}

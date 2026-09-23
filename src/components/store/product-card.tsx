@@ -1,8 +1,32 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
+import { ProductCardActions } from "@/components/store/product-card-actions";
 import { effectivePrice, formatVnd } from "@/lib/format";
 import type { Product } from "@/lib/types";
+
+function formatSold(n: number): string {
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1).replace(/\.0$/, "")}tr`;
+  if (n >= 1000) return `${(n / 1000).toFixed(1).replace(/\.0$/, "")}k`;
+  return String(n);
+}
+
+function starCount(product: Product): number {
+  if (product.sold_count >= 500) return 5;
+  if (product.sold_count >= 100) return 4;
+  return 4;
+}
+
+function Stars({ count }: { count: number }) {
+  return (
+    <span className="product-card-tl__stars" aria-label={`${count} sao`}>
+      {Array.from({ length: 5 }, (_, i) => (
+        <span key={i} className={i < count ? "text-amber-400" : "text-slate-200"}>
+          ★
+        </span>
+      ))}
+    </span>
+  );
+}
 
 export function ProductCard({
   product,
@@ -18,42 +42,42 @@ export function ProductCard({
     onSale && product.price > 0
       ? Math.round(((product.price - price) / product.price) * 100)
       : 0;
+  const outOfStock = product.stock <= 0;
+
   return (
-    <Link
-      href={`/san-pham/${product.slug}`}
-      className="group flex flex-col overflow-hidden rounded-[var(--radius)] border border-slate-300 bg-[var(--brand-surface)] shadow-sm transition hover:-translate-y-0.5 hover:border-[var(--brand-primary)]/40 hover:shadow-md"
-    >
-      <div className="relative aspect-square overflow-hidden bg-slate-100">
-        <Image
-          src={product.images[0] ?? "/seed/product-01.svg"}
-          alt={product.name}
-          fill
-          className="object-cover transition duration-300 group-hover:scale-105"
-          sizes="(max-width:768px) 50vw, 25vw"
-        />
-        {onSale ? (
-          <div className="absolute left-2 top-2 rounded bg-[var(--brand-sale)] px-2 py-0.5 text-xs font-bold text-white">
-            -{pct}%
-          </div>
-        ) : null}
-      </div>
-      <div className="flex flex-1 flex-col gap-2 p-4">
-        <p className="line-clamp-2 text-sm font-semibold text-[var(--brand-text)]">
-          {product.name}
-        </p>
-        <p className="text-xs text-[var(--brand-muted)]">{product.sku}</p>
-        <p className="text-xs text-[var(--brand-muted)]">Đã bán {product.sold_count}</p>
-        <div className="mt-auto flex items-baseline gap-2">
-          <span className="text-base font-bold text-[var(--brand-sale)]">
-            {formatVnd(price)}
-          </span>
+    <article className="product-card-tl group">
+      <Link href={`/san-pham/${product.slug}`} className="product-card-tl__media-link">
+        <div className="product-card-tl__media">
+          <Image
+            src={product.images[0] ?? "/seed/product-01.svg"}
+            alt={product.name}
+            fill
+            className="object-contain p-2 transition duration-300 group-hover:scale-[1.03]"
+            sizes="(max-width:640px) 46vw, (max-width:1200px) 22vw, 280px"
+          />
           {onSale ? (
-            <span className="text-xs text-[var(--brand-muted)] line-through">
-              {formatVnd(product.price)}
-            </span>
+            <span className="product-card-tl__badge-sale">-{pct}%</span>
+          ) : null}
+          {outOfStock ? (
+            <span className="product-card-tl__badge-oos">Hết hàng</span>
           ) : null}
         </div>
+      </Link>
+
+      <div className="product-card-tl__body">
+        <p className="product-card-tl__sold">Đã bán: {formatSold(product.sold_count)}</p>
+        <Stars count={starCount(product)} />
+        <Link href={`/san-pham/${product.slug}`} className="product-card-tl__title">
+          {product.name}
+        </Link>
+        <div className="product-card-tl__price-row">
+          <span className="product-card-tl__price">{formatVnd(price)}</span>
+          {onSale ? (
+            <span className="product-card-tl__price-old">{formatVnd(product.price)}</span>
+          ) : null}
+        </div>
+        <ProductCardActions product={product} overrideSalePrice={overrideSalePrice} />
       </div>
-    </Link>
+    </article>
   );
 }
