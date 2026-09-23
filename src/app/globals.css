@@ -718,6 +718,106 @@ h4 {
   border: 1px solid #e2e8f0;
 }
 
+/* Category mega menu — hover flyout (Thiên Long style) */
+.category-nav-mega {
+  display: flex;
+  align-items: stretch;
+  max-height: min(70vh, 28rem);
+}
+
+.category-nav-mega__primary {
+  width: 17.5rem;
+  overflow-y: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow:
+    0 12px 32px rgb(15 23 42 / 0.12),
+    0 0 0 1px rgb(15 23 42 / 0.04);
+}
+
+.category-nav-mega__row {
+  border-top: 1px solid #f1f5f9;
+}
+
+.category-nav-mega__row:first-of-type {
+  border-top: none;
+}
+
+.category-nav-mega__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--brand-text);
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.category-nav-mega__item:hover,
+.category-nav-mega__item--active {
+  background: #f8fafc;
+  color: var(--tl-header-navy);
+}
+
+.category-nav-mega__item--all {
+  font-weight: 600;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.category-nav-mega__flyout {
+  margin-left: -1px;
+  width: 17.5rem;
+  overflow-y: auto;
+  border: 1px solid #e2e8f0;
+  border-left: 1px solid #e2e8f0;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: #fff;
+  box-shadow: 12px 12px 32px rgb(15 23 42 / 0.1);
+  padding: 0.35rem 0 0.5rem;
+}
+
+.category-nav-mega__flyout-title {
+  margin: 0;
+  padding: 0.5rem 1rem 0.35rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-muted);
+}
+
+.category-nav-mega__flyout-item {
+  display: block;
+  padding: 0.55rem 1rem;
+  font-size: 0.875rem;
+  color: var(--brand-text);
+  border-top: 1px solid #f8fafc;
+}
+
+.category-nav-mega__flyout-item:hover {
+  background: #f8fafc;
+  color: var(--tl-header-navy);
+}
+
+.category-nav-mega__flyout-all {
+  display: block;
+  margin-top: 0.25rem;
+  padding: 0.65rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--brand-primary);
+  border-top: 1px solid #f1f5f9;
+}
+
+.category-nav-mega__flyout-all:hover {
+  background: #fff7f7;
+}
+
 .shop-container {
   box-sizing: border-box;
   width: 100%;
