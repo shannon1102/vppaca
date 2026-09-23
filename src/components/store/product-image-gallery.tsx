@@ -24,7 +24,7 @@ export function ProductImageGallery({ images, name }: Props) {
           fill
           className="object-contain p-3 md:p-5"
           priority={selectedIndex === 0}
-          sizes="(max-width:768px) 100vw, (max-width:1580px) 58vw, 900px"
+          sizes="(max-width:768px) 100vw, (max-width:1599px) 50vw, 520px"
         />
       </div>
       {gallery.length > 1 ? (
