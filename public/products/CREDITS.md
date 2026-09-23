@@ -20,3 +20,7 @@ Logo ACA: file nội bộ trong `/public/brand/` và `/logo/`.
 | Thư mục `brands/` | Nguồn |
 |-------------------|--------|
 | `public/products/brands/*.jpg` | Ảnh bao bì thương hiệu do chủ shop cung cấp (Double A, PaperOne, IK, Quality, Clever Up, Bãi Bằng, Idea Max, Supreme, Excel…) — dùng hiển thị catalog Giấy A4. |
+
+| Thư mục `stock/` và `ford-mau/ford-mau-colored-papers.jpg` | Nguồn |
+|--------------------------------------------------------------|--------|
+| `stock/king-star-bia-cong.jpg`, `stock/bia-nhua-ep-plastic.jpg`, `stock/bia-kieng-trong.jpg`, `ford-mau/ford-mau-colored-papers.jpg`, `stock/giay-lien-tuc-lien-son.webp`, `stock/but-thien-long-tl-027.webp`, `stock/tem-in-don-ghtk-50x50.jpg` | Ảnh sản phẩm do chủ shop ACA cung cấp (2026) — hiển thị catalog theo nhóm SKU. |

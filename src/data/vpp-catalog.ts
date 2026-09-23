@@ -23,6 +23,7 @@ import {
   GIAY_FORD_CATEGORY_HERO,
   resolveGiayFordMauImages,
 } from "@/data/giay-ford-mau-images";
+import { resolveVppStockImages, STOCK_IMAGES } from "@/data/vpp-stock-product-images";
 
 export const defaultSettings: SiteSettings = {
   id: "default",
@@ -108,7 +109,7 @@ export const seedCategories: Category[] = [
     slug: "giay-in-lien-tuc",
     description: "Giấy in liên tục 1–5 liên, hóa đơn",
     sort: 7,
-    image_url: "/products/giay-a4-box.jpg",
+    image_url: STOCK_IMAGES.giayLienTuc,
     parent_id: "cat-giay",
   },
   {
@@ -117,7 +118,7 @@ export const seedCategories: Category[] = [
     slug: "giay-in-nhiet",
     description: "Giấy nhiệt POS, fax, bill",
     sort: 8,
-    image_url: "/products/giay-a4-ream-01.jpg",
+    image_url: STOCK_IMAGES.temGhtk5050,
     parent_id: "cat-giay",
   },
   {
@@ -153,7 +154,7 @@ export const seedCategories: Category[] = [
     slug: "bia-luu-tru-ho-so",
     description: "Bìa còng, file, cặp tài liệu",
     sort: 3,
-    image_url: "/products/bia-ho-so.jpg",
+    image_url: STOCK_IMAGES.kingStarBiaCong,
     parent_id: null,
   },
   {
@@ -434,7 +435,7 @@ const rawProducts: RawP[] = [
     base_uom_code: "cay",
     min_stock: 200,
     filter_attrs: { ngoi: "0.5mm", mau: "Xanh" },
-    imagePaths: [VPP_PHOTOS.but],
+    imagePaths: [STOCK_IMAGES.butTl027],
   },
   {
     id: "p-bia-cong-7",
@@ -457,7 +458,7 @@ const rawProducts: RawP[] = [
     base_uom_code: "cai",
     min_stock: 15,
     filter_attrs: { cong: "7cm" },
-    imagePaths: [VPP_PHOTOS.bia],
+    imagePaths: [STOCK_IMAGES.kingStarBiaCong],
   },
   {
     id: "p-muc-hp-12a",
@@ -531,12 +532,14 @@ function expandProducts(): Product[] {
     });
   }
   return [...manualPaperSources, ...paperFromDocs, ...extras].map((p) => {
+    const stockImages = resolveVppStockImages(p);
     const brandImages =
       p.category_id === "cat-giay-a4" ? resolveGiayA4BrandImages(p) : null;
     const fordImages = resolveGiayFordMauImages(p);
     return {
       ...p,
-      images: brandImages ?? fordImages ?? defaultImages(p),
+      images:
+        stockImages ?? brandImages ?? fordImages ?? defaultImages(p),
     };
   });
 }
