@@ -31,7 +31,11 @@ export function CatalogSidebar({
 
       <div className="catalog-sidebar-panel">
         <h2 className="catalog-sidebar-panel__title">Danh mục</h2>
-        <CatalogCategoryAccordion groups={navGroups} activeCategorySlug={activeCategorySlug} />
+        <CatalogCategoryAccordion
+          key={activeCategorySlug ?? "catalog-root"}
+          groups={navGroups}
+          activeCategorySlug={activeCategorySlug}
+        />
       </div>
 
       <Suspense fallback={null}>

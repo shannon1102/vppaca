@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type { CategoryNavGroup } from "@/lib/catalog/category-tree";
 
 function Chevron({ open }: { open: boolean }) {
@@ -43,18 +43,6 @@ export function CatalogCategoryAccordion({
   }, [groups, activeCategorySlug]);
 
   const [expanded, setExpanded] = useState<Set<string>>(() => defaultExpanded);
-
-  useEffect(() => {
-    setExpanded((prev) => {
-      const next = new Set(prev);
-      for (const group of groups) {
-        if (groupIsActive(group, activeCategorySlug)) {
-          next.add(group.category.id);
-        }
-      }
-      return next;
-    });
-  }, [groups, activeCategorySlug]);
 
   function toggle(id: string) {
     setExpanded((prev) => {
