@@ -316,7 +316,17 @@ export async function vppSyncHomeBanners(): Promise<void> {
   await sb
     .from("banners")
     .update({ is_active: false })
-    .in("id", ["ban-1", "ban-2", "ban-3"]);
+    .in("id", [
+      "ban-1",
+      "ban-2",
+      "ban-3",
+      "ban-khai-truong",
+      "ban-giam-gia",
+      "ban-dich-vu-moi",
+      "ban-strip-khai-truong",
+      "ban-strip-sale",
+      "ban-strip-b2b",
+    ]);
 }
 
 export async function vppSeedCatalogIfEmpty(): Promise<void> {
