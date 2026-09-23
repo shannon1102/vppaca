@@ -20,7 +20,7 @@ function BannerSlideImage({
       <img
         src={src}
         alt={alt}
-        className="absolute inset-0 h-full w-full object-cover object-center"
+        className="absolute inset-0 h-full w-full object-contain object-center"
         decoding="async"
         fetchPriority="high"
       />
@@ -32,8 +32,8 @@ function BannerSlideImage({
       src={src}
       alt={alt}
       fill
-      className="object-cover object-center"
-      sizes="(min-width: 1270px) 1270px, 100vw"
+      className="object-contain object-center"
+      sizes="(min-width: 1580px) 1580px, 100vw"
       priority
     />
   );
@@ -63,10 +63,8 @@ export function HomeBannerCarousel({ banners }: { banners: Banner[] }) {
     <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-md">
       <Link href={current.link_url} className="block">
         <div
-          className={`relative aspect-[21/7] w-full ${
-            nativeImg || isLogoSlide
-              ? "bg-[var(--brand-bg)]"
-              : "bg-gradient-to-r from-[#ec2229]/10 to-[#eda909]/20"
+          className={`relative aspect-[3/1] w-full max-h-[min(420px,38vw)] ${
+            nativeImg || isLogoSlide ? "bg-[#f4f7fb]" : "bg-gradient-to-r from-[#ec2229]/10 to-[#eda909]/20"
           }`}
         >
           <BannerSlideImage
