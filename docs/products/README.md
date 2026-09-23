@@ -7,9 +7,22 @@ Thư mục này chứa **dữ liệu tham chiếu** để lập catalog cho webs
 | Thư mục / file | Mục đích |
 |----------------|----------|
 | `reference/banhat/` | JSON/CSV crawl từ [VPP Ba Nhất](https://vanphongphambanhat.com.vn/) |
+| `reference/thienlong/` | Ảnh + manifest từ [Thiên Long Shop](https://thienlong.vn/) (script Haravan) |
 | `by-category/<slug>/` | `items.json` + từng file `.md` theo sản phẩm |
 | `index.json` | Bảng tra nhanh toàn bộ SP (giá, slug, đường dẫn doc) |
 | `meta.json` | Lần export gần nhất |
+
+## Tải ảnh tham chiếu (Thiên Long, Haravan)
+
+Shop Haravan/Hstatic (vd. `thienlong.vn`) có API JSON công khai theo collection.
+
+```bash
+npm run catalog:images:haravan -- --config scripts/store-image-agent/configs/thienlong-but-viet.json
+```
+
+Chi tiết, thêm danh mục và prompt cho Cloud Agent: `scripts/store-image-agent/README.md`.
+
+Ảnh tải về nằm trong `reference/.../images/` (gitignore); manifest `products.json` dùng để map SKU ACA sau này.
 
 ## Cập nhật dữ liệu
 

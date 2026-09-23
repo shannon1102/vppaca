@@ -47,6 +47,10 @@ next-env.d.ts
 /public/uploads/*
 !/public/uploads/.gitkeep
 
+# Haravan reference downloads (see scripts/store-image-agent)
+docs/products/reference/**/images/*
+!docs/products/reference/**/images/.gitkeep
+
 .vercel
 .env*
 
