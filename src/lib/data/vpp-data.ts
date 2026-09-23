@@ -356,7 +356,7 @@ export async function vppSyncProductImagesFromSeed(opts?: {
 
   for (const seed of seedProducts) {
     const images = seed.images ?? [];
-    let targetId = byId.has(seed.id) ? seed.id : bySlug.get(seed.slug);
+    const targetId = byId.has(seed.id) ? seed.id : bySlug.get(seed.slug);
     if (!targetId) {
       productsNotInDb += 1;
       continue;
