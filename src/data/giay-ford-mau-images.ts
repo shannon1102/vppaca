@@ -1,33 +1,19 @@
 /**
- * Ảnh minh họa giấy Ford màu (Pexels — xem public/products/CREDITS.md).
+ * Ảnh minh họa giấy Ford màu (ảnh ACA — public/products/ford-mau/).
  */
 
-const F = "/products/ford-mau";
+const FORD_HERO = "/products/ford-mau/ford-mau-colored-papers.jpg";
 
-export const GIAY_FORD_CATEGORY_HERO = `${F}/colorful-papers-stacked.jpg`;
+export const GIAY_FORD_CATEGORY_HERO = FORD_HERO;
+
+const ALL_FORD = [FORD_HERO];
 
 const SLUG_IMAGES: Record<string, string[]> = {
-  "giay-ford-mau-a4-70": [
-    `${F}/colorful-papers-stacked.jpg`,
-    `${F}/colored-papers-rack.jpg`,
-  ],
-  "giay-ford-mau-a4-80": [
-    `${F}/colored-papers-rack.jpg`,
-    `${F}/colorful-papers-stacked.jpg`,
-  ],
-  "giay-ford-mau-a5-70": [
-    `${F}/office-paper-trays.jpg`,
-    `${F}/colorful-papers-stacked.jpg`,
-  ],
-  "giay-ford-mau-a5-80": [
-    `${F}/colorful-papers-stacked.jpg`,
-    `${F}/office-paper-trays.jpg`,
-  ],
-  "giay-ford-mau-dac-biet-grand": [
-    `${F}/colored-papers-rack.jpg`,
-    `${F}/colorful-papers-stacked.jpg`,
-    `${F}/office-paper-trays.jpg`,
-  ],
+  "giay-ford-mau-a4-70": ALL_FORD,
+  "giay-ford-mau-a4-80": ALL_FORD,
+  "giay-ford-mau-a5-70": ALL_FORD,
+  "giay-ford-mau-a5-80": ALL_FORD,
+  "giay-ford-mau-dac-biet-grand": ALL_FORD,
 };
 
 export function resolveGiayFordMauImages(product: {
@@ -36,7 +22,7 @@ export function resolveGiayFordMauImages(product: {
 }): string[] | null {
   if (SLUG_IMAGES[product.slug]) return SLUG_IMAGES[product.slug];
   if (/ford/i.test(product.name ?? "") || product.slug.includes("ford-mau")) {
-    return [GIAY_FORD_CATEGORY_HERO, `${F}/colored-papers-rack.jpg`];
+    return ALL_FORD;
   }
   return null;
 }

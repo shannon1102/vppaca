@@ -25,30 +25,36 @@ const PHOTO_CYCLE = [
   "/products/giay-a4-box.jpg",
 ];
 
-const FORD_MAU = "/products/ford-mau";
-const FORD_SLUG_IMAGES = {
-  "giay-ford-mau-a4-70": [
-    `${FORD_MAU}/colorful-papers-stacked.jpg`,
-    `${FORD_MAU}/colored-papers-rack.jpg`,
-  ],
-  "giay-ford-mau-a4-80": [
-    `${FORD_MAU}/colored-papers-rack.jpg`,
-    `${FORD_MAU}/colorful-papers-stacked.jpg`,
-  ],
-  "giay-ford-mau-a5-70": [
-    `${FORD_MAU}/office-paper-trays.jpg`,
-    `${FORD_MAU}/colorful-papers-stacked.jpg`,
-  ],
-  "giay-ford-mau-a5-80": [
-    `${FORD_MAU}/colorful-papers-stacked.jpg`,
-    `${FORD_MAU}/office-paper-trays.jpg`,
-  ],
-  "giay-ford-mau-dac-biet-grand": [
-    `${FORD_MAU}/colored-papers-rack.jpg`,
-    `${FORD_MAU}/colorful-papers-stacked.jpg`,
-    `${FORD_MAU}/office-paper-trays.jpg`,
-  ],
+const FORD_MAU = "/products/ford-mau/ford-mau-colored-papers.jpg";
+const STOCK = {
+  epPlastic: "/products/stock/bia-nhua-ep-plastic.jpg",
+  decal: "/products/stock/bia-kieng-trong.jpg",
+  lienTuc: "/products/stock/giay-lien-tuc-lien-son.webp",
+  ghtk5050: "/products/stock/tem-in-don-ghtk-50x50.jpg",
 };
+
+const FORD_SLUG_IMAGES = Object.fromEntries(
+  [
+    "giay-ford-mau-a4-70",
+    "giay-ford-mau-a4-80",
+    "giay-ford-mau-a5-70",
+    "giay-ford-mau-a5-80",
+    "giay-ford-mau-dac-biet-grand",
+  ].map((slug) => [slug, [FORD_MAU]]),
+);
+
+function stockImagePaths(item, categoryId) {
+  const slug = item.slug ?? "";
+  const name = item.name ?? "";
+  if (slug.startsWith("giay-ep-plastic-")) return [STOCK.epPlastic];
+  if (slug.startsWith("decal-")) return [STOCK.decal];
+  if (categoryId === "cat-giay-lien-tuc" || /liên tục|lien tuc/i.test(name)) {
+    return [STOCK.lienTuc];
+  }
+  if (slug === "giay-in-tem-nhiet-50x50") return [STOCK.ghtk5050];
+  if (/ford/i.test(name) || slug.includes("ford-mau")) return [FORD_MAU];
+  return null;
+}
 
 function cleanSpecs(specs) {
   if (!specs || typeof specs !== "object") return {};
@@ -227,8 +233,10 @@ const products = items.map((item) => {
     item.price && item.regular_price && item.price < item.regular_price
       ? Number(item.price)
       : null;
+  const category_id = resolveCategoryId(item.sourceFolder ?? "", item, item.specs ?? {});
+  const stockPhotos = stockImagePaths(item, category_id);
   const fordPhotos = FORD_SLUG_IMAGES[item.slug];
-  const photo = fordPhotos?.[0] ?? PHOTO_CYCLE[idx % PHOTO_CYCLE.length];
+  const photo = stockPhotos?.[0] ?? fordPhotos?.[0] ?? PHOTO_CYCLE[idx % PHOTO_CYCLE.length];
   idx += 1;
   const featured =
     /excel|double a|ik plus|paperone|a-one|a4.*70/i.test(item.name) && idx < 30;
@@ -251,7 +259,7 @@ const products = items.map((item) => {
         "Quy cách": specs["Quy cách đóng gói"] || specs["Đóng gói"],
       }).filter(([, v]) => v),
     ),
-    category_id: resolveCategoryId(item.sourceFolder ?? "", item, item.specs ?? {}),
+    category_id,
     stock: 100 + (idx % 40) * 10,
     sold_count: 50 + (idx % 100) * 11,
     is_published: true,
@@ -263,6 +271,7 @@ const products = items.map((item) => {
     min_stock: 20,
     filter_attrs,
     imagePaths:
+      stockPhotos ??
       fordPhotos ??
       [photo, PHOTO_CYCLE[(idx + 1) % PHOTO_CYCLE.length]],
   };
