@@ -4,6 +4,14 @@ import Link from "next/link";
 import { useState } from "react";
 import type { CategoryNavGroup } from "@/lib/catalog/category-tree";
 
+function ChevronRight() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden className="shrink-0 opacity-50">
+      <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 function Chevron({ open }: { open: boolean }) {
   return (
     <svg
@@ -20,33 +28,56 @@ function Chevron({ open }: { open: boolean }) {
 }
 
 export function CategoryNavDropdown({ groups }: { groups: CategoryNavGroup[] }) {
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const active =
+    groups.find((g) => g.category.id === hoveredId && g.children.length > 0) ?? null;
+
   return (
-    <div className="absolute left-0 top-full z-50 mt-1 max-h-[min(70vh,28rem)] w-72 overflow-y-auto rounded-[var(--radius)] border border-slate-300 bg-white py-1 shadow-xl ring-1 ring-slate-200/80">
-      <Link
-        href="/san-pham"
-        className="block px-4 py-2.5 text-sm font-medium hover:bg-slate-50 hover:text-[var(--brand-primary)]"
-      >
-        Tất cả sản phẩm
-      </Link>
-      {groups.map(({ category, children }) => (
-        <div key={category.id} className="border-t border-slate-100 first:border-t-0">
-          <Link
-            href={`/danh-muc/${category.slug}`}
-            className="block px-4 py-2.5 text-sm font-semibold hover:bg-slate-50 hover:text-[var(--brand-primary)]"
-          >
-            {category.name}
-          </Link>
-          {children.map((sub) => (
-            <Link
-              key={sub.id}
-              href={`/danh-muc/${sub.slug}`}
-              className="block py-2 pl-7 pr-4 text-sm text-[var(--brand-muted)] hover:bg-slate-50 hover:text-[var(--brand-primary)]"
+    <div
+      className="category-nav-mega absolute left-0 top-full z-50 mt-1"
+      onMouseLeave={() => setHoveredId(null)}
+    >
+      <div className="category-nav-mega__primary">
+        <Link href="/san-pham" className="category-nav-mega__item category-nav-mega__item--all">
+          Tất cả sản phẩm
+        </Link>
+        {groups.map(({ category, children }) => {
+          const hasChildren = children.length > 0;
+          const isActive = hoveredId === category.id;
+          return (
+            <div
+              key={category.id}
+              className="category-nav-mega__row"
+              onMouseEnter={() => setHoveredId(hasChildren ? category.id : null)}
             >
+              <Link
+                href={`/danh-muc/${category.slug}`}
+                className={`category-nav-mega__item ${isActive ? "category-nav-mega__item--active" : ""}`}
+              >
+                <span className="min-w-0 flex-1">{category.name}</span>
+                {hasChildren ? <ChevronRight /> : null}
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+
+      {active ? (
+        <div className="category-nav-mega__flyout">
+          <p className="category-nav-mega__flyout-title">{active.category.name}</p>
+          {active.children.map((sub) => (
+            <Link key={sub.id} href={`/danh-muc/${sub.slug}`} className="category-nav-mega__flyout-item">
               {sub.name}
             </Link>
           ))}
+          <Link
+            href={`/danh-muc/${active.category.slug}`}
+            className="category-nav-mega__flyout-all"
+          >
+            Xem tất cả {active.category.name}
+          </Link>
         </div>
-      ))}
+      ) : null}
     </div>
   );
 }
