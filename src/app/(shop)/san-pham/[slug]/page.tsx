@@ -71,7 +71,8 @@ export default async function ProductDetailPage({ params }: Props) {
   };
 
   return (
-    <div className="shop-container py-6 md:py-8">
+    <div className="pdp-page">
+      <div className="shop-container shop-container--pdp py-6 md:py-8">
       <CatalogBreadcrumb
         items={[
           { name: "Trang chủ", href: "/" },
@@ -90,10 +91,13 @@ export default async function ProductDetailPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <div className="pdp-shell">
       <div className="pdp-layout">
-        <ProductImageGallery images={product.images} name={product.name} />
+        <div className="pdp-layout__media">
+          <ProductImageGallery images={product.images} name={product.name} />
+        </div>
 
-        <div className="min-w-0">
+        <div className="pdp-layout__info min-w-0">
           <h1 className="text-2xl font-bold leading-snug md:text-[1.75rem]">{product.name}</h1>
           <p className="mt-2 text-sm text-[var(--brand-muted)]">
             Mã: {product.sku} ·{" "}
@@ -142,6 +146,7 @@ export default async function ProductDetailPage({ params }: Props) {
           </dl>
         </div>
       </div>
+      </div>
 
       {product.detail_description.trim() ? (
         <section className="mt-12 rounded-[var(--radius)] border border-slate-200 bg-white p-6 md:p-8">
@@ -162,6 +167,7 @@ export default async function ProductDetailPage({ params }: Props) {
           </div>
         </section>
       ) : null}
+      </div>
     </div>
   );
 }
