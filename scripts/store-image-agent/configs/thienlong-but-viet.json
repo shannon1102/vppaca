@@ -1,0 +1,10 @@
+{
+  "name": "Thiên Long Shop — Bút viết",
+  "baseUrl": "https://thienlong.vn",
+  "collectionHandle": "but-viet",
+  "outputDir": "docs/products/reference/thienlong/but-viet",
+  "acaCategoryHint": "cat-but",
+  "maxPages": 0,
+  "allImages": false,
+  "delayMs": 400
+}

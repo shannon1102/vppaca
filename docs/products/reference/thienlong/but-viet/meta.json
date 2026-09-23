@@ -1,0 +1,16 @@
+{
+  "source": {
+    "platform": "haravan",
+    "base_url": "https://thienlong.vn",
+    "collection_handle": "but-viet",
+    "collection_url": "https://thienlong.vn/collections/but-viet"
+  },
+  "fetched_at": "2026-09-23T08:14:42.319Z",
+  "product_count": 50,
+  "download_stats": {
+    "downloaded": 0,
+    "skipped_existing": 50,
+    "failed": 0
+  },
+  "config": "scripts/store-image-agent/configs/thienlong-but-viet.json"
+}

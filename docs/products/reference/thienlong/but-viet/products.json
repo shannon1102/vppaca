@@ -1,0 +1,970 @@
+{
+  "meta": {
+    "source": {
+      "platform": "haravan",
+      "base_url": "https://thienlong.vn",
+      "collection_handle": "but-viet",
+      "collection_url": "https://thienlong.vn/collections/but-viet"
+    },
+    "fetched_at": "2026-09-23T08:14:42.319Z",
+    "product_count": 50,
+    "download_stats": {
+      "downloaded": 0,
+      "skipped_existing": 50,
+      "failed": 0
+    },
+    "config": "scripts/store-image-agent/configs/thienlong-but-viet.json"
+  },
+  "products": [
+    {
+      "handle": "but-gel-thien-long-gel-056",
+      "title": "Bút gel Thiên Long GEL-056",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-thien-long-gel-056",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_2_copy_058b77bcf5b941a4ba5037711ce590b9.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_2_copy_058b77bcf5b941a4ba5037711ce590b9.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-thien-long-gel-056.jpg",
+          "bytes": 166674,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-mau-pastel-pro-027-thien-long-tl-105",
+      "title": "Bút bi Thiên Long TL-105 màu pastel PRO 027",
+      "vendor": "Thiên Long",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-mau-pastel-pro-027-thien-long-tl-105",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/web_c1617ffcc2eb48dc9ae166f3312855fc.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/web_c1617ffcc2eb48dc9ae166f3312855fc.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-mau-pastel-pro-027-thien-long-tl-105.jpg",
+          "bytes": 145102,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "combo-5-10-20-but-gel-fasgel-thien-long-gel-068",
+      "title": "Combo 5/10/20 Bút gel Fasgel Thiên Long GEL-068",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/combo-5-10-20-but-gel-fasgel-thien-long-gel-068",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://cdn.hstatic.net/products/1000230347/artboard_1_copy_1330264b97da41b2a9a9594600287230.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://cdn.hstatic.net/products/1000230347/artboard_1_copy_1330264b97da41b2a9a9594600287230.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/combo-5-10-20-but-gel-fasgel-thien-long-gel-068.jpg",
+          "bytes": 187786,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-fasgel-thien-long-gel-068",
+      "title": "Bút gel Fasgel Thiên Long GEL-068",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-fasgel-thien-long-gel-068",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://cdn.hstatic.net/products/1000230347/artboard_1_copy_dc035789d53b4ef48cc60a0f39eca851.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://cdn.hstatic.net/products/1000230347/artboard_1_copy_dc035789d53b4ef48cc60a0f39eca851.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-fasgel-thien-long-gel-068.jpg",
+          "bytes": 187786,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "combo-5-10-20-but-gel-joyee-thien-long-gel-067-muc-kho-sieu-nhanh",
+      "title": "Combo 5/10/20 Bút gel Joyee Thiên Long GEL-067 - Mực khô siêu nhanh",
+      "vendor": "Thiên Long",
+      "product_type": "COMBO",
+      "source_url": "https://thienlong.vn/products/combo-5-10-20-but-gel-joyee-thien-long-gel-067-muc-kho-sieu-nhanh",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://cdn.hstatic.net/products/1000230347/artboard_2_copy_6b29ab20594c47e19089343fffbc78eb.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://cdn.hstatic.net/products/1000230347/artboard_2_copy_6b29ab20594c47e19089343fffbc78eb.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/combo-5-10-20-but-gel-joyee-thien-long-gel-067-muc-kho-sieu-nhanh.jpg",
+          "bytes": 189240,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "combo-5-10-20-but-gel-akooland-dasi-thien-long-gel-073-ak-muc-kho-sieu-nhanh",
+      "title": "Combo 5/10/20 Bút gel Akooland Dasi Thiên Long GEL-073/AK - Mực khô siêu nhanh",
+      "vendor": "Thiên Long",
+      "product_type": "COMBO",
+      "source_url": "https://thienlong.vn/products/combo-5-10-20-but-gel-akooland-dasi-thien-long-gel-073-ak-muc-kho-sieu-nhanh",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://cdn.hstatic.net/products/1000230347/artboard_1_copy_1247a9f00cba4906957cb68cf5015dd5.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://cdn.hstatic.net/products/1000230347/artboard_1_copy_1247a9f00cba4906957cb68cf5015dd5.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/combo-5-10-20-but-gel-akooland-dasi-thien-long-gel-073-ak-muc-kho-sieu-nhanh.jpg",
+          "bytes": 215545,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "combo-5-10-20-but-gel-akooland-tahi-thien-long-gel-074-ak-muc-kho-sieu-nhanh",
+      "title": "Combo 5/10/20 Bút gel Akooland Tahi Thiên Long GEL-074/AK - Mực khô siêu nhanh",
+      "vendor": "Thiên Long",
+      "product_type": "COMBO",
+      "source_url": "https://thienlong.vn/products/combo-5-10-20-but-gel-akooland-tahi-thien-long-gel-074-ak-muc-kho-sieu-nhanh",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/gel-074_ak_2_41a5708fc9314f9c9638575d48073db7.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/gel-074_ak_2_41a5708fc9314f9c9638575d48073db7.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/combo-5-10-20-but-gel-akooland-tahi-thien-long-gel-074-ak-muc-kho-sieu-nhanh.jpg",
+          "bytes": 123958,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-akooland-tahi-thien-long-gel-074-ak-muc-kho-sieu-nhanh",
+      "title": "Bút gel Akooland Tahi Thiên Long GEL-074/AK - Mực khô siêu nhanh",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-akooland-tahi-thien-long-gel-074-ak-muc-kho-sieu-nhanh",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/gel-074_ak_2_49a4533427ed49d893e2d0db25f332c1.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/gel-074_ak_2_49a4533427ed49d893e2d0db25f332c1.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-akooland-tahi-thien-long-gel-074-ak-muc-kho-sieu-nhanh.jpg",
+          "bytes": 123958,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-akooland-dasi-thien-long-gel-073-ak-muc-kho-sieu-nhanh",
+      "title": "Bút gel Akooland Dasi Thiên Long GEL-073/AK - Mực khô siêu nhanh",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-akooland-dasi-thien-long-gel-073-ak-muc-kho-sieu-nhanh",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://cdn.hstatic.net/products/1000230347/artboard_1_copy_34269401a2da456daca3ffa2e39e7509.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://cdn.hstatic.net/products/1000230347/artboard_1_copy_34269401a2da456daca3ffa2e39e7509.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-akooland-dasi-thien-long-gel-073-ak-muc-kho-sieu-nhanh.jpg",
+          "bytes": 215545,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-joyee-thien-long-gel-067-muc-kho-sieu-nhanh",
+      "title": "Bút gel Joyee Thiên Long GEL-067 - Mực khô siêu nhanh",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-joyee-thien-long-gel-067-muc-kho-sieu-nhanh",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://cdn.hstatic.net/products/1000230347/artboard_2_copy_11b4d4b8e59a42359a7b62f37cd5a0b6.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://cdn.hstatic.net/products/1000230347/artboard_2_copy_11b4d4b8e59a42359a7b62f37cd5a0b6.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-joyee-thien-long-gel-067-muc-kho-sieu-nhanh.jpg",
+          "bytes": 189240,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-quick-dry-thien-long-gel-066-premium-tip-vat-lieu-tai-che",
+      "title": "Bút gel Quick Dry Thiên Long GEL-066 - Premium Tip - Vật liệu tái chế",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-quick-dry-thien-long-gel-066-premium-tip-vat-lieu-tai-che",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_2_copy_39ed7fd3eaa541ba99a2682833ab421c.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_2_copy_39ed7fd3eaa541ba99a2682833ab421c.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-quick-dry-thien-long-gel-066-premium-tip-vat-lieu-tai-che.jpg",
+          "bytes": 201784,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "combo-20-but-gel-thien-long-doraemon-gel-012-do-nature-muc-tim-phien-ban-2025",
+      "title": "Combo 20 Bút Gel Thiên Long Doraemon GEL-012/DO Nature - Mực tím - Phiên bản 2025",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/combo-20-but-gel-thien-long-doraemon-gel-012-do-nature-muc-tim-phien-ban-2025",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_1_copy_1b49d4d651344c98be698ad2f927092a.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_1_copy_1b49d4d651344c98be698ad2f927092a.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/combo-20-but-gel-thien-long-doraemon-gel-012-do-nature-muc-tim-phien-ban-2025.jpg",
+          "bytes": 129286,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-thien-long-doraemon-gel-012-do-nature-muc-tim-phien-ban-2025",
+      "title": "Bút Gel Thiên Long Doraemon GEL-012/DO Nature - Mực tím - Phiên bản 2025",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-thien-long-doraemon-gel-012-do-nature-muc-tim-phien-ban-2025",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_1_copy_7d6588c3df684bc681ecac93647e6efc.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_1_copy_7d6588c3df684bc681ecac93647e6efc.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-thien-long-doraemon-gel-012-do-nature-muc-tim-phien-ban-2025.jpg",
+          "bytes": 129286,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-flexoffice-fo-03",
+      "title": "Bút Bi Flexoffice FO-03",
+      "vendor": "Flexoffice",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-flexoffice-fo-03",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_3_30b224a815064725aa9b5171472c4825.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_3_30b224a815064725aa9b5171472c4825.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-flexoffice-fo-03.jpg",
+          "bytes": 230194,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-tl-027",
+      "title": "Bút Bi Thiên Long TL-027",
+      "vendor": "Thiên Long",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-tl-027",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_6_993a955c7bc34ed983cf23d627053848.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_6_993a955c7bc34ed983cf23d627053848.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-tl-027.jpg",
+          "bytes": 192078,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-tl-079",
+      "title": "Bút Bi Thiên Long TL-079",
+      "vendor": "Thiên Long",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-tl-079",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_5_51a2aeb2e0d44575adb195cd17d16056.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_5_51a2aeb2e0d44575adb195cd17d16056.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-tl-079.jpg",
+          "bytes": 186745,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-long-dau-thien-long-pm-04",
+      "title": "Bút lông dầu Thiên Long PM-04",
+      "vendor": "Thiên Long",
+      "product_type": "Bút lông dầu",
+      "source_url": "https://thienlong.vn/products/but-long-dau-thien-long-pm-04",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_1_copy_3ad4a89a9a714d13a47cdbb2c6d4d5eb.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_1_copy_3ad4a89a9a714d13a47cdbb2c6d4d5eb.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-long-dau-thien-long-pm-04.jpg",
+          "bytes": 237072,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-tl-93",
+      "title": "Bút Bi Thiên Long TL-093",
+      "vendor": "Thiên Long",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-tl-93",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_1_copy_c709d9d5886a42458175da2c7516d545.png"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_1_copy_c709d9d5886a42458175da2c7516d545.png",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-tl-93.png",
+          "bytes": 2174386,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-flexoffice-fo-024",
+      "title": "Bút Bi Flexoffice FO-024",
+      "vendor": "Flexoffice",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-flexoffice-fo-024",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_1_dcd900919c0648c09dd6cba1bf535f28.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_1_dcd900919c0648c09dd6cba1bf535f28.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-flexoffice-fo-024.jpg",
+          "bytes": 157960,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-long-kim-thien-long-fl-04-do",
+      "title": "Bút lông kim Thiên Long-Doraemon TP-FL04/DO",
+      "vendor": "Thiên Long",
+      "product_type": "Bút lông kim",
+      "source_url": "https://thienlong.vn/products/but-long-kim-thien-long-fl-04-do",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_1_33840bd223c146b0b42e02f3e9427d84.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_1_33840bd223c146b0b42e02f3e9427d84.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-long-kim-thien-long-fl-04-do.jpg",
+          "bytes": 197498,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-long-kim-thien-long-fl-08-do",
+      "title": "Bút lông kim Điểm 10 Doraemon TP-FL08/DO",
+      "vendor": "Điểm 10",
+      "product_type": "Bút lông kim",
+      "source_url": "https://thienlong.vn/products/but-long-kim-thien-long-fl-08-do",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_9_3659abc3eca6407db521f7039735766b.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_9_3659abc3eca6407db521f7039735766b.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-long-kim-thien-long-fl-08-do.jpg",
+          "bytes": 249532,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-tl-08",
+      "title": "Bút Bi Thiên Long TL-08",
+      "vendor": "Thiên Long",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-tl-08",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_1_eab93292c25f4689a3140d58f5d9f8df.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_1_eab93292c25f4689a3140d58f5d9f8df.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-tl-08.jpg",
+          "bytes": 138600,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-diem-10-tp-gele01",
+      "title": "Bút Gel Điểm 10 xóa được TP-GELE01",
+      "vendor": "Điểm 10",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-diem-10-tp-gele01",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://cdn.hstatic.net/products/1000230347/artboard_1_copy_a0cd1ea520e84cd9ad16f035c700e505.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://cdn.hstatic.net/products/1000230347/artboard_1_copy_a0cd1ea520e84cd9ad16f035c700e505.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-diem-10-tp-gele01.jpg",
+          "bytes": 220530,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-tl-36",
+      "title": "Bút Bi Thiên Long TL-036 0.7mm",
+      "vendor": "Thiên Long",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-tl-36",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_1_copy_994536479a1d4057a09784bf84424c55.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_1_copy_994536479a1d4057a09784bf84424c55.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-tl-36.jpg",
+          "bytes": 202985,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-tl-95",
+      "title": "Bút Bi Thiên Long TL-095",
+      "vendor": "Thiên Long",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-tl-95",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://cdn.hstatic.net/products/1000230347/artboard_2_copy_d15cdc878c854724b0e909e0e4ca2aee.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://cdn.hstatic.net/products/1000230347/artboard_2_copy_d15cdc878c854724b0e909e0e4ca2aee.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-tl-95.jpg",
+          "bytes": 393220,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-tl-089",
+      "title": "Bút bi Thiên Long TL-089",
+      "vendor": "Thiên Long",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-tl-089",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_1_fc2993b238414092a2605049ff102b98.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_1_fc2993b238414092a2605049ff102b98.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-tl-089.jpg",
+          "bytes": 194754,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-tl-61",
+      "title": "Bút Bi Thiên Long TL-061",
+      "vendor": "Thiên Long",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-tl-61",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://cdn.hstatic.net/products/1000230347/artboard_4_copy_c4e70dabcf254309900a4fe71c831514.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://cdn.hstatic.net/products/1000230347/artboard_4_copy_c4e70dabcf254309900a4fe71c831514.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-tl-61.jpg",
+          "bytes": 241167,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-diem-10-tp-7",
+      "title": "Bút bi Điểm 10 TP-06",
+      "vendor": "Điểm 10",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-diem-10-tp-7",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/but-bi-diem-10-tp-06_632be6ed7142432dbfd19b74e17ab1fb.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/but-bi-diem-10-tp-06_632be6ed7142432dbfd19b74e17ab1fb.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-diem-10-tp-7.jpg",
+          "bytes": 90787,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-flexoffice-fo-023",
+      "title": "Bút Bi Flexoffice FO-023",
+      "vendor": "Flexoffice",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-flexoffice-fo-023",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/but-bi-flexoffice-fo-023_e7a0cfc0059947699ab0f177abecb00d.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/but-bi-flexoffice-fo-023_e7a0cfc0059947699ab0f177abecb00d.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-flexoffice-fo-023.jpg",
+          "bytes": 58220,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-thien-long-gel-012-do",
+      "title": "Bút Gel Thiên Long Doraemon GEL-012/DO",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-thien-long-gel-012-do",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://cdn.hstatic.net/products/1000230347/artboard_1_copy_5ed90d261dd34f19a94405df516dcf2f.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://cdn.hstatic.net/products/1000230347/artboard_1_copy_5ed90d261dd34f19a94405df516dcf2f.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-thien-long-gel-012-do.jpg",
+          "bytes": 235900,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-thien-long-gel-027",
+      "title": "Bút Gel Thiên Long GEL-027",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-thien-long-gel-027",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/gel-027_05158876c8a8404ba4c02a7794481bdf.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/gel-027_05158876c8a8404ba4c02a7794481bdf.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-thien-long-gel-027.jpg",
+          "bytes": 231681,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-flexoffice-fo-039",
+      "title": "Bút bi Starup Thiên Long Flexoffice FO-039",
+      "vendor": "Flexoffice",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-flexoffice-fo-039",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/thumnail_7cff930ede86456c8ebdafc00c7c0c5c.png"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/thumnail_7cff930ede86456c8ebdafc00c7c0c5c.png",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-flexoffice-fo-039.png",
+          "bytes": 350543,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-b-thien-long-gel-b01",
+      "title": "Bút Gel B Thiên Long GEL-B01",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel B",
+      "source_url": "https://thienlong.vn/products/but-gel-b-thien-long-gel-b01",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/gel01_97ffb162a7214668bd0f0b7e16ea3845.png"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/gel01_97ffb162a7214668bd0f0b7e16ea3845.png",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-b-thien-long-gel-b01.png",
+          "bytes": 434565,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-long-kim-beebee-thien-long-fl-04",
+      "title": "Bút lông kim Beebee Thiên Long FL-04",
+      "vendor": "Thiên Long",
+      "product_type": "Bút lông kim",
+      "source_url": "https://thienlong.vn/products/but-long-kim-beebee-thien-long-fl-04",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_1_e179118fb258417d9d670d0de2db8434.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_1_e179118fb258417d9d670d0de2db8434.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-long-kim-beebee-thien-long-fl-04.jpg",
+          "bytes": 189161,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-tl-090",
+      "title": "Bút bi Thiên Long TL-090",
+      "vendor": "Thiên Long",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-tl-090",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/but-bi-thien-long-tl-090_86018da884c944c4bfd1a00239f83f45.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/but-bi-thien-long-tl-090_86018da884c944c4bfd1a00239f83f45.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-tl-090.jpg",
+          "bytes": 195795,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-b-thien-long-gel-b011",
+      "title": "Bút Gel B Thiên Long GELB-011",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel B",
+      "source_url": "https://thienlong.vn/products/but-gel-b-thien-long-gel-b011",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://cdn.hstatic.net/products/1000230347/artboard_2_copy_dc1b6db630944980a3f10b19a67a26bd.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://cdn.hstatic.net/products/1000230347/artboard_2_copy_dc1b6db630944980a3f10b19a67a26bd.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-b-thien-long-gel-b011.jpg",
+          "bytes": 209590,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-thien-long-flexoffice-fo-gel018",
+      "title": "Bút Gel FlexOffice FO-GEL018 (FS)",
+      "vendor": "Flexoffice",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-thien-long-flexoffice-fo-gel018",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/but_gel_flexoffice_fo-gel018__fs__87e70e26fcdd4b3181c1423053eb2dd9.png"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/but_gel_flexoffice_fo-gel018__fs__87e70e26fcdd4b3181c1423053eb2dd9.png",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-thien-long-flexoffice-fo-gel018.png",
+          "bytes": 313120,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-thien-long-gel-012",
+      "title": "Bút Gel Starlit Thiên Long GEL-012",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-thien-long-gel-012",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://cdn.hstatic.net/products/1000230347/artboard_2_copy_d7e196a674a14fc0b999180eb1731610.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://cdn.hstatic.net/products/1000230347/artboard_2_copy_d7e196a674a14fc0b999180eb1731610.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-thien-long-gel-012.jpg",
+          "bytes": 462343,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-thien-long-gel-031",
+      "title": "Bút Gel Thiên Long GEL-031",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-thien-long-gel-031",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/gel-031_bb4064d62379444aa2c18c4f3425cf08.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/gel-031_bb4064d62379444aa2c18c4f3425cf08.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-thien-long-gel-031.jpg",
+          "bytes": 57960,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-thien-long-gel-08",
+      "title": "Bút Gel Thiên Long GEL-08",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-thien-long-gel-08",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://cdn.hstatic.net/products/1000230347/artboard_2_copy_be9e35927bf348df84ba04716afda168.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://cdn.hstatic.net/products/1000230347/artboard_2_copy_be9e35927bf348df84ba04716afda168.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-thien-long-gel-08.jpg",
+          "bytes": 163802,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-thien-long-gel-07",
+      "title": "Bút Gel Thiên Long GEL-07",
+      "vendor": "Thiên Long",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-thien-long-gel-07",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_1_copy_d9fea13de5794529bcdd66f79dd84732.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_1_copy_d9fea13de5794529bcdd66f79dd84732.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-thien-long-gel-07.jpg",
+          "bytes": 223404,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-tl-097",
+      "title": "Bút Bi Thiên Long TL-097",
+      "vendor": "Thiên Long",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-tl-097",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_3_copy_8f01c213f3a9441dab0f3ceec27a670e.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_3_copy_8f01c213f3a9441dab0f3ceec27a670e.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-tl-097.jpg",
+          "bytes": 229837,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-xoa-duoc-thien-long-diem-10-tp-gele002",
+      "title": "Bút gel xóa được Thiên Long Điểm 10 TP-GELE002",
+      "vendor": "Điểm 10",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-xoa-duoc-thien-long-diem-10-tp-gele002",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_3-2_23fcecb216454c9abe2e55490e09ac43.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_3-2_23fcecb216454c9abe2e55490e09ac43.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-xoa-duoc-thien-long-diem-10-tp-gele002.jpg",
+          "bytes": 582395,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-thien-long-diem-10-tp-gel01",
+      "title": "Bút Gel Điểm 10 TP-GEL01",
+      "vendor": "Điểm 10",
+      "product_type": "Bút gel",
+      "source_url": "https://thienlong.vn/products/but-gel-thien-long-diem-10-tp-gel01",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_1_2c2b2821369b4a54b67823ba34aa3d8d.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_1_2c2b2821369b4a54b67823ba34aa3d8d.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-thien-long-diem-10-tp-gel01.jpg",
+          "bytes": 217873,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-tl-031",
+      "title": "Bút Bi Thiên Long TL-031",
+      "vendor": "Thiên Long",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-tl-031",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_1.png_644a6f46ee3c4210a29019689d6f6c65.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_1.png_644a6f46ee3c4210a29019689d6f6c65.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-tl-031.jpg",
+          "bytes": 24507,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-tl-34",
+      "title": "Bút Bi Thiên Long TL-034 (FS)",
+      "vendor": "Thiên Long",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-tl-34",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/eqwxzcz_87d3734f206346dbaf6a7d1d13bf2dde.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/eqwxzcz_87d3734f206346dbaf6a7d1d13bf2dde.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-tl-34.jpg",
+          "bytes": 20700,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-tl-25",
+      "title": "Bút Bi Thiên Long TL-025",
+      "vendor": "Thiên Long",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-tl-25",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/artboard_1_c4c70ff201d440399a709c00ade45da0.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/artboard_1_c4c70ff201d440399a709c00ade45da0.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-tl-25.jpg",
+          "bytes": 182586,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-tl-036-1-0mm",
+      "title": "Bút Bi Thiên Long TL-036 1.0MM",
+      "vendor": "Thiên Long",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-tl-036-1-0mm",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/b9_fa366cd5351741a38de6140ed3786e1d.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/b9_fa366cd5351741a38de6140ed3786e1d.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-tl-036-1-0mm.jpg",
+          "bytes": 16163,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-gel-b-thien-long-flexoffice-fo-gel-b012",
+      "title": "Bút Gel B Flexoffice FO-GELB012",
+      "vendor": "Flexoffice",
+      "product_type": "Bút gel B",
+      "source_url": "https://thienlong.vn/products/but-gel-b-thien-long-flexoffice-fo-gel-b012",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://product.hstatic.net/1000230347/product/but_gel_b_flexoffice_fo-gelb012_bb99d0732d154284b2ad718835b8b9f3.png"
+      ],
+      "local_files": [
+        {
+          "url": "https://product.hstatic.net/1000230347/product/but_gel_b_flexoffice_fo-gelb012_bb99d0732d154284b2ad718835b8b9f3.png",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-gel-b-thien-long-flexoffice-fo-gel-b012.png",
+          "bytes": 415135,
+          "skipped_existing": true
+        }
+      ]
+    },
+    {
+      "handle": "but-bi-thien-long-tl-23",
+      "title": "Bút Bi Thiên Long TL-023",
+      "vendor": "Thiên Long",
+      "product_type": "Bút Bi",
+      "source_url": "https://thienlong.vn/products/but-bi-thien-long-tl-23",
+      "aca_category_hint": "cat-but",
+      "image_urls": [
+        "https://cdn.hstatic.net/products/1000230347/artboard_1_copy_eacedd1a8a7542a79b08f9cd607c6f0b.jpg"
+      ],
+      "local_files": [
+        {
+          "url": "https://cdn.hstatic.net/products/1000230347/artboard_1_copy_eacedd1a8a7542a79b08f9cd607c6f0b.jpg",
+          "path": "docs/products/reference/thienlong/but-viet/images/but-bi-thien-long-tl-23.jpg",
+          "bytes": 174289,
+          "skipped_existing": true
+        }
+      ]
+    }
+  ]
+}
