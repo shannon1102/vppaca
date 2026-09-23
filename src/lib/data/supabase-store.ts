@@ -1,4 +1,3 @@
-import { createClient } from "@supabase/supabase-js";
 import type {
   Category,
   ContactLead,
@@ -12,19 +11,10 @@ import type {
 import { defaultSettings } from "@/data/seed";
 import { BRAND_COLORS } from "@/lib/brand-colors";
 import { resolveLogoUrl } from "@/lib/brand-logo";
+import { getAdminClient } from "@/lib/data/supabase-admin";
 
 function adminClient() {
-  const url =
-    process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
-  const key =
-    process.env.SUPABASE_SERVICE_ROLE_KEY ||
-    process.env.SUPABASE_SECRET_KEY ||
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-    process.env.SUPABASE_ANON_KEY;
-  if (!url || !key) throw new Error("Supabase env missing");
-  return createClient(url, key, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
+  return getAdminClient();
 }
 
 function isMissingTableError(error: { code?: string; message?: string }): boolean {
@@ -555,13 +545,17 @@ function mapContactLead(row: Record<string, unknown>): ContactLead {
  * Use `scripts/seed-catalog.cjs` when you want demo/catalog data.
  */
 export async function sbEnsureSeed(): Promise<void> {
-  const sb = adminClient();
-  const { data: settings } = await sb.from("site_settings").select("id").limit(1);
-  if (!settings?.length) {
-    const { id: _id, ...rest } = defaultSettings;
-    await sb.from("site_settings").insert(rest);
+  try {
+    const sb = adminClient();
+    const { data: settings } = await sb.from("site_settings").select("id").limit(1);
+    if (!settings?.length) {
+      const { id: _id, ...rest } = defaultSettings;
+      await sb.from("site_settings").insert(rest);
+    }
+    const { vppSeedCatalogIfEmpty, vppSyncHomeBanners } = await import("@/lib/data/vpp-data");
+    await vppSeedCatalogIfEmpty();
+    await vppSyncHomeBanners();
+  } catch (error) {
+    console.error("[sbEnsureSeed]", error);
   }
-  const { vppSeedCatalogIfEmpty, vppSyncHomeBanners } = await import("@/lib/data/vpp-data");
-  await vppSeedCatalogIfEmpty();
-  await vppSyncHomeBanners();
 }

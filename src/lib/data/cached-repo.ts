@@ -39,14 +39,33 @@ export const CACHE_TAGS = {
 } as const;
 
 async function withSeed<T>(fn: () => Promise<T>): Promise<T> {
-  const { sbEnsureSeed } = await import("@/lib/data/supabase-store");
-  let seedPromise: Promise<void> | null = (globalThis as { __seed?: Promise<void> }).__seed ?? null;
-  if (!seedPromise) {
-    seedPromise = sbEnsureSeed();
-    (globalThis as { __seed?: Promise<void> }).__seed = seedPromise;
+  try {
+    const { sbEnsureSeed } = await import("@/lib/data/supabase-store");
+    const g = globalThis as { __seed?: Promise<void> };
+    if (!g.__seed) {
+      g.__seed = sbEnsureSeed().catch((error) => {
+        g.__seed = undefined;
+        console.error("[seed]", error);
+      });
+    }
+    await g.__seed;
+  } catch (error) {
+    console.error("[seed]", error);
   }
-  await seedPromise;
   return fn();
+}
+
+async function supabaseOrLocal<T>(
+  remote: () => Promise<T>,
+  local: () => Promise<T>,
+): Promise<T> {
+  if (!isSupabaseConfigured()) return local();
+  try {
+    return await withSeed(remote);
+  } catch (error) {
+    console.error("[cached-repo] supabase read failed, using local catalog", error);
+    return local();
+  }
 }
 
 function cached<T>(
@@ -61,49 +80,51 @@ function cached<T>(
 export const cachedRepo = {
   getSettings: reactCache(() =>
     cached(["repo-settings"], () =>
-      isSupabaseConfigured() ? withSeed(() => sbGetSettings()) : localGetSettings(),
+      supabaseOrLocal(() => sbGetSettings(), localGetSettings),
     300, [CACHE_TAGS.settings]),
   ),
   listCategories: reactCache(() =>
     cached(["repo-categories"], () =>
-      isSupabaseConfigured() ? withSeed(() => sbListCategories()) : localListCategories(),
+      supabaseOrLocal(() => sbListCategories(), localListCategories),
     300, [CACHE_TAGS.categories]),
   ),
   listProducts: reactCache((opts?: { publishedOnly?: boolean; categorySlug?: string }) => {
     const key = JSON.stringify(opts ?? {});
     return cached(["repo-products", key], () =>
-      isSupabaseConfigured()
-        ? withSeed(() => sbListProducts(opts))
-        : localListProducts(opts),
+      supabaseOrLocal(() => sbListProducts(opts), () => localListProducts(opts)),
     60, [CACHE_TAGS.products]);
   }),
   getProductBySlug: reactCache((slug: string, publishedOnly = true) =>
     cached(["repo-product-slug", slug, String(publishedOnly)], () =>
-      isSupabaseConfigured()
-        ? withSeed(() => sbGetProductBySlug(slug, publishedOnly))
-        : localGetProductBySlug(slug, publishedOnly),
+      supabaseOrLocal(
+        () => sbGetProductBySlug(slug, publishedOnly),
+        () => localGetProductBySlug(slug, publishedOnly),
+      ),
     60, [CACHE_TAGS.products]),
   ),
   listRelatedProducts: reactCache((categoryId: string, excludeId: string, limit = 4) =>
     cached(["repo-related", categoryId, excludeId, String(limit)], () =>
-      isSupabaseConfigured()
-        ? withSeed(() => sbListRelatedProducts(categoryId, excludeId, limit))
-        : localListRelatedProducts(categoryId, excludeId, limit),
+      supabaseOrLocal(
+        () => sbListRelatedProducts(categoryId, excludeId, limit),
+        () => localListRelatedProducts(categoryId, excludeId, limit),
+      ),
     60, [CACHE_TAGS.products]),
   ),
   listArticles: reactCache((opts?: { publishedOnly?: boolean }) => {
     const publishedOnly = Boolean(opts?.publishedOnly);
     return cached(["repo-articles", String(publishedOnly)], () =>
-      isSupabaseConfigured()
-        ? withSeed(() => sbListArticles({ publishedOnly }))
-        : localListArticles({ publishedOnly }),
+      supabaseOrLocal(
+        () => sbListArticles({ publishedOnly }),
+        () => localListArticles({ publishedOnly }),
+      ),
     300, [CACHE_TAGS.articles]);
   }),
   getArticleBySlug: reactCache((slug: string, publishedOnly = true) =>
     cached(["repo-article-slug", slug, String(publishedOnly)], () =>
-      isSupabaseConfigured()
-        ? withSeed(() => sbGetArticleBySlug(slug, publishedOnly))
-        : localGetArticleBySlug(slug, publishedOnly),
+      supabaseOrLocal(
+        () => sbGetArticleBySlug(slug, publishedOnly),
+        () => localGetArticleBySlug(slug, publishedOnly),
+      ),
     300, [CACHE_TAGS.articles]),
   ),
 };

@@ -1,4 +1,3 @@
-import { createClient } from "@supabase/supabase-js";
 import { promises as fs } from "fs";
 import path from "path";
 import {
@@ -23,19 +22,10 @@ import type {
   StockAlert,
 } from "@/lib/types";
 import { isSupabaseConfigured } from "@/lib/data/config";
+import { getAdminClient } from "@/lib/data/supabase-admin";
 
 function adminClient() {
-  const url =
-    process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
-  const key =
-    process.env.SUPABASE_SERVICE_ROLE_KEY ||
-    process.env.SUPABASE_SECRET_KEY ||
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-    process.env.SUPABASE_ANON_KEY;
-  if (!url || !key) throw new Error("Supabase env missing");
-  return createClient(url, key, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
+  return getAdminClient();
 }
 
 const DATA_DIR = path.join(process.cwd(), ".data");
@@ -111,26 +101,31 @@ export async function vppGetActiveFlashSale(): Promise<{
 }> {
   const at = new Date();
   if (isSupabaseConfigured()) {
-    const sb = adminClient();
-    const { data: promos, error } = await sb
-      .from("promotions")
-      .select("*")
-      .eq("is_active", true)
-      .eq("type", "flash_sale");
-    if (error) throw error;
-    const promotion =
-      (promos ?? []).map(mapPromotion).find((p) => isActivePromotion(p, at)) ??
-      null;
-    if (!promotion) return { promotion: null, products: [] };
-    const { data: pp, error: e2 } = await sb
-      .from("promotion_products")
-      .select("*")
-      .eq("promotion_id", promotion.id);
-    if (e2) throw e2;
-    return {
-      promotion,
-      products: (pp ?? []).map(mapPromotionProduct),
-    };
+    try {
+      const sb = adminClient();
+      const { data: promos, error } = await sb
+        .from("promotions")
+        .select("*")
+        .eq("is_active", true)
+        .eq("type", "flash_sale");
+      if (error) throw error;
+      const promotion =
+        (promos ?? []).map(mapPromotion).find((p) => isActivePromotion(p, at)) ??
+        null;
+      if (!promotion) return { promotion: null, products: [] };
+      const { data: pp, error: e2 } = await sb
+        .from("promotion_products")
+        .select("*")
+        .eq("promotion_id", promotion.id);
+      if (e2) throw e2;
+      return {
+        promotion,
+        products: (pp ?? []).map(mapPromotionProduct),
+      };
+    } catch (error) {
+      console.error("[flash-sale] supabase failed, skip promo", error);
+      return { promotion: null, products: [] };
+    }
   }
   const local = await readVppLocal();
   const promotion =

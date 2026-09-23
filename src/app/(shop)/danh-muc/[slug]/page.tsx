@@ -11,6 +11,7 @@ import { EmptyState } from "@/components/ui/empty";
 import { CatalogPagination } from "@/components/store/catalog-pagination";
 import { parseCatalogPage } from "@/lib/catalog/list-products-page";
 import { repo, vppGetActiveFlashSale } from "@/lib/data/repository";
+import { catalogImageSrc } from "@/lib/media/safe-image-src";
 import { absoluteUrl } from "@/lib/seo/jsonld";
 import { noindexMetadata, pageMetadata, SEO_KEYWORDS } from "@/lib/seo/metadata";
 
@@ -113,7 +114,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
             {cat.image_url ? (
               <div className="relative mx-auto mt-4 aspect-[21/6] max-h-52 w-full overflow-hidden rounded-[var(--radius)] border border-slate-200 bg-white">
                 <Image
-                  src={cat.image_url}
+                  src={catalogImageSrc(cat.image_url)}
                   alt={cat.name}
                   fill
                   className="object-cover"

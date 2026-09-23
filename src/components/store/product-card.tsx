@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ProductCardActions } from "@/components/store/product-card-actions";
 import { effectivePrice, formatVnd } from "@/lib/format";
+import { catalogImageSrc } from "@/lib/media/safe-image-src";
 import type { Product } from "@/lib/types";
 
 function formatSold(n: number): string {
@@ -49,7 +50,7 @@ export function ProductCard({
       <Link href={`/san-pham/${product.slug}`} className="product-card-tl__media-link">
         <div className="product-card-tl__media">
           <Image
-            src={product.images[0] ?? "/seed/product-01.svg"}
+            src={catalogImageSrc(product.images.find((src) => Boolean(src)))}
             alt={product.name}
             fill
             className="object-contain p-2 transition duration-300 group-hover:scale-[1.03]"
