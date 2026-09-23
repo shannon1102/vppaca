@@ -5,11 +5,13 @@
 
 const S = "/products/stock";
 const FORD = "/products/ford-mau/ford-mau-colored-papers.jpg";
+const BIA_MAU_A3 = "/products/ford-mau/bia-mau-a3-colored-sheets.png";
 
 export const STOCK_IMAGES = {
   kingStarBiaCong: `${S}/king-star-bia-cong.jpg`,
   biaNhuaEpPlastic: `${S}/bia-nhua-ep-plastic.jpg`,
   biaKiengTrong: `${S}/bia-kieng-trong.jpg`,
+  biaMauA3: BIA_MAU_A3,
   fordMau: FORD,
   giayLienTuc: `${S}/giay-lien-tuc-lien-son.webp`,
   butTl027: `${S}/but-thien-long-tl-027.webp`,
@@ -41,12 +43,24 @@ export function resolveVppStockImages(product: {
     return [STOCK_IMAGES.biaNhuaEpPlastic];
   }
 
+  if (
+    cat === "cat-giay-bia-mau" &&
+    /a3/i.test(`${slug} ${name}`) &&
+    (/^bia-/.test(slug) || /bìa|bia /i.test(name))
+  ) {
+    return [STOCK_IMAGES.biaMauA3];
+  }
+
   if (slug.startsWith("decal-") || /decal thường|giấy decal trong/i.test(name)) {
     return [STOCK_IMAGES.biaKiengTrong];
   }
 
   if (cat === "cat-giay-lien-tuc" || /liên tục|lien tuc|liên sơn/i.test(name)) {
     return [STOCK_IMAGES.giayLienTuc];
+  }
+
+  if (cat === "cat-giay-nhiet" || /giấy in nhiệt|giay in nhiet|giấy fax nhiệt/i.test(name)) {
+    return [STOCK_IMAGES.temGhtk5050];
   }
 
   if (
