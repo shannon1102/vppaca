@@ -25,6 +25,31 @@ const PHOTO_CYCLE = [
   "/products/giay-a4-box.jpg",
 ];
 
+const FORD_MAU = "/products/ford-mau";
+const FORD_SLUG_IMAGES = {
+  "giay-ford-mau-a4-70": [
+    `${FORD_MAU}/colorful-papers-stacked.jpg`,
+    `${FORD_MAU}/colored-papers-rack.jpg`,
+  ],
+  "giay-ford-mau-a4-80": [
+    `${FORD_MAU}/colored-papers-rack.jpg`,
+    `${FORD_MAU}/colorful-papers-stacked.jpg`,
+  ],
+  "giay-ford-mau-a5-70": [
+    `${FORD_MAU}/office-paper-trays.jpg`,
+    `${FORD_MAU}/colorful-papers-stacked.jpg`,
+  ],
+  "giay-ford-mau-a5-80": [
+    `${FORD_MAU}/colorful-papers-stacked.jpg`,
+    `${FORD_MAU}/office-paper-trays.jpg`,
+  ],
+  "giay-ford-mau-dac-biet-grand": [
+    `${FORD_MAU}/colored-papers-rack.jpg`,
+    `${FORD_MAU}/colorful-papers-stacked.jpg`,
+    `${FORD_MAU}/office-paper-trays.jpg`,
+  ],
+};
+
 function cleanSpecs(specs) {
   if (!specs || typeof specs !== "object") return {};
   const out = {};
@@ -126,13 +151,22 @@ function normalizeSku(slug, sku) {
   return `GIAY-${base.slice(0, 24)}`;
 }
 
+function isExcludedPaperItem(item, folder) {
+  if (folder === "giay-decal") return true;
+  const slug = item.slug ?? "";
+  if (slug.startsWith("giay-decal-")) return true;
+  if (slug.startsWith("nhan-tomy-")) return true;
+  const name = (item.name ?? "").trim();
+  if (/^(Giấy Decal|Nhãn Tomy)/i.test(name)) return true;
+  return false;
+}
+
 const FOLDER_TO_CAT = {
   "giay-a4": "cat-giay-a4",
   "giay-a3": "cat-giay-a3-a5",
   "giay-a5": "cat-giay-a3-a5",
   "giay-in-anh": "cat-giay-in-anh",
   "giay-note-phan-trang": "cat-giay-note",
-  "giay-decal": "cat-giay-decal",
   "giay-a0-giay-a1": "cat-giay-kho-lon",
   "giay-lien-tuc": "cat-giay-lien-tuc",
   "giay-in-nhiet": "cat-giay-nhiet",
@@ -143,6 +177,7 @@ const FOLDER_TO_CAT = {
 
 function resolveCategoryId(folder, item, specs) {
   if (FOLDER_TO_CAT[folder]) return FOLDER_TO_CAT[folder];
+  if (/ford/i.test(item.name ?? "")) return "cat-giay-bia-mau";
   const size =
     specs.size_inferred ||
     specs["Kích thước"]?.match(/A[0-9]/i)?.[0]?.toUpperCase() ||
@@ -150,7 +185,6 @@ function resolveCategoryId(folder, item, specs) {
   if (size === "A4") return "cat-giay-a4";
   if (size === "A3" || size === "A5") return "cat-giay-a3-a5";
   if (/note|stick|phân trang|pronoti/i.test(item.name)) return "cat-giay-note";
-  if (/decal|tomy/i.test(item.name)) return "cat-giay-decal";
   if (/liên tục|lien tuc/i.test(item.name)) return "cat-giay-lien-tuc";
   if (/nhiệt|nhiet|fax|bill/i.test(item.name)) return "cat-giay-nhiet";
   if (/bìa|ford|plastic|ép/i.test(item.name)) return "cat-giay-bia-mau";
@@ -173,6 +207,7 @@ function loadAllPaperItems() {
     const data = JSON.parse(fs.readFileSync(itemsPath, "utf8"));
     for (const item of data.items ?? []) {
       if (!item.slug || !item.name) continue;
+      if (isExcludedPaperItem(item, dir)) continue;
       if (item.aca_category_hint && item.aca_category_hint !== "cat-giay") continue;
       if (!bySlug.has(item.slug)) bySlug.set(item.slug, { ...item, sourceFolder: dir });
     }
@@ -192,7 +227,8 @@ const products = items.map((item) => {
     item.price && item.regular_price && item.price < item.regular_price
       ? Number(item.price)
       : null;
-  const photo = PHOTO_CYCLE[idx % PHOTO_CYCLE.length];
+  const fordPhotos = FORD_SLUG_IMAGES[item.slug];
+  const photo = fordPhotos?.[0] ?? PHOTO_CYCLE[idx % PHOTO_CYCLE.length];
   idx += 1;
   const featured =
     /excel|double a|ik plus|paperone|a-one|a4.*70/i.test(item.name) && idx < 30;
@@ -226,7 +262,9 @@ const products = items.map((item) => {
     base_uom_code: "ram",
     min_stock: 20,
     filter_attrs,
-    imagePaths: [photo, PHOTO_CYCLE[(idx + 1) % PHOTO_CYCLE.length]],
+    imagePaths:
+      fordPhotos ??
+      [photo, PHOTO_CYCLE[(idx + 1) % PHOTO_CYCLE.length]],
   };
 });
 

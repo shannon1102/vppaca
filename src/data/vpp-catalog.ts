@@ -18,6 +18,11 @@ import {
   GIAY_A4_CATEGORY_HERO,
   resolveGiayA4BrandImages,
 } from "@/data/giay-a4-brand-images";
+import { isExcludedPaperProduct } from "@/data/paper-catalog-exclusions";
+import {
+  GIAY_FORD_CATEGORY_HERO,
+  resolveGiayFordMauImages,
+} from "@/data/giay-ford-mau-images";
 
 export const defaultSettings: SiteSettings = {
   id: "default",
@@ -89,15 +94,6 @@ export const seedCategories: Category[] = [
     parent_id: "cat-giay",
   },
   {
-    id: "cat-giay-decal",
-    name: "Giấy Decal",
-    slug: "giay-decal",
-    description: "Decal in ấn, nhãn Tomy",
-    sort: 5,
-    image_url: "/products/giay-a4-box.jpg",
-    parent_id: "cat-giay",
-  },
-  {
     id: "cat-giay-kho-lon",
     name: "Giấy khổ lớn A1, A0",
     slug: "giay-a1-a0",
@@ -130,7 +126,7 @@ export const seedCategories: Category[] = [
     slug: "giay-bia-ford-mau",
     description: "Bìa màu A3/A4, giấy Ford, ép plastic",
     sort: 9,
-    image_url: "/products/bia-ho-so.jpg",
+    image_url: GIAY_FORD_CATEGORY_HERO,
     parent_id: "cat-giay",
   },
   {
@@ -497,7 +493,10 @@ const MANUAL_PAPER_SLUGS = new Set(
 );
 
 const paperFromDocs: RawP[] = (paperCatalog.products as RawP[]).filter(
-  (p) => !MANUAL_PAPER_SLUGS.has(p.slug) && !giayA4BrandSuppressSlugs.has(p.slug),
+  (p) =>
+    !MANUAL_PAPER_SLUGS.has(p.slug) &&
+    !giayA4BrandSuppressSlugs.has(p.slug) &&
+    !isExcludedPaperProduct(p.slug, p.name),
 );
 
 function expandProducts(): Product[] {
@@ -534,9 +533,10 @@ function expandProducts(): Product[] {
   return [...manualPaperSources, ...paperFromDocs, ...extras].map((p) => {
     const brandImages =
       p.category_id === "cat-giay-a4" ? resolveGiayA4BrandImages(p) : null;
+    const fordImages = resolveGiayFordMauImages(p);
     return {
       ...p,
-      images: brandImages ?? defaultImages(p),
+      images: brandImages ?? fordImages ?? defaultImages(p),
     };
   });
 }
