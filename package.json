@@ -13,7 +13,8 @@
     "product-docs:export": "python scripts/export-product-docs.py",
     "catalog:paper:generate": "node scripts/generate-paper-seed-from-docs.mjs",
     "catalog:images:haravan": "node scripts/store-image-agent/fetch-haravan-images.mjs",
-    "supabase:bootstrap": "node scripts/vpp-supabase-bootstrap.cjs"
+    "supabase:bootstrap": "node scripts/vpp-supabase-bootstrap.cjs",
+    "sync:product-images": "tsx scripts/sync-product-images-from-seed.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.0",

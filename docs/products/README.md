@@ -47,6 +47,13 @@ Chi tiết, thêm danh mục và prompt cho Cloud Agent: `scripts/store-image-ag
 
 ## Đưa lên website
 
+- **Ảnh sản phẩm trên Supabase:** sau khi đổi ảnh trong `public/products/` + seed, chạy (cần service role trong `.env.local`):
+
+  ```bash
+  npm run sync:product-images
+  npm run sync:product-images -- --dry-run   # xem trước, không ghi DB
+  ```
+
 - Sinh seed giấy vào catalog: `npm run catalog:paper:generate` → `src/data/vpp-paper-products.generated.json` (được import trong `vpp-catalog.ts`).
 - Local: `npm run seed:reset` rồi `npm run dev` để nạp lại `.data/`.
 - Supabase đã có SP: dùng `node scripts/reset-catalog.cjs` (xóa SP) hoặc nhập qua **Admin** (`/admin/products`).
