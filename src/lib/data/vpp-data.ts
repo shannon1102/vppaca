@@ -3,6 +3,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import {
   seedBanners,
+  seedCategories,
   seedProducts,
   seedPromotionProducts,
   seedPromotions,
@@ -305,6 +306,105 @@ export async function vppListRfqs(): Promise<RfqRequest[]> {
   }
   const local = await readVppLocal();
   return local.rfqs;
+}
+
+export type VppSyncProductImagesResult = {
+  productsUpdated: number;
+  productsUnchanged: number;
+  productsNotInDb: number;
+  categoriesUpdated: number;
+  dryRun: boolean;
+};
+
+function imagesEqual(a: string[] | undefined, b: string[] | undefined): boolean {
+  return JSON.stringify(a ?? []) === JSON.stringify(b ?? []);
+}
+
+/**
+ * Cập nhật `products.images` và `categories.image_url` từ seed (theo id, fallback slug).
+ * Không đụng giá, mô tả hay tồn kho — dùng sau deploy ảnh mới trong public/.
+ */
+export async function vppSyncProductImagesFromSeed(opts?: {
+  dryRun?: boolean;
+}): Promise<VppSyncProductImagesResult> {
+  const dryRun = Boolean(opts?.dryRun);
+  if (!isSupabaseConfigured()) {
+    throw new Error(
+      "Supabase chưa cấu hình (NEXT_PUBLIC_SUPABASE_URL + service role key).",
+    );
+  }
+
+  const sb = adminClient();
+  const { data: dbProducts, error: pErr } = await sb
+    .from("products")
+    .select("id, slug, images");
+  if (pErr) throw pErr;
+
+  const byId = new Map(
+    (dbProducts ?? []).map((r) => [
+      String(r.id),
+      { id: String(r.id), slug: String(r.slug), images: r.images as string[] },
+    ]),
+  );
+  const bySlug = new Map(
+    (dbProducts ?? []).map((r) => [String(r.slug), String(r.id)]),
+  );
+
+  let productsUpdated = 0;
+  let productsUnchanged = 0;
+  let productsNotInDb = 0;
+
+  for (const seed of seedProducts) {
+    const images = seed.images ?? [];
+    const targetId = byId.has(seed.id) ? seed.id : bySlug.get(seed.slug);
+    if (!targetId) {
+      productsNotInDb += 1;
+      continue;
+    }
+    const current = byId.get(targetId)?.images ?? byId.get(seed.id)?.images;
+    if (imagesEqual(current, images)) {
+      productsUnchanged += 1;
+      continue;
+    }
+    if (!dryRun) {
+      const { error } = await sb
+        .from("products")
+        .update({ images })
+        .eq("id", targetId);
+      if (error) throw error;
+    }
+    productsUpdated += 1;
+  }
+
+  const { data: dbCategories, error: cErr } = await sb
+    .from("categories")
+    .select("id, image_url");
+  if (cErr) throw cErr;
+  const catImageById = new Map(
+    (dbCategories ?? []).map((r) => [String(r.id), String(r.image_url ?? "")]),
+  );
+
+  let categoriesUpdated = 0;
+  for (const cat of seedCategories) {
+    if (!cat.image_url) continue;
+    if (catImageById.get(cat.id) === cat.image_url) continue;
+    if (!dryRun) {
+      const { error } = await sb
+        .from("categories")
+        .update({ image_url: cat.image_url })
+        .eq("id", cat.id);
+      if (error) throw error;
+    }
+    categoriesUpdated += 1;
+  }
+
+  return {
+    productsUpdated,
+    productsUnchanged,
+    productsNotInDb,
+    categoriesUpdated,
+    dryRun,
+  };
 }
 
 /** Đồng bộ banner trang chủ (carousel + strip) từ seed — idempotent. */
