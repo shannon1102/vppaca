@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
+import { CatalogCategoryAccordion } from "@/components/store/catalog-category-accordion";
 import { CatalogBrandFilter } from "@/components/store/catalog-brand-filter";
 import { CatalogSortBar } from "@/components/store/catalog-sort-bar";
 import { ProductPriceFilter } from "@/components/store/product-price-filter";
@@ -30,40 +31,11 @@ export function CatalogSidebar({
 
       <div className="catalog-sidebar-panel">
         <h2 className="catalog-sidebar-panel__title">Danh mục</h2>
-        <ul className="space-y-2 text-sm">
-          {navGroups.map(({ category, children }) => (
-            <li key={category.id}>
-              <Link
-                href={`/danh-muc/${category.slug}`}
-                className={
-                  activeCategorySlug === category.slug
-                    ? "font-semibold text-[var(--brand-sale)]"
-                    : "font-medium text-[var(--brand-text)] hover:text-[var(--brand-primary)]"
-                }
-              >
-                {category.name}
-              </Link>
-              {children.length > 0 ? (
-                <ul className="mt-1 space-y-0.5 border-l-2 border-slate-200 pl-3">
-                  {children.map((sub) => (
-                    <li key={sub.id}>
-                      <Link
-                        href={`/danh-muc/${sub.slug}`}
-                        className={
-                          activeCategorySlug === sub.slug
-                            ? "font-semibold text-[var(--brand-sale)]"
-                            : "text-[var(--brand-primary)] hover:underline"
-                        }
-                      >
-                        {sub.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
-            </li>
-          ))}
-        </ul>
+        <CatalogCategoryAccordion
+          key={activeCategorySlug ?? "catalog-root"}
+          groups={navGroups}
+          activeCategorySlug={activeCategorySlug}
+        />
       </div>
 
       <Suspense fallback={null}>
