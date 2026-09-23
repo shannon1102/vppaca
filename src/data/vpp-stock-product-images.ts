@@ -12,6 +12,7 @@ export const STOCK_IMAGES = {
   biaNhuaEpPlastic: `${S}/bia-nhua-ep-plastic.jpg`,
   biaKiengTrong: `${S}/bia-kieng-trong.jpg`,
   biaMauA3: BIA_MAU_A3,
+  giayA1: `${S}/giay-a1-rolled-sheets.png`,
   fordMau: FORD,
   giayLienTuc: `${S}/giay-lien-tuc-lien-son.webp`,
   butTl027: `${S}/but-thien-long-tl-027.webp`,
@@ -49,6 +50,10 @@ export function resolveVppStockImages(product: {
     (/^bia-/.test(slug) || /bìa|bia /i.test(name))
   ) {
     return [STOCK_IMAGES.biaMauA3];
+  }
+
+  if (/(?:^|[-_])a1(?:[-_]|$)/i.test(slug) || /\bA1\b/i.test(name)) {
+    return [STOCK_IMAGES.giayA1];
   }
 
   if (slug.startsWith("decal-") || /decal thường|giấy decal trong/i.test(name)) {
