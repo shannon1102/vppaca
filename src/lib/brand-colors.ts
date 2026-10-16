@@ -1,9 +1,9 @@
-/** ACA logo — đỏ → vàng */
+/** Thiên Long navy — sampled from the shop footer / Mua ngay */
 export const BRAND_COLORS = {
-  primary: "#EC2229",
-  primaryHover: "#C41C23",
-  secondary: "#9B1519",
+  primary: "#16418F",
+  primaryHover: "#10356F",
+  secondary: "#0E2F62",
   accent: "#EDA909",
-  sale: "#EC2229",
-  gradient: "linear-gradient(135deg, #EC2229 0%, #EDA909 100%)",
+  sale: "#DE4443",
+  gradient: "#16418F",
 } as const;

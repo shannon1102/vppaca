@@ -3,18 +3,20 @@
 :root {
   /* Thiên Long–style wide catalog column (≈1480–1580px) */
   --shop-content-max: 1580px;
-  --tl-header-navy: #0c4a8a;
-  --tl-header-navy-dark: #083562;
+  --tl-header-navy: #16418f;
+  --tl-header-navy-dark: #10356f;
+  --tl-header-bright: #4883eb;
+  --tl-nav-bg: #e5eeff;
   --tl-flash-bg: #fff8e6;
   --tl-flash-accent: #f5c518;
-  --nc-primary: #ec2229;
+  --nc-primary: #16418f;
   --brand-primary: var(--nc-primary);
-  --brand-primary-hover: #c41c23;
-  --brand-secondary: #9b1519;
+  --brand-primary-hover: #10356f;
+  --brand-secondary: #0e2f62;
   --brand-accent: #eda909;
-  --brand-gradient: linear-gradient(135deg, #ec2229 0%, #eda909 100%);
-  --brand-sale: #ec2229;
-  --brand-bg: #fafaf9;
+  --brand-gradient: #16418f;
+  --brand-sale: #de4443;
+  --brand-bg: #d3edff;
   --brand-surface: #ffffff;
   --brand-text: #0f172a;
   --brand-muted: #64748b;
@@ -676,40 +678,25 @@ h4 {
 
 .shop-search-submit {
   position: absolute;
-  right: 0.25rem;
-  top: 50%;
+  top: 3px;
+  right: 3px;
+  bottom: 3px;
   display: inline-flex;
-  height: 2.5rem;
-  min-width: 2.75rem;
-  translate: 0 -50%;
+  width: 4.25rem;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
-  background: var(--tl-header-navy);
+  border-radius: 4px;
+  background: var(--brand-primary);
   color: #fff;
 }
 
-/* PDP — laptop: full shop width; large PC: narrower column + side gutters (Thien Long) */
+/* PDP — cùng cột shop; màn rộng dùng gutter 4% ở .shop-container */
 .pdp-page {
   background: var(--brand-bg);
 }
 
 .shop-container--pdp {
   max-width: var(--shop-content-max);
-}
-
-@media (min-width: 1600px) {
-  .shop-container--pdp {
-    max-width: 1280px;
-    padding-inline: 2rem;
-  }
-}
-
-@media (min-width: 1920px) {
-  .shop-container--pdp {
-    max-width: 1200px;
-    padding-inline: 2.5rem;
-  }
 }
 
 .pdp-shell {
@@ -896,6 +883,14 @@ h4 {
 @media (min-width: 768px) {
   .shop-container {
     padding-inline: 1.25rem;
+  }
+}
+
+/* Màn rộng: chừa 4% chiều rộng mỗi bên, nội dung giãn theo viewport */
+@media (min-width: 1600px) {
+  .shop-container {
+    max-width: none;
+    padding-inline: 4%;
   }
 }
 
