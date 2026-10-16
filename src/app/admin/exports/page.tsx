@@ -9,6 +9,12 @@ export default async function AdminExportsPage() {
         Export phục vụ kế toán (VAT) và upload catalog lên sàn TMĐT thủ công.
       </p>
       <div className="space-y-3">
+        <a
+          href="/admin/invoices"
+          className="inline-block rounded-lg border border-[var(--brand-primary)] px-4 py-2 text-sm font-semibold text-[var(--brand-primary)]"
+        >
+          Quản lý &amp; tải PDF hóa đơn VAT
+        </a>
         <form action="/api/admin/export/orders-accounting" method="post">
           <button
             type="submit"

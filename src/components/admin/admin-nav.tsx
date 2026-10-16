@@ -16,9 +16,12 @@ import {
 const nav = [
   { href: "/admin", label: "Tổng quan", exact: true, Icon: IconDashboard },
   { href: "/admin/products", label: "Sản phẩm", Icon: IconProducts },
+  { href: "/admin/inventory", label: "Tồn kho", Icon: IconProducts },
+  { href: "/admin/customers", label: "CRM / KH", Icon: IconLeads },
   { href: "/admin/articles", label: "Bài viết SK", Icon: IconArticles },
   { href: "/admin/categories", label: "Danh mục", Icon: IconCategories },
   { href: "/admin/orders", label: "Đơn hàng", Icon: IconOrders },
+  { href: "/admin/invoices", label: "Hóa đơn VAT", Icon: IconEmail },
   { href: "/admin/rfq", label: "Báo giá B2B", Icon: IconLeads },
   { href: "/admin/banners", label: "Banner / Sale", Icon: IconBranding },
   { href: "/admin/exports", label: "Xuất CSV", Icon: IconEmail },

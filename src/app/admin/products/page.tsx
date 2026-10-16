@@ -42,6 +42,7 @@ export default async function AdminProductsPage() {
               <th className="px-4 py-3">Tên</th>
               <th className="px-4 py-3">SKU</th>
               <th className="px-4 py-3">Giá</th>
+              <th className="px-4 py-3 text-right">Tồn</th>
               <th className="px-4 py-3">Published</th>
               <th className="px-4 py-3" />
             </tr>
@@ -52,6 +53,11 @@ export default async function AdminProductsPage() {
                 <td className="px-4 py-3 font-medium">{p.name}</td>
                 <td className="px-4 py-3">{p.sku}</td>
                 <td className="px-4 py-3">{formatVnd(p.price)}</td>
+                <td className="px-4 py-3 text-right">
+                  <span className={p.min_stock > 0 && p.stock <= p.min_stock ? "font-semibold text-amber-700" : ""}>
+                    {p.stock}
+                  </span>
+                </td>
                 <td className="px-4 py-3">{p.is_published ? "Có" : "Không"}</td>
                 <td className="px-4 py-3">
                   <div className="flex gap-2">

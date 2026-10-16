@@ -132,6 +132,7 @@ export async function placeOrderAction(formData: FormData) {
     subtotal: validated.subtotal,
     discount_total: 0,
     accounting_exported_at: null,
+    customer_id: null,
     items: validated.items.map((l, idx) => ({
       id: `${id}-${idx}`,
       order_id: id,
@@ -147,6 +148,12 @@ export async function placeOrderAction(formData: FormData) {
   };
   try {
     await repo.createOrder(order);
+    try {
+      const { crmUpsertCustomerFromOrder } = await import("@/lib/data/crm-store");
+      await crmUpsertCustomerFromOrder(order);
+    } catch (crmErr) {
+      console.error("[crm] link customer from order", crmErr);
+    }
   } catch (e) {
     console.error("[order]", e);
     return { error: e instanceof Error ? e.message : "Không tạo được đơn hàng." };
@@ -239,9 +246,23 @@ export async function saveSettingsAction(formData: FormData) {
     qr_image_url: clampText(String(formData.get("qr_image_url") ?? ""), FORM_LIMITS.url),
     facebook_url: clampText(String(formData.get("facebook_url") ?? ""), FORM_LIMITS.url),
     zalo_url: clampText(String(formData.get("zalo_url") ?? ""), FORM_LIMITS.url),
+    vat_seller_legal_name: clampText(String(formData.get("vat_seller_legal_name") ?? ""), 200),
+    vat_seller_tax_code: clampText(String(formData.get("vat_seller_tax_code") ?? ""), 32),
+    vat_seller_address: clampText(String(formData.get("vat_seller_address") ?? ""), FORM_LIMITS.address),
+    vat_default_rate: Math.min(
+      100,
+      Math.max(0, Number(formData.get("vat_default_rate") ?? 8) || 8),
+    ),
+    vat_prices_include_tax: formData.get("vat_prices_include_tax") === "on",
+    vat_invoice_series: clampText(String(formData.get("vat_invoice_series") ?? "1C26TAA"), 24),
+    vat_invoice_next_number: Math.max(
+      1,
+      Number.parseInt(String(formData.get("vat_invoice_next_number") ?? "1"), 10) || 1,
+    ),
   });
   revalidatePath("/");
   revalidatePath("/admin/branding");
+  revalidatePath("/admin/invoices");
   revalidateTag(CACHE_TAGS.settings, "max");
   redirect("/admin/branding?toast=settings-saved");
 }
@@ -549,4 +570,62 @@ export async function submitRfqAction(formData: FormData) {
     console.error("[rfq email]", e);
   }
   return { ok: true as const };
+}
+
+export async function saveCustomerAction(formData: FormData) {
+  await requireAdmin();
+  const { crmSaveCustomer } = await import("@/lib/data/crm-store");
+  const id = String(formData.get("id") ?? "").trim() || undefined;
+  await crmSaveCustomer({
+    id,
+    name: String(formData.get("name") ?? "").trim(),
+    phone: String(formData.get("phone") ?? "").trim(),
+    email: String(formData.get("email") ?? "").trim(),
+    company: String(formData.get("company") ?? "").trim(),
+    tax_code: String(formData.get("tax_code") ?? "").trim(),
+    address: String(formData.get("address") ?? "").trim(),
+    customer_type: (formData.get("customer_type") === "b2b" ? "b2b" : "b2c") as "b2c" | "b2b",
+    note: String(formData.get("note") ?? "").trim(),
+  });
+  revalidatePath("/admin/customers");
+  if (id) revalidatePath(`/admin/customers/${id}`);
+  redirect(id ? `/admin/customers/${id}?toast=customer-saved` : "/admin/customers?toast=customer-saved");
+}
+
+export async function addCustomerNoteAction(formData: FormData) {
+  await requireAdmin();
+  const customerId = String(formData.get("customer_id") ?? "");
+  const body = String(formData.get("body") ?? "").trim();
+  if (!customerId || body.length < 2) {
+    redirect(`/admin/customers/${customerId}?error=note`);
+  }
+  const { crmAddCustomerNote } = await import("@/lib/data/crm-store");
+  await crmAddCustomerNote(customerId, body);
+  revalidatePath(`/admin/customers/${customerId}`);
+  redirect(`/admin/customers/${customerId}?toast=note-added`);
+}
+
+export async function adjustStockAction(formData: FormData) {
+  await requireAdmin();
+  const productId = String(formData.get("product_id") ?? "");
+  const delta = Number(formData.get("delta") ?? 0);
+  const note = String(formData.get("note") ?? "").trim() || "Điều chỉnh tồn kho";
+  if (!productId || !Number.isFinite(delta) || delta === 0) {
+    redirect("/admin/inventory?error=adjust");
+  }
+  const { crmAdjustStock } = await import("@/lib/data/crm-store");
+  const result = await crmAdjustStock(
+    productId,
+    delta,
+    note,
+    (id) => repo.getProductById(id),
+    (p) => repo.upsertProduct(p),
+  );
+  if (!result.ok) {
+    redirect(`/admin/inventory?error=${encodeURIComponent(result.error ?? "adjust")}`);
+  }
+  revalidatePath("/admin/inventory");
+  revalidatePath("/admin/products");
+  revalidateTag(CACHE_TAGS.products, "max");
+  redirect("/admin/inventory?toast=stock-adjusted");
 }

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { OrderStatusForm } from "@/components/admin/order-status-form";
 import { formatVnd } from "@/lib/format";
 import { ORDER_STATUS_LABELS } from "@/lib/order-status";
@@ -22,7 +23,11 @@ export default async function AdminOrdersPage() {
             >
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
-                  <p className="font-bold">{o.code}</p>
+                  <p className="font-bold">
+                    <Link href={`/admin/orders/${o.id}`} className="text-[var(--brand-primary)] hover:underline">
+                      {o.code}
+                    </Link>
+                  </p>
                   <p className="text-sm text-[var(--brand-muted)]">
                     {o.customer_name} · {o.customer_phone}
                   </p>

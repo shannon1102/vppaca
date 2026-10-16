@@ -224,6 +224,15 @@ export async function vppDeductStock(
         .eq("id", line.productId)
         .gte("stock", line.qtyBase);
       if (error) throw error;
+      const { crmRecordStockMovement } = await import("@/lib/data/crm-store");
+      await crmRecordStockMovement({
+        product_id: line.productId,
+        delta_base: -line.qtyBase,
+        balance_after: newStock,
+        reason: "sale",
+        reference_type: "order",
+        note: "Trừ tồn khi tạo đơn",
+      });
       const minStock = Number(data.min_stock ?? 0);
       if (minStock > 0 && newStock <= minStock) {
         await sb.from("stock_alerts").insert({
@@ -246,8 +255,72 @@ export async function vppDeductStock(
     }
     p.stock -= line.qtyBase;
     await localUpsertProduct(p);
+    const { crmRecordStockMovement } = await import("@/lib/data/crm-store");
+    await crmRecordStockMovement({
+      product_id: line.productId,
+      delta_base: -line.qtyBase,
+      balance_after: p.stock,
+      reason: "sale",
+      reference_type: "order",
+      note: "Trừ tồn khi tạo đơn",
+    });
   }
   return { ok: true };
+}
+
+export async function vppRestoreStockForOrder(order: Order): Promise<void> {
+  const lines = order.items.map((i) => ({
+    productId: i.product_id,
+    qtyBase: i.qty_base ?? i.qty * (i.factor_to_base ?? 1),
+  }));
+  if (!lines.length) return;
+
+  if (isSupabaseConfigured()) {
+    const sb = adminClient();
+    for (const line of lines) {
+      if (!line.productId) continue;
+      const { data, error: sel } = await sb
+        .from("products")
+        .select("stock, name")
+        .eq("id", line.productId)
+        .maybeSingle();
+      if (sel) throw sel;
+      if (!data) continue;
+      const stock = Number(data.stock);
+      const newStock = stock + line.qtyBase;
+      const { error } = await sb.from("products").update({ stock: newStock }).eq("id", line.productId);
+      if (error) throw error;
+      const { crmRecordStockMovement } = await import("@/lib/data/crm-store");
+      await crmRecordStockMovement({
+        product_id: line.productId,
+        delta_base: line.qtyBase,
+        balance_after: newStock,
+        reason: "cancel_order",
+        reference_type: "order",
+        reference_id: order.id,
+        note: `Hoàn tồn hủy đơn ${order.code}`,
+      });
+    }
+    return;
+  }
+  const { localGetProductById, localUpsertProduct } = await import("@/lib/data/local-store");
+  for (const line of lines) {
+    if (!line.productId) continue;
+    const p = await localGetProductById(line.productId);
+    if (!p) continue;
+    p.stock += line.qtyBase;
+    await localUpsertProduct(p);
+    const { crmRecordStockMovement } = await import("@/lib/data/crm-store");
+    await crmRecordStockMovement({
+      product_id: line.productId,
+      delta_base: line.qtyBase,
+      balance_after: p.stock,
+      reason: "cancel_order",
+      reference_type: "order",
+      reference_id: order.id,
+      note: `Hoàn tồn hủy đơn ${order.code}`,
+    });
+  }
 }
 
 export async function vppListLowStock(): Promise<

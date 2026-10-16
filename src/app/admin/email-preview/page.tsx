@@ -39,6 +39,7 @@ export default async function EmailPreviewPage() {
     subtotal: 1569000,
     discount_total: 0,
     accounting_exported_at: null,
+    customer_id: null,
     items: [
       {
         id: "1",
