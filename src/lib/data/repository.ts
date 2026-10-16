@@ -8,6 +8,7 @@ import {
   localGetArticleById,
   localGetArticleBySlug,
   localGetOrderByCode,
+  localGetOrderById,
   localGetProductById,
   localGetProductBySlug,
   localGetSettings,
@@ -34,6 +35,7 @@ import {
   sbGetArticleById,
   sbGetArticleBySlug,
   sbGetOrderByCode,
+  sbGetOrderById,
   sbGetProductById,
   sbGetProductBySlug,
   sbGetSettings,
@@ -138,6 +140,10 @@ export const repo = {
     isSupabaseConfigured()
       ? withSeed(() => sbGetOrderByCode(code))
       : localGetOrderByCode(code),
+  getOrderById: (id: string) =>
+    isSupabaseConfigured()
+      ? withSeed(() => sbGetOrderById(id))
+      : localGetOrderById(id),
   updateOrderStatus: (id: string, status: Order["status"]) =>
     isSupabaseConfigured()
       ? withSeed(() => sbUpdateOrderStatus(id, status))

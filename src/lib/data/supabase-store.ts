@@ -85,6 +85,13 @@ function mapSettings(row: Record<string, unknown>): SiteSettings {
     facebook_url: String(row.facebook_url ?? ""),
     zalo_url: String(row.zalo_url ?? ""),
     bank_bin: String(row.bank_bin ?? ""),
+    vat_seller_legal_name: String(row.vat_seller_legal_name ?? ""),
+    vat_seller_tax_code: String(row.vat_seller_tax_code ?? ""),
+    vat_seller_address: String(row.vat_seller_address ?? ""),
+    vat_default_rate: Number(row.vat_default_rate ?? 8),
+    vat_prices_include_tax: Boolean(row.vat_prices_include_tax ?? true),
+    vat_invoice_series: String(row.vat_invoice_series ?? "1C26TAA"),
+    vat_invoice_next_number: Number(row.vat_invoice_next_number ?? 1),
   };
 }
 
@@ -110,7 +117,8 @@ export async function sbGetSettings(): Promise<SiteSettings> {
   const { data, error } = await sb.from("site_settings").select("*").limit(1).maybeSingle();
   if (error) throw error;
   if (!data) return defaultSettings;
-  return mapSettings(data as Record<string, unknown>);
+  const { crmMergeSettings } = await import("@/lib/data/crm-store");
+  return crmMergeSettings(mapSettings(data as Record<string, unknown>));
 }
 
 export async function sbUpdateSettings(
@@ -359,6 +367,7 @@ export async function sbListOrders(): Promise<Order[]> {
     accounting_exported_at: o.accounting_exported_at
       ? String(o.accounting_exported_at)
       : null,
+    customer_id: o.customer_id == null ? null : String(o.customer_id),
     items: (items ?? [])
       .filter((i) => i.order_id === o.id)
       .map((i) => ({
@@ -381,15 +390,24 @@ export async function sbGetOrderByCode(code: string): Promise<Order | null> {
   return orders.find((o) => o.code === code) ?? null;
 }
 
+export async function sbGetOrderById(id: string): Promise<Order | null> {
+  const orders = await sbListOrders();
+  return orders.find((o) => o.id === id) ?? null;
+}
+
 export async function sbUpdateOrderStatus(
   id: string,
   status: OrderStatus,
 ): Promise<Order | null> {
+  const prev = await sbGetOrderById(id);
+  if (prev && status === "cancelled" && prev.status !== "cancelled") {
+    const { vppRestoreStockForOrder } = await import("@/lib/data/vpp-data");
+    await vppRestoreStockForOrder(prev);
+  }
   const sb = adminClient();
   const { error } = await sb.from("orders").update({ status }).eq("id", id);
   if (error) throw error;
-  const all = await sbListOrders();
-  return all.find((o) => o.id === id) ?? null;
+  return sbGetOrderById(id);
 }
 
 export async function sbListArticles(opts?: {

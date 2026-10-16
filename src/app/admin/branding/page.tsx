@@ -99,6 +99,53 @@ export default async function BrandingPage() {
               maxLength={FORM_LIMITS.url}
             />
 
+            <h2 className="pt-4 font-semibold">Xuất hóa đơn VAT (người bán)</h2>
+            <Input
+              name="vat_seller_legal_name"
+              label="Tên pháp lý (trên HĐ)"
+              defaultValue={s.vat_seller_legal_name ?? s.shop_name}
+              maxLength={200}
+            />
+            <Input
+              name="vat_seller_tax_code"
+              label="MST người bán"
+              defaultValue={s.vat_seller_tax_code ?? ""}
+              maxLength={32}
+            />
+            <Input
+              name="vat_seller_address"
+              label="Địa chỉ trên HĐ"
+              defaultValue={s.vat_seller_address ?? s.address}
+              maxLength={FORM_LIMITS.address}
+            />
+            <Input
+              name="vat_default_rate"
+              label="Thuế suất GTGT mặc định (%)"
+              defaultValue={String(s.vat_default_rate ?? 8)}
+              maxLength={4}
+            />
+            <Input
+              name="vat_invoice_series"
+              label="Ký hiệu mẫu HĐ (vd. 1C26TAA)"
+              defaultValue={s.vat_invoice_series ?? "1C26TAA"}
+              maxLength={24}
+            />
+            <Input
+              name="vat_invoice_next_number"
+              label="Số HĐ tiếp theo"
+              defaultValue={String(s.vat_invoice_next_number ?? 1)}
+              maxLength={8}
+            />
+            <label className="flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                name="vat_prices_include_tax"
+                defaultChecked={s.vat_prices_include_tax ?? true}
+                className="h-4 w-4"
+              />
+              Giá bán trên web đã bao gồm VAT (tách thuế khi in HĐ)
+            </label>
+
             <h2 className="pt-4 font-semibold">Chuyển khoản + QR</h2>
             <Input
               name="bank_name"

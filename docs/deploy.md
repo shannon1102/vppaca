@@ -3,7 +3,7 @@
 ## Checklist
 
 1. Tạo project Supabase `vppaca-db`
-2. Chạy migrations `supabase/migrations/001_init.sql` … `010_site_settings_bank_bin.sql`
+2. Chạy migrations `supabase/migrations/001_init.sql` … `014_crm_inventory_vat.sql`
 3. Bucket Storage `media` (public read cho ảnh SP)
 4. Vercel project link repo `vppaca`
 5. Env production (xem `.env.example`)

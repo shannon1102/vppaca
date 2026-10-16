@@ -145,6 +145,83 @@ export type SiteSettings = {
   facebook_url: string;
   zalo_url: string;
   bank_bin: string;
+  vat_seller_legal_name: string;
+  vat_seller_tax_code: string;
+  vat_seller_address: string;
+  vat_default_rate: number;
+  vat_prices_include_tax: boolean;
+  vat_invoice_series: string;
+  vat_invoice_next_number: number;
+};
+
+export type Customer = {
+  id: string;
+  name: string;
+  phone: string;
+  email: string;
+  company: string;
+  tax_code: string;
+  address: string;
+  customer_type: CustomerType;
+  debt_balance: number;
+  note: string;
+  created_at: string;
+  updated_at: string;
+};
+
+export type CustomerNote = {
+  id: string;
+  customer_id: string;
+  body: string;
+  created_at: string;
+};
+
+export type StockMovementReason =
+  | "sale"
+  | "adjustment"
+  | "receive"
+  | "return"
+  | "cancel_order";
+
+export type StockMovement = {
+  id: string;
+  product_id: string;
+  delta_base: number;
+  balance_after: number;
+  reason: StockMovementReason;
+  reference_type: string;
+  reference_id: string;
+  note: string;
+  created_at: string;
+};
+
+export type VatInvoiceLine = {
+  name: string;
+  unit: string;
+  qty: number;
+  unit_price_ex_vat: number;
+  vat_rate: number;
+  line_ex_vat: number;
+  vat_amount: number;
+  line_inc_vat: number;
+};
+
+export type VatInvoice = {
+  id: string;
+  invoice_number: string;
+  order_id: string;
+  customer_id: string | null;
+  issued_at: string;
+  vat_rate: number;
+  subtotal_ex_vat: number;
+  vat_amount: number;
+  total_inc_vat: number;
+  buyer_name: string;
+  buyer_tax_code: string;
+  buyer_address: string;
+  buyer_email: string;
+  line_items: VatInvoiceLine[];
+  created_at: string;
 };
 
 export type OrderItem = {
@@ -182,6 +259,7 @@ export type Order = {
   subtotal: number | null;
   discount_total: number;
   accounting_exported_at: string | null;
+  customer_id: string | null;
 };
 
 export type CartItem = {

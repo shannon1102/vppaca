@@ -54,7 +54,10 @@ async function saveDb(db: LocalDb) {
 
 export async function localGetSettings(): Promise<SiteSettings> {
   const db = await ensureDb();
-  return { ...db.settings, logo_url: resolveLogoUrl(db.settings.logo_url) };
+  const { defaultSettings } = await import("@/data/seed");
+  const { crmMergeSettings } = await import("@/lib/data/crm-store");
+  const base = { ...defaultSettings, ...db.settings, logo_url: resolveLogoUrl(db.settings.logo_url) };
+  return crmMergeSettings(base);
 }
 
 export async function localUpdateSettings(
@@ -181,12 +184,17 @@ export async function localCreateOrder(order: Order): Promise<Order> {
 
 export async function localListOrders(): Promise<Order[]> {
   const db = await ensureDb();
-  return [...db.orders];
+  return db.orders.map((o) => ({ ...o, customer_id: o.customer_id ?? null }));
 }
 
 export async function localGetOrderByCode(code: string): Promise<Order | null> {
   const db = await ensureDb();
   return db.orders.find((o) => o.code === code) ?? null;
+}
+
+export async function localGetOrderById(id: string): Promise<Order | null> {
+  const db = await ensureDb();
+  return db.orders.find((o) => o.id === id) ?? null;
 }
 
 export async function localUpdateOrderStatus(
@@ -196,6 +204,10 @@ export async function localUpdateOrderStatus(
   const db = await ensureDb();
   const o = db.orders.find((x) => x.id === id);
   if (!o) return null;
+  if (status === "cancelled" && o.status !== "cancelled") {
+    const { vppRestoreStockForOrder } = await import("@/lib/data/vpp-data");
+    await vppRestoreStockForOrder(o);
+  }
   o.status = status;
   await saveDb(db);
   return o;

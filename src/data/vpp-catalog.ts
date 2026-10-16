@@ -45,6 +45,13 @@ export const defaultSettings: SiteSettings = {
   qr_image_url: "",
   facebook_url: "https://facebook.com/vppaca",
   zalo_url: "https://zalo.me/19001234",
+  vat_seller_legal_name: "CÔNG TY TNHH VPP ACA",
+  vat_seller_tax_code: "",
+  vat_seller_address: "Hà Nội, Việt Nam",
+  vat_default_rate: 8,
+  vat_prices_include_tax: true,
+  vat_invoice_series: "1C26TAA",
+  vat_invoice_next_number: 1,
 };
 
 export const seedCategories: Category[] = [
