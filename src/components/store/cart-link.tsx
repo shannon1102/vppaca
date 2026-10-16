@@ -12,9 +12,27 @@ function useHydrated() {
   );
 }
 
-export function CartLink() {
+export function CartLink({ variant = "default" }: { variant?: "default" | "header" }) {
   const count = useCart((s) => s.count());
   const mounted = useHydrated();
+  const badge = (className: string) =>
+    mounted && count > 0 ? (
+      <span className={className}>{count}</span>
+    ) : null;
+
+  if (variant === "header") {
+    return (
+      <Link href="/gio-hang" className="inline-flex items-center gap-1.5 text-white" aria-label="Giỏ hàng">
+        <span className="relative inline-flex h-10 w-8 items-center justify-center">
+          <CartIcon />
+          {badge(
+            "absolute -right-1 top-0 flex h-5 min-w-5 items-center justify-center rounded-full bg-[var(--brand-sale)] px-1 text-[10px] font-bold text-white",
+          )}
+        </span>
+        <span className="hidden text-[13px] font-medium leading-tight xl:inline">Giỏ hàng</span>
+      </Link>
+    );
+  }
 
   return (
     <Link
@@ -23,11 +41,9 @@ export function CartLink() {
       aria-label="Giỏ hàng"
     >
       <CartIcon />
-      {mounted && count > 0 ? (
-        <span className="absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white">
-          {count}
-        </span>
-      ) : null}
+      {badge(
+        "absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-[var(--brand-sale)] px-1 text-[10px] font-bold text-white",
+      )}
     </Link>
   );
 }
