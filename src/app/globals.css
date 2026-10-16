@@ -689,27 +689,13 @@ h4 {
   color: #fff;
 }
 
-/* PDP — laptop: full shop width; large PC: narrower column + side gutters (Thien Long) */
+/* PDP — cùng cột shop; màn rộng dùng gutter 4% ở .shop-container */
 .pdp-page {
   background: var(--brand-bg);
 }
 
 .shop-container--pdp {
   max-width: var(--shop-content-max);
-}
-
-@media (min-width: 1600px) {
-  .shop-container--pdp {
-    max-width: 1280px;
-    padding-inline: 2rem;
-  }
-}
-
-@media (min-width: 1920px) {
-  .shop-container--pdp {
-    max-width: 1200px;
-    padding-inline: 2.5rem;
-  }
 }
 
 .pdp-shell {
@@ -896,6 +882,14 @@ h4 {
 @media (min-width: 768px) {
   .shop-container {
     padding-inline: 1.25rem;
+  }
+}
+
+/* Màn rộng: chừa 4% chiều rộng mỗi bên, nội dung giãn theo viewport */
+@media (min-width: 1600px) {
+  .shop-container {
+    max-width: none;
+    padding-inline: 4%;
   }
 }
 
